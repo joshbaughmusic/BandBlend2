@@ -144,17 +144,17 @@ export const MyProfile = () => {
             item
             xs={9}
           >
-            <div className='profile-right-section'>
-              <div className='profile-right-section-item'>
-                <Typography variant='h6'>About</Typography>
+            <div className="profile-right-section">
+              <div className="profile-right-section-item">
+                <Typography variant="h6">About</Typography>
                 <Typography>{profile.profile.about}</Typography>
               </div>
-              <div className='profile-right-section-item'>
-                <Typography variant='h6'>Additional Photos</Typography>
+              <div className="profile-right-section-item">
+                <Typography variant="h6">Additional Photos</Typography>
                 Place holder
               </div>
-              <div className='profile-right-section-item'>
-                <Typography variant='h6'>Posts</Typography>
+              <div className="profile-right-section-item">
+                <Typography variant="h6">Posts</Typography>
                 Place holder
               </div>
             </div>
