@@ -1,4 +1,4 @@
-import { Avatar, Chip, Container, Grid, Typography } from '@mui/material';
+import { Avatar, Button, ButtonGroup, Chip, Container, Grid, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { fetchCurrentUserWithProfile } from '../../../../managers/profileManager.js';
 import '../SingleProfile.css';
@@ -7,8 +7,13 @@ import FacebookLogo from '../../../../images/SocialMediaLogos/facebook.png';
 import InstagramLogo from '../../../../images/SocialMediaLogos/instagram.png';
 import TikTokLogo from '../../../../images/SocialMediaLogos/spotify.png';
 import { Link } from 'react-router-dom';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import MessageIcon from '@mui/icons-material/Message';
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 
-export const MyProfile = () => {
+export const OtherProfile = () => {
   const [profile, setProfile] = useState();
 
   const getCurrentUserWithProfile = () => {
@@ -122,7 +127,7 @@ export const MyProfile = () => {
                   ))}
                 </div>
               </div>
-              {/* <ButtonGroup>
+              <ButtonGroup>
                 <Button variant='contained'>
                   <BookmarkIcon />
                 </Button>
@@ -132,7 +137,7 @@ export const MyProfile = () => {
                 <Button variant='contained'>
                   <PersonAddAlt1Icon />
                 </Button>
-              </ButtonGroup> */}
+              </ButtonGroup>
             </div>
           </Grid>
           <Grid
