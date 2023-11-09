@@ -4,6 +4,7 @@ import Login from './auth/Login';
 import Register from './auth/Register';
 import { Home } from './homepage/Home.js';
 import { MyProfile } from './profile/singleProfile/myProfile/MyProfile.js';
+import { OtherProfile } from './profile/singleProfile/otherProfile/OtherProfile.js';
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -21,6 +22,10 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                 <MyProfile loggedInUser={loggedInUser} />
               </AuthorizedRoute>
             }
+          />
+          <Route
+            path=":id"
+            element={<OtherProfile loggedInUser={loggedInUser} />}
           />
         </Route>
         <Route

@@ -1,0 +1,26 @@
+.post-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+.post-card-header-left {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.post-card-footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-card-footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.post-card {
+    background-color: black;
+}
