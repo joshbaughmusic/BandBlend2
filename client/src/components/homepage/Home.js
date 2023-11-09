@@ -7,7 +7,7 @@ export const Home = () => {
   return (
     <>
       <Container>
-        <div className="container-flex-col container-home-logos">
+        <div className="container-home-logos">
           <img
             src={MainLogo}
             alt=""

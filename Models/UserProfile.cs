@@ -18,5 +18,6 @@ public class UserProfile
 
     public IdentityUser IdentityUser { get; set; }
     // public Profile Profile { get; set; }
+    public Profile Profile { get; set; }
 
 }

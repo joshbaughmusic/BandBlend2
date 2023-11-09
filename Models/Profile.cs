@@ -21,5 +21,7 @@ public class Profile
     public State State { get; set; }
     public PrimaryGenre PrimaryGenre { get; set; }
     public PrimaryInstrument PrimaryInstrument { get; set; }
+    public List<ProfileSubGenre> ProfileSubGenres { get; set; }
+    public List<ProfileTag> ProfileTags { get; set; }
 
 }
