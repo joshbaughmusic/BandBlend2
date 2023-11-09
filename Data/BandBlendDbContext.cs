@@ -85,6 +85,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 Id = 1,
                 IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                 Name = "Josh Baugh",
+                Email = "josh@bandblend.comx",
                 IsBand = false
             },
             new UserProfile
@@ -92,6 +93,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 Id = 2,
                 IdentityUserId = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
                 Name = "Tom Jones",
+                Email = "tom@bandblend.comx",
                 IsBand = false
             }
             );
@@ -106,10 +108,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 PrimaryGenreId = 1,
                 PrimaryInstrumentId = 1,
-                SpotifyLink = "www.nowhere.com",
-                FacebookLink = "www.nowhere.com",
-                InstagramLink = "www.nowhere.com",
-                TikTokLink = "www.nowhere.com",
+                SpotifyLink = null,
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = null,
 
             },
             new Profile
@@ -122,10 +124,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 PrimaryGenreId = 2,
                 PrimaryInstrumentId = 2,
-                SpotifyLink = "www.nowhere.com",
-                FacebookLink = "www.nowhere.com",
-                InstagramLink = "www.nowhere.com",
-                TikTokLink = "www.nowhere.com",
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
 
             }
             );

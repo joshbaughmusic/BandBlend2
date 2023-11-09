@@ -17,7 +17,7 @@ namespace BandBlend2.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ProfileId = table.Column<int>(type: "integer", nullable: false),
-                    Url = table.Column<string>(type: "text", nullable: false)
+                    Url = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -69,7 +69,7 @@ namespace BandBlend2.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -82,7 +82,7 @@ namespace BandBlend2.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -95,7 +95,7 @@ namespace BandBlend2.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -108,7 +108,7 @@ namespace BandBlend2.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -121,7 +121,7 @@ namespace BandBlend2.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -240,9 +240,9 @@ namespace BandBlend2.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
                     IsBand = table.Column<bool>(type: "boolean", nullable: false),
-                    IdentityUserId = table.Column<string>(type: "text", nullable: false)
+                    IdentityUserId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -251,8 +251,7 @@ namespace BandBlend2.Migrations
                         name: "FK_UserProfiles_AspNetUsers_IdentityUserId",
                         column: x => x.IdentityUserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -262,7 +261,7 @@ namespace BandBlend2.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserProfileId = table.Column<int>(type: "integer", nullable: false),
-                    Body = table.Column<string>(type: "text", nullable: false),
+                    Body = table.Column<string>(type: "text", nullable: true),
                     Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
@@ -283,16 +282,16 @@ namespace BandBlend2.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserProfileId = table.Column<int>(type: "integer", nullable: false),
-                    ProfilePicture = table.Column<string>(type: "text", nullable: false),
+                    ProfilePicture = table.Column<string>(type: "text", nullable: true),
                     StateId = table.Column<int>(type: "integer", nullable: false),
-                    City = table.Column<string>(type: "text", nullable: false),
-                    About = table.Column<string>(type: "text", nullable: false),
+                    City = table.Column<string>(type: "text", nullable: true),
+                    About = table.Column<string>(type: "text", nullable: true),
                     PrimaryGenreId = table.Column<int>(type: "integer", nullable: false),
                     PrimaryInstrumentId = table.Column<int>(type: "integer", nullable: true),
-                    SpotifyLink = table.Column<string>(type: "text", nullable: false),
-                    FacebookLink = table.Column<string>(type: "text", nullable: false),
-                    InstagramLink = table.Column<string>(type: "text", nullable: false),
-                    TikTokLink = table.Column<string>(type: "text", nullable: false)
+                    SpotifyLink = table.Column<string>(type: "text", nullable: true),
+                    FacebookLink = table.Column<string>(type: "text", nullable: true),
+                    InstagramLink = table.Column<string>(type: "text", nullable: true),
+                    TikTokLink = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -330,7 +329,7 @@ namespace BandBlend2.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     PostId = table.Column<int>(type: "integer", nullable: false),
                     UserProfileId = table.Column<int>(type: "integer", nullable: false),
-                    Body = table.Column<string>(type: "text", nullable: false),
+                    Body = table.Column<string>(type: "text", nullable: true),
                     Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
@@ -385,7 +384,7 @@ namespace BandBlend2.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     SenderId = table.Column<int>(type: "integer", nullable: false),
                     ReceiverId = table.Column<int>(type: "integer", nullable: false),
-                    Body = table.Column<string>(type: "text", nullable: false),
+                    Body = table.Column<string>(type: "text", nullable: true),
                     Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     IsRead = table.Column<bool>(type: "boolean", nullable: false)
                 },
@@ -503,8 +502,8 @@ namespace BandBlend2.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 0, "c6fcf7cb-de6e-450f-bdce-62871efbc831", "tom@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEKKd7o5rpOJ9hk/zv0SNQy3p1eKif/vhF9KflqW3bqD4rNaaU1A8/w/+4SHtKN/wHA==", null, false, "fcadf533-febe-410e-8fda-f3f1eb9153bc", false, null },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "0829f8f1-2624-4fb1-be93-457192f13a58", "josh@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEJ9YdCGzDiACyCT+qL0zPj2tRmNGJOPB5yYNrWozNbXK/mYv2I5fXIC7HritgJtbwQ==", null, false, "345bcd86-796d-45d5-8c6f-28f68bd8eba0", false, null }
+                    { "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 0, "7b42b37f-f2ed-4fbe-aa04-b70f5abfba97", "tom@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEEKm8Iahf1oC+DdpUrhSJ/Z0lPw552NuHKz9IUDHtGIrZvhQCYJxDI6bhkbi5EHOVg==", null, false, "4828f460-0891-4c80-834b-688107ec1e73", false, null },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "54c789dc-f0be-46bf-941b-c2ff98673738", "josh@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEGg+jirNfh6rLitKnfAfD2pe5gGa3Wgo9jZAuDTmwDuOOGr+AzdicxFa5vE4fifxcA==", null, false, "71c7c919-5acb-4556-90b5-25093b23f242", false, null }
                 });
 
             migrationBuilder.InsertData(
@@ -704,8 +703,8 @@ namespace BandBlend2.Migrations
                 columns: new[] { "Id", "About", "City", "FacebookLink", "InstagramLink", "PrimaryGenreId", "PrimaryInstrumentId", "ProfilePicture", "SpotifyLink", "StateId", "TikTokLink", "UserProfileId" },
                 values: new object[,]
                 {
-                    { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Nashville", "www.nowhere.com", "www.nowhere.com", 1, 1, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "www.nowhere.com", 42, "www.nowhere.com", 1 },
-                    { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "www.nowhere.com", "www.nowhere.com", 2, 2, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "www.nowhere.com", 40, "www.nowhere.com", 2 }
+                    { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Nashville", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 1, 1, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", null, 42, null, 1 },
+                    { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 2, 2, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 40, "https://www.facebook.com/joshbaughmusic/", 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -848,7 +847,8 @@ namespace BandBlend2.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Profiles_UserProfileId",
                 table: "Profiles",
-                column: "UserProfileId");
+                column: "UserProfileId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProfileSubGenres_ProfileId",

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BandBlend2.Migrations
 {
     [DbContext(typeof(BandBlendDbContext))]
-    [Migration("20231108223733_initCreate")]
+    [Migration("20231109210232_initCreate")]
     partial class initCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,7 +36,6 @@ namespace BandBlend2.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Url")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -61,7 +60,6 @@ namespace BandBlend2.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Body")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("Date")
@@ -136,7 +134,6 @@ namespace BandBlend2.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Body")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("Date")
@@ -189,7 +186,6 @@ namespace BandBlend2.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Body")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("Date")
@@ -223,7 +219,6 @@ namespace BandBlend2.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -322,7 +317,6 @@ namespace BandBlend2.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -426,19 +420,15 @@ namespace BandBlend2.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("About")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("FacebookLink")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("InstagramLink")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("PrimaryGenreId")
@@ -448,18 +438,15 @@ namespace BandBlend2.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("ProfilePicture")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("SpotifyLink")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("StateId")
                         .HasColumnType("integer");
 
                     b.Property<string>("TikTokLink")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("UserProfileId")
@@ -473,7 +460,8 @@ namespace BandBlend2.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.HasIndex("UserProfileId");
+                    b.HasIndex("UserProfileId")
+                        .IsUnique();
 
                     b.ToTable("Profiles");
 
@@ -483,14 +471,12 @@ namespace BandBlend2.Migrations
                             Id = 1,
                             About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             City = "Nashville",
-                            FacebookLink = "www.nowhere.com",
-                            InstagramLink = "www.nowhere.com",
+                            FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                            InstagramLink = "https://www.instagram.com/joshbaughmusic/",
                             PrimaryGenreId = 1,
                             PrimaryInstrumentId = 1,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
-                            SpotifyLink = "www.nowhere.com",
                             StateId = 42,
-                            TikTokLink = "www.nowhere.com",
                             UserProfileId = 1
                         },
                         new
@@ -498,14 +484,14 @@ namespace BandBlend2.Migrations
                             Id = 2,
                             About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             City = "Somewhere",
-                            FacebookLink = "www.nowhere.com",
-                            InstagramLink = "www.nowhere.com",
+                            FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                            InstagramLink = "https://www.instagram.com/joshbaughmusic/",
                             PrimaryGenreId = 2,
                             PrimaryInstrumentId = 2,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
-                            SpotifyLink = "www.nowhere.com",
+                            SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                             StateId = 40,
-                            TikTokLink = "www.nowhere.com",
+                            TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 2
                         });
                 });
@@ -672,7 +658,6 @@ namespace BandBlend2.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -941,7 +926,6 @@ namespace BandBlend2.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -1140,7 +1124,6 @@ namespace BandBlend2.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -1234,14 +1217,12 @@ namespace BandBlend2.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("IdentityUserId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("IsBand")
                         .HasColumnType("boolean");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -1400,26 +1381,26 @@ namespace BandBlend2.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0829f8f1-2624-4fb1-be93-457192f13a58",
+                            ConcurrencyStamp = "54c789dc-f0be-46bf-941b-c2ff98673738",
                             Email = "josh@bandblend.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ9YdCGzDiACyCT+qL0zPj2tRmNGJOPB5yYNrWozNbXK/mYv2I5fXIC7HritgJtbwQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGg+jirNfh6rLitKnfAfD2pe5gGa3Wgo9jZAuDTmwDuOOGr+AzdicxFa5vE4fifxcA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "345bcd86-796d-45d5-8c6f-28f68bd8eba0",
+                            SecurityStamp = "71c7c919-5acb-4556-90b5-25093b23f242",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c6fcf7cb-de6e-450f-bdce-62871efbc831",
+                            ConcurrencyStamp = "7b42b37f-f2ed-4fbe-aa04-b70f5abfba97",
                             Email = "tom@bandblend.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEKKd7o5rpOJ9hk/zv0SNQy3p1eKif/vhF9KflqW3bqD4rNaaU1A8/w/+4SHtKN/wHA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEKm8Iahf1oC+DdpUrhSJ/Z0lPw552NuHKz9IUDHtGIrZvhQCYJxDI6bhkbi5EHOVg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fcadf533-febe-410e-8fda-f3f1eb9153bc",
+                            SecurityStamp = "4828f460-0891-4c80-834b-688107ec1e73",
                             TwoFactorEnabled = false
                         });
                 });
@@ -1604,8 +1585,8 @@ namespace BandBlend2.Migrations
                         .IsRequired();
 
                     b.HasOne("BandBlend.Models.UserProfile", "UserProfile")
-                        .WithMany()
-                        .HasForeignKey("UserProfileId")
+                        .WithOne("Profile")
+                        .HasForeignKey("BandBlend.Models.Profile", "UserProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1679,9 +1660,7 @@ namespace BandBlend2.Migrations
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
-                        .HasForeignKey("IdentityUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdentityUserId");
 
                     b.Navigation("IdentityUser");
                 });
@@ -1735,6 +1714,11 @@ namespace BandBlend2.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BandBlend.Models.UserProfile", b =>
+                {
+                    b.Navigation("Profile");
                 });
 #pragma warning restore 612, 618
         }
