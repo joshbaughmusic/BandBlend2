@@ -1,27 +1,36 @@
 import { Avatar, Button, ButtonGroup, Chip, Container, Grid, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { fetchCurrentUserWithProfile } from '../../../../managers/profileManager.js';
+import { fetchOtherUserWithProfile } from '../../../../managers/profileManager.js';
 import '../SingleProfile.css';
 import SpotifyLogo from '../../../../images/SocialMediaLogos/spotify.png';
 import FacebookLogo from '../../../../images/SocialMediaLogos/facebook.png';
 import InstagramLogo from '../../../../images/SocialMediaLogos/instagram.png';
 import TikTokLogo from '../../../../images/SocialMediaLogos/spotify.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import MessageIcon from '@mui/icons-material/Message';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+import { OtherPosts } from '../../../posts/otherPosts/OtherPosts.js';
 
 export const OtherProfile = () => {
   const [profile, setProfile] = useState();
+  const {id} = useParams()
+  const navigate = useNavigate()
 
-  const getCurrentUserWithProfile = () => {
-    fetchCurrentUserWithProfile().then(setProfile);
+  const getOtherUserWithProfile = () => {
+    fetchOtherUserWithProfile(id).then((res) => {
+      if (res.status === 400) {
+        navigate("/profile/me")
+      } else {
+        setProfile(res)
+      }
+    });
   };
 
   useEffect(() => {
-    getCurrentUserWithProfile();
+    getOtherUserWithProfile();
   }, []);
 
   if (!profile) {
@@ -34,7 +43,8 @@ export const OtherProfile = () => {
         <Grid container>
           <Grid
             item
-            xs={3}
+            xs={12}
+            md={3}
           >
             <div className="profile-left-sidebar">
               <Avatar
@@ -128,13 +138,13 @@ export const OtherProfile = () => {
                 </div>
               </div>
               <ButtonGroup>
-                <Button variant='contained'>
+                <Button variant="contained">
                   <BookmarkIcon />
                 </Button>
-                <Button variant='contained'>
+                <Button variant="contained">
                   <MessageIcon />
                 </Button>
-                <Button variant='contained'>
+                <Button variant="contained">
                   <PersonAddAlt1Icon />
                 </Button>
               </ButtonGroup>
@@ -142,7 +152,8 @@ export const OtherProfile = () => {
           </Grid>
           <Grid
             item
-            xs={9}
+            xs={12}
+            md={9}
           >
             <div className="profile-right-section">
               <div className="profile-right-section-item">
@@ -155,7 +166,7 @@ export const OtherProfile = () => {
               </div>
               <div className="profile-right-section-item">
                 <Typography variant="h6">Posts</Typography>
-                Place holder
+                <OtherPosts profile={profile} />
               </div>
             </div>
           </Grid>

@@ -25,31 +25,31 @@ public class ProfileController : ControllerBase
 
     }
 
-    [HttpGet]
-    [Authorize]
-    public IActionResult Get()
-    {
-        return Ok(_dbContext.UserProfiles.Include(up => _dbContext.Profiles.Single(p => p.UserProfileId == up.Id)).ToList());
-    }
+    // [HttpGet]
+    // [Authorize]
+    // public IActionResult Get()
+    // {
+    //     return Ok(_dbContext.UserProfiles.Include(up => _dbContext.Profiles.Single(p => p.UserProfileId == up.Id)).ToList());
+    // }
 
-    [HttpGet("withroles")]
-    [Authorize(Roles = "Admin")]
-    public IActionResult GetWithRoles()
-    {
-        return Ok(_dbContext.UserProfiles
-        .Include(up => up.IdentityUser)
-        .Select(up => new UserProfile
-        {
-            Id = up.Id,
-            Name = up.Name,
-            Email = up.IdentityUser.Email,
-            IdentityUserId = up.IdentityUserId,
-            Roles = _dbContext.UserRoles
-            .Where(ur => ur.UserId == up.IdentityUserId)
-            .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
-            .ToList()
-        }));
-    }
+    // [HttpGet("withroles")]
+    // [Authorize(Roles = "Admin")]
+    // public IActionResult GetWithRoles()
+    // {
+    //     return Ok(_dbContext.UserProfiles
+    //     .Include(up => up.IdentityUser)
+    //     .Select(up => new UserProfile
+    //     {
+    //         Id = up.Id,
+    //         Name = up.Name,
+    //         Email = up.IdentityUser.Email,
+    //         IdentityUserId = up.IdentityUserId,
+    //         Roles = _dbContext.UserRoles
+    //         .Where(ur => ur.UserId == up.IdentityUserId)
+    //         .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
+    //         .ToList()
+    //     }));
+    // }
 
     [HttpGet("me")]
     [Authorize]
@@ -77,6 +77,50 @@ public class ProfileController : ControllerBase
             .Where(pt => pt.ProfileId == matchedProfile.Id)
             .ToList();
             
+            List<ProfileSubGenre> matchedProfileSubGenres = _dbContext.ProfileSubGenres
+            .Include(pt => pt.SubGenre)
+            .Where(ps => ps.ProfileId == matchedProfile.Id)
+            .ToList();
+
+            matchedProfile.ProfileTags = matchedProfileTags;
+            matchedProfile.ProfileSubGenres = matchedProfileSubGenres;
+
+            foundUserProfile.Profile = matchedProfile;
+
+            return Ok(foundUserProfile);
+        }
+        return NotFound();
+    }
+
+    [HttpGet("{id}")]
+    [Authorize]
+    public IActionResult GetOtherUserProfile(int id)
+    {
+        var loggedInUser = _dbContext
+             .UserProfiles
+             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+        if (loggedInUser.Id == id)
+        {
+            return BadRequest();
+        }
+
+        UserProfile foundUserProfile = _dbContext.UserProfiles
+        .Include(up => up.IdentityUser)
+        .SingleOrDefault(up => up.Id == id);
+
+        if (foundUserProfile != null)
+        {
+            Profile matchedProfile = _dbContext.Profiles
+            .Include(p => p.State)
+            .Include(p => p.PrimaryInstrument)
+            .Include(p => p.PrimaryGenre)
+            .SingleOrDefault(p => p.UserProfileId == foundUserProfile.Id);
+
+            List<ProfileTag> matchedProfileTags = _dbContext.ProfileTags
+            .Include(pt => pt.Tag)
+            .Where(pt => pt.ProfileId == matchedProfile.Id)
+            .ToList();
+
             List<ProfileSubGenre> matchedProfileSubGenres = _dbContext.ProfileSubGenres
             .Include(pt => pt.SubGenre)
             .Where(ps => ps.ProfileId == matchedProfile.Id)

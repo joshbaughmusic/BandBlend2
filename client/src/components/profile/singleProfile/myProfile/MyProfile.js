@@ -1,4 +1,11 @@
-import { Avatar, Chip, Container, Grid, Typography } from '@mui/material';
+import {
+  Avatar,
+  Button,
+  Chip,
+  Container,
+  Grid,
+  Typography,
+} from '@mui/material';
 import { useEffect, useState } from 'react';
 import { fetchCurrentUserWithProfile } from '../../../../managers/profileManager.js';
 import '../SingleProfile.css';
@@ -7,6 +14,7 @@ import FacebookLogo from '../../../../images/SocialMediaLogos/facebook.png';
 import InstagramLogo from '../../../../images/SocialMediaLogos/instagram.png';
 import TikTokLogo from '../../../../images/SocialMediaLogos/spotify.png';
 import { Link } from 'react-router-dom';
+import { MyPosts } from '../../../posts/myPosts/MyPosts.js';
 
 export const MyProfile = () => {
   const [profile, setProfile] = useState();
@@ -29,7 +37,8 @@ export const MyProfile = () => {
         <Grid container>
           <Grid
             item
-            xs={3}
+            xs={12}
+            md={3}
           >
             <div className="profile-left-sidebar">
               <Avatar
@@ -99,6 +108,7 @@ export const MyProfile = () => {
               <div className="chip-section">
                 <Typography>Primary Genre</Typography>
                 <Chip label={profile.profile.primaryGenre.name} />
+                <Button variant="contained">Edit Primary Info</Button>
               </div>
               <div className="chip-section">
                 <Typography>Tags</Typography>
@@ -110,6 +120,7 @@ export const MyProfile = () => {
                     />
                   ))}
                 </div>
+                <Button variant="contained">Edit Tags</Button>
               </div>
               <div className="chip-section">
                 <Typography>SubGenres</Typography>
@@ -121,23 +132,14 @@ export const MyProfile = () => {
                     />
                   ))}
                 </div>
+                <Button variant="contained">Edit SubGenres</Button>
               </div>
-              {/* <ButtonGroup>
-                <Button variant='contained'>
-                  <BookmarkIcon />
-                </Button>
-                <Button variant='contained'>
-                  <MessageIcon />
-                </Button>
-                <Button variant='contained'>
-                  <PersonAddAlt1Icon />
-                </Button>
-              </ButtonGroup> */}
             </div>
           </Grid>
           <Grid
             item
-            xs={9}
+            xs={12}
+            md={9}
           >
             <div className="profile-right-section">
               <div className="profile-right-section-item">
@@ -150,7 +152,7 @@ export const MyProfile = () => {
               </div>
               <div className="profile-right-section-item">
                 <Typography variant="h6">Posts</Typography>
-                Place holder
+                <MyPosts profile={profile} />
               </div>
             </div>
           </Grid>
