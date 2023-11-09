@@ -3,6 +3,22 @@ import './App.css';
 import { tryGetLoggedInUser } from './managers/authManager';
 import NavBar from './components/nav/NavBar';
 import ApplicationViews from './components/ApplicationViews';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       main: '#8C4A4A',
+//       dark: '#602d2db4',
+//       light: '#9d5d5c',
+//     },
+//     secondary: {
+//       main: '#1D2625',
+//       dark: '#001220',
+//       light: '#4F5957',
+//     },
+//   },
+// });
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState();
@@ -21,14 +37,16 @@ function App() {
 
   return (
     <>
-      <NavBar
-        loggedInUser={loggedInUser}
-        setLoggedInUser={setLoggedInUser}
-      />
-      <ApplicationViews
-        loggedInUser={loggedInUser}
-        setLoggedInUser={setLoggedInUser}
-      />
+      {/* <ThemeProvider theme={theme}> */}
+        <NavBar
+          loggedInUser={loggedInUser}
+          setLoggedInUser={setLoggedInUser}
+        />
+        <ApplicationViews
+          loggedInUser={loggedInUser}
+          setLoggedInUser={setLoggedInUser}
+        />
+      {/* </ThemeProvider> */}
     </>
   );
 }

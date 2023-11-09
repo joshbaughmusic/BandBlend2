@@ -1,13 +1,15 @@
-import { useState } from "react";
-import { register } from "../../managers/authManager";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { register } from '../../managers/authManager';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Register({ setLoggedInUser }) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [bandName, setBandName] = useState('');
+  const [email, setEmail] = useState('');
+  const [isBand, setIsBand] = useState(false);
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const [passwordMismatch, setPasswordMismatch] = useState();
 
@@ -19,42 +21,79 @@ export default function Register({ setLoggedInUser }) {
     if (password !== confirmPassword) {
       setPasswordMismatch(true);
     } else {
-      const newUser = {
-        firstName,
-        lastName,
-        email,
-        password,
-      };
+      let newUser = {}
+      if (isBand) {
+         newUser = {
+          name: `${firstName} ${lastName}`,
+          email,
+          password,
+        };
+
+      } else {
+         newUser = {
+          name: bandName,
+          email,
+          password,
+        };
+      }
       register(newUser).then((user) => {
         setLoggedInUser(user);
-        navigate("/");
+        navigate('/');
       });
     }
   };
 
   return (
-    <div className="container" style={{ maxWidth: "500px" }}>
+    <div
+      className="container"
+      style={{ maxWidth: '500px' }}
+    >
       <h3>Sign Up</h3>
       <div>
-        <label>First Name</label>
+        <label>Are you a band?</label>
         <input
-          type="text"
-          value={firstName}
+          type="checkbox"
+          checked={isBand === true}
           onChange={(e) => {
-            setFirstName(e.target.value);
+            setIsBand(!isBand);
           }}
         />
       </div>
-      <div>
-        <label>Last Name</label>
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => {
-            setLastName(e.target.value);
-          }}
-        />
-      </div>
+      {isBand ? (
+        <div>
+          <label>Band Name</label>
+          <input
+            type="text"
+            value={bandName}
+            onChange={(e) => {
+              setBandName(e.target.value);
+            }}
+          />
+        </div>
+      ) : (
+        <>
+          <div>
+            <label>First Name</label>
+            <input
+              type="text"
+              value={firstName}
+              onChange={(e) => {
+                setFirstName(e.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <label>Last Name</label>
+            <input
+              type="text"
+              value={lastName}
+              onChange={(e) => {
+                setLastName(e.target.value);
+              }}
+            />
+          </div>
+        </>
+      )}
       <div>
         <label>Email</label>
         <input
@@ -65,8 +104,7 @@ export default function Register({ setLoggedInUser }) {
           }}
         />
       </div>
-     
-     
+
       <div>
         <label>Password</label>
         <input
