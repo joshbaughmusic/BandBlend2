@@ -4,8 +4,8 @@ import { login } from "../../managers/authManager";
 
 export default function Login({ setLoggedInUser }) {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('josh@bandblend.comx');
+  const [password, setPassword] = useState("password");
   const [failedLogin, setFailedLogin] = useState(false);
 
   const handleSubmit = (e) => {
@@ -13,20 +13,21 @@ export default function Login({ setLoggedInUser }) {
     login(email, password).then((user) => {
       if (!user) {
         setFailedLogin(true);
+        console.log("bad")
       } else {
         setLoggedInUser(user);
         navigate("/");
+        console.log('good');
       }
     });
   };
 
   return (
-    <div className="container" style={{ maxWidth: "500px" }}>
+    <div>
       <h3>Login</h3>
       <div>
         <label>Email</label>
         <input
-          invalid={failedLogin}
           type="text"
           value={email}
           onChange={(e) => {
@@ -38,7 +39,6 @@ export default function Login({ setLoggedInUser }) {
       <div>
         <label>Password</label>
         <input
-          invalid={failedLogin}
           type="password"
           value={password}
           onChange={(e) => {
@@ -46,7 +46,7 @@ export default function Login({ setLoggedInUser }) {
             setPassword(e.target.value);
           }}
         />
-        <p>Login failed.</p>
+        {/* <p>Login failed.</p> */}
       </div>
 
       <button onClick={handleSubmit}>
