@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { fetchOtherAdditionalPhotos } from '../../../managers/additonalPhotosManager.js';
 import { OtherAdditionalPhotosItem } from './OtherAdditionalPhotosItem.js';
 
-export const OtherAdditionalPhotos = () => {
+export const OtherAdditionalPhotos = ({ profileId }) => {
   const [photos, setPhotos] = useState();
 
   const getOtherAdditonalPhotos = () => {
-    fetchOtherAdditionalPhotos().then(setPhotos);
+    fetchOtherAdditionalPhotos(profileId).then(setPhotos);
   };
 
   useEffect(() => {
