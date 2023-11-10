@@ -1,4 +1,4 @@
-import { Avatar, Grid, IconButton, Typography } from '@mui/material';
+import { Avatar, Grid, IconButton, Paper, Typography } from '@mui/material';
 import TurnedInIcon from '@mui/icons-material/TurnedIn';
 import TurnedInNotIcon from '@mui/icons-material/TurnedInNot';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export const AllProfilesCard = ({ profile }) => {
   const navigate = useNavigate();
   return (
-    <>
+    <Paper elevation={4}>
       <Grid
         className="allprofiles-card"
         container
@@ -76,6 +76,6 @@ export const AllProfilesCard = ({ profile }) => {
           </div>
         </Grid>
       </Grid>
-    </>
+    </Paper>
   );
 };

@@ -3,6 +3,10 @@
   /* animation: rotate 12s infinite linear; */
 }
 
+.nav-drawer-header-logo {
+    width: 150px;
+    margin-right: 17px;
+}
 
 @keyframes rotate {
   from {

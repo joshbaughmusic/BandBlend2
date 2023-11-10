@@ -10,15 +10,19 @@ import {
 import { fetchAllUsersWithProfiles } from '../../../managers/profileManager.js';
 import './AllProfiles.css';
 import { AllProfilesCard } from './AllProfilesCard.js';
+import { AllProfilesSearchSortFilter } from './allProfilesSearchSortFilter/AllProfilesSearchSortFilter.js';
 
 export const AllProfiles = () => {
   const [profiles, setProfiles] = useState();
   const [profileCount, setProfileCount] = useState(0);
   const [page, setPage] = useState(1);
   const [amountPerPage, setAmountPerPage] = useState(5);
+  const [searchTerms, setSearchTerms] = useState('');
+  const [filterTerms, setFilterTerms] = useState('');
+  const [sortTerms, setSortTerms] = useState('');
 
   const getAllUsersWithProfiles = () => {
-    fetchAllUsersWithProfiles(page, amountPerPage).then((res) => {
+    fetchAllUsersWithProfiles(page, amountPerPage, searchTerms, filterTerms, sortTerms).then((res) => {
       setProfiles(res.profiles);
       setProfileCount(res.totalCount);
     });
@@ -30,7 +34,7 @@ export const AllProfiles = () => {
 
   const handleAmountPerPageChange = (e) => {
     setAmountPerPage(e.target.value);
-    setPage(1)
+    setPage(1);
   };
 
   useEffect(() => {
@@ -43,12 +47,21 @@ export const AllProfiles = () => {
 
   return (
     <>
-      <Container className="allprofiles-container-all">
-        <div className="allprofiles-container-nopage">
-          <div className="allprofiles-searchsortfilter-container">
-            Search/Filter/Sort placeholder
-          </div>
-          <div className="allprofiles-profile-list-container">
+      <Container>
+        <div>
+          <AllProfilesSearchSortFilter
+            setProfiles={setProfiles}
+            setProfileCount={setProfileCount}
+            page={page}
+            amountPerPage={amountPerPage}
+            searchTerms={searchTerms}
+            setSearchTerms={setSearchTerms}
+            filterTerms={filterTerms}
+            setFilterTerms={setFilterTerms}
+            sortTerms={sortTerms}
+            setSortTerms={setSortTerms}
+          />
+          <div>
             {profiles.map((p, index) => (
               <AllProfilesCard
                 profile={p}
@@ -64,7 +77,7 @@ export const AllProfiles = () => {
             onChange={handlePageChange}
           />
           <FormControl
-            sx={{ m: 1, minWidth: 90 }}
+            sx={{ m: 1, minWidth: 75 }}
             size="small"
           >
             <InputLabel id="amountPerPage-select-label">Per Page</InputLabel>

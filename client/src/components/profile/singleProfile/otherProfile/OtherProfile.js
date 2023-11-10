@@ -1,4 +1,13 @@
-import { Avatar, Button, ButtonGroup, Chip, Container, Grid, Typography } from '@mui/material';
+import {
+  Avatar,
+  Button,
+  ButtonGroup,
+  Chip,
+  Container,
+  Grid,
+  Paper,
+  Typography,
+} from '@mui/material';
 import { useEffect, useState } from 'react';
 import { fetchOtherUserWithProfile } from '../../../../managers/profileManager.js';
 import '../SingleProfile.css';
@@ -17,15 +26,15 @@ import { OtherAdditionalPhotos } from '../../../additonalPhotos/otherAdditionalP
 
 export const OtherProfile = () => {
   const [profile, setProfile] = useState();
-  const {id} = useParams()
-  const navigate = useNavigate()
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const getOtherUserWithProfile = () => {
     fetchOtherUserWithProfile(id).then((res) => {
       if (res.status === 400) {
-        navigate("/profile/me")
+        navigate('/profile/me');
       } else {
-        setProfile(res)
+        setProfile(res);
       }
     });
   };
@@ -47,7 +56,10 @@ export const OtherProfile = () => {
             xs={12}
             md={3}
           >
-            <div className="profile-left-sidebar">
+            <Paper
+              elevation={4}
+              className="profile-left-sidebar"
+            >
               <Avatar
                 className="single-profile-pic"
                 src={profile.profile.profilePicture}
@@ -149,7 +161,7 @@ export const OtherProfile = () => {
                   <PersonAddAlt1Icon />
                 </Button>
               </ButtonGroup>
-            </div>
+            </Paper>
           </Grid>
           <Grid
             item
@@ -157,18 +169,27 @@ export const OtherProfile = () => {
             md={9}
           >
             <div className="profile-right-section">
-              <div className="profile-right-section-item">
+              <Paper
+                elevation={4}
+                className="profile-right-section-item"
+              >
                 <Typography variant="h6">About</Typography>
                 <Typography>{profile.profile.about}</Typography>
-              </div>
-              <div className="profile-right-section-item">
+              </Paper>
+              <Paper
+                elevation={4}
+                className="profile-right-section-item"
+              >
                 <Typography variant="h6">Additional Photos</Typography>
                 <OtherAdditionalPhotos profileId={profile.id} />
-              </div>
-              <div className="profile-right-section-item">
+              </Paper>
+              <Paper
+                elevation={4}
+                className="profile-right-section-item"
+              >
                 <Typography variant="h6">Posts</Typography>
                 <OtherPosts profile={profile} />
-              </div>
+              </Paper>
             </div>
           </Grid>
         </Grid>
