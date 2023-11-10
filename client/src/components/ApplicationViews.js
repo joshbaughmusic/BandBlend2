@@ -8,39 +8,41 @@ import { OtherProfile } from './profile/singleProfile/otherProfile/OtherProfile.
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
-    <Routes>
-      <Route path="/">
-        <Route
-          index
-          element={<Home loggedInUser={loggedInUser} />}
-        />
-        <Route path="profile">
+    <div className="appviews">
+      <Routes>
+        <Route path="/">
           <Route
-            path="me"
-            element={
-              <AuthorizedRoute loggedInUser={loggedInUser}>
-                <MyProfile loggedInUser={loggedInUser} />
-              </AuthorizedRoute>
-            }
+            index
+            element={<Home loggedInUser={loggedInUser} />}
+          />
+          <Route path="profile">
+            <Route
+              path="me"
+              element={
+                <AuthorizedRoute loggedInUser={loggedInUser}>
+                  <MyProfile loggedInUser={loggedInUser} />
+                </AuthorizedRoute>
+              }
+            />
+            <Route
+              path=":id"
+              element={<OtherProfile loggedInUser={loggedInUser} />}
+            />
+          </Route>
+          <Route
+            path="login"
+            element={<Login setLoggedInUser={setLoggedInUser} />}
           />
           <Route
-            path=":id"
-            element={<OtherProfile loggedInUser={loggedInUser} />}
+            path="register"
+            element={<Register setLoggedInUser={setLoggedInUser} />}
           />
         </Route>
         <Route
-          path="login"
-          element={<Login setLoggedInUser={setLoggedInUser} />}
+          path="*"
+          element={<p>Whoops, nothing here...</p>}
         />
-        <Route
-          path="register"
-          element={<Register setLoggedInUser={setLoggedInUser} />}
-        />
-      </Route>
-      <Route
-        path="*"
-        element={<p>Whoops, nothing here...</p>}
-      />
-    </Routes>
+      </Routes>
+    </div>
   );
 }
