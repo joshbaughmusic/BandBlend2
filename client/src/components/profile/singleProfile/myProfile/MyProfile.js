@@ -15,6 +15,9 @@ import InstagramLogo from '../../../../images/SocialMediaLogos/instagram.png';
 import TikTokLogo from '../../../../images/SocialMediaLogos/spotify.png';
 import { Link } from 'react-router-dom';
 import { MyPosts } from '../../../posts/myPosts/MyPosts.js';
+import { MyAdditionalPhotosItem } from '../../../additonalPhotos/myAdditionalPhotos/MyAdditionalPhotosItem.js';
+import { MyAdditionalPhotos } from '../../../additonalPhotos/myAdditionalPhotos/MyAdditionalPhotos.js';
+
 
 export const MyProfile = () => {
   const [profile, setProfile] = useState();
@@ -148,7 +151,7 @@ export const MyProfile = () => {
               </div>
               <div className="profile-right-section-item">
                 <Typography variant="h6">Additional Photos</Typography>
-                Place holder
+                <MyAdditionalPhotos />
               </div>
               <div className="profile-right-section-item">
                 <Typography variant="h6">Posts</Typography>

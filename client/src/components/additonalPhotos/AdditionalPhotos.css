@@ -1,0 +1,11 @@
+.additional-photo {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+}
+
+.additional-pictures-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}

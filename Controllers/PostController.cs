@@ -15,13 +15,11 @@ namespace BandBlend.Controllers;
 public class PostController : ControllerBase
 {
     private BandBlendDbContext _dbContext;
-    private readonly UserManager<IdentityUser> _userManager;
 
 
-    public PostController(BandBlendDbContext context, UserManager<IdentityUser> userManager)
+    public PostController(BandBlendDbContext context)
     {
         _dbContext = context;
-        _userManager = userManager;
 
     }
 
