@@ -5,6 +5,7 @@ import Register from './auth/Register';
 import { Home } from './homepage/Home.js';
 import { MyProfile } from './profile/singleProfile/myProfile/MyProfile.js';
 import { OtherProfile } from './profile/singleProfile/otherProfile/OtherProfile.js';
+import { AllProfiles } from './profile/allProfiles/AllProfiles.js';
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -29,6 +30,10 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
               element={<OtherProfile loggedInUser={loggedInUser} />}
             />
           </Route>
+          <Route
+            path="allprofiles"
+            element={<AllProfiles loggedInUser={loggedInUser} />}
+          />
           <Route
             path="login"
             element={<Login setLoggedInUser={setLoggedInUser} />}

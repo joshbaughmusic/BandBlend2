@@ -5,5 +5,5 @@ export const fetchMyAdditionalPhotos = () => {
 };
 
 export const fetchOtherAdditionalPhotos = (id) => {
-  return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
+  return fetch(`${_apiUrl}/user/${id}`).then((res) => res.json());
 };

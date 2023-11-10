@@ -1,0 +1,42 @@
+.pagination-allprofiles-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.allprofiles-card {
+  border: 2px solid black;
+  margin-top: 10px;
+  border-radius: 4px;
+  background-color: rgb(124, 122, 122);
+  padding: 10px;
+}
+
+.allprofiles-card-image {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.allprofile-card-flexstack {
+  display: flex;
+  flex-direction: column;
+}
+
+.allprofile-card-flexstack-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  height: 100%;
+}
+
+.allprofile-card-flexstack-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  height: 100%;
+}

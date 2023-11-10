@@ -13,6 +13,7 @@ import MessageIcon from '@mui/icons-material/Message';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import { OtherPosts } from '../../../posts/otherPosts/OtherPosts.js';
+import { OtherAdditionalPhotos } from '../../../additonalPhotos/otherAdditionalPhotos/OtherAdditionalPhotos.js';
 
 export const OtherProfile = () => {
   const [profile, setProfile] = useState();
@@ -162,7 +163,7 @@ export const OtherProfile = () => {
               </div>
               <div className="profile-right-section-item">
                 <Typography variant="h6">Additional Photos</Typography>
-                Place holder
+                <OtherAdditionalPhotos profileId={profile.id} />
               </div>
               <div className="profile-right-section-item">
                 <Typography variant="h6">Posts</Typography>

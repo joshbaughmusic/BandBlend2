@@ -64,6 +64,114 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 Id = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
                 Email = "tom@bandblend.comx",
                 PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47",
+                Email = "emily@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68",
+                Email = "oliver@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79",
+                Email = "Ava Martinez",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a",
+                Email = "liam@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b",
+                Email = "sophia@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac",
+                Email = "noah@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd",
+                Email = "mia@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd",
+                Email = "james@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed",
+                Email = "charlotte@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd",
+                Email = "william@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd",
+                Email = "harper@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd",
+                Email = "benjamin@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id",
+                Email = "evelyn@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd",
+                Email = "alexander@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd",
+                Email = "grace@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "00a40af9-6o6o-6o66-po6k-kk00a38j90ld",
+                Email = "daniel@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md",
+                Email = "madison@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+            },
+            new IdentityUser
+            {
+                Id = "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd",
+                Email = "gabriel@example.com",
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
             }
         );
 
@@ -77,6 +185,96 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
             {
                 RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
                 UserId = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "00a40af9-6o6o-6o66-po6k-kk00a38j90ld"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63",
+                UserId = "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd"
             }
         );
         modelBuilder.Entity<UserProfile>().HasData(
@@ -94,6 +292,150 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
                 Name = "Tom Jones",
                 Email = "tom@bandblend.comx",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 3,
+                IdentityUserId = "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47",
+                Name = "Emily Davis",
+                Email = "emily@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 4,
+                IdentityUserId = "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68",
+                Name = "Oliver Wilson",
+                Email = "oliver@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 5,
+                IdentityUserId = "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79",
+                Name = "Ava Martinez",
+                Email = "ava@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 6,
+                IdentityUserId = "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a",
+                Name = "Liam Garcia",
+                Email = "liam@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 7,
+                IdentityUserId = "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b",
+                Name = "Sophia Rodriguez",
+                Email = "sophia@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 8,
+                IdentityUserId = "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac",
+                Name = "Noah Lopez",
+                Email = "noah@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 9,
+                IdentityUserId = "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd",
+                Name = "Mia Gonzalez",
+                Email = "mia@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 10,
+                IdentityUserId = "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd",
+                Name = "James Perez",
+                Email = "james@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 11,
+                IdentityUserId = "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed",
+                Name = "Charlotte Lee",
+                Email = "charlotte@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 12,
+                IdentityUserId = "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd",
+                Name = "William Moore",
+                Email = "william@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 13,
+                IdentityUserId = "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd",
+                Name = "Harper Adams",
+                Email = "harper@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 14,
+                IdentityUserId = "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd",
+                Name = "Benjamin Clark",
+                Email = "benjamin@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 15,
+                IdentityUserId = "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id",
+                Name = "Evelyn Hill",
+                Email = "evelyn@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 16,
+                IdentityUserId = "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd",
+                Name = "Alexander Scott",
+                Email = "alexander@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 17,
+                IdentityUserId = "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd",
+                Name = "Grace Ward",
+                Email = "grace@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 18,
+                IdentityUserId = "00a40af9-6o6o-6o66-po6k-kk00a38j90ld",
+                Name = "Daniel Young",
+                Email = "daniel@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 19,
+                IdentityUserId = "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md",
+                Name = "Madison Turner",
+                Email = "madison@example.com",
+                IsBand = false
+            },
+            new UserProfile
+            {
+                Id = 20,
+                IdentityUserId = "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd",
+                Name = "Gabriel Baker",
+                Email = "gabriel@example.com",
                 IsBand = false
             }
             );
@@ -118,6 +460,294 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
             {
                 Id = 2,
                 UserProfileId = 2,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 3,
+                UserProfileId = 3,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 4,
+                UserProfileId = 4,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 5,
+                UserProfileId = 5,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 6,
+                UserProfileId = 6,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 7,
+                UserProfileId = 7,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 8,
+                UserProfileId = 8,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 9,
+                UserProfileId = 9,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 10,
+                UserProfileId = 10,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 11,
+                UserProfileId = 11,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 12,
+                UserProfileId = 12,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 13,
+                UserProfileId = 13,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 14,
+                UserProfileId = 14,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 15,
+                UserProfileId = 15,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 16,
+                UserProfileId = 16,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 17,
+                UserProfileId = 17,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 18,
+                UserProfileId = 18,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 19,
+                UserProfileId = 19,
+                ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                City = "Somewhere",
+                StateId = 40,
+                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                PrimaryGenreId = 2,
+                PrimaryInstrumentId = 2,
+                SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
+                FacebookLink = "https://www.facebook.com/joshbaughmusic/",
+                InstagramLink = "https://www.instagram.com/joshbaughmusic/",
+                TikTokLink = "https://www.facebook.com/joshbaughmusic/",
+
+            },
+            new Profile
+            {
+                Id = 20,
+                UserProfileId = 20,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
                 StateId = 40,

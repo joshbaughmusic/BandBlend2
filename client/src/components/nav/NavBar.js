@@ -19,6 +19,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import RssFeedIcon from '@mui/icons-material/RssFeed';
 import PeopleIcon from '@mui/icons-material/People';
 import SettingsIcon from '@mui/icons-material/Settings';
+import HomeIcon from '@mui/icons-material/Home';
 import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
 import NavLogo from '../../images/Bandblend_Logos/Logo-nav-black.png';
@@ -126,28 +127,90 @@ export default function MiniDrawer() {
               )}
             </IconButton>
           ) : (
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={{
-                margin: '0 auto',
-
-                ...(open && { display: 'none' }),
-              }}
+            <Tooltip
+              title="Expand"
+              placement="right"
             >
-              {/* <MenuIcon /> */}
-              <img
-                className="navlogo"
-                src={NavLogo}
-                alt=""
-              />
-            </IconButton>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                sx={{
+                  margin: '0 auto',
+
+                  ...(open && { display: 'none' }),
+                }}
+              >
+                {/* <MenuIcon /> */}
+                <img
+                  className="navlogo"
+                  src={NavLogo}
+                  alt=""
+                />
+              </IconButton>
+            </Tooltip>
           )}
         </DrawerHeader>
         <Divider />
         <List>
+          <ListItem
+            disablePadding
+            sx={{ display: 'block' }}
+          >
+            {open ? (
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+                onClick={() => navigate('/')}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary={'Home'}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            ) : (
+              <Tooltip
+                title="Home"
+                placement="right"
+              >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                  onClick={() => navigate('/')}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <HomeIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={'Home'}
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </Tooltip>
+            )}
+          </ListItem>
           <ListItem
             disablePadding
             sx={{ display: 'block' }}
@@ -216,7 +279,7 @@ export default function MiniDrawer() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
-                onClick={() => navigate('profile/me')}
+                onClick={() => navigate('feed')}
               >
                 <ListItemIcon
                   sx={{
