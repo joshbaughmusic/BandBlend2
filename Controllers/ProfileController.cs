@@ -70,6 +70,8 @@ public class ProfileController : ControllerBase
             .UserProfiles
             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
+        List<SavedProfile> savedProfilesByUser = _dbContext.SavedProfiles.Where(sp => sp.UserProfileId == loggedInUser.Id).ToList();
+
         var query = _dbContext.UserProfiles
             .Include(up => up.Profile)
                 .ThenInclude(p => p.PrimaryGenre)
@@ -84,7 +86,11 @@ public class ProfileController : ControllerBase
                 .ThenInclude(p => p.ProfileTags)
                 .ThenInclude(pt => pt.Tag)
             .Where(up => up.Id != loggedInUser.Id);
-            
+
+        foreach (UserProfile up in query)
+        {
+            up.Profile.isSaved = savedProfilesByUser.Any(sp => sp.ProfileId == up.Profile.Id);
+        }
 
         // Apply filters based on the provided parameters
         if (search != "undefined" && search != null)
@@ -158,7 +164,7 @@ public class ProfileController : ControllerBase
             {
                 query = query.OrderByDescending(up => up.Profile.PrimaryGenre.Name);
             }
-           
+
         }
 
         var allProfiles = query
@@ -256,6 +262,7 @@ public class ProfileController : ControllerBase
 
         if (foundUserProfile != null)
         {
+
             Profile matchedProfile = _dbContext.Profiles
             .Include(p => p.State)
             .Include(p => p.PrimaryInstrument)
@@ -274,8 +281,11 @@ public class ProfileController : ControllerBase
 
             matchedProfile.ProfileTags = matchedProfileTags;
             matchedProfile.ProfileSubGenres = matchedProfileSubGenres;
-
             foundUserProfile.Profile = matchedProfile;
+
+            List<SavedProfile> savedProfilesByUser = _dbContext.SavedProfiles.Where(sp => sp.UserProfileId == loggedInUser.Id).ToList();
+
+            foundUserProfile.Profile.isSaved = savedProfilesByUser.Any(sp => sp.ProfileId == foundUserProfile.Profile.Id);
 
             return Ok(foundUserProfile);
         }

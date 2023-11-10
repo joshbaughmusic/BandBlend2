@@ -47,7 +47,7 @@ export const AllProfilesSearchSortFilter = ({
   useEffect(() => {
     getProfilesByTerms();
   }, [filterTerms, sortTerms]);
-  
+
   useEffect(() => {
     if (isClear) {
       getProfilesByTerms();
@@ -66,7 +66,7 @@ export const AllProfilesSearchSortFilter = ({
     <Grid container>
       <Grid
         item
-        xs={8}
+        xs={6}
       >
         <FormControl sx={{ width: '100%' }}>
           <InputLabel id="search-label" />
@@ -93,7 +93,7 @@ export const AllProfilesSearchSortFilter = ({
       </Grid>
       <Grid
         item
-        xs={2}
+        xs={3}
       >
         <FormControl sx={{ width: '100%' }}>
           <InputLabel id="filter-label">Filter</InputLabel>
@@ -113,7 +113,7 @@ export const AllProfilesSearchSortFilter = ({
       </Grid>
       <Grid
         item
-        xs={2}
+        xs={3}
       >
         <FormControl sx={{ width: '100%' }}>
           <InputLabel id="sort-label">Sort</InputLabel>
