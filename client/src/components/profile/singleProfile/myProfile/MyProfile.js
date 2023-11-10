@@ -4,6 +4,7 @@ import {
   Chip,
   Container,
   Grid,
+  Paper,
   Typography,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
@@ -43,7 +44,7 @@ export const MyProfile = () => {
             xs={12}
             md={3}
           >
-            <div className="profile-left-sidebar">
+            <Paper elevation={4} className="profile-left-sidebar">
               <Avatar
                 className="single-profile-pic"
                 src={profile.profile.profilePicture}
@@ -137,7 +138,7 @@ export const MyProfile = () => {
                 </div>
                 <Button variant="contained">Edit SubGenres</Button>
               </div>
-            </div>
+            </Paper>
           </Grid>
           <Grid
             item
@@ -145,18 +146,18 @@ export const MyProfile = () => {
             md={9}
           >
             <div className="profile-right-section">
-              <div className="profile-right-section-item">
+              <Paper elevation={4} className="profile-right-section-item">
                 <Typography variant="h6">About</Typography>
                 <Typography>{profile.profile.about}</Typography>
-              </div>
-              <div className="profile-right-section-item">
+              </Paper>
+              <Paper elevation={4} className="profile-right-section-item">
                 <Typography variant="h6">Additional Photos</Typography>
                 <MyAdditionalPhotos />
-              </div>
-              <div className="profile-right-section-item">
+              </Paper>
+              <Paper elevation={4} className="profile-right-section-item">
                 <Typography variant="h6">Posts</Typography>
                 <MyPosts profile={profile} />
-              </div>
+              </Paper>
             </div>
           </Grid>
         </Grid>

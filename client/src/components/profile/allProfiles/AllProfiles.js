@@ -10,6 +10,7 @@ import {
 import { fetchAllUsersWithProfiles } from '../../../managers/profileManager.js';
 import './AllProfiles.css';
 import { AllProfilesCard } from './AllProfilesCard.js';
+import { AllProfilesSearchSortFilter } from './allProfilesSearchSortFilter/AllProfilesSearchSortFilter.js';
 
 export const AllProfiles = () => {
   const [profiles, setProfiles] = useState();
@@ -43,12 +44,10 @@ export const AllProfiles = () => {
 
   return (
     <>
-      <Container className="allprofiles-container-all">
-        <div className="allprofiles-container-nopage">
-          <div className="allprofiles-searchsortfilter-container">
-            Search/Filter/Sort placeholder
-          </div>
-          <div className="allprofiles-profile-list-container">
+      <Container>
+        <div>
+          <AllProfilesSearchSortFilter profiles={profiles} setProfiles={setProfiles} profileCount={profileCount} setProfileCount={setProfileCount} />
+          <div>
             {profiles.map((p, index) => (
               <AllProfilesCard
                 profile={p}
@@ -64,7 +63,7 @@ export const AllProfiles = () => {
             onChange={handlePageChange}
           />
           <FormControl
-            sx={{ m: 1, minWidth: 90 }}
+            sx={{ m: 1, minWidth: 75 }}
             size="small"
           >
             <InputLabel id="amountPerPage-select-label">Per Page</InputLabel>

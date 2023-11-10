@@ -29,6 +29,11 @@ public class ProfileController : ControllerBase
     // [Authorize]
     public IActionResult GetAllProfiles(int page = 1, int pageSize = 10)
     {
+
+        var loggedInUser = _dbContext
+                     .UserProfiles
+                     .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
         var allProfiles = _dbContext.UserProfiles
             .Include(up => up.Profile)
                 .ThenInclude(p => p.PrimaryGenre)
@@ -42,6 +47,7 @@ public class ProfileController : ControllerBase
             .Include(up => up.Profile)
                 .ThenInclude(p => p.ProfileTags)
                 .ThenInclude(pt => pt.Tag)
+            .Where(up => up.Id != loggedInUser.Id )
             .Skip((page - 1) * pageSize)  // Skip records based on the page number and page size
             .Take(pageSize)  // Take only the records for the current page
             .ToList();
