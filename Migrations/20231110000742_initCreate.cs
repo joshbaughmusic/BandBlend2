@@ -16,7 +16,7 @@ namespace BandBlend2.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ProfileId = table.Column<int>(type: "integer", nullable: false),
+                    UserProfileId = table.Column<int>(type: "integer", nullable: false),
                     Url = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -485,8 +485,13 @@ namespace BandBlend2.Migrations
 
             migrationBuilder.InsertData(
                 table: "AdditionalPictures",
-                columns: new[] { "Id", "ProfileId", "Url" },
-                values: new object[] { 1, 1, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" });
+                columns: new[] { "Id", "Url", "UserProfileId" },
+                values: new object[,]
+                {
+                    { 1, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", 1 },
+                    { 2, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", 1 },
+                    { 3, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", 2 }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
@@ -502,8 +507,8 @@ namespace BandBlend2.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 0, "7b42b37f-f2ed-4fbe-aa04-b70f5abfba97", "tom@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEEKm8Iahf1oC+DdpUrhSJ/Z0lPw552NuHKz9IUDHtGIrZvhQCYJxDI6bhkbi5EHOVg==", null, false, "4828f460-0891-4c80-834b-688107ec1e73", false, null },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "54c789dc-f0be-46bf-941b-c2ff98673738", "josh@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEGg+jirNfh6rLitKnfAfD2pe5gGa3Wgo9jZAuDTmwDuOOGr+AzdicxFa5vE4fifxcA==", null, false, "71c7c919-5acb-4556-90b5-25093b23f242", false, null }
+                    { "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 0, "0e1ded61-d3f4-45c7-9011-6d7301aa3c00", "tom@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEMccK3H3gPO+95SUlVzGDHs4m5WbvsdWe4NWktTPR+mbs/qUzYXvmR05cMm7/5ev8w==", null, false, "8f95bf40-3aac-4ae1-b9f0-6f2703734b84", false, null },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "bc9635e9-4bc6-474a-9df1-f5477e848ee1", "josh@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEL9REHbY1rRohKbcMrDHMi+C6LuLHzjQVssVHzOvxKiFp1J893pi/jkWp66d8yduEA==", null, false, "1e31a533-cae8-4e54-a04a-1a91e57693ec", false, null }
                 });
 
             migrationBuilder.InsertData(
@@ -558,56 +563,56 @@ namespace BandBlend2.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Alabama" },
-                    { 2, "Alaska" },
-                    { 3, "Arizona" },
-                    { 4, "Arkansas" },
-                    { 5, "California" },
-                    { 6, "Colorado" },
-                    { 7, "Connecticut" },
-                    { 8, "Delaware" },
-                    { 9, "Florida" },
-                    { 10, "Georgia" },
-                    { 11, "Hawaii" },
-                    { 12, "Idaho" },
-                    { 13, "Illinois" },
-                    { 14, "Indiana" },
-                    { 15, "Iowa" },
-                    { 16, "Kansas" },
-                    { 17, "Kentucky" },
-                    { 18, "Louisiana" },
-                    { 19, "Maine" },
-                    { 20, "Maryland" },
-                    { 21, "Massachusetts" },
-                    { 22, "Michigan" },
-                    { 23, "Minnesota" },
-                    { 24, "Mississippi" },
-                    { 25, "Missouri" },
-                    { 26, "Montana" },
-                    { 27, "Nebraska" },
-                    { 28, "Nevada" },
-                    { 29, "New Hampshire" },
-                    { 30, "New Jersey" },
-                    { 31, "New Mexico" },
-                    { 32, "New York" },
-                    { 33, "North Carolina" },
-                    { 34, "North Dakota" },
-                    { 35, "Ohio" },
-                    { 36, "Oklahoma" },
-                    { 37, "Oregon" },
-                    { 38, "Pennsylvania" },
-                    { 39, "Rhode Island" },
-                    { 40, "South Carolina" },
-                    { 41, "South Dakota" },
-                    { 42, "Tennessee" },
-                    { 43, "Texas" },
-                    { 44, "Utah" },
-                    { 45, "Vermont" },
-                    { 46, "Virginia" },
-                    { 47, "Washington" },
-                    { 48, "West Virginia" },
-                    { 49, "Wisconsin" },
-                    { 50, "Wyoming" }
+                    { 1, "AL" },
+                    { 2, "AK" },
+                    { 3, "AZ" },
+                    { 4, "AR" },
+                    { 5, "CA" },
+                    { 6, "CO" },
+                    { 7, "CT" },
+                    { 8, "DE" },
+                    { 9, "FL" },
+                    { 10, "GA" },
+                    { 11, "HI" },
+                    { 12, "ID" },
+                    { 13, "IL" },
+                    { 14, "IN" },
+                    { 15, "IA" },
+                    { 16, "KS" },
+                    { 17, "KY" },
+                    { 18, "LA" },
+                    { 19, "ME" },
+                    { 20, "MD" },
+                    { 21, "MA" },
+                    { 22, "MI" },
+                    { 23, "MN" },
+                    { 24, "MS" },
+                    { 25, "MO" },
+                    { 26, "MT" },
+                    { 27, "NE" },
+                    { 28, "NV" },
+                    { 29, "NH" },
+                    { 30, "NJ" },
+                    { 31, "NM" },
+                    { 32, "NY" },
+                    { 33, "NC" },
+                    { 34, "ND" },
+                    { 35, "OH" },
+                    { 36, "OK" },
+                    { 37, "OR" },
+                    { 38, "PA" },
+                    { 39, "RI" },
+                    { 40, "SC" },
+                    { 41, "SD" },
+                    { 42, "TN" },
+                    { 43, "TX" },
+                    { 44, "UT" },
+                    { 45, "VT" },
+                    { 46, "VA" },
+                    { 47, "WA" },
+                    { 48, "WV" },
+                    { 49, "WI" },
+                    { 50, "WY" }
                 });
 
             migrationBuilder.InsertData(
@@ -696,7 +701,12 @@ namespace BandBlend2.Migrations
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "Body", "Date", "UserProfileId" },
-                values: new object[] { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 });
+                values: new object[,]
+                {
+                    { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 3, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 }
+                });
 
             migrationBuilder.InsertData(
                 table: "Profiles",

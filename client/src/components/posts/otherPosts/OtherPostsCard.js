@@ -33,7 +33,7 @@ export const OtherPostsCard = ({ post, profile }) => {
 
   return (
     <>
-      <Card>
+      <Card className="post-card">
         <CardContent>
           <div className="post-card-header">
             <div className="post-card-header-left">

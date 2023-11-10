@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BandBlend2.Migrations
 {
     [DbContext(typeof(BandBlendDbContext))]
-    [Migration("20231109210232_initCreate")]
+    [Migration("20231110000742_initCreate")]
     partial class initCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,11 +32,11 @@ namespace BandBlend2.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ProfileId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Url")
                         .HasColumnType("text");
+
+                    b.Property<int>("UserProfileId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -46,8 +46,20 @@ namespace BandBlend2.Migrations
                         new
                         {
                             Id = 1,
-                            ProfileId = 1,
-                            Url = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                            Url = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Url = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Url = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
+                            UserProfileId = 2
                         });
                 });
 
@@ -207,6 +219,20 @@ namespace BandBlend2.Migrations
                             Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                             Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 3, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
                         });
                 });
 
@@ -668,252 +694,252 @@ namespace BandBlend2.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Alabama"
+                            Name = "AL"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Alaska"
+                            Name = "AK"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Arizona"
+                            Name = "AZ"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Arkansas"
+                            Name = "AR"
                         },
                         new
                         {
                             Id = 5,
-                            Name = "California"
+                            Name = "CA"
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Colorado"
+                            Name = "CO"
                         },
                         new
                         {
                             Id = 7,
-                            Name = "Connecticut"
+                            Name = "CT"
                         },
                         new
                         {
                             Id = 8,
-                            Name = "Delaware"
+                            Name = "DE"
                         },
                         new
                         {
                             Id = 9,
-                            Name = "Florida"
+                            Name = "FL"
                         },
                         new
                         {
                             Id = 10,
-                            Name = "Georgia"
+                            Name = "GA"
                         },
                         new
                         {
                             Id = 11,
-                            Name = "Hawaii"
+                            Name = "HI"
                         },
                         new
                         {
                             Id = 12,
-                            Name = "Idaho"
+                            Name = "ID"
                         },
                         new
                         {
                             Id = 13,
-                            Name = "Illinois"
+                            Name = "IL"
                         },
                         new
                         {
                             Id = 14,
-                            Name = "Indiana"
+                            Name = "IN"
                         },
                         new
                         {
                             Id = 15,
-                            Name = "Iowa"
+                            Name = "IA"
                         },
                         new
                         {
                             Id = 16,
-                            Name = "Kansas"
+                            Name = "KS"
                         },
                         new
                         {
                             Id = 17,
-                            Name = "Kentucky"
+                            Name = "KY"
                         },
                         new
                         {
                             Id = 18,
-                            Name = "Louisiana"
+                            Name = "LA"
                         },
                         new
                         {
                             Id = 19,
-                            Name = "Maine"
+                            Name = "ME"
                         },
                         new
                         {
                             Id = 20,
-                            Name = "Maryland"
+                            Name = "MD"
                         },
                         new
                         {
                             Id = 21,
-                            Name = "Massachusetts"
+                            Name = "MA"
                         },
                         new
                         {
                             Id = 22,
-                            Name = "Michigan"
+                            Name = "MI"
                         },
                         new
                         {
                             Id = 23,
-                            Name = "Minnesota"
+                            Name = "MN"
                         },
                         new
                         {
                             Id = 24,
-                            Name = "Mississippi"
+                            Name = "MS"
                         },
                         new
                         {
                             Id = 25,
-                            Name = "Missouri"
+                            Name = "MO"
                         },
                         new
                         {
                             Id = 26,
-                            Name = "Montana"
+                            Name = "MT"
                         },
                         new
                         {
                             Id = 27,
-                            Name = "Nebraska"
+                            Name = "NE"
                         },
                         new
                         {
                             Id = 28,
-                            Name = "Nevada"
+                            Name = "NV"
                         },
                         new
                         {
                             Id = 29,
-                            Name = "New Hampshire"
+                            Name = "NH"
                         },
                         new
                         {
                             Id = 30,
-                            Name = "New Jersey"
+                            Name = "NJ"
                         },
                         new
                         {
                             Id = 31,
-                            Name = "New Mexico"
+                            Name = "NM"
                         },
                         new
                         {
                             Id = 32,
-                            Name = "New York"
+                            Name = "NY"
                         },
                         new
                         {
                             Id = 33,
-                            Name = "North Carolina"
+                            Name = "NC"
                         },
                         new
                         {
                             Id = 34,
-                            Name = "North Dakota"
+                            Name = "ND"
                         },
                         new
                         {
                             Id = 35,
-                            Name = "Ohio"
+                            Name = "OH"
                         },
                         new
                         {
                             Id = 36,
-                            Name = "Oklahoma"
+                            Name = "OK"
                         },
                         new
                         {
                             Id = 37,
-                            Name = "Oregon"
+                            Name = "OR"
                         },
                         new
                         {
                             Id = 38,
-                            Name = "Pennsylvania"
+                            Name = "PA"
                         },
                         new
                         {
                             Id = 39,
-                            Name = "Rhode Island"
+                            Name = "RI"
                         },
                         new
                         {
                             Id = 40,
-                            Name = "South Carolina"
+                            Name = "SC"
                         },
                         new
                         {
                             Id = 41,
-                            Name = "South Dakota"
+                            Name = "SD"
                         },
                         new
                         {
                             Id = 42,
-                            Name = "Tennessee"
+                            Name = "TN"
                         },
                         new
                         {
                             Id = 43,
-                            Name = "Texas"
+                            Name = "TX"
                         },
                         new
                         {
                             Id = 44,
-                            Name = "Utah"
+                            Name = "UT"
                         },
                         new
                         {
                             Id = 45,
-                            Name = "Vermont"
+                            Name = "VT"
                         },
                         new
                         {
                             Id = 46,
-                            Name = "Virginia"
+                            Name = "VA"
                         },
                         new
                         {
                             Id = 47,
-                            Name = "Washington"
+                            Name = "WA"
                         },
                         new
                         {
                             Id = 48,
-                            Name = "West Virginia"
+                            Name = "WV"
                         },
                         new
                         {
                             Id = 49,
-                            Name = "Wisconsin"
+                            Name = "WI"
                         },
                         new
                         {
                             Id = 50,
-                            Name = "Wyoming"
+                            Name = "WY"
                         });
                 });
 
@@ -1381,26 +1407,26 @@ namespace BandBlend2.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "54c789dc-f0be-46bf-941b-c2ff98673738",
+                            ConcurrencyStamp = "bc9635e9-4bc6-474a-9df1-f5477e848ee1",
                             Email = "josh@bandblend.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGg+jirNfh6rLitKnfAfD2pe5gGa3Wgo9jZAuDTmwDuOOGr+AzdicxFa5vE4fifxcA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL9REHbY1rRohKbcMrDHMi+C6LuLHzjQVssVHzOvxKiFp1J893pi/jkWp66d8yduEA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "71c7c919-5acb-4556-90b5-25093b23f242",
+                            SecurityStamp = "1e31a533-cae8-4e54-a04a-1a91e57693ec",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7b42b37f-f2ed-4fbe-aa04-b70f5abfba97",
+                            ConcurrencyStamp = "0e1ded61-d3f4-45c7-9011-6d7301aa3c00",
                             Email = "tom@bandblend.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEEKm8Iahf1oC+DdpUrhSJ/Z0lPw552NuHKz9IUDHtGIrZvhQCYJxDI6bhkbi5EHOVg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMccK3H3gPO+95SUlVzGDHs4m5WbvsdWe4NWktTPR+mbs/qUzYXvmR05cMm7/5ev8w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4828f460-0891-4c80-834b-688107ec1e73",
+                            SecurityStamp = "8f95bf40-3aac-4ae1-b9f0-6f2703734b84",
                             TwoFactorEnabled = false
                         });
                 });
@@ -1602,7 +1628,7 @@ namespace BandBlend2.Migrations
             modelBuilder.Entity("BandBlend.Models.ProfileSubGenre", b =>
                 {
                     b.HasOne("BandBlend.Models.Profile", "Profile")
-                        .WithMany()
+                        .WithMany("ProfileSubGenres")
                         .HasForeignKey("ProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1621,7 +1647,7 @@ namespace BandBlend2.Migrations
             modelBuilder.Entity("BandBlend.Models.ProfileTag", b =>
                 {
                     b.HasOne("BandBlend.Models.Profile", "Profile")
-                        .WithMany()
+                        .WithMany("ProfileTags")
                         .HasForeignKey("ProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1714,6 +1740,13 @@ namespace BandBlend2.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BandBlend.Models.Profile", b =>
+                {
+                    b.Navigation("ProfileSubGenres");
+
+                    b.Navigation("ProfileTags");
                 });
 
             modelBuilder.Entity("BandBlend.Models.UserProfile", b =>
