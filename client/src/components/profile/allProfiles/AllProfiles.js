@@ -17,9 +17,12 @@ export const AllProfiles = () => {
   const [profileCount, setProfileCount] = useState(0);
   const [page, setPage] = useState(1);
   const [amountPerPage, setAmountPerPage] = useState(5);
+  const [searchTerms, setSearchTerms] = useState('');
+  const [filterTerms, setFilterTerms] = useState('');
+  const [sortTerms, setSortTerms] = useState('');
 
   const getAllUsersWithProfiles = () => {
-    fetchAllUsersWithProfiles(page, amountPerPage).then((res) => {
+    fetchAllUsersWithProfiles(page, amountPerPage, searchTerms, filterTerms, sortTerms).then((res) => {
       setProfiles(res.profiles);
       setProfileCount(res.totalCount);
     });
@@ -31,7 +34,7 @@ export const AllProfiles = () => {
 
   const handleAmountPerPageChange = (e) => {
     setAmountPerPage(e.target.value);
-    setPage(1)
+    setPage(1);
   };
 
   useEffect(() => {
@@ -46,7 +49,18 @@ export const AllProfiles = () => {
     <>
       <Container>
         <div>
-          <AllProfilesSearchSortFilter profiles={profiles} setProfiles={setProfiles} profileCount={profileCount} setProfileCount={setProfileCount} />
+          <AllProfilesSearchSortFilter
+            setProfiles={setProfiles}
+            setProfileCount={setProfileCount}
+            page={page}
+            amountPerPage={amountPerPage}
+            searchTerms={searchTerms}
+            setSearchTerms={setSearchTerms}
+            filterTerms={filterTerms}
+            setFilterTerms={setFilterTerms}
+            sortTerms={sortTerms}
+            setSortTerms={setSortTerms}
+          />
           <div>
             {profiles.map((p, index) => (
               <AllProfilesCard

@@ -25,16 +25,52 @@ public class ProfileController : ControllerBase
 
     }
 
+    // [HttpGet]
+    // // [Authorize]
+    // public IActionResult GetAllProfiles(string search, string filter, string sort, int page = 1, int pageSize = 10)
+    // {
+
+    //     var loggedInUser = _dbContext
+    //                  .UserProfiles
+    //                  .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+    //     var allProfiles = _dbContext.UserProfiles
+    //         .Include(up => up.Profile)
+    //             .ThenInclude(p => p.PrimaryGenre)
+    //         .Include(up => up.Profile)
+    //             .ThenInclude(p => p.PrimaryInstrument)
+    //         .Include(up => up.Profile)
+    //             .ThenInclude(p => p.State)
+    //         .Include(up => up.Profile)
+    //             .ThenInclude(p => p.ProfileSubGenres)
+    //             .ThenInclude(ps => ps.SubGenre)
+    //         .Include(up => up.Profile)
+    //             .ThenInclude(p => p.ProfileTags)
+    //             .ThenInclude(pt => pt.Tag)
+    //         .Where(up => up.Id != loggedInUser.Id)
+    //         .Skip((page - 1) * pageSize)  // Skip records based on the page number and page size
+    //         .Take(pageSize)  // Take only the records for the current page
+    //         .ToList();
+
+    //     int count = _dbContext.Profiles.Count();
+
+    //     var data = new
+    //     {
+    //         profiles = allProfiles,
+    //         totalCount = count
+    //     };
+
+    //     return Ok(data);
+    // }
+
     [HttpGet]
-    // [Authorize]
-    public IActionResult GetAllProfiles(int page = 1, int pageSize = 10)
+    public IActionResult GetAllProfiles(string search = null, string filter = null, string sort = null, int page = 1, int pageSize = 10)
     {
-
         var loggedInUser = _dbContext
-                     .UserProfiles
-                     .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            .UserProfiles
+            .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-        var allProfiles = _dbContext.UserProfiles
+        var query = _dbContext.UserProfiles
             .Include(up => up.Profile)
                 .ThenInclude(p => p.PrimaryGenre)
             .Include(up => up.Profile)
@@ -47,20 +83,101 @@ public class ProfileController : ControllerBase
             .Include(up => up.Profile)
                 .ThenInclude(p => p.ProfileTags)
                 .ThenInclude(pt => pt.Tag)
-            .Where(up => up.Id != loggedInUser.Id )
-            .Skip((page - 1) * pageSize)  // Skip records based on the page number and page size
-            .Take(pageSize)  // Take only the records for the current page
+            .Where(up => up.Id != loggedInUser.Id);
+            
+
+        // Apply filters based on the provided parameters
+        if (search != "undefined" && search != null)
+        {
+            query = query
+            .Where(up => up.Name.ToLower().Contains(search.ToLower()) ||
+            up.Profile.PrimaryGenre.Name.ToLower().Contains(search.ToLower()) ||
+            up.Profile.PrimaryInstrument.Name.ToLower().Contains(search.ToLower()) ||
+            up.Profile.City.ToLower().Contains(search.ToLower()) ||
+            up.Profile.State.Name.ToLower().Contains(search.ToLower())
+            );
+        }
+
+        if (filter != "undefined" && filter != null)
+        {
+            if (filter == "saved")
+            {
+                query = query;
+            }
+            if (filter == "bands")
+            {
+                query = query
+                .Where(up => up.IsBand == true);
+            }
+            if (filter == "musicians")
+            {
+                query = query
+                .Where(up => up.IsBand == false);
+            }
+        }
+
+        if (sort != "undefined" && sort != null)
+        {
+            if (sort == "naz")
+            {
+                query = query.OrderBy(up => up.Name);
+            }
+            if (sort == "nza")
+            {
+                query = query.OrderByDescending(up => up.Name);
+            }
+            if (sort == "caz")
+            {
+                query = query.OrderBy(up => up.Profile.City);
+            }
+            if (sort == "cza")
+            {
+                query = query.OrderByDescending(up => up.Profile.City);
+            }
+            if (sort == "saz")
+            {
+                query = query.OrderBy(up => up.Profile.State.Name);
+            }
+            if (sort == "sza")
+            {
+                query = query.OrderByDescending(up => up.Profile.State.Name);
+            }
+            if (sort == "piaz")
+            {
+                query = query.OrderBy(up => up.Profile.PrimaryInstrument.Name);
+            }
+            if (sort == "piza")
+            {
+                query = query.OrderByDescending(up => up.Profile.PrimaryInstrument.Name);
+            }
+            if (sort == "pgaz")
+            {
+                query = query.OrderBy(up => up.Profile.PrimaryGenre.Name);
+            }
+            if (sort == "pgza")
+            {
+                query = query.OrderByDescending(up => up.Profile.PrimaryGenre.Name);
+            }
+           
+        }
+
+        var allProfiles = query
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
             .ToList();
 
-            int count = _dbContext.Profiles.Count();
+        int count = query.Count();
 
-            var data = new {
-                profiles = allProfiles,
-                totalCount = count
-            };
+        var data = new
+        {
+            profiles = allProfiles,
+            totalCount = count
+        };
 
         return Ok(data);
     }
+
+
     // [HttpGet("withroles")]
     // [Authorize(Roles = "Admin")]
     // public IActionResult GetWithRoles()
@@ -94,7 +211,7 @@ public class ProfileController : ControllerBase
             UserProfile foundUserProfile = _dbContext.UserProfiles
             .Include(up => up.IdentityUser)
             .SingleOrDefault(up => up.Id == loggedInUser.Id);
-            
+
             Profile matchedProfile = _dbContext.Profiles
             .Include(p => p.State)
             .Include(p => p.PrimaryInstrument)
@@ -105,7 +222,7 @@ public class ProfileController : ControllerBase
             .Include(pt => pt.Tag)
             .Where(pt => pt.ProfileId == matchedProfile.Id)
             .ToList();
-            
+
             List<ProfileSubGenre> matchedProfileSubGenres = _dbContext.ProfileSubGenres
             .Include(pt => pt.SubGenre)
             .Where(ps => ps.ProfileId == matchedProfile.Id)
