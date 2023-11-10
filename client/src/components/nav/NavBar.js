@@ -23,6 +23,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
 import NavLogo from '../../images/Bandblend_Logos/Logo-nav-black.png';
+import MainLogo from '../../images/Bandblend_Logos/Logo-top-black.png';
 import { Tooltip } from '@mui/material';
 
 const drawerWidth = 240;
@@ -119,13 +120,19 @@ export default function MiniDrawer() {
       >
         <DrawerHeader>
           {open ? (
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'rtl' ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )}
-            </IconButton>
+            <>
+              <img className='nav-drawer-header-logo' 
+                src={MainLogo}
+                alt=""
+              />
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === 'rtl' ? (
+                  <ChevronRightIcon />
+                ) : (
+                  <ChevronLeftIcon />
+                )}
+              </IconButton>
+            </>
           ) : (
             <Tooltip
               title="Expand"

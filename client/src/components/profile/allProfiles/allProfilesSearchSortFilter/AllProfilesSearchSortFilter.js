@@ -23,6 +23,10 @@ export const AllProfilesSearchSortFilter = ({
   const [filterTerms, setFilterTerms] = useState('');
   const [sortTerms, setSortTerms] = useState('');
 
+  const getProfilesByTerms = () => {
+    
+  }
+
   return (
     <Grid container>
       <Grid
