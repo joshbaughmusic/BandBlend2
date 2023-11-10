@@ -20,6 +20,8 @@ import RssFeedIcon from '@mui/icons-material/RssFeed';
 import PeopleIcon from '@mui/icons-material/People';
 import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
 import NavLogo from '../../images/Bandblend_Logos/Logo-nav-black.png';
@@ -400,7 +402,6 @@ export default function MiniDrawer() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
-                onClick={() => navigate('/')}
               >
                 <ListItemIcon
                   sx={{
@@ -427,7 +428,6 @@ export default function MiniDrawer() {
                     justifyContent: open ? 'initial' : 'center',
                     px: 2.5,
                   }}
-                  onClick={() => navigate('/')}
                 >
                   <ListItemIcon
                     sx={{
@@ -440,6 +440,61 @@ export default function MiniDrawer() {
                   </ListItemIcon>
                   <ListItemText
                     primary={'Messages'}
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </Tooltip>
+            )}
+          </ListItem>
+          <ListItem
+            disablePadding
+            sx={{ display: 'block' }}
+          >
+            {open ? (
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <DarkModeIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary={'Theme'}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            ) : (
+              <Tooltip
+                title="Theme"
+                placement="right"
+              >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <DarkModeIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={'Theme'}
                     sx={{ opacity: open ? 1 : 0 }}
                   />
                 </ListItemButton>
