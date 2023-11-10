@@ -1,6 +1,5 @@
 import { Avatar, Grid, IconButton, Paper, Typography } from '@mui/material';
-import TurnedInIcon from '@mui/icons-material/TurnedIn';
-import TurnedInNotIcon from '@mui/icons-material/TurnedInNot';
+import BookmarkIcon from '@mui/icons-material/Bookmark';import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { useNavigate } from 'react-router-dom';
 
 export const AllProfilesCard = ({ profile }) => {
@@ -13,7 +12,8 @@ export const AllProfilesCard = ({ profile }) => {
       >
         <Grid
           item
-          xs={1}
+          xs={3}
+          md={1}
         >
           <div className="allprofile-card-flexstack-img">
             <img
@@ -27,6 +27,7 @@ export const AllProfilesCard = ({ profile }) => {
         <Grid
           item
           xs={3}
+          md={3}
         >
           <div className="allprofile-card-flexstack">
             <Typography
@@ -48,15 +49,17 @@ export const AllProfilesCard = ({ profile }) => {
         <Grid
           item
           xs={3}
+          md={3}
         >
           <div className="allprofile-card-flexstack">
-            <Typography variant="h6">Primary Genre</Typography>
+            <Typography variant="h6">Genre</Typography>
             <Typography>{profile.profile.primaryGenre.name}</Typography>
           </div>
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={3}
+          md={4}
         >
           <div className="allprofile-card-flexstack">
             <Typography variant="h6">Tags</Typography>
@@ -71,7 +74,11 @@ export const AllProfilesCard = ({ profile }) => {
         >
           <div className="allprofile-card-flexstack-icon">
             <IconButton>
-              <TurnedInIcon style={{ fontSize: 40 }} />
+              {profile.profile.isSaved ? (
+                <BookmarkIcon style={{ fontSize: 40 }} />
+              ) : (
+                <BookmarkBorderIcon style={{ fontSize: 40 }} />
+              )}
             </IconButton>
           </div>
         </Grid>

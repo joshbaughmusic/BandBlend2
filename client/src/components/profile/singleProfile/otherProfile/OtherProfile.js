@@ -16,9 +16,8 @@ import FacebookLogo from '../../../../images/SocialMediaLogos/facebook.png';
 import InstagramLogo from '../../../../images/SocialMediaLogos/instagram.png';
 import TikTokLogo from '../../../../images/SocialMediaLogos/spotify.png';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import MessageIcon from '@mui/icons-material/Message';
+import BookmarkIcon from '@mui/icons-material/Bookmark';import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import MailIcon from '@mui/icons-material/Mail';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import { OtherPosts } from '../../../posts/otherPosts/OtherPosts.js';
@@ -152,10 +151,14 @@ export const OtherProfile = () => {
               </div>
               <ButtonGroup>
                 <Button variant="contained">
-                  <BookmarkIcon />
+                  {profile.profile.isSaved ? (
+                    <BookmarkIcon />
+                  ) : (
+                    <BookmarkBorderIcon />
+                  )}
                 </Button>
                 <Button variant="contained">
-                  <MessageIcon />
+                  <MailIcon />
                 </Button>
                 <Button variant="contained">
                   <PersonAddAlt1Icon />
