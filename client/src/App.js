@@ -38,14 +38,15 @@ function App() {
   return (
     <>
       {/* <ThemeProvider theme={theme}> */}
+
         <NavBar
           loggedInUser={loggedInUser}
           setLoggedInUser={setLoggedInUser}
-        />
+          />
         <ApplicationViews
           loggedInUser={loggedInUser}
           setLoggedInUser={setLoggedInUser}
-        />
+          />
       {/* </ThemeProvider> */}
     </>
   );
