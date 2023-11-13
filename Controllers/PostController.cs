@@ -25,12 +25,26 @@ public class PostController : ControllerBase
 
     [HttpGet("user/{id}")]
     [Authorize]
-    public IActionResult GetUserPosts(int id)
+    public IActionResult GetUserPosts(int id, int page, int pageSize)
     {
-        return Ok(_dbContext.Posts
+        var query = _dbContext.Posts
         .Where(p => p.UserProfileId == id)
-        .OrderBy(p => p.Date)
-        .ToList());
+        .OrderBy(p => p.Date);
+
+        var allPosts = query
+               .Skip((page - 1) * pageSize)
+               .Take(pageSize)
+               .ToList();
+
+        int count = query.Count();
+
+        var data = new
+        {
+            posts = allPosts,
+            totalCount = count
+        };
+
+        return Ok(data);
     }
 
 

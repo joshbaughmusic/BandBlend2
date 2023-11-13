@@ -66,7 +66,7 @@ public class ProfileController : ControllerBase
     [HttpGet]
     public IActionResult GetAllProfiles(string search = null, string filter = null, string sort = null, int page = 1, int pageSize = 10)
     {
-        
+
         var loggedInUser = _dbContext
             .UserProfiles
             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
@@ -92,9 +92,9 @@ public class ProfileController : ControllerBase
         {
             if (savedProfilesByUser.Any(sp => sp.ProfileId == up.Profile.Id))
             {
-                up.Profile.SavedProfile = savedProfilesByUser.Single(sp => sp.ProfileId == up.Profile.Id );
+                up.Profile.SavedProfile = savedProfilesByUser.Single(sp => sp.ProfileId == up.Profile.Id);
             }
-        
+
         }
 
         // Apply filters based on the provided parameters
@@ -300,6 +300,59 @@ public class ProfileController : ControllerBase
         }
         return NotFound();
     }
+
+    [HttpPost("{id}/save")]
+    [Authorize]
+    public IActionResult SaveProfile(int id)
+    {
+        Profile foundProfile = _dbContext.Profiles.SingleOrDefault(p => p.Id == id);
+
+        if (foundProfile != null)
+        {
+            var loggedInUser = _dbContext
+                 .UserProfiles
+                 .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            SavedProfile newSavedProfile = new SavedProfile
+            {
+                ProfileId = id,
+                UserProfileId = loggedInUser.Id
+            };
+
+            _dbContext.SavedProfiles.Add(newSavedProfile);
+
+            _dbContext.SaveChanges();
+
+            return NoContent();
+        }
+        return NotFound();
+    }
+
+    [HttpDelete("{id}/unsave")]
+    [Authorize]
+    public IActionResult UnsaveProfile(int id)
+    {
+
+        var loggedInUser = _dbContext
+                 .UserProfiles
+                 .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        SavedProfile foundSavedProfile = _dbContext.SavedProfiles.SingleOrDefault(sp => sp.ProfileId == id && sp.UserProfileId == loggedInUser.Id);
+
+        if (foundSavedProfile != null)
+        {
+            _dbContext.SavedProfiles.Remove(foundSavedProfile);
+            _dbContext.SaveChanges();
+
+            return NoContent();
+        }
+
+        return NotFound();
+
+    }
+
+
+
 
     [HttpPost("promote/{id}")]
     [Authorize(Roles = "Admin")]
