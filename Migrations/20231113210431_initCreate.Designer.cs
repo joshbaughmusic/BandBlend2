@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BandBlend2.Migrations
 {
     [DbContext(typeof(BandBlendDbContext))]
-    [Migration("20231111001809_initCreate")]
+    [Migration("20231113210431_initCreate")]
     partial class initCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -230,6 +230,146 @@ namespace BandBlend2.Migrations
                         new
                         {
                             Id = 3,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 23,
                             Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                             Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 2
@@ -930,7 +1070,8 @@ namespace BandBlend2.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProfileId");
+                    b.HasIndex("ProfileId")
+                        .IsUnique();
 
                     b.HasIndex("UserProfileId");
 
@@ -1803,260 +1944,260 @@ namespace BandBlend2.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f02cc00c-d8e1-4aff-9da6-96e15139a9ce",
+                            ConcurrencyStamp = "b3e05b73-a743-4810-b64c-553032660935",
                             Email = "josh@bandblend.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEPaaMJSafeLPNfO1GHXntDC2hhQ8dHRlakq7rp3TZuGq1t8IeSVXHl0pHtKSx4ueMg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOkqwWYr8imNr6CLd/mx78ohmA1DVRSbwVZKTb8+8z6K2m85A5YUCK2s7N53ubBzEg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5e325cf1-3af6-4b91-912e-e1b2e362f84b",
+                            SecurityStamp = "7391c7d4-28d1-4b75-9147-1cf080d92a4d",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fcf01ff4-153f-4185-ac3a-eca986fd9efc",
+                            ConcurrencyStamp = "c36522c2-a944-43cc-b9f9-ce10f302f95d",
                             Email = "tom@bandblend.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEOtPPGafcrKZ4cZgLN2TzHSjs7Tn364XKgE9ujDMohA5fyGPbN1NGWe98GwtZ/7SOw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM680USdhE3U38Epj3EMEZh0ZEzvdnQzQ11WMOMdL2aekgnSM8wgCnCw1rvSqymhDQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b844fa3a-f251-4bec-9dd5-754013acf187",
+                            SecurityStamp = "f5c48f31-df41-4176-bccf-a28ff62f553f",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fba84846-ba57-46ab-b256-15fd637cb3c8",
+                            ConcurrencyStamp = "a6523f15-f054-4f9b-8176-04ba3ed0bffa",
                             Email = "emily@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEMswA1q3PC4Z5zV2djlTy0QP27zRGD/BhRWyk2ncwFdzHnJ5v3jiU4QpRYuz9HMaUw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOaWHJQfzP1Yb55SHlimPl4PtP429GrnysJf+UV28oloSaBY0KNd97Mm295iBqmRiw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e73846e1-d296-422b-9d40-b4f0b754b46b",
+                            SecurityStamp = "8ba3d4be-b3cf-4eb9-8ac7-a3694cf07f75",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f7614611-d8bd-4a2c-85e1-44dd6df0eec3",
+                            ConcurrencyStamp = "bfa19dac-c80b-45e7-b40d-2f5aafb457ce",
                             Email = "oliver@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEFbJ1IyuVwPP3aGHZptF0XWQA2NHqtjTHe1kNgNI0ysJiXXhd1Ix1EF7OIvfsEo/wg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFRQ0nfPP5+YDS8ViUMyF/qhJWHmti5ZD8eHrXn+lTjJ1nfA6wzG5QRRg0IdLyJrAg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "47c18cda-6dab-4982-8a13-34f19664b741",
+                            SecurityStamp = "d16f070c-1a91-4f4d-9137-48563be64d4f",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a61307b3-8b93-44fe-a6b1-09309eff4ce2",
+                            ConcurrencyStamp = "c25cbed7-a9d8-4b1d-9278-a00a4d25f8c8",
                             Email = "Ava Martinez",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAELzozk8/esc/hmz2ufMcA8r5sGm4hCIXqMZyQzaXGW2zjlJXs6wHB2Fuehr2Mtd7Hg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBXClFa2FC4cLlPRUBmR6jawkkF0FVdu4JPgkpyW44NuuGTCEHJRvXaRfghsLdU8JQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "aa5febb3-b712-4182-ae77-af727d914c56",
+                            SecurityStamp = "7369e3ae-7bdf-4e9e-8c63-103f5eeea4c4",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e49de5a2-683e-43fc-a24e-b405d8c9d79b",
+                            ConcurrencyStamp = "910be900-b756-428c-99c3-51a244b92d88",
                             Email = "liam@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEBdRHaG+b07ixepTCaAYjr6CgIgNb4iYRvl7yv+yoEXr77lnp15PPCVvRWyTvkixBg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOEQnZboSeiVi1XE2Vo+3etEEyHA8fVDxn8UEyli/C/W5qt9WcwQInrQ+hEMzRQORw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0f761834-713e-4e61-94e1-6e3cd8f24d06",
+                            SecurityStamp = "2190f5d0-60cc-4bfd-a6ec-c41756eaeae6",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "003ab2d9-95e9-46cf-ab63-496167a4c4c8",
+                            ConcurrencyStamp = "48e219fb-52ca-41ae-94fb-171e01e3ff91",
                             Email = "sophia@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEPRxOasU9LOMj1poBs5yta7JARpVKixc/7yYdxY+6qu7TDQJM0Ic3bIULt7m4eUzag==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMO6AzKbb/yeEtQ9f8VbfZ/Axy0hkrlnVlPlr6x5zt7eYOlCcG7BCvi2A1+92n6R/w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1a180347-115e-4a4e-92ba-20f50feb6b50",
+                            SecurityStamp = "8d16246e-5c83-4ac4-a3df-44d7ecd858d8",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e810fbed-0790-4f9a-a696-8aff85964a89",
+                            ConcurrencyStamp = "91492c29-cca7-4a3b-94d2-de525551e7e9",
                             Email = "noah@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGFYixO8xj28QLV/x9kD/fGIq6x9PdEYSfAwjEWz4kQdPRHkydzmB5io9siV8yY1kA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDg6BVQk5tLexbxChsBur57LiCatCRPnxBnyZNbBvsai7134DrZEL/bd97WIcUiqaA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d1322d90-ad4f-413f-b4e1-c29adca83d49",
+                            SecurityStamp = "515804fd-ea5e-4630-9bea-4c4d65aa1812",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "07cea0bb-519a-4688-9cc9-2d0f2c8177c8",
+                            ConcurrencyStamp = "def3245d-d8bb-4fb2-b68c-28d8403de8aa",
                             Email = "mia@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEL1lqhjBTe7nssSt4cJiI0g+Bb+LB9OcOzlCKJxuqRwmnTFQNkJJNIICP1K8pD7WIg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEC9D8/GeOBwD0ZGM2zM6Y7LTYCf5Yj2V3hYePCCamqT0Cup6bi974yhbbFY3wNawg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2e45e091-6cf1-4c0f-9609-bbf8fbd4221e",
+                            SecurityStamp = "7d6a4f8b-6911-4928-a338-4cfccf618e93",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cbb69976-1de3-43cb-944c-e2c6429c8ece",
+                            ConcurrencyStamp = "f2f43fca-7442-4eef-b09b-1318d21f5957",
                             Email = "james@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGARvxRizZAnqVpyZA8eHRhWQSiPno0J1FnkR5RW3lvksAdedTgtUNBa+Jw3dodtxw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEUo46P2gc/8BG8EBtunGf6BdULn6hddUzfNVDpjRMmGfExabkNtyLkqI9vJNXC/zg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b4e5ce74-3795-4b10-a742-7697b9684b57",
+                            SecurityStamp = "0b8a7080-ae87-4d70-86d1-4c43068ab0d3",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "25b2de5a-9658-4671-bb8a-ad79ea8149d0",
+                            ConcurrencyStamp = "3b2f98b0-4d4a-4684-943a-218acc989471",
                             Email = "charlotte@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAELoLw+Ij0b38H1QCqLSTXq3aWOV7w1jGD6Gf9ENv6vG90F+XoVc9D4n4JHAgnL3W/w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHZKXtpwUAHfw/KDbGkL9wc0VUKkynYM4VCGIkKnOCUL5yhpJkj74t6qzBIYKAGRLg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "98a05973-2076-4a32-8395-efb858f2f52a",
+                            SecurityStamp = "04218fef-41a6-4f46-8368-301157d41dc9",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "96a1cbf2-11ee-4dec-8075-92f080fea0e6",
+                            ConcurrencyStamp = "9a3ca83d-3ffd-407c-9d56-db185ecd7a7a",
                             Email = "william@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGrbdWsyRZOj1Qyn6ATbvCDtXP4Ky9R4hijrNoQRiY0/SplSqs2zeQtNuj9Pb+Nudg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENTFyVMMNO6irYpQLwp0icCCURXxC9qNhq5/ea2cosDJaZDDbz2ZOBlVNdzuOf9IJA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f59e1069-1cdf-4eeb-ae22-933b02d3118f",
+                            SecurityStamp = "c1acb5bf-5c40-4aaa-a6b1-982570183703",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fd2f3b95-b7e6-43b4-9390-6f2be77b9bec",
+                            ConcurrencyStamp = "ee78810a-62da-440e-b21f-932416c333a1",
                             Email = "harper@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEILt2PiUyppIu06kOITpw1s8/R/bYQiEUBHUv5HoT6/oNs4lpu22akylWEfYLEngWw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMFTE2Tb9Xp52O1dVoD6a5EpJRIWbQsg3lLENyd+bSwZ9Zs83x/wcAQd0Pef7QpZ/A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2a1eae5f-49cf-483d-86c6-4f0ec6ab9160",
+                            SecurityStamp = "ff4b05ca-d4fa-4abf-90a9-dcc6361aa88d",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "387438e1-1626-4cd4-89df-31637a0e7a3d",
+                            ConcurrencyStamp = "6d5ae178-c2e7-4816-bb30-449cc98ea720",
                             Email = "benjamin@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGHzV2MDU36ZZNsRBYSokEilwr+Zp4OmwxVo5fIcjZ/zqSdB6Fk3DCmTTHQiBvHoGQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEqUrvTmGogQTDh8MIV8jvicoi/ocsKXlwOJrTliX/Il+7Jj75bn23TmuSrGpCsc9Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "16023e6a-a6c4-4a8c-9740-46b1833d2f5c",
+                            SecurityStamp = "5c8d769c-f164-40f8-b8e2-c74ed8522dbd",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4c634acc-84e3-4451-acda-08cb2059b123",
+                            ConcurrencyStamp = "9580dd49-3d51-40fe-9a94-56451ad5afb7",
                             Email = "evelyn@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEIWLkHJwxr6BYCvU2SHRN0iyskZ/tGqbiifEkJ8vge8lQKb8G4ztAA4uyeFsju8GEQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIW4xhKv3XC1FPrwR7F2ztjxdluIdZzCEiqJqAEP7fmsnYyN+uP5vTIhb9w3sF/LVw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "71efdd05-7606-430a-8ac4-a9ea10f68731",
+                            SecurityStamp = "d5479a46-e204-4744-847f-dd3a3a80100e",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "500ceda8-0ac3-481d-ba5c-d67b41e2c449",
+                            ConcurrencyStamp = "054cf439-8f2d-46d5-838a-70a88c3d236a",
                             Email = "alexander@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEHxH6wz/upOakK+Xi5gH/rDBB686Bn7MMbmTKNM8hvYkJGRDwcZNHmXrVRtTp5VFQQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ3QEXdSzrXd2s3/5wPUGsTot5r9F+JVlRSUKECRrpZSIxq3CNKzkydYY/Tk1lh7BA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "08c23913-1a16-4e0c-a18c-9517a4eb1b08",
+                            SecurityStamp = "e1631890-515f-4979-bcb9-52e50730ce4f",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "055a34f2-a8bc-4e81-9c14-7dfd8055a015",
+                            ConcurrencyStamp = "afa9ea8c-4165-40bc-a914-ed8c93a45a73",
                             Email = "grace@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEF6aGFN2D7NyedbfE/VRt4mUcAFKBJ2jWdPDeOa9FSZVPkGoFO189LvDX0QIBLTr5w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIzOROQPH5elIOMsEFLZL3m2ebbPROC/yKl/gFtFea8E7J/fXS9CSCXVSe/928MZwg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9b1851ee-5e5e-4541-a498-0104226b8bc1",
+                            SecurityStamp = "5dc42427-0657-44de-9fb6-1bfc2e37ba61",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "00a40af9-6o6o-6o66-po6k-kk00a38j90ld",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7a1290a3-66f0-4a5a-ae51-025a220decac",
+                            ConcurrencyStamp = "d4afdac3-cc1f-4fb0-bbb3-e3124ec804b4",
                             Email = "daniel@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAENVOshft9NZm2Ehn9zMnX1iT6ey3NZ0veYQwM/J4789VvCtDQrJTQFewQs3XO3zzjg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELrbEq1kbSlCLHjU6mRp4gx/ch8oSxnHBXqOT+YgfzhpGwh6RxAMdHRaJO7nOKDHoQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "30124be1-b04e-440c-aec6-402348be845c",
+                            SecurityStamp = "c4b4a898-e6b0-424c-8af3-718453fd26a9",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e4e521b8-a8ae-459b-ad50-c51725368522",
+                            ConcurrencyStamp = "af51d906-ac33-47c1-8ead-28d5f0476c11",
                             Email = "madison@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEDTxpq8/7hTV4mGzNeaTrl6z8/gnBvL+WnXwjizEfAKFzWK/I6LXjjITpf9JVAeM5g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGXYrSQ5CPlH0/HMroABJTGMvnNyqFq4QBeMMfjywPYI0iE6t30sBxE6nAx5rdPByw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cbee3f64-1758-478b-8687-a16090d0c199",
+                            SecurityStamp = "83833b91-b1cf-470f-a524-b6178de7b190",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b0bad7da-31f9-4754-b68d-871de8cb1918",
+                            ConcurrencyStamp = "3d1821d5-3bb3-4959-bea7-982ab352508e",
                             Email = "gabriel@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEAcFU970enMK2RCm8XQBzPBhWn9oxTdwTnT3olDHgV4k/193e4H1N4RQYUuT70Q/NQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEI26REMXuzfouaWOxWFblVMpfFqUGusQ06wTJeHVPJevSz3M7bZbueQqaA/GPQaG1A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d1724576-fc8a-4535-9d46-1451f45c6d7a",
+                            SecurityStamp = "ff639090-1390-4532-b99d-a2ce1a571c54",
                             TwoFactorEnabled = false
                         });
                 });
@@ -2386,8 +2527,8 @@ namespace BandBlend2.Migrations
             modelBuilder.Entity("BandBlend.Models.SavedProfile", b =>
                 {
                     b.HasOne("BandBlend.Models.Profile", "Profile")
-                        .WithMany()
-                        .HasForeignKey("ProfileId")
+                        .WithOne("SavedProfile")
+                        .HasForeignKey("BandBlend.Models.SavedProfile", "ProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2467,6 +2608,8 @@ namespace BandBlend2.Migrations
                     b.Navigation("ProfileSubGenres");
 
                     b.Navigation("ProfileTags");
+
+                    b.Navigation("SavedProfile");
                 });
 
             modelBuilder.Entity("BandBlend.Models.UserProfile", b =>
