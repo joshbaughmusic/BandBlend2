@@ -69,6 +69,33 @@ public class PostController : ControllerBase
 
     }
 
+    [HttpDelete("delete/{id}")]
+    [Authorize]
+    public IActionResult DeletePost(int id)
+    {
+        Post foundPost = _dbContext.Posts.SingleOrDefault(p => p.Id == id);
+
+        if (foundPost != null)
+        {
+            var loggedInUser = _dbContext
+                .UserProfiles
+                .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (loggedInUser.Id == foundPost.UserProfileId)
+            {
+                _dbContext.Posts.Remove(foundPost);
+                _dbContext.SaveChanges();
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+        }
+
+        return NotFound();
+    }
 
 
 }

@@ -11,6 +11,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
 import { styled } from '@mui/material/styles';
+import { DeletePost } from '../DeletePost.js';
 
 
 const ExpandMore = styled((props) => {
@@ -24,16 +25,16 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const MyPostsCard = ({ post, profile }) => {
-   const [expanded, setExpanded] = useState(false);
+export const MyPostsCard = ({ post, profile, getUserPosts }) => {
+  const [expanded, setExpanded] = useState(false);
 
-   const handleExpandClick = () => {
-     setExpanded(!expanded);
-   };
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <>
-      <Card className='post-card'>
+      <Card className="post-card">
         <CardContent>
           <div className="post-card-header">
             <div className="post-card-header-left">
@@ -53,9 +54,11 @@ export const MyPostsCard = ({ post, profile }) => {
         <CardActions disableSpacing>
           <div className="post-card-footer">
             <div>
-              <IconButton>
-                <DeleteIcon />
-              </IconButton>
+              <DeletePost
+                postId={post.id}
+                getUserPosts={getUserPosts}
+              />
+
               <IconButton>
                 <EditIcon />
               </IconButton>

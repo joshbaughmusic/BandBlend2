@@ -6,7 +6,7 @@ export const fetchUserPosts = (id, page = 1, pageSize = 10) => {
   );
 };
 
-export const featchCreateNewPost = (postText) => {
+export const fetchCreateNewPost = (postText) => {
   return fetch(`${_apiUrl}/new`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -14,3 +14,8 @@ export const featchCreateNewPost = (postText) => {
   }).then((res) => res.json());
 };
 
+export const fetchDeletePost = (id) => {
+  return fetch(`${_apiUrl}/delete/${id}`, {
+    method: 'DELETE',
+  })
+};

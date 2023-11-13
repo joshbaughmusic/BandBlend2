@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
-  featchCreateNewPost,
+  fetchCreateNewPost,
   fetchUserPosts,
 } from '../../../managers/postsManager.js';
 import { MyPostsCard } from './MyPostsCard.js';
@@ -36,7 +36,6 @@ export const MyPosts = ({ profile }) => {
   const [newPost, setNewPost] = useState('');
   const [openAlert, setOpenAlert] = useState(false);
   const [successAlert, setSuccessAlert] = useState(false);
-  const [failAlert, setFailAlert] = useState(false);
   const [snackBarOpen, setSnackBarOpen] = useState(false);
 
   const getUserPosts = () => {
@@ -94,7 +93,7 @@ export const MyPosts = ({ profile }) => {
   };
 
   const handleCreatePost = () => {
-    featchCreateNewPost(newPost).then((res) => {
+    fetchCreateNewPost(newPost).then((res) => {
       console.log(res);
       if (res.id != undefined) {
         setSuccessAlert(true);
@@ -116,7 +115,97 @@ export const MyPosts = ({ profile }) => {
   if (posts.length === 0) {
     return (
       <>
-        <div>No Posts yet!</div>
+        <Dialog
+          open={openAlert}
+          onClose={handleAlert}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {'Confirm Post Discard'}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Are you sure you want to discard this post?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleAlert}>Cancel</Button>
+            <Button
+              onClick={handleConfirmCloseNewPost}
+              autoFocus
+            >
+              Confirm
+            </Button>
+          </DialogActions>
+        </Dialog>
+        <div className="myposts-header">
+          <Typography variant="h6">No Posts Yet</Typography>
+          {expanded ? (
+            <IconButton onClick={handleCloseNewPost}>
+              <CloseIcon />
+            </IconButton>
+          ) : (
+            <IconButton onClick={handleOpenNewPost}>
+              <PostAddIcon />
+            </IconButton>
+          )}
+        </div>
+        {successAlert ? (
+          <Snackbar
+            open={snackBarOpen}
+            autoHideDuration={6000}
+            onClose={handleSnackBarClose}
+          >
+            <Alert
+              onClose={handleSnackBarClose}
+              severity="success"
+              sx={{ width: '100%' }}
+            >
+              Post created successfully!
+            </Alert>
+          </Snackbar>
+        ) : (
+          <Snackbar
+            open={snackBarOpen}
+            autoHideDuration={6000}
+            onClose={handleSnackBarClose}
+          >
+            <Alert
+              onClose={handleSnackBarClose}
+              severity="error"
+              sx={{ width: '100%' }}
+            >
+              Failed to create post.
+            </Alert>
+          </Snackbar>
+        )}
+
+        <div>
+          <Collapse
+            in={expanded}
+            timeout="auto"
+            unmountOnExit
+          >
+            <TextField
+              className="post-text-field"
+              label="What's on your mind?"
+              multiline
+              minRows={5}
+              fullWidth
+              value={newPost}
+              onChange={(e) => setNewPost(e.target.value)}
+            />
+            <div className="post-submit-button-container">
+              <Button
+                variant="contained"
+                onClick={handleCreatePost}
+              >
+                Submit
+              </Button>
+            </div>
+          </Collapse>
+        </div>
       </>
     );
   }
@@ -188,7 +277,7 @@ export const MyPosts = ({ profile }) => {
           </Alert>
         </Snackbar>
       )}
-      
+
       <div>
         <Collapse
           in={expanded}
@@ -218,6 +307,7 @@ export const MyPosts = ({ profile }) => {
       <div>
         {posts.map((p, index) => (
           <MyPostsCard
+            getUserPosts={getUserPosts}
             profile={profile}
             post={p}
             key={index}
