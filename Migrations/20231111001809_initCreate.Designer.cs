@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BandBlend2.Migrations
 {
     [DbContext(typeof(BandBlendDbContext))]
-    [Migration("20231110180757_initCreate")]
+    [Migration("20231111001809_initCreate")]
     partial class initCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1803,260 +1803,260 @@ namespace BandBlend2.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "044b2833-6577-4ac4-b45b-2c51a210c566",
+                            ConcurrencyStamp = "f02cc00c-d8e1-4aff-9da6-96e15139a9ce",
                             Email = "josh@bandblend.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEKkHiOzpfjAgCTwFIBVRjZUoFIerFKlv2x3Y0WuJ9VkfM7LHbKWLPCzTziIvftMfUA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPaaMJSafeLPNfO1GHXntDC2hhQ8dHRlakq7rp3TZuGq1t8IeSVXHl0pHtKSx4ueMg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2d0abe84-cda7-4b6e-aee7-188436bd74fd",
+                            SecurityStamp = "5e325cf1-3af6-4b91-912e-e1b2e362f84b",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b3a5cc4b-bd70-4b9b-9568-82a46979f6b2",
+                            ConcurrencyStamp = "fcf01ff4-153f-4185-ac3a-eca986fd9efc",
                             Email = "tom@bandblend.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEAOv+n5cbhsQAOiLOdDWw195Ae8RBrxt8A/zoCp328RvyBQdqtNCT8TZPdSlQoKFzg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOtPPGafcrKZ4cZgLN2TzHSjs7Tn364XKgE9ujDMohA5fyGPbN1NGWe98GwtZ/7SOw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7306762d-cf77-4f6a-811f-60fdd75e87fa",
+                            SecurityStamp = "b844fa3a-f251-4bec-9dd5-754013acf187",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "faf46fa3-fcb8-44bd-8621-1265921a18c5",
+                            ConcurrencyStamp = "fba84846-ba57-46ab-b256-15fd637cb3c8",
                             Email = "emily@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEC/5UFmbpo/u7q/EwCpblpTepMw7Djr4fluyApo+n9ncQRRIPB+sSCxwadknCTA00g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMswA1q3PC4Z5zV2djlTy0QP27zRGD/BhRWyk2ncwFdzHnJ5v3jiU4QpRYuz9HMaUw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b196eeb6-452f-4232-89c3-984c8e6653ec",
+                            SecurityStamp = "e73846e1-d296-422b-9d40-b4f0b754b46b",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "90a5da52-c7f7-4009-af7a-0280489bb45b",
+                            ConcurrencyStamp = "f7614611-d8bd-4a2c-85e1-44dd6df0eec3",
                             Email = "oliver@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEKz2c53auIHapXgg6xvmutITLDPdqoAviKDy5R7QLTr3UfHmAFa24/HodSA1gE2heQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFbJ1IyuVwPP3aGHZptF0XWQA2NHqtjTHe1kNgNI0ysJiXXhd1Ix1EF7OIvfsEo/wg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0746d705-634c-4d5b-9072-09d6e8935a48",
+                            SecurityStamp = "47c18cda-6dab-4982-8a13-34f19664b741",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dfed9844-f5bd-4a04-b2c1-270389c47a92",
+                            ConcurrencyStamp = "a61307b3-8b93-44fe-a6b1-09309eff4ce2",
                             Email = "Ava Martinez",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEHaA4rhQgpA/US/nzATjbEmbASw/uD3Jw3F5WIyffpuSPm7Y3HBnxrPae1ThDit9tQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELzozk8/esc/hmz2ufMcA8r5sGm4hCIXqMZyQzaXGW2zjlJXs6wHB2Fuehr2Mtd7Hg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "572e2902-fcaf-47e2-8d5f-79a9dbf37af3",
+                            SecurityStamp = "aa5febb3-b712-4182-ae77-af727d914c56",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "048f7a0f-cc7c-4af0-885b-4c59e6da7a81",
+                            ConcurrencyStamp = "e49de5a2-683e-43fc-a24e-b405d8c9d79b",
                             Email = "liam@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEPCIdjXxi3GRnFVbkRex1UZAWJnj+Fdru8qGZ0hIkMyaNaihalWNAf39KDXrWSiLXQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBdRHaG+b07ixepTCaAYjr6CgIgNb4iYRvl7yv+yoEXr77lnp15PPCVvRWyTvkixBg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "20048cad-4323-4647-a25b-2eb6bf28d938",
+                            SecurityStamp = "0f761834-713e-4e61-94e1-6e3cd8f24d06",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d35d3f12-a8d8-4e75-bde2-13cc81c7ac5c",
+                            ConcurrencyStamp = "003ab2d9-95e9-46cf-ab63-496167a4c4c8",
                             Email = "sophia@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEN6cYyIzzafSqj/AfQXV/3neqHeEH3ctLsb3inF77m3gmjn1sUm9q3E3C6FXWbB0bg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPRxOasU9LOMj1poBs5yta7JARpVKixc/7yYdxY+6qu7TDQJM0Ic3bIULt7m4eUzag==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "727eb2f5-b18d-4cba-82d2-2eca72c4337a",
+                            SecurityStamp = "1a180347-115e-4a4e-92ba-20f50feb6b50",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7c9cbd32-8522-475b-95a8-20898dcbe0d1",
+                            ConcurrencyStamp = "e810fbed-0790-4f9a-a696-8aff85964a89",
                             Email = "noah@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEFVlW25CxTPMUvbee9YunmbH21y/vGiudNdZJQEMiGPcbLBY19MsgWTPTprWBjKO0w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGFYixO8xj28QLV/x9kD/fGIq6x9PdEYSfAwjEWz4kQdPRHkydzmB5io9siV8yY1kA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "387e0e93-b2f1-447b-a570-b584d87a7ac1",
+                            SecurityStamp = "d1322d90-ad4f-413f-b4e1-c29adca83d49",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3f1397c8-75cc-4bb0-8196-b18ebfd8b8b5",
+                            ConcurrencyStamp = "07cea0bb-519a-4688-9cc9-2d0f2c8177c8",
                             Email = "mia@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGBzSDJI1NZnnlypPecA0o4AKbngDPaKLhflxDbqO/KbwV36DVxQzqRuN4OXnw3xiQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL1lqhjBTe7nssSt4cJiI0g+Bb+LB9OcOzlCKJxuqRwmnTFQNkJJNIICP1K8pD7WIg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "28cd1772-06a1-4577-bd7e-3867dad1773f",
+                            SecurityStamp = "2e45e091-6cf1-4c0f-9609-bbf8fbd4221e",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "018d3592-5036-454d-8197-aa4c9c5b9520",
+                            ConcurrencyStamp = "cbb69976-1de3-43cb-944c-e2c6429c8ece",
                             Email = "james@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEHXTlWWHDIdR11w90suS1dtqFILLi4rurerd56FxZSZc61e4y1sqM36IsVbH450D5w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGARvxRizZAnqVpyZA8eHRhWQSiPno0J1FnkR5RW3lvksAdedTgtUNBa+Jw3dodtxw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "183aa20e-5ba3-4db8-885f-0d76e5c57a49",
+                            SecurityStamp = "b4e5ce74-3795-4b10-a742-7697b9684b57",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ce4908cf-8c76-4cd5-b900-886bf4bf7bcd",
+                            ConcurrencyStamp = "25b2de5a-9658-4671-bb8a-ad79ea8149d0",
                             Email = "charlotte@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEBG0OG2H/UqlG2i46OdRf9pVIOzwkQKXHrXc/kcT9XFWqh2cz02obVCGBa6+1FVEIg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELoLw+Ij0b38H1QCqLSTXq3aWOV7w1jGD6Gf9ENv6vG90F+XoVc9D4n4JHAgnL3W/w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b4ace698-5053-41f8-b5cb-10f8a1c2d46b",
+                            SecurityStamp = "98a05973-2076-4a32-8395-efb858f2f52a",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b26971ea-85df-4730-a776-cdf80ea595c9",
+                            ConcurrencyStamp = "96a1cbf2-11ee-4dec-8075-92f080fea0e6",
                             Email = "william@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGxQjEgGE57ajlbLQy6fnELOiytNTHnJJly24F9uMfGBjyLeve+UQo6Bwlk7CZ6jPg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGrbdWsyRZOj1Qyn6ATbvCDtXP4Ky9R4hijrNoQRiY0/SplSqs2zeQtNuj9Pb+Nudg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "abd0044a-5beb-459d-95fb-7dc66c2c2ec5",
+                            SecurityStamp = "f59e1069-1cdf-4eeb-ae22-933b02d3118f",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "310eecca-f2ec-444a-b3ca-c8bc71f67b2e",
+                            ConcurrencyStamp = "fd2f3b95-b7e6-43b4-9390-6f2be77b9bec",
                             Email = "harper@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGZqXaPElvDwk3Vd9SgD/xECeoB6a8JYQDQnIPAavr58oyiYpS0hHYM/NK7fS9NSWQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEILt2PiUyppIu06kOITpw1s8/R/bYQiEUBHUv5HoT6/oNs4lpu22akylWEfYLEngWw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ca1f2cb2-d564-4998-b9f7-248e9d4e2508",
+                            SecurityStamp = "2a1eae5f-49cf-483d-86c6-4f0ec6ab9160",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4d872579-5cf7-4840-ad8f-886da17aff1d",
+                            ConcurrencyStamp = "387438e1-1626-4cd4-89df-31637a0e7a3d",
                             Email = "benjamin@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEEyz2iECpxF//y8IwFIs/ntTWs9bh61op1aahjLziGe3vY8+5+4+nQADONBvgPasVA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGHzV2MDU36ZZNsRBYSokEilwr+Zp4OmwxVo5fIcjZ/zqSdB6Fk3DCmTTHQiBvHoGQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cf3e6974-ad42-4b26-9ad9-79ca33428b42",
+                            SecurityStamp = "16023e6a-a6c4-4a8c-9740-46b1833d2f5c",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d0c71fd2-9301-41d0-820c-a7c0438fdb37",
+                            ConcurrencyStamp = "4c634acc-84e3-4451-acda-08cb2059b123",
                             Email = "evelyn@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEKJePkqk0EtYydHguekWo1i8eCWpodNz7kGauitHvwXWuuy7t5a9+Uzg8+dElu6tag==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIWLkHJwxr6BYCvU2SHRN0iyskZ/tGqbiifEkJ8vge8lQKb8G4ztAA4uyeFsju8GEQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bf7a9767-02cb-43d7-b905-91cacef2ecd3",
+                            SecurityStamp = "71efdd05-7606-430a-8ac4-a9ea10f68731",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9737bd1c-6104-496e-82f2-978076967e21",
+                            ConcurrencyStamp = "500ceda8-0ac3-481d-ba5c-d67b41e2c449",
                             Email = "alexander@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEF0JlnnY1cl3IcNAGLfbgLesuVBS9J8CzaE/JteoZmXkOy2U2BfWnsb9swDtLZ+l/w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHxH6wz/upOakK+Xi5gH/rDBB686Bn7MMbmTKNM8hvYkJGRDwcZNHmXrVRtTp5VFQQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cad838e2-f1b2-40f7-b772-dd4e0b6afeda",
+                            SecurityStamp = "08c23913-1a16-4e0c-a18c-9517a4eb1b08",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c685806d-8b21-40eb-a50c-de53c84c03e5",
+                            ConcurrencyStamp = "055a34f2-a8bc-4e81-9c14-7dfd8055a015",
                             Email = "grace@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEAoHFELpk8R4pmrkNlOzZl50vbqtQO/NE+00c6CQQ0nPFeDkZ+KjhVC4GjCp16IEmg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEF6aGFN2D7NyedbfE/VRt4mUcAFKBJ2jWdPDeOa9FSZVPkGoFO189LvDX0QIBLTr5w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bf9ceca6-be02-4927-bf52-9d74c374b122",
+                            SecurityStamp = "9b1851ee-5e5e-4541-a498-0104226b8bc1",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "00a40af9-6o6o-6o66-po6k-kk00a38j90ld",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cd1c4058-bfd0-44b6-afa1-899d7258f4ae",
+                            ConcurrencyStamp = "7a1290a3-66f0-4a5a-ae51-025a220decac",
                             Email = "daniel@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEODhEWqvIa3a7ypNkrmbQpORLHw46Nm/eg2pbMaTey3JUO94CN1Pvr61mYPTp+XGug==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENVOshft9NZm2Ehn9zMnX1iT6ey3NZ0veYQwM/J4789VvCtDQrJTQFewQs3XO3zzjg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e79ef874-b638-433e-889d-f666f6f1023e",
+                            SecurityStamp = "30124be1-b04e-440c-aec6-402348be845c",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b653e69e-3e28-4f2d-b78f-6dc5794c0827",
+                            ConcurrencyStamp = "e4e521b8-a8ae-459b-ad50-c51725368522",
                             Email = "madison@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAENFwvWB+558OG7tSYG3Hk+UgmF2TSCTz2TBo72MHXtSHK4DndYVTgh6TIwEEJc+72Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDTxpq8/7hTV4mGzNeaTrl6z8/gnBvL+WnXwjizEfAKFzWK/I6LXjjITpf9JVAeM5g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "411f970b-d344-4ace-9ede-e78707bc9139",
+                            SecurityStamp = "cbee3f64-1758-478b-8687-a16090d0c199",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fc625437-3f76-4da8-8f3a-78dae8d57735",
+                            ConcurrencyStamp = "b0bad7da-31f9-4754-b68d-871de8cb1918",
                             Email = "gabriel@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEE1dNwmEFdCIWSh7K4a6M9vXfE3ukUrZKHSVh/YToBr+j6fWM0fGuiVaXawXouo6HA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAcFU970enMK2RCm8XQBzPBhWn9oxTdwTnT3olDHgV4k/193e4H1N4RQYUuT70Q/NQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9ce086c3-8c01-46b3-99f3-0bf0d49e5a84",
+                            SecurityStamp = "d1724576-fc8a-4535-9d46-1451f45c6d7a",
                             TwoFactorEnabled = false
                         });
                 });

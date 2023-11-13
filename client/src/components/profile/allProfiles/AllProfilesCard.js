@@ -74,7 +74,7 @@ export const AllProfilesCard = ({ profile }) => {
         >
           <div className="allprofile-card-flexstack-icon">
             <IconButton>
-              {profile.profile.isSaved ? (
+              {profile.profile.savedProfile ? (
                 <BookmarkIcon style={{ fontSize: 40 }} />
               ) : (
                 <BookmarkBorderIcon style={{ fontSize: 40 }} />

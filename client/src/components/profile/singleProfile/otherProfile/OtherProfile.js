@@ -151,7 +151,7 @@ export const OtherProfile = () => {
               </div>
               <ButtonGroup>
                 <Button variant="contained">
-                  {profile.profile.isSaved ? (
+                  {profile.profile.savedProfile ? (
                     <BookmarkIcon />
                   ) : (
                     <BookmarkBorderIcon />

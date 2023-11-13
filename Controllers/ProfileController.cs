@@ -66,6 +66,7 @@ public class ProfileController : ControllerBase
     [HttpGet]
     public IActionResult GetAllProfiles(string search = null, string filter = null, string sort = null, int page = 1, int pageSize = 10)
     {
+        
         var loggedInUser = _dbContext
             .UserProfiles
             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
@@ -89,7 +90,11 @@ public class ProfileController : ControllerBase
 
         foreach (UserProfile up in query)
         {
-            up.Profile.isSaved = savedProfilesByUser.Any(sp => sp.ProfileId == up.Profile.Id);
+            if (savedProfilesByUser.Any(sp => sp.ProfileId == up.Profile.Id))
+            {
+                up.Profile.SavedProfile = savedProfilesByUser.Single(sp => sp.ProfileId == up.Profile.Id );
+            }
+        
         }
 
         // Apply filters based on the provided parameters
@@ -108,7 +113,8 @@ public class ProfileController : ControllerBase
         {
             if (filter == "saved")
             {
-                query = query;
+                query = query
+                .Where(up => up.Profile.SavedProfile != null);
             }
             if (filter == "bands")
             {
@@ -285,7 +291,10 @@ public class ProfileController : ControllerBase
 
             List<SavedProfile> savedProfilesByUser = _dbContext.SavedProfiles.Where(sp => sp.UserProfileId == loggedInUser.Id).ToList();
 
-            foundUserProfile.Profile.isSaved = savedProfilesByUser.Any(sp => sp.ProfileId == foundUserProfile.Profile.Id);
+            if (savedProfilesByUser.Any(sp => sp.ProfileId == foundUserProfile.Profile.Id))
+            {
+                foundUserProfile.Profile.SavedProfile = savedProfilesByUser.Single(sp => sp.ProfileId == foundUserProfile.Profile.Id);
+            }
 
             return Ok(foundUserProfile);
         }

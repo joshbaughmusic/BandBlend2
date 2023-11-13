@@ -14,7 +14,11 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         <Route path="/">
           <Route
             index
-            element={<Home loggedInUser={loggedInUser} />}
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <Home loggedInUser={loggedInUser} />
+              </AuthorizedRoute>
+            }
           />
           <Route path="profile">
             <Route
@@ -27,12 +31,20 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             />
             <Route
               path=":id"
-              element={<OtherProfile loggedInUser={loggedInUser} />}
+              element={
+                <AuthorizedRoute loggedInUser={loggedInUser}>
+                  <OtherProfile loggedInUser={loggedInUser} />
+                </AuthorizedRoute>
+              }
             />
           </Route>
           <Route
             path="allprofiles"
-            element={<AllProfiles loggedInUser={loggedInUser} />}
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <AllProfiles loggedInUser={loggedInUser} />{' '}
+              </AuthorizedRoute>
+            }
           />
           <Route
             path="login"

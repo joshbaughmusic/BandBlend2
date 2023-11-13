@@ -40,3 +40,9 @@
   /* align-items: center; */
   height: 100%;
 }
+
+.allprofiles-noresults {
+    display: flex;
+    justify-content: center;
+    margin: 3em 0;
+}

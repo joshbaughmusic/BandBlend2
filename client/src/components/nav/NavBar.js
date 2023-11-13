@@ -22,11 +22,13 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
 import NavLogo from '../../images/Bandblend_Logos/Logo-nav-black.png';
 import MainLogo from '../../images/Bandblend_Logos/Logo-top-black.png';
 import { Tooltip } from '@mui/material';
+import { logout } from '../../managers/authManager.js';
 
 const drawerWidth = 240;
 
@@ -94,7 +96,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer() {
+export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
@@ -123,7 +125,8 @@ export default function MiniDrawer() {
         <DrawerHeader>
           {open ? (
             <>
-              <img className='nav-drawer-header-logo' 
+              <img
+                className="nav-drawer-header-logo"
                 src={MainLogo}
                 alt=""
               />
@@ -558,6 +561,79 @@ export default function MiniDrawer() {
               </Tooltip>
             )}
           </ListItem>
+          <ListItem
+            disablePadding
+            sx={{ display: 'block' }}
+          >
+            {open ? (
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpen(false);
+                  logout().then(() => {
+                    setLoggedInUser(null);
+                    setOpen(false);
+                  });
+                  navigate('/');
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary={'Settings'}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            ) : (
+              <Tooltip
+                title="Logout"
+                placement="right"
+              >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setOpen(false);
+                    logout().then(() => {
+                      setLoggedInUser(null);
+                      setOpen(false);
+                    });
+                    navigate('/');
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <ExitToAppIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={'Logout'}
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </Tooltip>
+            )}
+          </ListItem>
         </List>
       </Drawer>
       <Box
@@ -568,4 +644,4 @@ export default function MiniDrawer() {
       </Box>
     </Box>
   );
-}
+};
