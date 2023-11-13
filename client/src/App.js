@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { tryGetLoggedInUser } from './managers/authManager';
-import NavBar from './components/nav/NavBar';
 import ApplicationViews from './components/ApplicationViews';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { NavBar } from './components/nav/NavBar.js';
 
 // const theme = createTheme({
 //   palette: {

@@ -66,6 +66,7 @@ public class ProfileController : ControllerBase
     [HttpGet]
     public IActionResult GetAllProfiles(string search = null, string filter = null, string sort = null, int page = 1, int pageSize = 10)
     {
+        
         var loggedInUser = _dbContext
             .UserProfiles
             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
@@ -112,8 +113,8 @@ public class ProfileController : ControllerBase
         {
             if (filter == "saved")
             {
-                query = query;
-                // .Where(up => up.Profile.isSaved == true);
+                query = query
+                .Where(up => up.Profile.SavedProfile != null);
             }
             if (filter == "bands")
             {
