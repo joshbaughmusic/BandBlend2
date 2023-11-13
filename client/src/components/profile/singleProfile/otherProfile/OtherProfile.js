@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { fetchOtherUserWithProfile } from '../../../../managers/profileManager.js';
+import { fetchOtherUserWithProfile, fetchSaveProfile, fetchUnsaveProfile } from '../../../../managers/profileManager.js';
 import '../SingleProfile.css';
 import SpotifyLogo from '../../../../images/SocialMediaLogos/spotify.png';
 import FacebookLogo from '../../../../images/SocialMediaLogos/facebook.png';
@@ -41,6 +41,14 @@ export const OtherProfile = () => {
   useEffect(() => {
     getOtherUserWithProfile();
   }, []);
+
+  const handleSaveProfile = () => {
+    fetchSaveProfile(profile.id).then(() => getOtherUserWithProfile())
+  }
+
+  const handleUnsaveProfile = () => {
+    fetchUnsaveProfile(profile.id).then(() => getOtherUserWithProfile())
+  }
 
   if (!profile) {
     return null;
@@ -150,13 +158,21 @@ export const OtherProfile = () => {
                 </div>
               </div>
               <ButtonGroup>
-                <Button variant="contained">
-                  {profile.profile.savedProfile ? (
+                {profile.profile.savedProfile ? (
+                  <Button
+                    variant="contained"
+                    onClick={() => handleUnsaveProfile()}
+                  >
                     <BookmarkIcon />
-                  ) : (
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    onClick={() => handleSaveProfile()}
+                  >
                     <BookmarkBorderIcon />
-                  )}
-                </Button>
+                  </Button>
+                )}
                 <Button variant="contained">
                   <MailIcon />
                 </Button>

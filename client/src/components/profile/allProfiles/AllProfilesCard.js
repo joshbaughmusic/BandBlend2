@@ -1,9 +1,19 @@
 import { Avatar, Grid, IconButton, Paper, Typography } from '@mui/material';
 import BookmarkIcon from '@mui/icons-material/Bookmark';import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { useNavigate } from 'react-router-dom';
+import { fetchSaveProfile, fetchUnsaveProfile } from '../../../managers/profileManager.js';
 
-export const AllProfilesCard = ({ profile }) => {
+export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
   const navigate = useNavigate();
+
+  const handleSaveProfile = () => {
+    fetchSaveProfile(profile.id).then(() => getAllUsersWithProfiles());
+  };
+
+  const handleUnsaveProfile = () => {
+    fetchUnsaveProfile(profile.id).then(() => getAllUsersWithProfiles());
+  };
+
   return (
     <Paper elevation={4}>
       <Grid
@@ -73,13 +83,15 @@ export const AllProfilesCard = ({ profile }) => {
           xs={1}
         >
           <div className="allprofile-card-flexstack-icon">
-            <IconButton>
               {profile.profile.savedProfile ? (
+            <IconButton onClick={() => handleUnsaveProfile()}>
                 <BookmarkIcon style={{ fontSize: 40 }} />
-              ) : (
-                <BookmarkBorderIcon style={{ fontSize: 40 }} />
-              )}
             </IconButton>
+              ) : (
+            <IconButton onClick={() => handleSaveProfile()}>
+                <BookmarkBorderIcon style={{ fontSize: 40 }} />
+            </IconButton>
+              )}
           </div>
         </Grid>
       </Grid>

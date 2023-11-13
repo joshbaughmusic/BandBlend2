@@ -12,5 +12,18 @@ export const fetchAllUsersWithProfiles = (page = 1, pageSize = 10, search, filte
     return fetch(
       `${_apiUrl}?page=${page}&pageSize=${pageSize}&search=${search}&filter=${filter}&sort=${sort}`
     ).then((res) => res.json());
-
 }
+
+export const fetchSaveProfile = (id) => {
+  return fetch(`${_apiUrl}/${id}/save`, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"}
+  })
+};
+
+export const fetchUnsaveProfile = (id) => {
+  return fetch(`${_apiUrl}/${id}/unsave`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
+};
