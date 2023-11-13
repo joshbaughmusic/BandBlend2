@@ -89,7 +89,11 @@ public class ProfileController : ControllerBase
 
         foreach (UserProfile up in query)
         {
-            up.Profile.isSaved = savedProfilesByUser.Any(sp => sp.ProfileId == up.Profile.Id);
+            if (savedProfilesByUser.Any(sp => sp.ProfileId == up.Profile.Id))
+            {
+                up.Profile.SavedProfile = savedProfilesByUser.Single(sp => sp.ProfileId == up.Profile.Id );
+            }
+        
         }
 
         // Apply filters based on the provided parameters
@@ -109,6 +113,7 @@ public class ProfileController : ControllerBase
             if (filter == "saved")
             {
                 query = query;
+                // .Where(up => up.Profile.isSaved == true);
             }
             if (filter == "bands")
             {
@@ -285,7 +290,10 @@ public class ProfileController : ControllerBase
 
             List<SavedProfile> savedProfilesByUser = _dbContext.SavedProfiles.Where(sp => sp.UserProfileId == loggedInUser.Id).ToList();
 
-            foundUserProfile.Profile.isSaved = savedProfilesByUser.Any(sp => sp.ProfileId == foundUserProfile.Profile.Id);
+            if (savedProfilesByUser.Any(sp => sp.ProfileId == foundUserProfile.Profile.Id))
+            {
+                foundUserProfile.Profile.SavedProfile = savedProfilesByUser.Single(sp => sp.ProfileId == foundUserProfile.Profile.Id);
+            }
 
             return Ok(foundUserProfile);
         }

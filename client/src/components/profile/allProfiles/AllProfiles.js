@@ -6,6 +6,7 @@ import {
   MenuItem,
   Pagination,
   Select,
+  Typography,
 } from '@mui/material';
 import { fetchAllUsersWithProfiles } from '../../../managers/profileManager.js';
 import './AllProfiles.css';
@@ -62,12 +63,21 @@ export const AllProfiles = () => {
             setSortTerms={setSortTerms}
           />
           <div>
-            {profiles.map((p, index) => (
+            { profiles.length === 0 
+            ?
+            <div className='allprofiles-noresults'>
+                <Typography>No matching results...</Typography>
+            </div>
+            :
+            profiles.map((p, index) => (
               <AllProfilesCard
                 profile={p}
                 key={index}
               />
-            ))}
+            ))
+
+            
+            }
           </div>
         </div>
         <div className="pagination-allprofiles-container">
