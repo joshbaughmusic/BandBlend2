@@ -54,6 +54,7 @@ export const AllProfiles = () => {
             setProfiles={setProfiles}
             setProfileCount={setProfileCount}
             page={page}
+            setPage={setPage}
             amountPerPage={amountPerPage}
             searchTerms={searchTerms}
             setSearchTerms={setSearchTerms}
@@ -63,21 +64,19 @@ export const AllProfiles = () => {
             setSortTerms={setSortTerms}
           />
           <div>
-            { profiles.length === 0 
-            ?
-            <div className='allprofiles-noresults'>
+            {profiles.length === 0 ? (
+              <div className="allprofiles-noresults">
                 <Typography>No matching results...</Typography>
-            </div>
-            :
-            profiles.map((p, index) => (
-              <AllProfilesCard
-                profile={p}
-                key={index}
-              />
-            ))
-
-            
-            }
+              </div>
+            ) : (
+              profiles.map((p, index) => (
+                <AllProfilesCard
+                  profile={p}
+                  key={index}
+                  getAllUsersWithProfiles={getAllUsersWithProfiles}
+                />
+              ))
+            )}
           </div>
         </div>
         <div className="pagination-allprofiles-container">

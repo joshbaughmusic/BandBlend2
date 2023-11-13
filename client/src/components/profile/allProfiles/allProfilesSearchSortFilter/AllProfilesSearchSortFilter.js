@@ -17,6 +17,7 @@ export const AllProfilesSearchSortFilter = ({
   setProfiles,
   setProfileCount,
   page,
+  setPage,
   amountPerPage,
   searchTerms,
   setSearchTerms,
@@ -102,7 +103,12 @@ export const AllProfilesSearchSortFilter = ({
             id="filter"
             value={filterTerms}
             label="Filter"
-            onChange={(e) => setFilterTerms(e.target.value)}
+            onChange={(e) => {
+              setFilterTerms(e.target.value)
+              setPage(1)
+            }
+
+            } 
           >
             <MenuItem value={null}>--</MenuItem>
             <MenuItem value={'saved'}>Saved Only</MenuItem>
