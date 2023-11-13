@@ -8,20 +8,21 @@ import {
   MenuItem,
   Pagination,
   Select,
+  Typography,
 } from '@mui/material';
 
 export const OtherPosts = ({ profile }) => {
-   const [posts, setPosts] = useState();
-   const [postCount, setPostCount] = useState(0);
-   const [page, setPage] = useState(1);
-   const [amountPerPage, setAmountPerPage] = useState(5);
+  const [posts, setPosts] = useState();
+  const [postCount, setPostCount] = useState(0);
+  const [page, setPage] = useState(1);
+  const [amountPerPage, setAmountPerPage] = useState(5);
 
- const getUserPosts = () => {
-   fetchUserPosts(profile.id, page, amountPerPage).then((res) => {
-     setPosts(res.posts);
-     setPostCount(res.totalCount);
-   });
- };
+  const getUserPosts = () => {
+    fetchUserPosts(profile.id, page, amountPerPage).then((res) => {
+      setPosts(res.posts);
+      setPostCount(res.totalCount);
+    });
+  };
 
   const handlePageChange = (event, value) => {
     setPage(value);
@@ -50,6 +51,8 @@ export const OtherPosts = ({ profile }) => {
 
   return (
     <>
+      <Typography variant="h6">Posts</Typography>
+
       <div>
         {posts.map((p, index) => (
           <OtherPostsCard

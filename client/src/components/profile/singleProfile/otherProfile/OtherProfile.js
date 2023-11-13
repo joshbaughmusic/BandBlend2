@@ -206,7 +206,6 @@ export const OtherProfile = () => {
                 elevation={4}
                 className="profile-right-section-item"
               >
-                <Typography variant="h6">Posts</Typography>
                 <OtherPosts profile={profile} />
               </Paper>
             </div>

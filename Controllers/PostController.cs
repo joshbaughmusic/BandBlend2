@@ -29,7 +29,7 @@ public class PostController : ControllerBase
     {
         var query = _dbContext.Posts
         .Where(p => p.UserProfileId == id)
-        .OrderBy(p => p.Date);
+        .OrderByDescending(p => p.Date);
 
         var allPosts = query
                .Skip((page - 1) * pageSize)
@@ -45,6 +45,28 @@ public class PostController : ControllerBase
         };
 
         return Ok(data);
+    }
+
+    [HttpPost("new")]
+    [Authorize]
+    public IActionResult CreateNewPost([FromBody] string postText)
+    {
+        var loggedInUser = _dbContext
+            .UserProfiles
+            .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        Post newPost = new Post
+        {
+            UserProfileId = loggedInUser.Id,
+            Body = postText,
+            Date = DateTime.Now
+        };
+
+        _dbContext.Posts.Add(newPost);
+        _dbContext.SaveChanges();
+
+        return Created($"/api/post/{newPost.Id}", newPost);
+
     }
 
 

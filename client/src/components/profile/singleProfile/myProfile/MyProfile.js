@@ -155,7 +155,7 @@ export const MyProfile = () => {
                 <MyAdditionalPhotos />
               </Paper>
               <Paper elevation={4} className="profile-right-section-item">
-                <Typography variant="h6">Posts</Typography>
+                
                 <MyPosts profile={profile} />
               </Paper>
             </div>
