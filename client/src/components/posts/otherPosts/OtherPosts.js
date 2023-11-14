@@ -3,25 +3,27 @@ import { fetchUserPosts } from '../../../managers/postsManager.js';
 import '../Posts.css';
 import { OtherPostsCard } from './OtherPostsCard.js';
 import {
+  Divider,
   FormControl,
   InputLabel,
   MenuItem,
   Pagination,
   Select,
+  Typography,
 } from '@mui/material';
 
 export const OtherPosts = ({ profile }) => {
-   const [posts, setPosts] = useState();
-   const [postCount, setPostCount] = useState(0);
-   const [page, setPage] = useState(1);
-   const [amountPerPage, setAmountPerPage] = useState(5);
+  const [posts, setPosts] = useState();
+  const [postCount, setPostCount] = useState(0);
+  const [page, setPage] = useState(1);
+  const [amountPerPage, setAmountPerPage] = useState(5);
 
- const getUserPosts = () => {
-   fetchUserPosts(profile.id, page, amountPerPage).then((res) => {
-     setPosts(res.posts);
-     setPostCount(res.totalCount);
-   });
- };
+  const getUserPosts = () => {
+    fetchUserPosts(profile.id, page, amountPerPage).then((res) => {
+      setPosts(res.posts);
+      setPostCount(res.totalCount);
+    });
+  };
 
   const handlePageChange = (event, value) => {
     setPage(value);
@@ -43,6 +45,10 @@ export const OtherPosts = ({ profile }) => {
   if (posts.length === 0) {
     return (
       <>
+        <div className="divider-header-container">
+          <Typography variant="h6">Posts</Typography>
+          <Divider />
+        </div>
         <div>No Posts yet!</div>
       </>
     );
@@ -50,6 +56,12 @@ export const OtherPosts = ({ profile }) => {
 
   return (
     <>
+    <div className="divider-header-container">
+
+      <Typography variant="h6">Posts</Typography>
+      <Divider />
+    </div>
+
       <div>
         {posts.map((p, index) => (
           <OtherPostsCard

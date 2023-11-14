@@ -3,6 +3,7 @@ import {
   Button,
   Chip,
   Container,
+  Divider,
   Grid,
   Paper,
   Typography,
@@ -18,7 +19,6 @@ import { Link } from 'react-router-dom';
 import { MyPosts } from '../../../posts/myPosts/MyPosts.js';
 import { MyAdditionalPhotosItem } from '../../../additonalPhotos/myAdditionalPhotos/MyAdditionalPhotosItem.js';
 import { MyAdditionalPhotos } from '../../../additonalPhotos/myAdditionalPhotos/MyAdditionalPhotos.js';
-
 
 export const MyProfile = () => {
   const [profile, setProfile] = useState();
@@ -44,7 +44,10 @@ export const MyProfile = () => {
             xs={12}
             md={3}
           >
-            <Paper elevation={4} className="profile-left-sidebar">
+            <Paper
+              elevation={4}
+              className="profile-left-sidebar"
+            >
               <Avatar
                 className="single-profile-pic"
                 src={profile.profile.profilePicture}
@@ -146,16 +149,30 @@ export const MyProfile = () => {
             md={9}
           >
             <div className="profile-right-section">
-              <Paper elevation={4} className="profile-right-section-item">
-                <Typography variant="h6">About</Typography>
+              <Paper
+                elevation={4}
+                className="profile-right-section-item"
+              >
+                <div className="divider-header-container">
+                  <Typography variant="h6">About</Typography>
+                  <Divider />
+                </div>
                 <Typography>{profile.profile.about}</Typography>
               </Paper>
-              <Paper elevation={4} className="profile-right-section-item">
-                <Typography variant="h6">Additional Photos</Typography>
+              <Paper
+                elevation={4}
+                className="profile-right-section-item"
+              >
+                <div className="divider-header-container">
+                  <Typography variant="h6">Additional Photos</Typography>
+                  <Divider />
+                </div>
                 <MyAdditionalPhotos />
               </Paper>
-              <Paper elevation={4} className="profile-right-section-item">
-                <Typography variant="h6">Posts</Typography>
+              <Paper
+                elevation={4}
+                className="profile-right-section-item"
+              >
                 <MyPosts profile={profile} />
               </Paper>
             </div>
