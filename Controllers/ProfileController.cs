@@ -349,6 +349,43 @@ public class ProfileController : ControllerBase
 
         return NotFound();
 
+
+    }
+    [HttpPut("{id}/primaryinfo")]
+    [Authorize]
+    public IActionResult EditPrimaryInfo(int id, Profile updatedProfile)
+    {
+
+        var loggedInUser = _dbContext
+                 .UserProfiles
+                 .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        Profile foundProfile = _dbContext.Profiles
+        .SingleOrDefault(p => p.UserProfileId == id);
+
+        if (foundProfile != null)
+        {
+            if (foundProfile.UserProfileId != loggedInUser.Id)
+            {
+                return Unauthorized();
+            }
+
+            foundProfile.City = updatedProfile.City;
+            foundProfile.StateId = updatedProfile.StateId;
+            foundProfile.PrimaryGenreId = updatedProfile.PrimaryGenreId;
+            foundProfile.PrimaryInstrumentId = updatedProfile.PrimaryInstrumentId;
+            foundProfile.SpotifyLink = updatedProfile.SpotifyLink;
+            foundProfile.FacebookLink = updatedProfile.FacebookLink;
+            foundProfile.InstagramLink = updatedProfile.InstagramLink;
+            foundProfile.TikTokLink = updatedProfile.TikTokLink;
+
+            _dbContext.SaveChanges();
+            
+            return NoContent();
+        }
+
+        return NotFound();
+
     }
 
 

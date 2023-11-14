@@ -27,3 +27,11 @@ export const fetchUnsaveProfile = (id) => {
     headers: { 'Content-Type': 'application/json' },
   });
 };
+
+export const fetchEditPrimaryInfo = (id, profile) => {
+  return fetch(`${_apiUrl}/${id}/primaryinfo`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(profile)
+  });
+};

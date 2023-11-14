@@ -32,6 +32,7 @@ const style = {
 
 export const EditPost = ({ post, getUserPosts }) => {
   const [postBodyToEdit, setPostBodyToEdit] = useState(post.body);
+  const [error, setError] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
@@ -47,25 +48,34 @@ export const EditPost = ({ post, getUserPosts }) => {
     }
   };
   const handleSubmit = () => {
-    fetchEditPost(post.id, postBodyToEdit).then((res) => {
-      if (res.status === 204) {
-        getUserPosts();
-        setSuccessAlert(true);
-        setSnackBarMessage('Post successfully edited!');
-        handleConfirmClose();
-        handleSnackBarOpen(true);
-      } else {
-        setSuccessAlert(false);
-        setSnackBarMessage('Failed to edit post.');
-        handleSnackBarOpen(true);
-      }
-    });
+    setError(false);
+    if (postBodyToEdit.length > 0) {
+      fetchEditPost(post.id, postBodyToEdit).then((res) => {
+        if (res.status === 204) {
+          getUserPosts();
+          setSuccessAlert(true);
+          setSnackBarMessage('Post successfully edited!');
+          handleConfirmClose();
+          handleSnackBarOpen(true);
+        } else {
+          setSuccessAlert(false);
+          setSnackBarMessage('Failed to edit post.');
+          handleSnackBarOpen(true);
+        }
+      });
+    } else {
+      setError(true);
+      setSuccessAlert(false);
+      setSnackBarMessage('Post must not be empty.');
+      handleSnackBarOpen(true);
+    }
   };
 
   const handleConfirmClose = () => {
     setConfirmOpen(false);
     setOpenModal(false);
     setPostBodyToEdit(post.body);
+    setError(false);
   };
 
   return (
@@ -81,19 +91,21 @@ export const EditPost = ({ post, getUserPosts }) => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <div className="modal-header">
-              <Typography
-                id="modal-modal-title"
-                variant="h6"
-                component="h2"
-              >
-                Edit Post
-              </Typography>
-              <IconButton onClick={handleModalClose}>
-                <CloseIcon />
-              </IconButton>
+            <div className="divider-header-container">
+              <div className="modal-header">
+                <Typography
+                  id="modal-modal-title"
+                  variant="h6"
+                  component="h2"
+                >
+                  Edit Post
+                </Typography>
+                <IconButton onClick={handleModalClose}>
+                  <CloseIcon />
+                </IconButton>
+              </div>
+              <Divider />
             </div>
-            <Divider />
             <TextField
               className="post-text-field"
               multiline
@@ -101,6 +113,7 @@ export const EditPost = ({ post, getUserPosts }) => {
               fullWidth
               value={postBodyToEdit}
               onChange={(e) => setPostBodyToEdit(e.target.value)}
+              error={error}
             />
             <div className="post-submit-button-container">
               <Button
@@ -119,17 +132,15 @@ export const EditPost = ({ post, getUserPosts }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {'Confirm Post Deletion'}
-        </DialogTitle>
+        <DialogTitle id="alert-dialog-title">{'Discard Changes?'}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Are you sure you want to discard your changes?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
+          <Button onClick={() => handleConfirmClose()}>Discard Changes</Button>
           <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
-          <Button onClick={() => handleConfirmClose()}>Confirm</Button>
         </DialogActions>
       </Dialog>
     </>

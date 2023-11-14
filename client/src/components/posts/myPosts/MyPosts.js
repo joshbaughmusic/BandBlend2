@@ -37,6 +37,7 @@ export const MyPosts = ({ profile }) => {
   const [openAlert, setOpenAlert] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
+  const [blankPostError, setBlankPostError] = useState(false);
 
   const getUserPosts = () => {
     fetchUserPosts(profile.id, page, amountPerPage).then((res) => {
@@ -67,6 +68,7 @@ export const MyPosts = ({ profile }) => {
       setOpenAlert(true);
     } else {
       setExpanded(false);
+      setBlankPostError(false);
     }
   };
 
@@ -76,26 +78,35 @@ export const MyPosts = ({ profile }) => {
 
   const handleConfirmCloseNewPost = () => {
     setExpanded(false);
+    setBlankPostError(false);
     handleAlert();
     setNewPost('');
   };
 
   const handleCreatePost = () => {
-    fetchCreateNewPost(newPost).then((res) => {
-      console.log(res);
-      if (res.id != undefined) {
-        setSuccessAlert(true);
-        setSnackBarMessage('Post created successfully!');
-        getUserPosts();
-        setExpanded(false);
-        setNewPost('');
-        handleSnackBarOpen();
-      } else {
-        setSuccessAlert(false);
-        setSnackBarMessage('Failed to create post.!');
-        handleSnackBarOpen();
-      }
-    });
+    setBlankPostError(false);
+    if (newPost.length > 0) {
+      fetchCreateNewPost(newPost).then((res) => {
+        console.log(res);
+        if (res.id != undefined) {
+          setSuccessAlert(true);
+          setSnackBarMessage('Post created successfully!');
+          getUserPosts();
+          setExpanded(false);
+          setNewPost('');
+          handleSnackBarOpen();
+        } else {
+          setSuccessAlert(false);
+          setSnackBarMessage('Failed to create post.');
+          handleSnackBarOpen();
+        }
+      });
+    } else {
+      setBlankPostError(true);
+      setSuccessAlert(false);
+      setSnackBarMessage('Post cannot be empty.');
+      handleSnackBarOpen();
+    }
   };
 
   if (!posts) {
@@ -129,7 +140,7 @@ export const MyPosts = ({ profile }) => {
             </Button>
           </DialogActions>
         </Dialog>
-        <div className="myposts-header">
+        <div className="profile-section-header">
           <Typography variant="h6">No Posts Yet</Typography>
           {expanded ? (
             <IconButton onClick={handleCloseNewPost}>
@@ -155,6 +166,7 @@ export const MyPosts = ({ profile }) => {
               fullWidth
               value={newPost}
               onChange={(e) => setNewPost(e.target.value)}
+              error={blankPostError}
             />
             <div className="post-submit-button-container">
               <Button
@@ -187,17 +199,17 @@ export const MyPosts = ({ profile }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleAlert}>Cancel</Button>
           <Button
             onClick={handleConfirmCloseNewPost}
             autoFocus
           >
-            Confirm
+            Discard Post
           </Button>
+          <Button onClick={handleAlert}>Cancel</Button>
         </DialogActions>
       </Dialog>
       <div className="divider-header-container">
-        <div className="myposts-header">
+        <div className="profile-section-header">
           <Typography variant="h6">Posts</Typography>
           {expanded ? (
             <IconButton onClick={handleCloseNewPost}>
@@ -226,6 +238,7 @@ export const MyPosts = ({ profile }) => {
             fullWidth
             value={newPost}
             onChange={(e) => setNewPost(e.target.value)}
+            error={blankPostError}
           />
           <div className="post-submit-button-container">
             <Button

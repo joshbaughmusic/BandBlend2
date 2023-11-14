@@ -5,6 +5,7 @@ import {
   Container,
   Divider,
   Grid,
+  IconButton,
   Paper,
   Typography,
 } from '@mui/material';
@@ -17,8 +18,9 @@ import InstagramLogo from '../../../../images/SocialMediaLogos/instagram.png';
 import TikTokLogo from '../../../../images/SocialMediaLogos/spotify.png';
 import { Link } from 'react-router-dom';
 import { MyPosts } from '../../../posts/myPosts/MyPosts.js';
-import { MyAdditionalPhotosItem } from '../../../additonalPhotos/myAdditionalPhotos/MyAdditionalPhotosItem.js';
+import EditIcon from '@mui/icons-material/Edit';
 import { MyAdditionalPhotos } from '../../../additonalPhotos/myAdditionalPhotos/MyAdditionalPhotos.js';
+import { EditPrimaryInfo } from './EditPrimaryInfo.js';
 
 export const MyProfile = () => {
   const [profile, setProfile] = useState();
@@ -115,7 +117,10 @@ export const MyProfile = () => {
               <div className="chip-section">
                 <Typography>Primary Genre</Typography>
                 <Chip label={profile.profile.primaryGenre.name} />
-                <Button variant="contained">Edit Primary Info</Button>
+                <EditPrimaryInfo
+                  profile={profile}
+                  getCurrentUserWithProfile={getCurrentUserWithProfile}
+                />
               </div>
               <div className="chip-section">
                 <Typography>Tags</Typography>
@@ -154,7 +159,12 @@ export const MyProfile = () => {
                 className="profile-right-section-item"
               >
                 <div className="divider-header-container">
-                  <Typography variant="h6">About</Typography>
+                  <div className="profile-section-header">
+                    <Typography variant="h6">About</Typography>
+                    <IconButton>
+                      <EditIcon />
+                    </IconButton>
+                  </div>
                   <Divider />
                 </div>
                 <Typography>{profile.profile.about}</Typography>
