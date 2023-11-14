@@ -13,10 +13,14 @@ import {
   IconButton,
   Paper,
   TextField,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { fetchCurrentUserWithProfile, fetchEditAbout } from '../../../../managers/profileManager.js';
+import {
+  fetchCurrentUserWithProfile,
+  fetchEditAbout,
+} from '../../../../managers/profileManager.js';
 import '../SingleProfile.css';
 import SpotifyLogo from '../../../../images/SocialMediaLogos/spotify.png';
 import FacebookLogo from '../../../../images/SocialMediaLogos/facebook.png';
@@ -35,10 +39,9 @@ export const MyProfile = () => {
   const [updatedAbout, setUpdatedAbout] = useState();
   const [editAboutState, setEditAboutState] = useState(false);
   const [error, setError] = useState(false);
-    const [confirmOpen, setConfirmOpen] = useState(false);
-    const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
-      useSnackBar();
-
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
+    useSnackBar();
 
   const getCurrentUserWithProfile = () => {
     fetchCurrentUserWithProfile().then((res) => {
@@ -53,43 +56,42 @@ export const MyProfile = () => {
 
   const handleCloseAboutEdit = () => {
     if (updatedAbout !== profile.profile.about) {
-      setConfirmOpen(true)
+      setConfirmOpen(true);
     } else {
-      setEditAboutState(false)
+      setEditAboutState(false);
     }
-  }
+  };
 
   const handleConfirmClose = () => {
     setConfirmOpen(false);
     setError(false);
-    setEditAboutState(false)
-    setUpdatedAbout(profile.profile.about)
+    setEditAboutState(false);
+    setUpdatedAbout(profile.profile.about);
   };
 
- const handleSubmit = () => {
-   setError(false);
-   if (updatedAbout.length > 0) {
-     fetchEditAbout(profile.profile.id, updatedAbout).then((res) => {
-       if (res.status === 204) {
-         getCurrentUserWithProfile();
-         setSuccessAlert(true);
-         setSnackBarMessage('About successfully edited!');
-         handleConfirmClose();
-         handleSnackBarOpen(true);
-       } else {
-         setSuccessAlert(false);
-         setSnackBarMessage('Failed to edit about.');
-         handleSnackBarOpen(true);
-       }
-     });
-   } else {
-     setError(true);
-     setSuccessAlert(false);
-     setSnackBarMessage('About must not be empty.');
-     handleSnackBarOpen(true);
-   }
- };
-
+  const handleSubmit = () => {
+    setError(false);
+    if (updatedAbout.length > 0) {
+      fetchEditAbout(profile.profile.id, updatedAbout).then((res) => {
+        if (res.status === 204) {
+          getCurrentUserWithProfile();
+          setSuccessAlert(true);
+          setSnackBarMessage('About successfully edited!');
+          handleConfirmClose();
+          handleSnackBarOpen(true);
+        } else {
+          setSuccessAlert(false);
+          setSnackBarMessage('Failed to edit about.');
+          handleSnackBarOpen(true);
+        }
+      });
+    } else {
+      setError(true);
+      setSuccessAlert(false);
+      setSnackBarMessage('About must not be empty.');
+      handleSnackBarOpen(true);
+    }
+  };
 
   if (!profile) {
     return null;
@@ -220,17 +222,20 @@ export const MyProfile = () => {
                   <div className="profile-section-header">
                     <Typography variant="h6">About</Typography>
                     {editAboutState ? (
-                      <IconButton
-                        onClick={() => handleCloseAboutEdit()}
-                      >
+                      <IconButton onClick={() => handleCloseAboutEdit()}>
                         <CloseIcon />
                       </IconButton>
                     ) : (
-                      <IconButton
-                        onClick={() => setEditAboutState(!editAboutState)}
+                      <Tooltip
+                        title="Edit"
+                        placement="right-start"
                       >
-                        <EditIcon />
-                      </IconButton>
+                        <IconButton
+                          onClick={() => setEditAboutState(!editAboutState)}
+                        >
+                          <EditIcon />
+                        </IconButton>
+                      </Tooltip>
                     )}
                   </div>
                   <Divider />

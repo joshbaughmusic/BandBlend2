@@ -21,6 +21,7 @@ import {
   Pagination,
   Select,
   TextField,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import PostAddIcon from '@mui/icons-material/PostAdd';
@@ -147,9 +148,14 @@ export const MyPosts = ({ profile }) => {
               <CloseIcon />
             </IconButton>
           ) : (
-            <IconButton onClick={handleOpenNewPost}>
-              <PostAddIcon />
-            </IconButton>
+            <Tooltip
+              title="New Post"
+              placement="right-start"
+            >
+              <IconButton onClick={handleOpenNewPost}>
+                <PostAddIcon />
+              </IconButton>
+            </Tooltip>
           )}
         </div>
         <div>
@@ -216,9 +222,14 @@ export const MyPosts = ({ profile }) => {
               <CloseIcon />
             </IconButton>
           ) : (
-            <IconButton onClick={handleOpenNewPost}>
-              <PostAddIcon />
-            </IconButton>
+            <Tooltip
+              title="New Post"
+              placement="right-start"
+            >
+              <IconButton onClick={handleOpenNewPost}>
+                <PostAddIcon />
+              </IconButton>
+            </Tooltip>
           )}
         </div>
         <Divider />

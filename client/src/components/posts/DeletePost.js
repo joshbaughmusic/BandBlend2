@@ -9,6 +9,7 @@ import {
   Button,
   Snackbar,
   Alert,
+  Tooltip,
 } from '@mui/material';
 import { useState } from 'react';
 import { fetchDeletePost } from '../../managers/postsManager.js';
@@ -48,18 +49,21 @@ export const DeletePost = ({ postId, getUserPosts }) => {
 
   return (
     <>
-      <IconButton onClick={handleDeleteClick}>
-        <DeleteIcon />
-      </IconButton>
+      <Tooltip
+        title="Delete"
+        placement="right-start"
+      >
+        <IconButton onClick={handleDeleteClick}>
+          <DeleteIcon />
+        </IconButton>
+      </Tooltip>
       <Dialog
         open={confirmOpen}
         onClose={handleConfirmClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {'Confirm Deletion'}
-        </DialogTitle>
+        <DialogTitle id="alert-dialog-title">{'Confirm Deletion'}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Are you sure you want to delete this post?

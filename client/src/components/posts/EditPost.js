@@ -11,6 +11,7 @@ import {
   Modal,
   Divider,
   TextField,
+  Tooltip,
 } from '@mui/material';
 import { useState } from 'react';
 import { useSnackBar } from '../context/SnackBarContext.js';
@@ -80,9 +81,14 @@ export const EditPost = ({ post, getUserPosts }) => {
 
   return (
     <>
-      <IconButton onClick={handleModalOpen}>
-        <EditIcon />
-      </IconButton>
+      <Tooltip
+        title="Edit"
+        placement="right-start"
+      >
+        <IconButton onClick={handleModalOpen}>
+          <EditIcon />
+        </IconButton>
+      </Tooltip>
       <div>
         <Modal
           open={openModal}
