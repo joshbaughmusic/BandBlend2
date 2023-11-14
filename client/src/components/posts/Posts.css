@@ -21,12 +21,6 @@
   align-items: center;
 }
 
-.myposts-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .post-submit-button-container {
   display: flex;
   justify-content: end;

@@ -40,3 +40,9 @@
   border-radius: 4px;
   padding: 2em;
 }
+
+.profile-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
