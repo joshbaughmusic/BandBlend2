@@ -58,7 +58,7 @@ export const DeletePost = ({ postId, getUserPosts }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {'Confirm Post Deletion'}
+          {'Confirm Deletion'}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
@@ -66,8 +66,8 @@ export const DeletePost = ({ postId, getUserPosts }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
+          <Button onClick={() => handleConfirmClick()}>Delete</Button>
           <Button onClick={handleConfirmClose}>Cancel</Button>
-          <Button onClick={() => handleConfirmClick()}>Confirm</Button>
         </DialogActions>
       </Dialog>
     </>

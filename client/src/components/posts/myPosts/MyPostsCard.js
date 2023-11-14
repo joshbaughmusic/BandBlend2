@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { DeletePost } from '../DeletePost.js';
 import { EditPost } from '../EditPost.js';
+import { dateFormatter } from '../../../utilities/dateFormatter.js';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -44,7 +45,7 @@ export const MyPostsCard = ({ post, profile, getUserPosts }) => {
               />
               <Typography>{profile.name}</Typography>
             </div>
-            <Typography>{post.date}</Typography>
+            <Typography>{dateFormatter(post.date)}</Typography>
           </div>
           <div>
             <Typography>{post.body}</Typography>

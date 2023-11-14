@@ -12,6 +12,7 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
 import { styled } from '@mui/material/styles';
+import { dateFormatter } from '../../../utilities/dateFormatter.js';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -44,7 +45,7 @@ export const OtherPostsCard = ({ post, profile }) => {
               />
               <Typography>{profile.name}</Typography>
             </div>
-            <Typography>{post.date}</Typography>
+            <Typography>{dateFormatter(post.date)}</Typography>
           </div>
           <div>
             <Typography>{post.body}</Typography>

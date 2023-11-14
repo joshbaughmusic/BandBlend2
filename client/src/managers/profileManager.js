@@ -35,3 +35,11 @@ export const fetchEditPrimaryInfo = (id, profile) => {
     body: JSON.stringify(profile)
   });
 };
+
+export const fetchEditAbout = (id, updatedAbout) => {
+  return fetch(`${_apiUrl}/${id}/about`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(updatedAbout),
+  });
+};
