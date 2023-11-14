@@ -97,5 +97,27 @@ public class PostController : ControllerBase
         return NotFound();
     }
 
-
+    [HttpPut("edit/{id}")]
+    [Authorize]
+    public IActionResult EditPost(int id, [FromBody] string editedPostBody)
+    {
+        Post foundPost = _dbContext.Posts.SingleOrDefault(p => p.Id == id);
+        if (foundPost != null)
+        {
+            var loggedInUser = _dbContext
+                .UserProfiles
+                .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            if (loggedInUser.Id == foundPost.UserProfileId)
+            {
+                foundPost.Body = editedPostBody;
+                _dbContext.SaveChanges();
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+        return NotFound();
+    }
 }

@@ -6,13 +6,12 @@ import {
   IconButton,
   Typography,
 } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { DeletePost } from '../DeletePost.js';
-
+import { EditPost } from '../EditPost.js';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -58,10 +57,10 @@ export const MyPostsCard = ({ post, profile, getUserPosts }) => {
                 postId={post.id}
                 getUserPosts={getUserPosts}
               />
-
-              <IconButton>
-                <EditIcon />
-              </IconButton>
+              <EditPost
+                post={post}
+                getUserPosts={getUserPosts}
+              />
             </div>
             <div className="post-card-footer-right">
               <Typography>View Comments</Typography>

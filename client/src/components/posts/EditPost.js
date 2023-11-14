@@ -1,3 +1,137 @@
-export const EditPost = () => {
-    return <></>
-}
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton,
+  Button,
+  Box,
+  Typography,
+  Modal,
+  Divider,
+  TextField,
+} from '@mui/material';
+import { useState } from 'react';
+import { useSnackBar } from '../context/SnackBarContext.js';
+import CloseIcon from '@mui/icons-material/Close';
+import EditIcon from '@mui/icons-material/Edit';
+import { fetchEditPost } from '../../managers/postsManager.js';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+export const EditPost = ({ post, getUserPosts }) => {
+  const [postBodyToEdit, setPostBodyToEdit] = useState(post.body);
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
+    useSnackBar();
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleModalOpen = () => setOpenModal(true);
+
+  const handleModalClose = () => {
+    if (post.body !== postBodyToEdit) {
+      setConfirmOpen(true);
+    } else {
+      setOpenModal(false);
+    }
+  };
+  const handleSubmit = () => {
+    fetchEditPost(post.id, postBodyToEdit).then((res) => {
+      if (res.status === 204) {
+        getUserPosts();
+        setSuccessAlert(true);
+        setSnackBarMessage('Post successfully edited!');
+        handleConfirmClose();
+        handleSnackBarOpen(true);
+      } else {
+        setSuccessAlert(false);
+        setSnackBarMessage('Failed to edit post.');
+        handleSnackBarOpen(true);
+      }
+    });
+  };
+
+  const handleConfirmClose = () => {
+    setConfirmOpen(false);
+    setOpenModal(false);
+    setPostBodyToEdit(post.body);
+  };
+
+  return (
+    <>
+      <IconButton onClick={handleModalOpen}>
+        <EditIcon />
+      </IconButton>
+      <div>
+        <Modal
+          open={openModal}
+          onClose={handleModalClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <div className="modal-header">
+              <Typography
+                id="modal-modal-title"
+                variant="h6"
+                component="h2"
+              >
+                Edit Post
+              </Typography>
+              <IconButton onClick={handleModalClose}>
+                <CloseIcon />
+              </IconButton>
+            </div>
+            <Divider />
+            <TextField
+              className="post-text-field"
+              multiline
+              minRows={5}
+              fullWidth
+              value={postBodyToEdit}
+              onChange={(e) => setPostBodyToEdit(e.target.value)}
+            />
+            <div className="post-submit-button-container">
+              <Button
+                variant="contained"
+                onClick={handleSubmit}
+              >
+                Submit
+              </Button>
+            </div>
+          </Box>
+        </Modal>
+      </div>
+      <Dialog
+        open={confirmOpen}
+        onClose={handleConfirmClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {'Confirm Post Deletion'}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to discard your changes?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+          <Button onClick={() => handleConfirmClose()}>Confirm</Button>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+};

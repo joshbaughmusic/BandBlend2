@@ -4,6 +4,7 @@ import { tryGetLoggedInUser } from './managers/authManager';
 import ApplicationViews from './components/ApplicationViews';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { NavBar } from './components/nav/NavBar.js';
+import { SnackBarProvider } from './components/context/SnackBarContext.js';
 
 // const theme = createTheme({
 //   palette: {
@@ -24,13 +25,11 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState();
 
   useEffect(() => {
-    // user will be null if not authenticated
     tryGetLoggedInUser().then((user) => {
       setLoggedInUser(user);
     });
   }, []);
 
-  // wait to get a definite logged-in state before rendering
   if (loggedInUser === undefined) {
     return null;
   }
@@ -38,15 +37,16 @@ function App() {
   return (
     <>
       {/* <ThemeProvider theme={theme}> */}
-
+      <SnackBarProvider>
         <NavBar
           loggedInUser={loggedInUser}
           setLoggedInUser={setLoggedInUser}
-          />
+        />
         <ApplicationViews
           loggedInUser={loggedInUser}
           setLoggedInUser={setLoggedInUser}
-          />
+        />
+      </SnackBarProvider>
       {/* </ThemeProvider> */}
     </>
   );

@@ -4,6 +4,7 @@ import {
   ButtonGroup,
   Chip,
   Container,
+  Divider,
   Grid,
   Paper,
   Typography,
@@ -192,14 +193,20 @@ export const OtherProfile = () => {
                 elevation={4}
                 className="profile-right-section-item"
               >
-                <Typography variant="h6">About</Typography>
+                <div className="divider-header-container">
+                  <Typography variant="h6">About</Typography>
+                  <Divider />
+                </div>
                 <Typography>{profile.profile.about}</Typography>
               </Paper>
               <Paper
                 elevation={4}
                 className="profile-right-section-item"
               >
-                <Typography variant="h6">Additional Photos</Typography>
+                <div className="divider-header-container">
+                  <Typography variant="h6">Additional Photos</Typography>
+                  <Divider />
+                </div>
                 <OtherAdditionalPhotos profileId={profile.id} />
               </Paper>
               <Paper

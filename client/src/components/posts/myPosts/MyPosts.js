@@ -6,7 +6,6 @@ import {
 import { MyPostsCard } from './MyPostsCard.js';
 import '../Posts.css';
 import {
-  Alert,
   Button,
   Collapse,
   Dialog,
@@ -14,18 +13,19 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Divider,
   FormControl,
   IconButton,
   InputLabel,
   MenuItem,
   Pagination,
   Select,
-  Snackbar,
   TextField,
   Typography,
 } from '@mui/material';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import CloseIcon from '@mui/icons-material/Close';
+import { useSnackBar } from '../../context/SnackBarContext.js';
 
 export const MyPosts = ({ profile }) => {
   const [posts, setPosts] = useState();
@@ -35,8 +35,8 @@ export const MyPosts = ({ profile }) => {
   const [expanded, setExpanded] = useState(false);
   const [newPost, setNewPost] = useState('');
   const [openAlert, setOpenAlert] = useState(false);
-  const [successAlert, setSuccessAlert] = useState(false);
-  const [snackBarOpen, setSnackBarOpen] = useState(false);
+  const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
+    useSnackBar();
 
   const getUserPosts = () => {
     fetchUserPosts(profile.id, page, amountPerPage).then((res) => {
@@ -48,18 +48,6 @@ export const MyPosts = ({ profile }) => {
   useEffect(() => {
     getUserPosts();
   }, [page, amountPerPage]);
-
-  const handleSnackBarOpen = () => {
-    setSnackBarOpen(true);
-  };
-
-  const handleSnackBarClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setSnackBarOpen(false);
-  };
 
   const handlePageChange = (event, value) => {
     setPage(value);
@@ -97,12 +85,14 @@ export const MyPosts = ({ profile }) => {
       console.log(res);
       if (res.id != undefined) {
         setSuccessAlert(true);
+        setSnackBarMessage('Post created successfully!');
         getUserPosts();
         setExpanded(false);
         setNewPost('');
         handleSnackBarOpen();
       } else {
         setSuccessAlert(false);
+        setSnackBarMessage('Failed to create post.!');
         handleSnackBarOpen();
       }
     });
@@ -151,36 +141,6 @@ export const MyPosts = ({ profile }) => {
             </IconButton>
           )}
         </div>
-        {successAlert ? (
-          <Snackbar
-            open={snackBarOpen}
-            autoHideDuration={6000}
-            onClose={handleSnackBarClose}
-          >
-            <Alert
-              onClose={handleSnackBarClose}
-              severity="success"
-              sx={{ width: '100%' }}
-            >
-              Post created successfully!
-            </Alert>
-          </Snackbar>
-        ) : (
-          <Snackbar
-            open={snackBarOpen}
-            autoHideDuration={6000}
-            onClose={handleSnackBarClose}
-          >
-            <Alert
-              onClose={handleSnackBarClose}
-              severity="error"
-              sx={{ width: '100%' }}
-            >
-              Failed to create post.
-            </Alert>
-          </Snackbar>
-        )}
-
         <div>
           <Collapse
             in={expanded}
@@ -236,47 +196,21 @@ export const MyPosts = ({ profile }) => {
           </Button>
         </DialogActions>
       </Dialog>
-      <div className="myposts-header">
-        <Typography variant="h6">Posts</Typography>
-        {expanded ? (
-          <IconButton onClick={handleCloseNewPost}>
-            <CloseIcon />
-          </IconButton>
-        ) : (
-          <IconButton onClick={handleOpenNewPost}>
-            <PostAddIcon />
-          </IconButton>
-        )}
+      <div className="divider-header-container">
+        <div className="myposts-header">
+          <Typography variant="h6">Posts</Typography>
+          {expanded ? (
+            <IconButton onClick={handleCloseNewPost}>
+              <CloseIcon />
+            </IconButton>
+          ) : (
+            <IconButton onClick={handleOpenNewPost}>
+              <PostAddIcon />
+            </IconButton>
+          )}
+        </div>
+        <Divider />
       </div>
-      {successAlert ? (
-        <Snackbar
-          open={snackBarOpen}
-          autoHideDuration={6000}
-          onClose={handleSnackBarClose}
-        >
-          <Alert
-            onClose={handleSnackBarClose}
-            severity="success"
-            sx={{ width: '100%' }}
-          >
-            Post created successfully!
-          </Alert>
-        </Snackbar>
-      ) : (
-        <Snackbar
-          open={snackBarOpen}
-          autoHideDuration={6000}
-          onClose={handleSnackBarClose}
-        >
-          <Alert
-            onClose={handleSnackBarClose}
-            severity="error"
-            sx={{ width: '100%' }}
-          >
-            Failed to create post.
-          </Alert>
-        </Snackbar>
-      )}
 
       <div>
         <Collapse
@@ -314,7 +248,6 @@ export const MyPosts = ({ profile }) => {
           />
         ))}
       </div>
-      {/* {postCount <= 5 ? ( */}
       <div className="pagination-allprofiles-container">
         <Pagination
           count={Math.ceil(postCount / amountPerPage)}
@@ -339,9 +272,6 @@ export const MyPosts = ({ profile }) => {
           </Select>
         </FormControl>
       </div>
-      {/* ) : (
-        ''
-      )} */}
     </>
   );
 };

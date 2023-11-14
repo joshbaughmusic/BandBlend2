@@ -32,3 +32,13 @@
   justify-content: end;
   margin: 10px 0px;
 }
+
+.divider-header-container {
+  margin-bottom: 20px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -12,11 +12,15 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { fetchDeletePost } from '../../managers/postsManager.js';
+import { useSnackBar } from '../context/SnackBarContext.js';
 
 export const DeletePost = ({ postId, getUserPosts }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const [successAlert, setSuccessAlert] = useState(false);
-  const [snackBarOpen, setSnackBarOpen] = useState(false);
+  const {
+    handleSnackBarOpen,
+    setSnackBarMessage,
+    setSuccessAlert,
+  } = useSnackBar();
 
   const handleDeleteClick = () => {
     setConfirmOpen(true);
@@ -27,10 +31,12 @@ export const DeletePost = ({ postId, getUserPosts }) => {
       if (res.status === 204) {
         getUserPosts();
         handleConfirmClose();
-        setSuccessAlert(true)
+        setSuccessAlert(true);
+        setSnackBarMessage('Post successfully deleted!');
         handleSnackBarOpen(true);
       } else {
         setSuccessAlert(false);
+        setSnackBarMessage('Failed to delete post.');
         handleSnackBarOpen(true);
       }
     });
@@ -40,52 +46,11 @@ export const DeletePost = ({ postId, getUserPosts }) => {
     setConfirmOpen(false);
   };
 
-  const handleSnackBarOpen = () => {
-    setSnackBarOpen(true);
-  };
-
-  const handleSnackBarClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setSnackBarOpen(false);
-  };
-
   return (
     <>
       <IconButton onClick={handleDeleteClick}>
         <DeleteIcon />
       </IconButton>
-      {successAlert ? (
-        <Snackbar
-          open={snackBarOpen}
-          autoHideDuration={6000}
-          onClose={handleSnackBarClose}
-        >
-          <Alert
-            onClose={handleSnackBarClose}
-            severity="success"
-            sx={{ width: '100%' }}
-          >
-            Post deleted successfully!
-          </Alert>
-        </Snackbar>
-      ) : (
-        <Snackbar
-          open={snackBarOpen}
-          autoHideDuration={6000}
-          onClose={handleSnackBarClose}
-        >
-          <Alert
-            onClose={handleSnackBarClose}
-            severity="error"
-            sx={{ width: '100%' }}
-          >
-            Failed to delete post.
-          </Alert>
-        </Snackbar>
-      )}
       <Dialog
         open={confirmOpen}
         onClose={handleConfirmClose}

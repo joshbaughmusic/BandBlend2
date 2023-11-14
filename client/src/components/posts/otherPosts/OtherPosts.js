@@ -3,6 +3,7 @@ import { fetchUserPosts } from '../../../managers/postsManager.js';
 import '../Posts.css';
 import { OtherPostsCard } from './OtherPostsCard.js';
 import {
+  Divider,
   FormControl,
   InputLabel,
   MenuItem,
@@ -44,6 +45,10 @@ export const OtherPosts = ({ profile }) => {
   if (posts.length === 0) {
     return (
       <>
+        <div className="divider-header-container">
+          <Typography variant="h6">Posts</Typography>
+          <Divider />
+        </div>
         <div>No Posts yet!</div>
       </>
     );
@@ -51,7 +56,11 @@ export const OtherPosts = ({ profile }) => {
 
   return (
     <>
+    <div className="divider-header-container">
+
       <Typography variant="h6">Posts</Typography>
+      <Divider />
+    </div>
 
       <div>
         {posts.map((p, index) => (

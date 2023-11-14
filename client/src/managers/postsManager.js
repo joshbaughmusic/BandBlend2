@@ -19,3 +19,11 @@ export const fetchDeletePost = (id) => {
     method: 'DELETE',
   })
 };
+
+export const fetchEditPost = (id, editedPostBody) => {
+  return fetch(`${_apiUrl}/edit/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(editedPostBody),
+  });
+};
