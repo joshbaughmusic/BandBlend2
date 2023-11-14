@@ -388,6 +388,36 @@ public class ProfileController : ControllerBase
 
     }
 
+    [HttpPut("{id}/about")]
+    [Authorize]
+    public IActionResult EditAbout(int id, [FromBody] string updatedAbout)
+    {
+
+        var loggedInUser = _dbContext
+                 .UserProfiles
+                 .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        Profile foundProfile = _dbContext.Profiles
+        .SingleOrDefault(p => p.UserProfileId == id);
+
+        if (foundProfile != null)
+        {
+            if (foundProfile.UserProfileId != loggedInUser.Id)
+            {
+                return Unauthorized();
+            }
+
+            foundProfile.About = updatedAbout;
+        
+            _dbContext.SaveChanges();
+            
+            return NoContent();
+        }
+
+        return NotFound();
+
+    }
+
 
 
 
