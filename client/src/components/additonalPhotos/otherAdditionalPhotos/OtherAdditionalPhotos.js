@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchOtherAdditionalPhotos } from '../../../managers/additonalPhotosManager.js';
 import { OtherAdditionalPhotosItem } from './OtherAdditionalPhotosItem.js';
+import { Skeleton } from '@mui/material';
 
 export const OtherAdditionalPhotos = ({ profileId }) => {
   const [photos, setPhotos] = useState();
@@ -14,7 +15,27 @@ export const OtherAdditionalPhotos = ({ profileId }) => {
   }, []);
 
   if (!photos) {
-    return null;
+    return (
+      <>
+        <div className="additional-pictures-container">
+          <Skeleton
+            variant="rectangular"
+            width={125}
+            height={125}
+          />
+          <Skeleton
+            variant="rectangular"
+            width={125}
+            height={125}
+          />
+          <Skeleton
+            variant="rectangular"
+            width={125}
+            height={125}
+          />
+        </div>
+      </>
+    );
   }
 
   if (photos.length === 0) {
