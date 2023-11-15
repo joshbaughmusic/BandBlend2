@@ -1,6 +1,7 @@
 import { Alert, Snackbar } from '@mui/material';
 import { createContext, useContext, useEffect, useState } from 'react';
 
+
 const SnackBarContext = createContext({});
 
 export const useSnackBar = () => {
@@ -36,7 +37,7 @@ export const SnackBarProvider = ({ children }) => {
       {successAlert ? (
         <Snackbar
           open={snackBarOpen}
-          autoHideDuration={6000}
+          autoHideDuration={3000}
           onClose={handleSnackBarClose}
         >
           <Alert
@@ -50,7 +51,7 @@ export const SnackBarProvider = ({ children }) => {
       ) : (
         <Snackbar
           open={snackBarOpen}
-          autoHideDuration={6000}
+          autoHideDuration={3000}
           onClose={handleSnackBarClose}
         >
           <Alert

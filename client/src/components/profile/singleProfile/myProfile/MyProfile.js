@@ -33,6 +33,8 @@ import { MyAdditionalPhotos } from '../../../additonalPhotos/myAdditionalPhotos/
 import { EditPrimaryInfo } from './EditPrimaryInfo.js';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSnackBar } from '../../../context/SnackBarContext.js';
+import { EditTags } from './EditTags.js';
+import { EditSubGenres } from './EditSubGenres.js';
 
 export const MyProfile = () => {
   const [profile, setProfile] = useState();
@@ -177,13 +179,16 @@ export const MyProfile = () => {
               <div className="chip-section">
                 <Typography>Primary Genre</Typography>
                 <Chip label={profile.profile.primaryGenre.name} />
-                <EditPrimaryInfo
-                  profile={profile}
-                  getCurrentUserWithProfile={getCurrentUserWithProfile}
-                />
               </div>
+
               <div className="chip-section">
-                <Typography>Tags</Typography>
+                <div className="tags-subgenres-header">
+                  <Typography>Tags</Typography>
+                  <EditTags
+                    getCurrentUserWithProfile={getCurrentUserWithProfile}
+                    profile={profile}
+                  />
+                </div>
                 <div className="chip-multi-container">
                   {profile.profile.profileTags.map((pt, index) => (
                     <Chip
@@ -192,10 +197,15 @@ export const MyProfile = () => {
                     />
                   ))}
                 </div>
-                <Button variant="contained">Edit Tags</Button>
               </div>
               <div className="chip-section">
-                <Typography>SubGenres</Typography>
+                <div className="tags-subgenres-header">
+                  <Typography>SubGenres</Typography>
+                  <EditSubGenres
+                    getCurrentUserWithProfile={getCurrentUserWithProfile}
+                    profile={profile}
+                  />
+                </div>
                 <div className="chip-multi-container">
                   {profile.profile.profileSubGenres.map((ps, index) => (
                     <Chip
@@ -206,6 +216,10 @@ export const MyProfile = () => {
                 </div>
                 <Button variant="contained">Edit SubGenres</Button>
               </div>
+              <EditPrimaryInfo
+                profile={profile}
+                getCurrentUserWithProfile={getCurrentUserWithProfile}
+              />
             </Paper>
           </Grid>
           <Grid
@@ -273,7 +287,7 @@ export const MyProfile = () => {
                   <Typography variant="h6">Additional Photos</Typography>
                   <Divider />
                 </div>
-                <MyAdditionalPhotos profile={profile}/>
+                <MyAdditionalPhotos profile={profile} />
               </Paper>
               <Paper
                 elevation={4}
