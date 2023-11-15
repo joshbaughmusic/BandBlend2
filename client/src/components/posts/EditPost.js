@@ -117,6 +117,7 @@ export const EditPost = ({ post, getUserPosts }) => {
               multiline
               minRows={5}
               fullWidth
+              label="Edit Post"
               value={postBodyToEdit}
               onChange={(e) => setPostBodyToEdit(e.target.value)}
               error={error}

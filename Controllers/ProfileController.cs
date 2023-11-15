@@ -245,6 +245,10 @@ public class ProfileController : ControllerBase
 
             foundUserProfile.Profile = matchedProfile;
 
+            foundUserProfile.Profile.PostCount = _dbContext.Posts.Where(p => p.UserProfileId == loggedInUser.Id).Count();
+
+            foundUserProfile.Profile.PhotoCount = _dbContext.AdditionalPictures.Where(ap => ap.UserProfileId == loggedInUser.Id).Count();
+
             return Ok(foundUserProfile);
         }
         return NotFound();
@@ -288,6 +292,10 @@ public class ProfileController : ControllerBase
             matchedProfile.ProfileTags = matchedProfileTags;
             matchedProfile.ProfileSubGenres = matchedProfileSubGenres;
             foundUserProfile.Profile = matchedProfile;
+
+            foundUserProfile.Profile.PostCount = _dbContext.Posts.Where(p => p.UserProfileId == id).Count();
+
+            foundUserProfile.Profile.PhotoCount = _dbContext.AdditionalPictures.Where(ap => ap.UserProfileId == id).Count();
 
             List<SavedProfile> savedProfilesByUser = _dbContext.SavedProfiles.Where(sp => sp.UserProfileId == loggedInUser.Id).ToList();
 

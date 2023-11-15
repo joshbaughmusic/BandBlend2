@@ -3,7 +3,7 @@ import { fetchMyAdditionalPhotos } from '../../../managers/additonalPhotosManage
 import { MyAdditionalPhotosItem } from './MyAdditionalPhotosItem.js';
 import { Skeleton } from '@mui/material';
 
-export const MyAdditionalPhotos = () => {
+export const MyAdditionalPhotos = ({ profile }) => {
   const [photos, setPhotos] = useState();
 
   const getMyAdditonalPhotos = () => {
@@ -17,23 +17,23 @@ export const MyAdditionalPhotos = () => {
   if (!photos) {
     return (
       <>
-        <div className="additional-pictures-container">
-          <Skeleton
-            variant="rectangular"
-            width={125}
-            height={125}
-          />
-          <Skeleton
-            variant="rectangular"
-            width={125}
-            height={125}
-          />
-          <Skeleton
-            variant="rectangular"
-            width={125}
-            height={125}
-          />
-        </div>
+        {profile.profile.photoCount === null ||
+        profile.profile.photoCount === 0 ? (
+          <div>No Photos yet!</div>
+        ) : (
+          <div className="additional-pictures-container">
+            {Array(profile.profile.photoCount)
+              .fill(0)
+              .map((obj, index) => (
+                <Skeleton
+                  variant="rectangular"
+                  key={index}
+                  width={125}
+                  height={125}
+                />
+              ))}
+          </div>
+        )}
       </>
     );
   }

@@ -17,8 +17,10 @@ public class Profile
     public string FacebookLink { get; set; }
     public string InstagramLink { get; set; }
     public string TikTokLink { get; set; }
-    // [NotMapped]
-    // public bool? isSaved { get; set; }
+    [NotMapped]
+    public int? PhotoCount { get; set; }
+    [NotMapped]
+    public int? PostCount { get; set; }
     public UserProfile UserProfile { get; set; }
     public State State { get; set; }
     public PrimaryGenre PrimaryGenre { get; set; }
@@ -26,6 +28,6 @@ public class Profile
     public List<ProfileSubGenre> ProfileSubGenres { get; set; }
     public List<ProfileTag> ProfileTags { get; set; }
     public SavedProfile SavedProfile { get; set; }
-    
+
 
 }

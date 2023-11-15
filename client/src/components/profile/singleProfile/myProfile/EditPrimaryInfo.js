@@ -15,6 +15,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  Skeleton,
   Stack,
   TextField,
 } from '@mui/material';
@@ -160,7 +161,16 @@ export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
   };
 
   if (!usStates || !primaryGenres || !primaryInstruments) {
-    return null;
+    return (
+      <>
+        <Button
+          variant="contained"
+          onClick={handleModalOpen}
+        >
+          Edit Primary Info
+        </Button>
+      </>
+    );
   }
   return (
     <>

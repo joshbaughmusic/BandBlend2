@@ -20,6 +20,7 @@ import {
   MenuItem,
   Pagination,
   Select,
+  Skeleton,
   TextField,
   Tooltip,
   Typography,
@@ -27,6 +28,7 @@ import {
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSnackBar } from '../../context/SnackBarContext.js';
+import { PostSkeleton } from '../PostSkeleton.js';
 
 export const MyPosts = ({ profile }) => {
   const [posts, setPosts] = useState();
@@ -111,7 +113,44 @@ export const MyPosts = ({ profile }) => {
   };
 
   if (!posts) {
-    return null;
+    return (
+      <>
+        <div className="divider-header-container">
+          <div className="profile-section-header">
+            <Typography variant="h6">Posts</Typography>
+            {expanded ? (
+              <IconButton onClick={handleCloseNewPost}>
+                <CloseIcon />
+              </IconButton>
+            ) : (
+              <Tooltip
+                title="New Post"
+                placement="right-start"
+              >
+                <IconButton onClick={handleOpenNewPost}>
+                  <PostAddIcon />
+                </IconButton>
+              </Tooltip>
+            )}
+          </div>
+          <Divider />
+        </div>
+        <div>
+          {profile.profile.postCount === null ||
+          profile.profile.postCount === 0 ? (
+            <div>No posts yet!</div>
+          ) : (
+            <div>
+              {Array(profile.profile.postCount)
+                .fill(0)
+                .map((obj, index) => (
+                  <PostSkeleton key={index} />
+                ))}
+            </div>
+          )}
+        </div>
+      </>
+    );
   }
 
   if (posts.length === 0) {
