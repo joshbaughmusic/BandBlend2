@@ -273,7 +273,7 @@ export const MyProfile = () => {
                   <Typography variant="h6">Additional Photos</Typography>
                   <Divider />
                 </div>
-                <MyAdditionalPhotos />
+                <MyAdditionalPhotos profile={profile}/>
               </Paper>
               <Paper
                 elevation={4}

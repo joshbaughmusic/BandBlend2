@@ -9,6 +9,16 @@
   gap: 8px;
   align-items: center;
 }
+.post-card-header-left-skeleton {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.post-card-skeleton {
+  height: 200px;
+}
 .post-card-footer {
   display: flex;
   width: 100%;

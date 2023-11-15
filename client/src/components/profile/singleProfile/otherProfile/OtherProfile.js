@@ -207,7 +207,7 @@ export const OtherProfile = () => {
                   <Typography variant="h6">Additional Photos</Typography>
                   <Divider />
                 </div>
-                <OtherAdditionalPhotos profileId={profile.id} />
+                <OtherAdditionalPhotos profile={profile} />
               </Paper>
               <Paper
                 elevation={4}

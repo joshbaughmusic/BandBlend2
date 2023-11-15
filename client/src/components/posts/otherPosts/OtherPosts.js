@@ -11,6 +11,7 @@ import {
   Select,
   Typography,
 } from '@mui/material';
+import { PostSkeleton } from '../PostSkeleton.js';
 
 export const OtherPosts = ({ profile }) => {
   const [posts, setPosts] = useState();
@@ -39,7 +40,27 @@ export const OtherPosts = ({ profile }) => {
   }, [page, amountPerPage]);
 
   if (!posts) {
-    return null;
+    return (
+      <>
+        <div className="divider-header-container">
+          <Typography variant="h6">Posts</Typography>
+          <Divider />
+        </div>
+
+        {profile.profile.postCount === null ||
+        profile.profile.postCount === 0 ? (
+          <div>No Posts yet!</div>
+        ) : (
+          <div>
+            {Array(profile.profile.postCount)
+              .fill(0)
+              .map((obj, index) => (
+                <PostSkeleton key={index} />
+              ))}
+          </div>
+        )}
+      </>
+    );
   }
 
   if (posts.length === 0) {
@@ -56,11 +77,10 @@ export const OtherPosts = ({ profile }) => {
 
   return (
     <>
-    <div className="divider-header-container">
-
-      <Typography variant="h6">Posts</Typography>
-      <Divider />
-    </div>
+      <div className="divider-header-container">
+        <Typography variant="h6">Posts</Typography>
+        <Divider />
+      </div>
 
       <div>
         {posts.map((p, index) => (
