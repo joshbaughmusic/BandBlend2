@@ -35,6 +35,8 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  height: '60%',
+  overflowY: 'auto',
 };
 
 export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
@@ -161,19 +163,20 @@ export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
 
   if (!usStates || !primaryGenres || !primaryInstruments) {
     return (
-      <>
+      <div className="editPrimaryInfo-button">
         <Button
           variant="contained"
           onClick={handleModalOpen}
+          className='editPrimaryInfo-button'
         >
           Edit Primary Info
         </Button>
-      </>
+      </div>
     );
   }
   return (
     <>
-      <div>
+      <div className="editPrimaryInfo-button">
         <Button
           variant="contained"
           onClick={handleModalOpen}

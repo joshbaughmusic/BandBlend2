@@ -214,7 +214,6 @@ export const MyProfile = () => {
                     />
                   ))}
                 </div>
-                <Button variant="contained">Edit SubGenres</Button>
               </div>
               <EditPrimaryInfo
                 profile={profile}

@@ -38,7 +38,7 @@ const style = {
   boxShadow: 24,
   p: 4,
   height: '50%',
-  overflowY: 'scroll'
+  overflowY: 'auto'
 };
 
 export const EditSubGenres = ({ profile, getCurrentUserWithProfile }) => {
