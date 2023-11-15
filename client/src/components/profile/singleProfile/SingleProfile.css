@@ -46,3 +46,9 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.tags-subgenres-header {
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+}

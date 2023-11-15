@@ -1,7 +1,3 @@
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import { useEffect, useState } from 'react';
 import {
   Dialog,
@@ -15,9 +11,12 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Skeleton,
   Stack,
   TextField,
+  Modal,
+  Typography,
+  Button,
+  Box,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSnackBar } from '../../../context/SnackBarContext.js';
