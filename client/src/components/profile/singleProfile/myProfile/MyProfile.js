@@ -51,7 +51,7 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
-export const MyProfile = () => {
+export const MyProfile = ({ loggedInUser }) => {
   const [profile, setProfile] = useState();
   const [updatedAbout, setUpdatedAbout] = useState();
   const [editAboutState, setEditAboutState] = useState(false);
@@ -150,26 +150,25 @@ export const MyProfile = () => {
               elevation={4}
               className="profile-left-sidebar"
             >
-              <div className='myProfilePicture-container'>
-                <div className='editProfilePic-button'>
-
-                <Tooltip
-                  title="Edit Profile Picture"
-                  placement="right-start"
+              <div className="myProfilePicture-container">
+                <div className="editProfilePic-button">
+                  <Tooltip
+                    title="Edit Profile Picture"
+                    placement="right-start"
                   >
-                  <IconButton
-                    component="label"
-                    variant="contained"
+                    <IconButton
+                      component="label"
+                      variant="contained"
                     >
-                    <EditIcon />
-                    <VisuallyHiddenInput
-                      type="file"
-                      accept="image"
-                      onChange={handleUpload}
+                      <EditIcon />
+                      <VisuallyHiddenInput
+                        type="file"
+                        accept="image"
+                        onChange={handleUpload}
                       />
-                  </IconButton>
-                </Tooltip>
-                      </div>
+                    </IconButton>
+                  </Tooltip>
+                </div>
 
                 <Avatar
                   className="single-profile-pic"

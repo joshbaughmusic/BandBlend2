@@ -13,11 +13,12 @@ import {
   TextField,
   Tooltip,
 } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSnackBar } from '../context/SnackBarContext.js';
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import { fetchEditPost } from '../../managers/postsManager.js';
+import { fetchEditComment } from '../../managers/commentsManager.js';
 
 const style = {
   position: 'absolute',
@@ -31,24 +32,18 @@ const style = {
   p: 4,
 };
 
-export const EditPost = ({ post, getUserPosts }) => {
-  const [postBodyToEdit, setPostBodyToEdit] = useState(post.body);
+export const EditComment = ({ comment, getCommentsForPost }) => {
+  const [commentBodyToEdit, setCommentBodyToEdit] = useState(comment.body);
   const [error, setError] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
   const [openModal, setOpenModal] = useState(false);
-  
-useEffect(() => {
-  if (postBodyToEdit.length !== 0) {
-    setError(false);
-  }
-}, [postBodyToEdit]);
 
   const handleModalOpen = () => setOpenModal(true);
 
   const handleModalClose = () => {
-    if (post.body !== postBodyToEdit) {
+    if (comment.body !== commentBodyToEdit) {
       setConfirmOpen(true);
     } else {
       setOpenModal(false);
@@ -56,24 +51,24 @@ useEffect(() => {
   };
   const handleSubmit = () => {
     setError(false);
-    if (postBodyToEdit.length > 0) {
-      fetchEditPost(post.id, postBodyToEdit).then((res) => {
+    if (commentBodyToEdit.length > 0) {
+      fetchEditComment(comment.id, commentBodyToEdit).then((res) => {
         if (res.status === 204) {
-          getUserPosts();
+          getCommentsForPost();
           setSuccessAlert(true);
-          setSnackBarMessage('Post successfully edited!');
+          setSnackBarMessage('Comment successfully edited!');
           handleConfirmClose();
           handleSnackBarOpen(true);
         } else {
           setSuccessAlert(false);
-          setSnackBarMessage('Failed to edit post.');
+          setSnackBarMessage('Failed to edit comment.');
           handleSnackBarOpen(true);
         }
       });
     } else {
       setError(true);
       setSuccessAlert(false);
-      setSnackBarMessage('Post must not be empty.');
+      setSnackBarMessage('Comment must not be empty.');
       handleSnackBarOpen(true);
     }
   };
@@ -81,11 +76,9 @@ useEffect(() => {
   const handleConfirmClose = () => {
     setConfirmOpen(false);
     setOpenModal(false);
-    setPostBodyToEdit(post.body);
+    setCommentBodyToEdit(comment.body);
     setError(false);
   };
-
-  
 
   return (
     <>
@@ -112,7 +105,7 @@ useEffect(() => {
                   variant="h6"
                   component="h2"
                 >
-                  Edit Post
+                  Edit Comment
                 </Typography>
                 <IconButton onClick={handleModalClose}>
                   <CloseIcon />
@@ -121,13 +114,13 @@ useEffect(() => {
               <Divider />
             </div>
             <TextField
-              className="post-text-field"
+              className="comment-text-field"
               multiline
               minRows={5}
               fullWidth
-              label="Edit Post"
-              value={postBodyToEdit}
-              onChange={(e) => setPostBodyToEdit(e.target.value)}
+              label="Edit Comment"
+              value={commentBodyToEdit}
+              onChange={(e) => setCommentBodyToEdit(e.target.value)}
               error={error}
             />
             <div className="post-submit-button-container">

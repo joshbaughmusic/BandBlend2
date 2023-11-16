@@ -1,0 +1,44 @@
+.comment-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+.comment-card-header-left {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.comment-card-header-left-skeleton {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.comment-card-skeleton {
+  height: 150px;
+}
+.comment-card-footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-card-footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.comment-card {
+  margin-bottom: 20px;
+}
+
+.new-comment-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}

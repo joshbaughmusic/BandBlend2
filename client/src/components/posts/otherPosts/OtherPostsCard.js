@@ -1,18 +1,28 @@
 import {
   Avatar,
+  Button,
   Card,
   CardActions,
   CardContent,
+  Collapse,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   IconButton,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import CommentIcon from '@mui/icons-material/Comment';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { dateFormatter } from '../../../utilities/dateFormatter.js';
+import { CommentsSection } from '../../comments/CommentsSection.js';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -25,11 +35,29 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const OtherPostsCard = ({ post, profile }) => {
+export const OtherPostsCard = ({ post, profile, page }) => {
   const [expanded, setExpanded] = useState(false);
+  //defining newComment state here so when expanded is clicked, warning can be given if there is a comment in progress
+  const [newComment, setNewComment] = useState('');
+    const [confirmOpen, setConfirmOpen] = useState(false);
+
+
+  useEffect(() => {
+    setExpanded(false);
+  }, [page]);
 
   const handleExpandClick = () => {
-    setExpanded(!expanded);
+    if (newComment.length > 0) {
+      setConfirmOpen(true);
+    } else {
+      setExpanded(!expanded);
+    }
+  };
+
+  const handleConfirmClose = () => {
+    setConfirmOpen(false);
+    setExpanded(false);
+    setNewComment('');
   };
 
   return (
@@ -61,20 +89,73 @@ export const OtherPostsCard = ({ post, profile }) => {
                 <CommentIcon />
               </IconButton>
             </div>
-            <div className="post-card-footer-right">
-              <Typography>View Comments</Typography>
-              <ExpandMore
-                expand={expanded}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-              >
-                <ExpandMoreIcon />
-              </ExpandMore>
-            </div>
+            {post.commentCount === 0 || post.commentCount === null ? (
+              <div className="post-card-footer-right">
+                <Typography>Be the first to comment</Typography>
+                <IconButton>
+                  {expanded ? (
+                    <ExpandLessIcon onClick={handleExpandClick} />
+                  ) : (
+                    <Tooltip
+                      title="Comment"
+                      placement="top"
+                    >
+                      <CommentIcon onClick={handleExpandClick} />
+                    </Tooltip>
+                  )}
+                </IconButton>
+              </div>
+            ) : (
+              <div className="post-card-footer-right">
+                {expanded ? (
+                  <Typography>Hide Comments</Typography>
+                ) : (
+                  <Typography>View Comments</Typography>
+                )}
+                <ExpandMore
+                  expand={expanded}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </ExpandMore>
+              </div>
+            )}
           </div>
         </CardActions>
+        <Collapse
+          in={expanded}
+          timeout="auto"
+          unmountOnExit
+        >
+          <CardContent>
+            <CommentsSection
+              profile={profile}
+              post={post}
+              newComment={newComment}
+              setNewComment={setNewComment}
+            />
+          </CardContent>
+        </Collapse>
       </Card>
+      <Dialog
+        open={confirmOpen}
+        onClose={handleConfirmClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{'Discard Changes?'}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to discard your changes?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => handleConfirmClose()}>Discard Changes</Button>
+          <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };

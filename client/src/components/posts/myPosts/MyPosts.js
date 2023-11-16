@@ -53,6 +53,12 @@ export const MyPosts = ({ profile }) => {
     getUserPosts();
   }, [page, amountPerPage]);
 
+  useEffect(() => {
+    if (newPost.length !== 0) {
+      setBlankPostError(false);
+    }
+  }, [newPost]);
+
   const handlePageChange = (event, value) => {
     setPage(value);
   };
@@ -308,6 +314,7 @@ export const MyPosts = ({ profile }) => {
             profile={profile}
             post={p}
             key={index}
+            page={page}
           />
         ))}
       </div>

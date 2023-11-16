@@ -1528,6 +1528,158 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 2,
                 Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                 Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 2,
+                PostId = 1,
+                UserProfileId = 2,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 3,
+                PostId = 1,
+                UserProfileId = 2,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 4,
+                PostId = 1,
+                UserProfileId = 1,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 5,
+                PostId = 1,
+                UserProfileId = 2,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 6,
+                PostId = 1,
+                UserProfileId = 1,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 7,
+                PostId = 1,
+                UserProfileId = 2,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 8,
+                PostId = 1,
+                UserProfileId = 9,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 9,
+                PostId = 1,
+                UserProfileId = 3,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 10,
+                PostId = 1,
+                UserProfileId = 4,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 11,
+                PostId = 2,
+                UserProfileId = 2,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 12,
+                PostId = 2,
+                UserProfileId = 2,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 13,
+                PostId = 2,
+                UserProfileId = 1,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 14,
+                PostId = 2,
+                UserProfileId = 4,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 15,
+                PostId = 2,
+                UserProfileId = 2,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 16,
+                PostId = 2,
+                UserProfileId = 1,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 17,
+                PostId = 2,
+                UserProfileId = 2,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 18,
+                PostId = 1,
+                UserProfileId = 2,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 19,
+                PostId = 1,
+                UserProfileId = 2,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
+            },
+            new Comment
+            {
+                Id = 20,
+                PostId = 2,
+                UserProfileId = 1,
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                Date = new DateTime(2023, 11, 6, 12, 5, 0)
             }
         );
         modelBuilder.Entity<Like>().HasData(
