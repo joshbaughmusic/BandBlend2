@@ -28,7 +28,7 @@ export const CommentSkeleton = () => {
             <Skeleton
               variant="rounded"
               width="100%"
-              height={100}
+              height={60}
             />
           </div>
         </CardContent>

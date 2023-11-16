@@ -51,23 +51,34 @@ public class CommentController : ControllerBase
 
     [HttpPost("{postId}/new")]
     [Authorize]
-    public IActionResult CreateNewPost(int postId, [FromBody] string postText)
+    public IActionResult CreateNewPost(int postId, [FromBody] string commentText)
     {
         var loggedInUser = _dbContext
             .UserProfiles
             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-        Post newPost = new Post
+        Post foundPost = _dbContext.Posts.SingleOrDefault(p => p.Id == postId);
+
+        if (foundPost != null)
         {
-            UserProfileId = loggedInUser.Id,
-            Body = postText,
-            Date = DateTime.Now
-        };
+            Comment newComment = new Comment
+            {
+                UserProfileId = loggedInUser.Id,
+                PostId = foundPost.Id,
+                Body = commentText,
+                Date = DateTime.Now
+            };
+            _dbContext.Comments.Add(newComment);
+            _dbContext.SaveChanges();
 
-        _dbContext.Posts.Add(newPost);
-        _dbContext.SaveChanges();
 
-        return Created($"/api/post/{newPost.Id}", newPost);
+            return Created($"/api/comment/{newComment.Id}", newComment);
+        }
+        else
+        {
+            return BadRequest();
+        }
+
 
     }
 

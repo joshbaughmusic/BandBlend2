@@ -6,8 +6,8 @@ export const fetchCommentsForPost = (postId, page = 1, pageSize = 10) => {
   );
 };
 
-export const fetchCreateNewComment = (commentText) => {
-  return fetch(`${_apiUrl}/new`, {
+export const fetchCreateNewComment = (postId, commentText) => {
+  return fetch(`${_apiUrl}/${postId}/new`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(commentText),

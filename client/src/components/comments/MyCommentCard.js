@@ -23,6 +23,7 @@ export const MyCommentCard = ({ comment, profile, getCommentsForPost }) => {
                 className="single-profile-pic"
                 src={comment.userProfile.profile.profilePicture}
                 alt={comment.userProfile.name}
+                sx={{ width: '30px', height: '30px' }}
               />
               <Typography>{comment.userProfile.name}</Typography>
             </div>
@@ -47,6 +48,7 @@ export const MyCommentCard = ({ comment, profile, getCommentsForPost }) => {
           </div>
         </CardActions>
       </Card>
+     
     </>
   );
 };

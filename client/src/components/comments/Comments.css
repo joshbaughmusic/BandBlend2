@@ -17,7 +17,7 @@
 }
 
 .comment-card-skeleton {
-  height: 200px;
+  height: 150px;
 }
 .comment-card-footer {
   display: flex;
@@ -33,4 +33,12 @@
 
 .comment-card {
   margin-bottom: 20px;
+}
+
+.new-comment-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
 }

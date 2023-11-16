@@ -13,7 +13,7 @@ import {
   TextField,
   Tooltip,
 } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSnackBar } from '../context/SnackBarContext.js';
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
@@ -38,6 +38,12 @@ export const EditPost = ({ post, getUserPosts }) => {
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
   const [openModal, setOpenModal] = useState(false);
+  
+useEffect(() => {
+  if (postBodyToEdit.length !== 0) {
+    setError(false);
+  }
+}, [postBodyToEdit]);
 
   const handleModalOpen = () => setOpenModal(true);
 
@@ -78,6 +84,8 @@ export const EditPost = ({ post, getUserPosts }) => {
     setPostBodyToEdit(post.body);
     setError(false);
   };
+
+  
 
   return (
     <>

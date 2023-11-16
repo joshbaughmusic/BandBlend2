@@ -21,6 +21,7 @@ export const OtherCommentCard = ({ comment, profile }) => {
                 className="single-profile-pic"
                 src={comment.userProfile.profile.profilePicture}
                 alt={comment.userProfile.name}
+                sx={{ width: '30px', height: '30px' }}
               />
               <Typography>{comment.userProfile.name}</Typography>
             </div>

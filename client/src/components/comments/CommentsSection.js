@@ -8,11 +8,12 @@ import {
 import { useState, useEffect } from 'react';
 import { fetchCommentsForPost } from '../../managers/commentsManager.js';
 import { MyCommentCard } from './MyCommentCard.js';
-import "./Comments.css"
+import './Comments.css';
 import { CommentSkeleton } from './CommentSkeleton.js';
 import { OtherCommentCard } from './OtherCommentCard.js';
+import { NewComment } from './NewComment.js';
 
-export const CommentsSection = ({ profile, post }) => {
+export const CommentsSection = ({ profile, post, newComment, setNewComment }) => {
   const [comments, setComments] = useState(0);
   const [commentCount, setCommentCount] = useState(0);
   const [page, setPage] = useState(1);
@@ -41,16 +42,57 @@ export const CommentsSection = ({ profile, post }) => {
   if (!comments) {
     return (
       <>
+        <NewComment
+          profile={profile}
+          post={post}
+          getCommentsForPost={getCommentsForPost}
+          newComment={newComment}
+          setNewComment={setNewComment}
+        />
+
         {Array(post.commentCount)
           .fill(0)
           .map((obj, index) => (
             <CommentSkeleton key={index} />
           ))}
+        <div className="pagination-allprofiles-container">
+          <Pagination
+            count={Math.ceil(commentCount / amountPerPage)}
+            page={page}
+            onChange={handlePageChange}
+          />
+          <FormControl
+            sx={{ m: 1, minWidth: 75 }}
+            size="small"
+          >
+            <InputLabel id="amountPerPage-select-label">Per Page</InputLabel>
+            <Select
+              labelId="amountPerPage-select-label"
+              id="amountPerPage-select"
+              value={amountPerPage}
+              label="Age"
+              onChange={handleAmountPerPageChange}
+            >
+              <MenuItem value={5}>5</MenuItem>
+              <MenuItem value={10}>10</MenuItem>
+              <MenuItem value={20}>20</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
       </>
     );
   }
+
+ 
   return (
     <>
+      <NewComment
+        profile={profile}
+        post={post}
+        getCommentsForPost={getCommentsForPost}
+        newComment={newComment}
+        setNewComment={setNewComment}
+      />
       <div>
         {comments.map((c, index) => {
           return c.userProfileId === profile.id ? (

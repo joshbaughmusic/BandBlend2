@@ -32,7 +32,7 @@ const style = {
   p: 4,
 };
 
-export const EditComment = ({ comment, getUserComments }) => {
+export const EditComment = ({ comment, getCommentsForPost }) => {
   const [commentBodyToEdit, setCommentBodyToEdit] = useState(comment.body);
   const [error, setError] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
@@ -54,7 +54,7 @@ export const EditComment = ({ comment, getUserComments }) => {
     if (commentBodyToEdit.length > 0) {
       fetchEditComment(comment.id, commentBodyToEdit).then((res) => {
         if (res.status === 204) {
-          getUserComments();
+          getCommentsForPost();
           setSuccessAlert(true);
           setSnackBarMessage('Comment successfully edited!');
           handleConfirmClose();
