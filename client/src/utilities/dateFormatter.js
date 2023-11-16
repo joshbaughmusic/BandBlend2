@@ -8,8 +8,6 @@ export const dateFormatter = (date) => {
     const hours = parseInt(parts[3], 10);
     const minutes = parseInt(parts[4], 10);
 
-    console.log('Parsed parts:', year, month, day, hours, minutes);
-
     const parsedDate = new Date(year, month - 1, day, hours, minutes);
 
     if (isNaN(parsedDate.getTime())) {

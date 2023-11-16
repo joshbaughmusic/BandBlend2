@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchOtherAdditionalPhotos } from '../../../managers/additonalPhotosManager.js';
 import { OtherAdditionalPhotosItem } from './OtherAdditionalPhotosItem.js';
-import { Skeleton } from '@mui/material';
+import { Divider, Skeleton, Typography } from '@mui/material';
 
 export const OtherAdditionalPhotos = ({ profile }) => {
   const [photos, setPhotos] = useState();
@@ -19,20 +19,32 @@ export const OtherAdditionalPhotos = ({ profile }) => {
       <>
         {profile.profile.photoCount === null ||
         profile.profile.photoCount === 0 ? (
-          <div>No Photos yet!</div>
+          <>
+            <div className="divider-header-container">
+              <Typography variant="h6">Additional Photos</Typography>
+              <Divider />
+            </div>
+            <div>No Photos yet!</div>
+          </>
         ) : (
-          <div className="additional-pictures-container">
-            {Array(profile.profile.photoCount)
-              .fill(0)
-              .map((obj, index) => (
-                <Skeleton
-                  variant="rectangular"
-                  key={index}
-                  width={125}
-                  height={125}
-                />
-              ))}
-          </div>
+          <>
+            <div className="divider-header-container">
+              <Typography variant="h6">Additional Photos</Typography>
+              <Divider />
+            </div>
+            <div className="additional-pictures-container">
+              {Array(profile.profile.photoCount)
+                .fill(0)
+                .map((obj, index) => (
+                  <Skeleton
+                    variant="rectangular"
+                    key={index}
+                    width={125}
+                    height={125}
+                  />
+                ))}
+            </div>
+          </>
         )}
       </>
     );
@@ -41,6 +53,10 @@ export const OtherAdditionalPhotos = ({ profile }) => {
   if (photos.length === 0) {
     return (
       <>
+        <div className="divider-header-container">
+          <Typography variant="h6">Additional Photos</Typography>
+          <Divider />
+        </div>
         <div>No Photos yet!</div>
       </>
     );
@@ -48,6 +64,10 @@ export const OtherAdditionalPhotos = ({ profile }) => {
 
   return (
     <>
+      <div className="divider-header-container">
+        <Typography variant="h6">Additional Photos</Typography>
+        <Divider />
+      </div>
       <div className="additional-pictures-container">
         {photos.map((p, index) => (
           <OtherAdditionalPhotosItem

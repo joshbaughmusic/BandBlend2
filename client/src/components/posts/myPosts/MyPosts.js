@@ -125,7 +125,7 @@ export const MyPosts = ({ profile }) => {
             ) : (
               <Tooltip
                 title="New Post"
-                placement="right-start"
+                placement="left-start"
               >
                 <IconButton onClick={handleOpenNewPost}>
                   <PostAddIcon />
@@ -189,7 +189,7 @@ export const MyPosts = ({ profile }) => {
           ) : (
             <Tooltip
               title="New Post"
-              placement="right-start"
+              placement="left-start"
             >
               <IconButton onClick={handleOpenNewPost}>
                 <PostAddIcon />
@@ -263,7 +263,7 @@ export const MyPosts = ({ profile }) => {
           ) : (
             <Tooltip
               title="New Post"
-              placement="right-start"
+              placement="left-start"
             >
               <IconButton onClick={handleOpenNewPost}>
                 <PostAddIcon />

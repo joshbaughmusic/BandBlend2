@@ -426,6 +426,23 @@ public class ProfileController : ControllerBase
 
     }
 
+    [HttpPut("profilepicture")]
+    [Authorize]
+    public IActionResult EditProfilePicture([FromBody] string url)
+    {
+        var loggedInUser = _dbContext
+             .UserProfiles
+             .Include(up => up.Profile)
+             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        loggedInUser.Profile.ProfilePicture = url;
+
+        _dbContext.SaveChanges();
+
+        return NoContent();
+
+    }
+
 
 
 
@@ -460,5 +477,7 @@ public class ProfileController : ControllerBase
         _dbContext.SaveChanges();
         return NoContent();
     }
+
+    
 
 }

@@ -20,6 +20,7 @@ import { useEffect, useState } from 'react';
 import {
   fetchCurrentUserWithProfile,
   fetchEditAbout,
+  fetchEditProfilePicture,
 } from '../../../../managers/profileManager.js';
 import '../SingleProfile.css';
 import SpotifyLogo from '../../../../images/SocialMediaLogos/spotify.png';
@@ -35,6 +36,20 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useSnackBar } from '../../../context/SnackBarContext.js';
 import { EditTags } from './EditTags.js';
 import { EditSubGenres } from './EditSubGenres.js';
+import styled from '@emotion/styled';
+import axios from 'axios';
+
+const VisuallyHiddenInput = styled('input')({
+  clip: 'rect(0 0 0 0)',
+  clipPath: 'inset(50%)',
+  height: 1,
+  overflow: 'hidden',
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  whiteSpace: 'nowrap',
+  width: 1,
+});
 
 export const MyProfile = () => {
   const [profile, setProfile] = useState();
@@ -69,6 +84,29 @@ export const MyProfile = () => {
     setError(false);
     setEditAboutState(false);
     setUpdatedAbout(profile.profile.about);
+  };
+
+  const handleUpload = async (e) => {
+    const formData = new FormData();
+    formData.append('file', e.target.files[0]);
+    formData.append('upload_preset', 'unsigned');
+    await axios
+      .post('https://api.cloudinary.com/v1_1/dfanwgskl/image/upload', formData)
+      .then((response) => {
+        fetchEditProfilePicture(response.data['secure_url']).then((res) => {
+          e.target.value = '';
+          if (res.status === 204) {
+            getCurrentUserWithProfile();
+            setSuccessAlert(true);
+            setSnackBarMessage('Profile photo successfully updated!');
+            handleSnackBarOpen(true);
+          } else {
+            setSuccessAlert(false);
+            setSnackBarMessage('Failed to update profile photo.');
+            handleSnackBarOpen(true);
+          }
+        });
+      });
   };
 
   const handleSubmit = () => {
@@ -112,12 +150,34 @@ export const MyProfile = () => {
               elevation={4}
               className="profile-left-sidebar"
             >
-              <Avatar
-                className="single-profile-pic"
-                src={profile.profile.profilePicture}
-                alt={profile.name}
-                sx={{ width: '125px', height: '125px' }}
-              />
+              <div className='myProfilePicture-container'>
+                <div className='editProfilePic-button'>
+
+                <Tooltip
+                  title="Edit Profile Picture"
+                  placement="right-start"
+                  >
+                  <IconButton
+                    component="label"
+                    variant="contained"
+                    >
+                    <EditIcon />
+                    <VisuallyHiddenInput
+                      type="file"
+                      accept="image"
+                      onChange={handleUpload}
+                      />
+                  </IconButton>
+                </Tooltip>
+                      </div>
+
+                <Avatar
+                  className="single-profile-pic"
+                  src={profile.profile.profilePicture}
+                  alt={profile.name}
+                  sx={{ width: '125px', height: '125px' }}
+                />
+              </div>
               <Typography
                 variant="h5"
                 component="h1"
@@ -241,7 +301,7 @@ export const MyProfile = () => {
                     ) : (
                       <Tooltip
                         title="Edit"
-                        placement="right-start"
+                        placement="left-start"
                       >
                         <IconButton
                           onClick={() => setEditAboutState(!editAboutState)}
@@ -282,10 +342,6 @@ export const MyProfile = () => {
                 elevation={4}
                 className="profile-right-section-item"
               >
-                <div className="divider-header-container">
-                  <Typography variant="h6">Additional Photos</Typography>
-                  <Divider />
-                </div>
                 <MyAdditionalPhotos profile={profile} />
               </Paper>
               <Paper
