@@ -88,6 +88,7 @@ export const OtherPosts = ({ profile }) => {
             profile={profile}
             post={p}
             key={index}
+            page={page}
           />
         ))}
       </div>

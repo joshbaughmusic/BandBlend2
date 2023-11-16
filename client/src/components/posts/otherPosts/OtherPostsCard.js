@@ -10,7 +10,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { dateFormatter } from '../../../utilities/dateFormatter.js';
 
@@ -25,8 +25,12 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const OtherPostsCard = ({ post, profile }) => {
+export const OtherPostsCard = ({ post, profile, page }) => {
   const [expanded, setExpanded] = useState(false);
+
+   useEffect(() => {
+     setExpanded(false);
+   }, [page]);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);

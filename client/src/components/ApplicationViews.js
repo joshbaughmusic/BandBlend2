@@ -42,7 +42,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             path="allprofiles"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <AllProfiles loggedInUser={loggedInUser} />{' '}
+                <AllProfiles loggedInUser={loggedInUser} />
               </AuthorizedRoute>
             }
           />

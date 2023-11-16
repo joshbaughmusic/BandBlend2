@@ -3,16 +3,17 @@ import {
   Card,
   CardActions,
   CardContent,
+  Collapse,
   IconButton,
   Typography,
 } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { DeletePost } from '../DeletePost.js';
 import { EditPost } from '../EditPost.js';
 import { dateFormatter } from '../../../utilities/dateFormatter.js';
+import { CommentsSection } from '../../comments/CommentsSection.js';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -25,12 +26,16 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const MyPostsCard = ({ post, profile, getUserPosts }) => {
+export const MyPostsCard = ({ post, profile, getUserPosts, page }) => {
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  useEffect(() => {
+   setExpanded(false)
+  }, [page])
 
   return (
     <>
@@ -63,19 +68,37 @@ export const MyPostsCard = ({ post, profile, getUserPosts }) => {
                 getUserPosts={getUserPosts}
               />
             </div>
-            <div className="post-card-footer-right">
-              <Typography>View Comments</Typography>
-              <ExpandMore
-                expand={expanded}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-              >
-                <ExpandMoreIcon />
-              </ExpandMore>
-            </div>
+            {post.commentCount === 0 || post.commentCount === null ? (
+              <div className="post-card-footer-right">
+                <Typography>No Comments Yet</Typography>
+              </div>
+            ) : (
+              <div className="post-card-footer-right">
+                <ExpandMore
+                  expand={expanded}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                  >
+                  <ExpandMoreIcon />
+                </ExpandMore>
+                  <Typography>View Comments</Typography>
+              </div>
+            )}
           </div>
         </CardActions>
+        <Collapse
+          in={expanded}
+          timeout="auto"
+          unmountOnExit
+        >
+          <CardContent>
+            <CommentsSection
+              profile={profile}
+              post={post}
+            />
+          </CardContent>
+        </Collapse>
       </Card>
     </>
   );

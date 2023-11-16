@@ -12,49 +12,46 @@ namespace BandBlend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class PostController : ControllerBase
+public class CommentController : ControllerBase
 {
     private BandBlendDbContext _dbContext;
 
 
-    public PostController(BandBlendDbContext context)
+    public CommentController(BandBlendDbContext context)
     {
         _dbContext = context;
 
     }
 
-    [HttpGet("user/{id}")]
+    [HttpGet("{postId}")]
     [Authorize]
-    public IActionResult GetUserPosts(int id, int page, int pageSize)
+    public IActionResult GetCommentsForPost(int postId, int page, int pageSize)
     {
-        var query = _dbContext.Posts
-        .Where(p => p.UserProfileId == id)
+        var query = _dbContext.Comments
+        .Include(c => c.UserProfile)
+        .ThenInclude(up => up.Profile)
+        .Where(c => c.PostId == postId)
         .OrderByDescending(p => p.Date);
 
-        var allPosts = query
+        var allComments = query
                .Skip((page - 1) * pageSize)
                .Take(pageSize)
                .ToList();
-
-        foreach (Post post in allPosts)
-        {
-            post.CommentCount = _dbContext.Comments.Where(c => c.PostId == post.Id).Count();
-        }
 
         int count = query.Count();
 
         var data = new
         {
-            posts = allPosts,
+            comments = allComments,
             totalCount = count
         };
 
         return Ok(data);
     }
 
-    [HttpPost("new")]
+    [HttpPost("{postId}/new")]
     [Authorize]
-    public IActionResult CreateNewPost([FromBody] string postText)
+    public IActionResult CreateNewPost(int postId, [FromBody] string postText)
     {
         var loggedInUser = _dbContext
             .UserProfiles
@@ -76,19 +73,19 @@ public class PostController : ControllerBase
 
     [HttpDelete("delete/{id}")]
     [Authorize]
-    public IActionResult DeletePost(int id)
+    public IActionResult DeleteComment(int id)
     {
-        Post foundPost = _dbContext.Posts.SingleOrDefault(p => p.Id == id);
+        Comment foundComment = _dbContext.Comments.SingleOrDefault(p => p.Id == id);
 
-        if (foundPost != null)
+        if (foundComment != null)
         {
             var loggedInUser = _dbContext
                 .UserProfiles
                 .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (loggedInUser.Id == foundPost.UserProfileId)
+            if (loggedInUser.Id == foundComment.UserProfileId)
             {
-                _dbContext.Posts.Remove(foundPost);
+                _dbContext.Comments.Remove(foundComment);
                 _dbContext.SaveChanges();
                 return NoContent();
             }
@@ -104,17 +101,17 @@ public class PostController : ControllerBase
 
     [HttpPut("edit/{id}")]
     [Authorize]
-    public IActionResult EditPost(int id, [FromBody] string editedPostBody)
+    public IActionResult EditComment(int id, [FromBody] string editedCommentBody)
     {
-        Post foundPost = _dbContext.Posts.SingleOrDefault(p => p.Id == id);
-        if (foundPost != null)
+        Comment foundComment = _dbContext.Comments.SingleOrDefault(p => p.Id == id);
+        if (foundComment != null)
         {
             var loggedInUser = _dbContext
                 .UserProfiles
                 .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            if (loggedInUser.Id == foundPost.UserProfileId)
+            if (loggedInUser.Id == foundComment.UserProfileId)
             {
-                foundPost.Body = editedPostBody;
+                foundComment.Body = editedCommentBody;
                 _dbContext.SaveChanges();
                 return NoContent();
             }
@@ -125,4 +122,6 @@ public class PostController : ControllerBase
         }
         return NotFound();
     }
+
+
 }

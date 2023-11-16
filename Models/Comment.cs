@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace BandBlend.Models;
 
 public class Comment
@@ -9,5 +11,6 @@ public class Comment
     public DateTime Date { get; set; }
     public UserProfile UserProfile { get; set; }
     public Post Post { get; set; }
+
 
 }
