@@ -203,10 +203,7 @@ export const OtherProfile = () => {
                 elevation={4}
                 className="profile-right-section-item"
               >
-                <div className="divider-header-container">
-                  <Typography variant="h6">Additional Photos</Typography>
-                  <Divider />
-                </div>
+                
                 <OtherAdditionalPhotos profile={profile} />
               </Paper>
               <Paper

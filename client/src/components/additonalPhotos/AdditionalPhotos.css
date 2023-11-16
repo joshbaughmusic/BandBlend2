@@ -2,10 +2,32 @@
   width: 125px;
   height: 125px;
   object-fit: cover;
+  border-radius: 4px;
+  border: rgba(0, 0, 0, 0.398) 1px solid;
 }
 
 .additional-pictures-container {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
+
+.deletePic-X {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  color: white;
+}
+
+.deletePic-X:hover {
+  transition: all 0.2s;
+  color: rgb(220, 84, 84);
+  cursor: pointer;
+}
+
+.photoItem {
+  position: relative;
+  line-height: 0;
+}
+
+

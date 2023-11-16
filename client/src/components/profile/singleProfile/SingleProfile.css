@@ -56,3 +56,13 @@
 .editPrimaryInfo-button {
   margin-top: 30px;
 }
+
+.myProfilePicture-container {
+  position: relative;
+}
+
+.editProfilePic-button {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+}

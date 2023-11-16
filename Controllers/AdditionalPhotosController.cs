@@ -47,6 +47,53 @@ public class PhotoController : ControllerBase
         return Ok(_dbContext.AdditionalPictures
         .Where(ap => ap.UserProfileId == id)
         .ToList());
+    } 
+
+    [HttpPost("add")]
+    [Authorize]
+    public IActionResult CreateNewAdditionalPhoto([FromBody] string url)
+    {
+        var loggedInUser = _dbContext
+             .UserProfiles
+             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        AdditionalPicture newAddPic = new AdditionalPicture() {
+            UserProfileId = loggedInUser.Id,
+            Url = url
+        };
+
+        _dbContext.AdditionalPictures.Add(newAddPic);
+        _dbContext.SaveChanges();
+
+        return Created($"api/photo/{newAddPic.Id}", newAddPic);
+        
+    }
+
+    [HttpDelete("delete/{id}")]
+    [Authorize]
+    public IActionResult DeleteAdditionalPhoto(int id)
+    {
+        var loggedInUser = _dbContext
+             .UserProfiles
+             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        AdditionalPicture foundAdditionalPic = _dbContext.AdditionalPictures.SingleOrDefault(ap => ap.Id == id);
+
+        if (foundAdditionalPic == null) 
+        {
+            return NotFound();
+        }
+
+        if (foundAdditionalPic.UserProfileId != loggedInUser.Id) 
+        {
+            return Unauthorized();
+        }
+
+        _dbContext.AdditionalPictures.Remove(foundAdditionalPic);
+        _dbContext.SaveChanges();
+
+        return NoContent();
+        
     }
 
 

@@ -43,3 +43,12 @@ export const fetchEditAbout = (id, updatedAbout) => {
     body: JSON.stringify(updatedAbout),
   });
 };
+
+
+export const fetchEditProfilePicture = (url) => {
+  return fetch(`${_apiUrl}/profilepicture`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(url),
+  });
+};
