@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { fetchDeletePostLike, fetchLikesForPost, fetchNewPostLike } from '../../../managers/postLikesManager.js';
+
 import {
-    Avatar,
+  Avatar,
   Chip,
   IconButton,
   List,
@@ -14,13 +14,14 @@ import {
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import '../Likes.css';
+import { fetchDeleteCommentLike, fetchLikesForComment, fetchNewCommentLike } from '../../../managers/commentLikeManager.js';
 
-export const PostLikes = ({ post, loggedInUser }) => {
+export const CommentLikes = ({ comment, loggedInUser }) => {
   const [likes, setLikes] = useState();
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const getLikesForPost = () => {
-    fetchLikesForPost(post.id).then(setLikes);
+  const getLikesForComment = () => {
+    fetchLikesForComment(comment.id).then(setLikes);
   };
 
   const handlePopoverOpen = (event) => {
@@ -34,20 +35,20 @@ export const PostLikes = ({ post, loggedInUser }) => {
   const open = Boolean(anchorEl);
 
   useEffect(() => {
-    getLikesForPost();
+    getLikesForComment();
   }, []);
 
   const handleNewLike = () => {
-    fetchNewPostLike(post.id).then(() => {
-      getLikesForPost();
-    })
-  }
+    fetchNewCommentLike(comment.id).then(() => {
+      getLikesForComment();
+    });
+  };
 
   const handleDeleteLike = () => {
-    fetchDeletePostLike(post.id).then(() => {
-      getLikesForPost();
+    fetchDeleteCommentLike(comment.id).then(() => {
+      getLikesForComment();
     });
-  }
+  };
 
   if (!likes) {
     return (
@@ -65,7 +66,7 @@ export const PostLikes = ({ post, loggedInUser }) => {
 
   return (
     <>
-      {post.userProfileId == loggedInUser.id ? (
+      {comment.userProfileId == loggedInUser.id ? (
         <div className="like-container-mine">
           <Typography>Likes</Typography>
           <Chip

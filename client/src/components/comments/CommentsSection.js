@@ -103,12 +103,14 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment, logg
               profile={profile}
               comment={c}
               getCommentsForPost={getCommentsForPost}
+              loggedInUser={loggedInUser}
             />
           ) : (
             <OtherCommentCard
               key={index}
               profile={profile}
               comment={c}
+              loggedInUser={loggedInUser}
             />
           );
         })}

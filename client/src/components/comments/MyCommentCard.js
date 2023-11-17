@@ -3,16 +3,18 @@ import {
   Card,
   CardActions,
   CardContent,
-  IconButton,
   Typography,
 } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import { dateFormatter } from '../../utilities/dateFormatter.js';
 import { DeleteComment } from './DeleteComment.js';
 import { EditComment } from './EditComment.js';
+import { CommentLikes } from '../likes/commentLikes/CommentLike.js';
 
-export const MyCommentCard = ({ comment, profile, getCommentsForPost }) => {
+export const MyCommentCard = ({
+  comment,
+  getCommentsForPost,
+  loggedInUser,
+}) => {
   return (
     <>
       <Card className="comment-card">
@@ -35,7 +37,11 @@ export const MyCommentCard = ({ comment, profile, getCommentsForPost }) => {
         </CardContent>
         <CardActions disableSpacing>
           <div className="comment-card-footer">
-            <div>
+            <div className="comment-card-footer-left">
+              <CommentLikes
+                comment={comment}
+                loggedInUser={loggedInUser}
+              />
               <DeleteComment
                 commentId={comment.id}
                 getCommentsForPost={getCommentsForPost}
@@ -48,7 +54,6 @@ export const MyCommentCard = ({ comment, profile, getCommentsForPost }) => {
           </div>
         </CardActions>
       </Card>
-     
     </>
   );
 };

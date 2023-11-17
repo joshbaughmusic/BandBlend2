@@ -9,8 +9,9 @@ import {
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import { dateFormatter } from '../../utilities/dateFormatter.js';
+import { CommentLikes } from '../likes/commentLikes/CommentLike.js';
 
-export const OtherCommentCard = ({ comment, profile }) => {
+export const OtherCommentCard = ({ comment, loggedInUser }) => {
   return (
     <>
       <Card className="comment-card">
@@ -35,9 +36,10 @@ export const OtherCommentCard = ({ comment, profile }) => {
           <div className="comment-card-footer">
             <div>
               <div>
-                <IconButton>
-                  <ThumbUpAltIcon />
-                </IconButton>
+                <CommentLikes
+                  comment={comment}
+                  loggedInUser={loggedInUser}
+                />
               </div>
             </div>
           </div>

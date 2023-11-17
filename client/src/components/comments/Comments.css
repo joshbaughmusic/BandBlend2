@@ -42,3 +42,7 @@
     gap: 10px;
     margin-bottom: 15px;
 }
+
+.comment-card-footer-left {
+  display: flex;
+}
