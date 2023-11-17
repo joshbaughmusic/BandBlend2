@@ -140,6 +140,8 @@ export const MyAdditionalPhotos = ({ profile }) => {
     return (
       <>
         <div className="divider-header-container">
+                        <div className="profile-section-header">
+
           <Typography variant="h6">Additional Photos</Typography>
           <Tooltip
             title="Add Photo"
@@ -157,6 +159,7 @@ export const MyAdditionalPhotos = ({ profile }) => {
               />
             </IconButton>
           </Tooltip>
+          </div>
           <div className="profile-section-header"></div>
           <Divider />
         </div>
