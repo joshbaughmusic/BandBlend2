@@ -4,6 +4,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  Chip,
   Collapse,
   Dialog,
   DialogActions,
@@ -35,7 +36,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const MyPostsCard = ({ post, profile, getUserPosts, page }) => {
+export const MyPostsCard = ({ post, profile, getUserPosts, page, loggedInUser }) => {
   const [expanded, setExpanded] = useState(false);
   //defining newComment state here so when expanded is clicked, warning can be given if there is a comment in progress
   const [newComment, setNewComment] = useState('');
@@ -111,7 +112,11 @@ export const MyPostsCard = ({ post, profile, getUserPosts, page }) => {
                 {expanded ? (
                   <Typography>Hide Comments</Typography>
                 ) : (
+                  <>
+                  {/* <Chip className='commentCount-chip' label={post.commentCount} /> */}
                   <Typography>View Comments</Typography>
+                  </>
+
                 )}
                 <ExpandMore
                   expand={expanded}
@@ -136,6 +141,7 @@ export const MyPostsCard = ({ post, profile, getUserPosts, page }) => {
               post={post}
               newComment={newComment}
               setNewComment={setNewComment}
+              loggedInUser={loggedInUser}
             />
           </CardContent>
         </Collapse>

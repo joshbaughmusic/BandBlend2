@@ -35,7 +35,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const OtherPostsCard = ({ post, profile, page }) => {
+export const OtherPostsCard = ({ post, profile, page, loggedInUser }) => {
   const [expanded, setExpanded] = useState(false);
   //defining newComment state here so when expanded is clicked, warning can be given if there is a comment in progress
   const [newComment, setNewComment] = useState('');
@@ -132,6 +132,7 @@ export const OtherPostsCard = ({ post, profile, page }) => {
           <CardContent>
             <CommentsSection
               profile={profile}
+              loggedInUser={loggedInUser}
               post={post}
               newComment={newComment}
               setNewComment={setNewComment}

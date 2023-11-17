@@ -347,7 +347,7 @@ export const MyProfile = ({ loggedInUser }) => {
                 elevation={4}
                 className="profile-right-section-item"
               >
-                <MyPosts profile={profile} />
+                <MyPosts profile={profile} loggedInUser={loggedInUser}/>
               </Paper>
             </div>
           </Grid>

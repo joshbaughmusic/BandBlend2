@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { PostSkeleton } from '../PostSkeleton.js';
 
-export const OtherPosts = ({ profile }) => {
+export const OtherPosts = ({ profile, loggedInUser }) => {
   const [posts, setPosts] = useState();
   const [postCount, setPostCount] = useState(0);
   const [page, setPage] = useState(1);
@@ -89,6 +89,7 @@ export const OtherPosts = ({ profile }) => {
             post={p}
             key={index}
             page={page}
+            loggedInUser={loggedInUser}
           />
         ))}
       </div>

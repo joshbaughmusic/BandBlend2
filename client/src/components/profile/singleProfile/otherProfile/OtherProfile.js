@@ -24,7 +24,7 @@ import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import { OtherPosts } from '../../../posts/otherPosts/OtherPosts.js';
 import { OtherAdditionalPhotos } from '../../../additonalPhotos/otherAdditionalPhotos/OtherAdditionalPhotos.js';
 
-export const OtherProfile = () => {
+export const OtherProfile = ({ loggedInUser }) => {
   const [profile, setProfile] = useState();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -203,14 +203,16 @@ export const OtherProfile = () => {
                 elevation={4}
                 className="profile-right-section-item"
               >
-                
                 <OtherAdditionalPhotos profile={profile} />
               </Paper>
               <Paper
                 elevation={4}
                 className="profile-right-section-item"
               >
-                <OtherPosts profile={profile} />
+                <OtherPosts
+                  profile={profile}
+                  loggedInUser={loggedInUser}
+                />
               </Paper>
             </div>
           </Grid>

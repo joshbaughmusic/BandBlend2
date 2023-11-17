@@ -30,7 +30,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useSnackBar } from '../../context/SnackBarContext.js';
 import { PostSkeleton } from '../PostSkeleton.js';
 
-export const MyPosts = ({ profile }) => {
+export const MyPosts = ({ profile, loggedInUser }) => {
   const [posts, setPosts] = useState();
   const [postCount, setPostCount] = useState(0);
   const [page, setPage] = useState(1);
@@ -315,6 +315,7 @@ export const MyPosts = ({ profile }) => {
             post={p}
             key={index}
             page={page}
+            loggedInUser={loggedInUser}
           />
         ))}
       </div>

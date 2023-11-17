@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useSnackBar } from "../context/SnackBarContext.js";
 import { fetchCreateNewComment } from "../../managers/commentsManager.js";
 
-export const NewComment = ({ profile, post, getCommentsForPost, newComment, setNewComment }) => {
+export const NewComment = ({ profile, post, getCommentsForPost, newComment, setNewComment, loggedInUser }) => {
   const [blankCommentError, setBlankCommentError] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
@@ -45,7 +45,7 @@ export const NewComment = ({ profile, post, getCommentsForPost, newComment, setN
       <div className="new-comment-container">
         <Avatar
           className="single-profile-pic"
-          src={profile.profile.profilePicture}
+          src={loggedInUser.profile.profilePicture}
           alt={profile.name}
           sx={{ width: '35px', height: '35px' }}
         />

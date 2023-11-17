@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using BandBlend.Models;
 using BandBlend.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BandBlend.Controllers;
 
@@ -96,7 +97,8 @@ public class AuthController : ControllerBase
     public IActionResult Me()
     {
         var identityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var profile = _dbContext.UserProfiles.SingleOrDefault(up => up.IdentityUserId == identityUserId);
+        var profile = _dbContext.UserProfiles
+        .Include(up => up.Profile).SingleOrDefault(up => up.IdentityUserId == identityUserId);
         var roles = User.FindAll(ClaimTypes.Role).Select(r => r.Value).ToList();
         if (profile != null)
         {

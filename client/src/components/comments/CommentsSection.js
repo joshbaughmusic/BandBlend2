@@ -13,7 +13,7 @@ import { CommentSkeleton } from './CommentSkeleton.js';
 import { OtherCommentCard } from './OtherCommentCard.js';
 import { NewComment } from './NewComment.js';
 
-export const CommentsSection = ({ profile, post, newComment, setNewComment }) => {
+export const CommentsSection = ({ profile, post, newComment, setNewComment, loggedInUser }) => {
   const [comments, setComments] = useState(0);
   const [commentCount, setCommentCount] = useState(0);
   const [page, setPage] = useState(1);
@@ -48,6 +48,7 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment }) =>
           getCommentsForPost={getCommentsForPost}
           newComment={newComment}
           setNewComment={setNewComment}
+          loggedInUser={loggedInUser}
         />
 
         {Array(post.commentCount)
@@ -92,10 +93,11 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment }) =>
         getCommentsForPost={getCommentsForPost}
         newComment={newComment}
         setNewComment={setNewComment}
+        loggedInUser={loggedInUser}
       />
       <div>
         {comments.map((c, index) => {
-          return c.userProfileId === profile.id ? (
+          return c.userProfileId === loggedInUser.id ? (
             <MyCommentCard
               key={index}
               profile={profile}
