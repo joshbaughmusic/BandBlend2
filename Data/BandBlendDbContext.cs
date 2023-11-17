@@ -15,7 +15,8 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
     public DbSet<SavedProfile> SavedProfiles { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Message> Messages { get; set; }
-    public DbSet<Like> Likes { get; set; }
+    public DbSet<PostLike> PostLikes { get; set; }
+    public DbSet<CommentLike> CommentLikes { get; set; }
     public DbSet<Tag> Tags { get; set; }
     public DbSet<SubGenre> SubGenres { get; set; }
     public DbSet<ProfileTag> ProfileTags { get; set; }
@@ -1682,12 +1683,63 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 Date = new DateTime(2023, 11, 6, 12, 5, 0)
             }
         );
-        modelBuilder.Entity<Like>().HasData(
-            new Like
+        modelBuilder.Entity<PostLike>().HasData(
+            new PostLike
             {
                 Id = 1,
+                UserProfileId = 3,
+                PostId = 1,
+                Date = new DateTime(2023, 11, 6, 12, 18, 0)
+            },
+            new PostLike
+            {
+                Id = 2,
                 UserProfileId = 2,
                 PostId = 1,
+                Date = new DateTime(2023, 11, 6, 12, 18, 0)
+            },
+            new PostLike
+            {
+                Id = 3,
+                UserProfileId = 4,
+                PostId = 1,
+                Date = new DateTime(2023, 11, 6, 12, 18, 0)
+            },
+            new PostLike
+            {
+                Id = 4,
+                UserProfileId = 5,
+                PostId = 1,
+                Date = new DateTime(2023, 11, 6, 12, 18, 0)
+            }
+        );
+        modelBuilder.Entity<CommentLike>().HasData(
+            new CommentLike
+            {
+                Id = 1,
+                UserProfileId = 3,
+                CommentId = 1,
+                Date = new DateTime(2023, 11, 6, 12, 18, 0)
+            },
+            new CommentLike
+            {
+                Id = 2,
+                UserProfileId = 2,
+                CommentId = 1,
+                Date = new DateTime(2023, 11, 6, 12, 18, 0)
+            },
+            new CommentLike
+            {
+                Id = 3,
+                UserProfileId = 4,
+                CommentId = 1,
+                Date = new DateTime(2023, 11, 6, 12, 18, 0)
+            },
+            new CommentLike
+            {
+                Id = 4,
+                UserProfileId = 5,
+                CommentId = 1,
                 Date = new DateTime(2023, 11, 6, 12, 18, 0)
             }
         );

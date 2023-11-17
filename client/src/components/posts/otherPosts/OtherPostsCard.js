@@ -23,6 +23,7 @@ import { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { dateFormatter } from '../../../utilities/dateFormatter.js';
 import { CommentsSection } from '../../comments/CommentsSection.js';
+import { PostLikes } from '../../likes/postLikes/PostLikes.js';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -82,12 +83,10 @@ export const OtherPostsCard = ({ post, profile, page, loggedInUser }) => {
         <CardActions disableSpacing>
           <div className="post-card-footer">
             <div>
-              <IconButton>
-                <ThumbUpAltIcon />
-              </IconButton>
-              <IconButton>
-                <CommentIcon />
-              </IconButton>
+              <PostLikes
+                post={post}
+                loggedInUser={loggedInUser}
+              />
             </div>
             {post.commentCount === 0 || post.commentCount === null ? (
               <div className="post-card-footer-right">

@@ -26,7 +26,7 @@ import '../SingleProfile.css';
 import SpotifyLogo from '../../../../images/SocialMediaLogos/spotify.png';
 import FacebookLogo from '../../../../images/SocialMediaLogos/facebook.png';
 import InstagramLogo from '../../../../images/SocialMediaLogos/instagram.png';
-import TikTokLogo from '../../../../images/SocialMediaLogos/spotify.png';
+import TikTokLogo from '../../../../images/SocialMediaLogos/tiktok.png';
 import { Link } from 'react-router-dom';
 import { MyPosts } from '../../../posts/myPosts/MyPosts.js';
 import EditIcon from '@mui/icons-material/Edit';
