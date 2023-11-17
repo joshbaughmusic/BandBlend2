@@ -11,7 +11,7 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import { dateFormatter } from '../../utilities/dateFormatter.js';
 import { CommentLikes } from '../likes/commentLikes/CommentLike.js';
 
-export const OtherCommentCard = ({ comment, loggedInUser }) => {
+export const OtherCommentCard = ({ comment, loggedInUser, commentPage }) => {
   return (
     <>
       <Card className="comment-card">
@@ -39,6 +39,7 @@ export const OtherCommentCard = ({ comment, loggedInUser }) => {
                 <CommentLikes
                   comment={comment}
                   loggedInUser={loggedInUser}
+                  commentPage={commentPage}
                 />
               </div>
             </div>

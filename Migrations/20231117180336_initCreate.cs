@@ -534,26 +534,26 @@ namespace BandBlend2.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "00a40af9-6o6o-6o66-po6k-kk00a38j90ld", 0, "7e559b23-c9db-44b0-b3f0-9fd25ae80adf", "daniel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEEKpTj5qL5rchagpRu1myBbZk39oVa//s7Ph/H3qGa2p3B9f0u6KPJQKRI3tUKjpVg==", null, false, "6c37b231-e008-476c-ae51-35910ca58521", false, null },
-                    { "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd", 0, "9ced7692-b080-446f-a256-6a423439a077", "grace@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEOF2869TiLlyHkhwCJ98/B1pSXbCJJGMdQknaVkr5v8IlRYadSYxdDplnBbcema04A==", null, false, "8f77edbf-3770-43c1-a719-87809076d28d", false, null },
-                    { "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd", 0, "c85ce138-3cd6-478e-a310-5be1ac4f876f", "alexander@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHpjvrb1utIj54AKGL8aYUxGQNQKpXtc2lfWHEaxxJjT/cLuUcfs09EGFU6peH09aw==", null, false, "96ccb34c-e3de-4b93-b2bd-59c14442873c", false, null },
-                    { "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id", 0, "4e727798-39b8-435e-a5bc-42dc73a94aca", "evelyn@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEMAL5+qCQM3DTzY/KkClfRgKfe2vsqnG2tjNkU5sfkbVUBB1vRM6+RqF5i6Hs6xPSA==", null, false, "a6c6d84b-0bf9-4afe-931c-5b7a5bcb5b0a", false, null },
-                    { "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd", 0, "80c07620-46b4-4983-b83c-0fb8015d091e", "benjamin@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHxsYtHxpz9HyBedItZzsIRc7iybRV27X2PeYKQLtrK5ENo1GAEvlEj0MiIjGwJUZg==", null, false, "aeeafac7-82cf-4adf-8d05-f61274f8571b", false, null },
-                    { "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd", 0, "60922b0d-2689-45a0-96d6-b7a0ba40d7ee", "harper@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEGCc9A6Bw+7lTV6d/fx19XYUOvjQhdTvJIk+Uk/WPBGax8pclXAvkVCMzfj0vdhCuA==", null, false, "6cf48659-1fad-477d-ada6-966858bf3989", false, null },
-                    { "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd", 0, "3b2d2a80-f881-4ed1-b4c2-87947b1786f6", "william@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEL1h+KDxHPBed+I+FDyRSj1gh0+zWxAMhJ5RKXaCYJeLIuReKxl+i9mdIonswNVvbg==", null, false, "7fd8918a-9a96-4c8b-9cc6-561ba9a5ea67", false, null },
-                    { "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed", 0, "a353ce5c-e7e7-42db-ad5d-472fe4b1c010", "charlotte@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHoKKwz8OhiUsKUih5DWkBoIgl4FnbBCMWmJ0LIbg/HUh8C1hUNXxRPt7vJqjReQ9Q==", null, false, "d94a2c20-a276-4779-92e3-dfa64a6288f5", false, null },
-                    { "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 0, "40c060ae-c69e-446e-b789-5a634b52808b", "tom@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAED/e6FG6CMmhSh1RjDByRtKLGIghKCE9QjZ5DjdmfDSUQ4AxQCGwGD0/bxTA0dJRBg==", null, false, "db52c2b1-2524-4e66-b6ad-3885eacad482", false, null },
-                    { "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd", 0, "d4384421-1d19-4cb5-85c7-befa2643a95e", "james@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAECotA9GqyfO7RNGyeTKXBVigy7UptUewRSxVw3ZEyMZnHftUdWt0+lDvxT0Du78Smg==", null, false, "fab0ca41-64c8-4703-88b0-6ca067949cfc", false, null },
-                    { "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd", 0, "5465ce79-3650-4cca-b848-2d7f6269b978", "mia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEGsqQcSfNyYp0MGAqh3U1bnvt54ck+Z3b2REUjxnaN24vsXi4O6R/4pMLPeY1alaIQ==", null, false, "758801d1-eb7e-4c65-a5b6-88608ac14203", false, null },
-                    { "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md", 0, "4970a73e-f14a-4389-a2d8-17ee73b551e7", "madison@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDCdTAO2cCUckTUErbsX3zVLtQQB9ZrM8tItff6Dr7Gg0er30xWMYobU0i11est8jw==", null, false, "37cfb05d-daf8-4e09-885e-96a8a84401bd", false, null },
-                    { "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac", 0, "3545f2da-7455-4a77-9b78-5b94fdb76020", "noah@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEPhkM/UHtn5USW4vC8870LM4dytPX0eHj+W+ABePVCNtkRKUEetS+gW/X1kc5Awiqw==", null, false, "1aebf40b-4129-4ff5-9c29-5fea12c87c7a", false, null },
-                    { "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd", 0, "1ff58c07-a77f-4531-9f4f-e8777e99426b", "gabriel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAELFfu/54h6+gnVXT6Z51W3905oAqO2T8k//AqeSpFEEpv6OMHywS1ekbg+O2jmtK5w==", null, false, "510da1d9-f06c-400c-9f9d-c49fc28f76a6", false, null },
-                    { "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47", 0, "bc31bcdd-6b9f-4dde-8207-217384071430", "emily@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAECARqtx/Fjkw5qFI0iVWtT+uozSOkz2uLjQ8Ou8X+4FQKHXYmNcGjF9CurKcW7Vzug==", null, false, "4928a671-5046-4024-9eee-42badd0c4981", false, null },
-                    { "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68", 0, "483c0378-5f41-42a1-a092-ce1383cbd8cb", "oliver@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDJjDgfivNu1POLMSVAD5s3FCxGRpjIyyWy7yETygaT+BaljnRtwkgYYSWyXIbPI+A==", null, false, "92004a6f-2d40-4ed9-a7f0-5ac928c7f26f", false, null },
-                    { "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79", 0, "373ae313-c9f7-427e-b0c0-078a1272bc82", "Ava Martinez", false, false, null, null, null, "AQAAAAIAAYagAAAAEIk4wb3C84VNzEwPm9ug27fwCCdIGMm5oH3du4TyGqLohvsLr5yTuVTUeeBnr2luSQ==", null, false, "489a2740-551b-48fc-913a-ecb3784d5021", false, null },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "5002fac7-ac7e-4867-8746-9ddafc01cd0e", "josh@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEHBB2y57F6sGdVG2+5VQaUKpzazxdprpFrS3xU43rJr5tRx3SZv70dPCcLlYsjVzeA==", null, false, "cea3a2f6-8e8b-43ca-92ec-77fa8b67a398", false, null },
-                    { "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a", 0, "d4f37ecd-bd8b-4fdb-86f2-007c74ef6e7c", "liam@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEIKS9h+7RNKoMrMkUOgcErd5a1kZKkBWiVdX4K1jGnkeJtM0rjt7qLUSy8FfywX3Jw==", null, false, "7becf6de-4664-4f51-b394-9fdb75167635", false, null },
-                    { "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b", 0, "d4ce3f3d-ef70-4813-a8d1-890949ce8ea0", "sophia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEBnnFkLwCXpvuLl2zirMTZbV9fY+7NNI0t/OWuMo03uClmxKsJ1QPsTQ2/D5OZD4hA==", null, false, "2336b9c0-609b-4897-b8b5-8a80dc9be9ea", false, null }
+                    { "00a40af9-6o6o-6o66-po6k-kk00a38j90ld", 0, "6fbe524f-a404-42fa-abae-8dedc4cfe1ef", "daniel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEKvFOJf5GFLAKFRSBKoSyLtcm4RZZKdnbCP8C+MPKhD4QYmceG1XHjKct2YyHJp/+w==", null, false, "cf35810e-eaca-49c9-9040-8b3197adafe0", false, null },
+                    { "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd", 0, "87cb4dc9-2dfb-4d2f-8521-0ed41526c53b", "grace@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEI4KraBdRPXzeZav6BBP/Lr1iKaxOVd6Vgi3dP6sQKP1/TR5+rDluVkqVlJzmg2Z5Q==", null, false, "db9ce4b1-6d3f-4bfa-869e-74741b709729", false, null },
+                    { "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd", 0, "44cbd76d-8cd2-435e-8717-e6fff92b4864", "alexander@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAENh6sIM119T5a9ZTjFpjGerjvj4R3NXV0PJyE5XFC1bUBmQn0UYe+P1McfnMOGfR7Q==", null, false, "0f9233b2-ee18-42f9-b502-225e48bd7602", false, null },
+                    { "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id", 0, "0c84ba2b-836e-41cf-a040-6a934fc9cf84", "evelyn@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEPC8q6MB66BYZkMIs+KSa138uEpCU/B2nBKVEwg4s1i638rdyl8j02FwE2ipuYXq6Q==", null, false, "b8640cfd-5d33-41b0-831e-1cf60beccc06", false, null },
+                    { "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd", 0, "20db1f10-beb1-4163-b456-97f3f09193bc", "benjamin@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEMjJ/NHPtfoLx9PBG+w4id7kL1TDNW2eE+1gQm5lTO1hGcdKZW6zdiksfly5LdQ+LQ==", null, false, "f1af1123-4e12-4c1b-aca2-2bff2cf7615d", false, null },
+                    { "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd", 0, "4bf6d5d6-f2c8-4bbf-80a6-5551906dfe58", "harper@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAELyhQt6iShmhQPy6i5sHUlZEQoD2bhhR4pFNnI7nijgHuVwNlS/ju9kD2d8U/Xc3sA==", null, false, "a9ba092e-5080-4118-abe8-7031ab1d9376", false, null },
+                    { "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd", 0, "99dfe9fc-2c6a-4e92-9549-cacfdf5590fc", "william@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEJ0NbRXSEoIyAQW8+Y9ltC1OnNEcyldWFVtrNBZThffKBB7uAb8e6V0VqQ8i9mt+rQ==", null, false, "c5503096-b72a-4c61-b305-fe6144e05362", false, null },
+                    { "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed", 0, "ae6b42f9-de25-4d32-b922-590a958579a1", "charlotte@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEGlaHimW4igkrq8W1mXyz/E/FvNkfsiKL6S0VD4t6rd8dsMT12bR26Y72qHAie7gNw==", null, false, "3fb0ff32-bb02-499c-98b3-5fdfeeacd15a", false, null },
+                    { "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 0, "7980dcff-5169-446e-bcd4-aac31f71acd4", "tom@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEDSUl9WVEAY4ADlT80ly2NB93INpw+a1KTulVM5yTioqrSeUBqrwv4M0g139BtOcog==", null, false, "1aa24659-ca36-4f53-8a56-de911f48d3e1", false, null },
+                    { "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd", 0, "52d3a3fd-e843-4b6e-b02a-a87eab9027c6", "james@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDSdxH0lJgAvfbqgKVMBP6nhoa2Fo7sPsxApsvzn/FbibKF8H3QOVenKHao7lwsv3w==", null, false, "020fa282-59fd-46ef-8954-937e3a94bba8", false, null },
+                    { "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd", 0, "267075b0-6234-4802-89fa-87d1ee9415c0", "mia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEMC9QSoZOcyssQIK8U6gllmelO3TZ4QHhbqW3rfM4BdTHNY3SU9u9MiVwXNedXpZnA==", null, false, "c1b4a312-5a6a-4dd7-9281-286cc93d621c", false, null },
+                    { "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md", 0, "d5122850-f47a-49ca-bead-6e1ad6af037f", "madison@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEEnFRNbZEDx4P6XX+i4sE3TKSxK3newgkJ7LIcJxGW+7xOZuOt2FCz0AM4lcr5ZauA==", null, false, "d7c11fc9-672e-4f2a-b8b3-3e446977c1af", false, null },
+                    { "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac", 0, "c5494867-a666-415f-832a-f738aca4c226", "noah@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEK0Gj5/MaJJRzTq5kTKSWDx6rZAIUP7oU3c6iJyXT1PzhjvMCY/wlkYZb8JRq9eISw==", null, false, "e54d94ea-def8-492b-b505-a9b4f2d82fd5", false, null },
+                    { "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd", 0, "9b999f0a-d2eb-42c4-9917-b3bf8c03a2b4", "gabriel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEMNE6Tl++SMwg2kFRXqp0en/4tVRr1eKfiNf8+m7e+8HZEYJlumMgfFh3dwMt4Y8ng==", null, false, "9cded469-c7bd-4434-b159-9e2192c798d1", false, null },
+                    { "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47", 0, "b7045af1-1668-476e-a0bf-6f1d6e514a4a", "emily@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEPAfmhZ1E3mfhfB3XyOEo/j+V4x8dMgL5Xl00OHtfDTxo5AxgVQ8L1dGjw74y7LKvA==", null, false, "1191dd3a-f677-403d-a744-45b89f47bade", false, null },
+                    { "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68", 0, "a07ad351-b9fe-439d-927a-c6d3e9302f9d", "oliver@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEGLUGnd5JMbvho8IUFDElJuaqzAs03GYR6vasmFPvDCNbwMI81HayXbs15BrtHP9SQ==", null, false, "5ef42145-be4d-407e-a2c8-9297d431ab0a", false, null },
+                    { "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79", 0, "267f422a-9944-4d3d-a8f8-af9de4e706e4", "Ava Martinez", false, false, null, null, null, "AQAAAAIAAYagAAAAEDMSyv+9jj5Pt/6ZnPVgm+5W8PwDasE8rB7BlN4tTVYMqjnsuY9s7gwrfG5Pb5XMcg==", null, false, "26d8bc44-05d5-4f99-8b26-da044255235f", false, null },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "ae34fa7e-f046-4002-a536-0f35b93f3815", "josh@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEO7MMFdgwaA1hJQcC2RqJEHMUlC6EBbghYC5TsapAYO6uLC5uVnpit7m9iYoIqvRmA==", null, false, "5363876b-02e7-421b-a316-0012179f5986", false, null },
+                    { "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a", 0, "c4fa2d99-4b77-422e-b602-647ae29d82e9", "liam@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEK5oow8/xTpVrGwytNf97S6nElGg93eavnPavLhtcfQqvp2qIuQrIx9rYX0Gn7FVug==", null, false, "b72c0949-43da-42cf-9668-2c8cf7379876", false, null },
+                    { "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b", 0, "0fd6599f-383a-4f8e-8cbe-61c0b0819bcc", "sophia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEH1squg48KdXOJ2xc6T+D2NR29gPwpcrvmtGlFUwsN8lDwAzSupuwpPfi9+H8ibyew==", null, false, "659e0980-a686-40fc-88c6-67d5977e76f2", false, null }
                 });
 
             migrationBuilder.InsertData(
@@ -784,29 +784,21 @@ namespace BandBlend2.Migrations
                 columns: new[] { "Id", "Body", "Date", "UserProfileId" },
                 values: new object[,]
                 {
-                    { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 3, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 7, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 8, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 9, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 10, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 11, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 12, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 13, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 14, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 15, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 16, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 17, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 18, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 19, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 20, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 21, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 22, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 23, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 }
+                    { 1, "Post 1", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 2, "Post 2", new DateTime(2023, 11, 6, 12, 3, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 3, "Post 3", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
+                    { 4, "Post 4", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 5, "Post 5", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 6, "Post 6", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 7, "Post 7", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 8, "Post 8", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 9, "Post 9", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 10, "Post 10", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 11, "Post 11", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 12, "Post 12", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 13, "Post 13", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
+                    { 14, "Post 14", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
+                    { 15, "Post 15", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -873,17 +865,6 @@ namespace BandBlend2.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "PostLikes",
-                columns: new[] { "Id", "Date", "PostId", "UserProfileId" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 1, 3 },
-                    { 2, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 1, 2 },
-                    { 3, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 1, 4 },
-                    { 4, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 1, 5 }
-                });
-
-            migrationBuilder.InsertData(
                 table: "ProfileSubGenres",
                 columns: new[] { "Id", "ProfileId", "SubGenreId" },
                 values: new object[,]
@@ -913,17 +894,6 @@ namespace BandBlend2.Migrations
                 table: "SavedProfiles",
                 columns: new[] { "Id", "ProfileId", "UserProfileId" },
                 values: new object[] { 1, 2, 1 });
-
-            migrationBuilder.InsertData(
-                table: "CommentLikes",
-                columns: new[] { "Id", "CommentId", "Date", "UserProfileId" },
-                values: new object[,]
-                {
-                    { 1, 1, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 3 },
-                    { 2, 1, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 3, 1, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 4 },
-                    { 4, 1, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 5 }
-                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

@@ -16,7 +16,7 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import '../Likes.css';
 import { fetchDeleteCommentLike, fetchLikesForComment, fetchNewCommentLike } from '../../../managers/commentLikeManager.js';
 
-export const CommentLikes = ({ comment, loggedInUser }) => {
+export const CommentLikes = ({ comment, loggedInUser, commentPage }) => {
   const [likes, setLikes] = useState();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -36,7 +36,7 @@ export const CommentLikes = ({ comment, loggedInUser }) => {
 
   useEffect(() => {
     getLikesForComment();
-  }, []);
+  }, [commentPage, comment.id]);
 
   const handleNewLike = () => {
     fetchNewCommentLike(comment.id).then(() => {

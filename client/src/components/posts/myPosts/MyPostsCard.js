@@ -83,7 +83,7 @@ export const MyPostsCard = ({ post, profile, getUserPosts, page, loggedInUser })
         <CardActions disableSpacing>
           <div className="post-card-footer">
             <div className='post-card-footer-left'>
-              <PostLikes post={post} loggedInUser={loggedInUser}/>
+              <PostLikes post={post} loggedInUser={loggedInUser} postPage={page}/>
               <DeletePost
                 postId={post.id}
                 getUserPosts={getUserPosts}

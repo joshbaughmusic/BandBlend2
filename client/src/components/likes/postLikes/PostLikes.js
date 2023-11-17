@@ -15,7 +15,7 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import '../Likes.css';
 
-export const PostLikes = ({ post, loggedInUser }) => {
+export const PostLikes = ({ post, loggedInUser, postPage }) => {
   const [likes, setLikes] = useState();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -35,7 +35,7 @@ export const PostLikes = ({ post, loggedInUser }) => {
 
   useEffect(() => {
     getLikesForPost();
-  }, []);
+  }, [postPage, post.id]);
 
   const handleNewLike = () => {
     fetchNewPostLike(post.id).then(() => {

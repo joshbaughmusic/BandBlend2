@@ -14,6 +14,7 @@ export const MyCommentCard = ({
   comment,
   getCommentsForPost,
   loggedInUser,
+  commentPage
 }) => {
   return (
     <>
@@ -41,6 +42,7 @@ export const MyCommentCard = ({
               <CommentLikes
                 comment={comment}
                 loggedInUser={loggedInUser}
+                commentPage={commentPage}
               />
               <DeleteComment
                 commentId={comment.id}

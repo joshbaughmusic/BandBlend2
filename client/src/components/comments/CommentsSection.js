@@ -104,6 +104,7 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment, logg
               comment={c}
               getCommentsForPost={getCommentsForPost}
               loggedInUser={loggedInUser}
+              commentPage={page}
             />
           ) : (
             <OtherCommentCard
@@ -111,6 +112,7 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment, logg
               profile={profile}
               comment={c}
               loggedInUser={loggedInUser}
+              commentPage={page}
             />
           );
         })}

@@ -86,6 +86,7 @@ export const OtherPostsCard = ({ post, profile, page, loggedInUser }) => {
               <PostLikes
                 post={post}
                 loggedInUser={loggedInUser}
+                postPage={page}
               />
             </div>
             {post.commentCount === 0 || post.commentCount === null ? (
