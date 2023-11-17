@@ -24,6 +24,7 @@ import { DeletePost } from '../DeletePost.js';
 import { EditPost } from '../EditPost.js';
 import { dateFormatter } from '../../../utilities/dateFormatter.js';
 import { CommentsSection } from '../../comments/CommentsSection.js';
+import { PostLikes } from '../../likes/postLikes/PostLikes.js';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -81,7 +82,8 @@ export const MyPostsCard = ({ post, profile, getUserPosts, page, loggedInUser })
         </CardContent>
         <CardActions disableSpacing>
           <div className="post-card-footer">
-            <div>
+            <div className='post-card-footer-left'>
+              <PostLikes post={post} loggedInUser={loggedInUser}/>
               <DeletePost
                 postId={post.id}
                 getUserPosts={getUserPosts}

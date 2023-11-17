@@ -15,7 +15,7 @@ import '../SingleProfile.css';
 import SpotifyLogo from '../../../../images/SocialMediaLogos/spotify.png';
 import FacebookLogo from '../../../../images/SocialMediaLogos/facebook.png';
 import InstagramLogo from '../../../../images/SocialMediaLogos/instagram.png';
-import TikTokLogo from '../../../../images/SocialMediaLogos/spotify.png';
+import TikTokLogo from '../../../../images/SocialMediaLogos/tiktok.png';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import BookmarkIcon from '@mui/icons-material/Bookmark';import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import MailIcon from '@mui/icons-material/Mail';
@@ -158,7 +158,7 @@ export const OtherProfile = ({ loggedInUser }) => {
                   ))}
                 </div>
               </div>
-              <ButtonGroup>
+              <ButtonGroup className='otherProfile-buttonGroup'>
                 {profile.profile.savedProfile ? (
                   <Button
                     variant="contained"

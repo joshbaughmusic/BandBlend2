@@ -350,7 +350,7 @@ namespace BandBlend2.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Likes",
+                name: "PostLikes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -361,15 +361,15 @@ namespace BandBlend2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Likes", x => x.Id);
+                    table.PrimaryKey("PK_PostLikes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Likes_Posts_PostId",
+                        name: "FK_PostLikes_Posts_PostId",
                         column: x => x.PostId,
                         principalTable: "Posts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Likes_UserProfiles_UserProfileId",
+                        name: "FK_PostLikes_UserProfiles_UserProfileId",
                         column: x => x.UserProfileId,
                         principalTable: "UserProfiles",
                         principalColumn: "Id",
@@ -483,6 +483,33 @@ namespace BandBlend2.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "CommentLikes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserProfileId = table.Column<int>(type: "integer", nullable: false),
+                    CommentId = table.Column<int>(type: "integer", nullable: false),
+                    Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CommentLikes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CommentLikes_Comments_CommentId",
+                        column: x => x.CommentId,
+                        principalTable: "Comments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CommentLikes_UserProfiles_UserProfileId",
+                        column: x => x.UserProfileId,
+                        principalTable: "UserProfiles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AdditionalPictures",
                 columns: new[] { "Id", "Url", "UserProfileId" },
@@ -507,26 +534,26 @@ namespace BandBlend2.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "00a40af9-6o6o-6o66-po6k-kk00a38j90ld", 0, "97abace2-bdc5-4957-8c19-5e406b1b5fdf", "daniel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEC5ckWkZlUY5TBAzqIx3P4OSaaH1ZQY5PCXxy63JkDhzp+KCYg89LAlbOMsZVLpWaA==", null, false, "41d68f29-1003-4e3d-915e-a347db02f4de", false, null },
-                    { "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd", 0, "ad1c3973-f5a1-4dbc-8e15-08835a272c62", "grace@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEEiTHP0jTVtLoEc7VsRr9r2nycjf2NEucTkx2QRKgVw4WGtKTKBrLoKUApRjpwczXg==", null, false, "28823e0a-27a6-4fa5-9bbc-317437b21419", false, null },
-                    { "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd", 0, "39d3b813-07fc-4d4f-ac29-91ac1bf51896", "alexander@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAECxVKxArp9X85kmDcS3kjJLKXGabVzF/YObHTOxH3+iaogXzB/yA7z7DD6QDTyxuKg==", null, false, "4191ab18-3fe9-4d58-919b-e298bac6aece", false, null },
-                    { "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id", 0, "0d3562ce-bd6a-44df-ad7d-55c1802cc5f3", "evelyn@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEL2+V835zzjNfsubXiSk0kvpG/oDhpb3xANI4lN1DVpIhicrzPSQCMHBJ70hPIS3cg==", null, false, "e146e11a-98a3-4a8f-ad57-f9f47c6168e8", false, null },
-                    { "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd", 0, "d34db4ba-0411-469e-90b5-1873067e7a81", "benjamin@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAELwqv+cT9IzSGgBEOJFVgQqXYUWdzJEVIRL8aJml5UBF3FoiutOJYlC6rxXALqMGog==", null, false, "5a3eaa58-4668-4efe-90c1-8dbed0370c36", false, null },
-                    { "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd", 0, "32143522-c3dc-4d35-9bbf-8dc03f3e45ef", "harper@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEAlJV4MOqloh0v/QjPHM8VCr71tcEqolQRZKmgRNBA0PjikO386husESYyTp4+cvrg==", null, false, "0ca97981-17e6-4a1a-954b-de1951472431", false, null },
-                    { "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd", 0, "c1c0a5e4-4c37-4b72-9ccf-93e4dad34f8f", "william@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEJbQ6sUwFnEznEgzkRd8vcdFcnA01BcpgQxJGTZwe1khIgYzrkk55sO2CJp++R31VQ==", null, false, "6f83d369-e688-4f91-9fff-b160eb795afc", false, null },
-                    { "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed", 0, "ad55b5c7-8a0d-4696-a9a7-19be9d04fe4a", "charlotte@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAELh8H6FHWNnnFQbgmWoJ5TLntcnntXYHad60l5jqEyvshRBbiJ6zKcqP51iRItn6Yg==", null, false, "92f4d8e3-90f6-4c14-9c31-2940df762790", false, null },
-                    { "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 0, "abbec9f3-93f3-4fce-a6ce-25ebedd7cf5f", "tom@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEFC98v3VLZ8bzh/Nb0klxB/KgbmemNM1jw79GCFEvvy7M1E0fgipkptjgatqRg0m3Q==", null, false, "d84df5a7-14c3-4aa7-b4f8-3a04480541fd", false, null },
-                    { "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd", 0, "daeafe0f-2b9e-4e87-ae8e-005af6f1dc59", "james@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEKQ/fBZB7JiCbMtXlqK7l8aNvSfNmA5Vdw1huvc7re87l4M6SxWtCxaHw/nkQ8hxDQ==", null, false, "58abd877-cc07-4085-97a8-79386ab92b3b", false, null },
-                    { "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd", 0, "edfc1846-b188-475b-9c23-b0628d0d2692", "mia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEOuJsfDcTRr/9rUbmJj/TG7JJCPlW6Xluc4kUuZ/jxQwz4jhE0bm8mSAbKI0f54YXw==", null, false, "14970f9e-532c-4bbe-9a46-cf5c604ec242", false, null },
-                    { "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md", 0, "9dfd1096-f9b8-48bc-a8c9-368db2a10bfc", "madison@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEBgpxfVt3oaak2EGtUcPGoAHJ9PFyrE8IXfBgLyahme8w+YcNqJbtKm+eGCTp9jTJg==", null, false, "3e2b40fe-e106-4983-aa83-109c14b6fc5c", false, null },
-                    { "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac", 0, "59d50965-376c-403c-80ea-67244e56caeb", "noah@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEKq5gdIQkvDkwuSC1bdE+4YfeJwsqC07L++8fucZWPzm+FJQm5CYCG/xT2Ew1TuyRA==", null, false, "df1e52d4-6f87-4c22-af55-ecb300c6f500", false, null },
-                    { "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd", 0, "dc1cfab0-00f6-4de2-aad6-3a6657bcb41c", "gabriel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEEMYSXoaPhPQ6OHiSn2LlFAcpiGxnbz1mPErxht/ejWA+LDD3VqZ/Dfao376xOP6IQ==", null, false, "d0224f3f-3afe-4952-9e98-45f9972d21d5", false, null },
-                    { "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47", 0, "6bab457e-c8f5-44f2-b80e-44369cb2a362", "emily@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEKyOIy8GjS0Fl7d+S9JMtSzyMB6ljuO6PAZAi8MbqlcVxpw/OX5PEntSv1WsFuJpkQ==", null, false, "7ecc74f9-fd0e-4e03-9640-c3edfecf99fd", false, null },
-                    { "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68", 0, "70ce834b-e8b7-470d-af30-da9ea181a279", "oliver@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEOJI/SqvqGNAROlmCAjbpH9QFHScusav5Qu1psTFF3YkWaXhSMTY44be6QF2P70G8A==", null, false, "8f5fd5a2-d75a-4ed2-ac2d-7b12d1dc1ef6", false, null },
-                    { "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79", 0, "7b83ee18-de83-49a2-a507-e34544e93a88", "Ava Martinez", false, false, null, null, null, "AQAAAAIAAYagAAAAEN4R48N1pS9wK40LSDUyOJ6Mi9EQWezw5s6IXwNaHMuNbu+6knr9SncrgMhDB2C4hQ==", null, false, "87e85745-53f7-4cac-a440-58159545ab1b", false, null },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "81e16de8-0d1d-44ef-a912-b9e5b1fb1d09", "josh@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEEWJ4lnIf4C6qJFthzS8JaWDHmK6xjXf+oJNhkfSmdlr20s3RWRtP1TEoq7PsFjJiw==", null, false, "53f5fbf7-a2a0-4398-acac-486d9366696b", false, null },
-                    { "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a", 0, "420b27c8-4fb5-4ddb-a0c8-8f81740abf7a", "liam@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEA7s75POubuSOFaWFwDLEbG5zTtXOkkt/RiidjFDUFK8xA3kzmpJJsmH8KH4LpIb4A==", null, false, "078010ed-17fa-4fa0-8b1d-a7bb0015f981", false, null },
-                    { "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b", 0, "5003947e-5da8-42e1-8dd0-3362fc47e51e", "sophia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAENOV18acqll05jJtyVdZOx1+a0Yfs3p4y+BY2z4aCTUaSw49yKV3B946d0YHR+yXjA==", null, false, "43dd1545-2bde-484d-8573-d7ee85a03775", false, null }
+                    { "00a40af9-6o6o-6o66-po6k-kk00a38j90ld", 0, "7e559b23-c9db-44b0-b3f0-9fd25ae80adf", "daniel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEEKpTj5qL5rchagpRu1myBbZk39oVa//s7Ph/H3qGa2p3B9f0u6KPJQKRI3tUKjpVg==", null, false, "6c37b231-e008-476c-ae51-35910ca58521", false, null },
+                    { "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd", 0, "9ced7692-b080-446f-a256-6a423439a077", "grace@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEOF2869TiLlyHkhwCJ98/B1pSXbCJJGMdQknaVkr5v8IlRYadSYxdDplnBbcema04A==", null, false, "8f77edbf-3770-43c1-a719-87809076d28d", false, null },
+                    { "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd", 0, "c85ce138-3cd6-478e-a310-5be1ac4f876f", "alexander@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHpjvrb1utIj54AKGL8aYUxGQNQKpXtc2lfWHEaxxJjT/cLuUcfs09EGFU6peH09aw==", null, false, "96ccb34c-e3de-4b93-b2bd-59c14442873c", false, null },
+                    { "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id", 0, "4e727798-39b8-435e-a5bc-42dc73a94aca", "evelyn@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEMAL5+qCQM3DTzY/KkClfRgKfe2vsqnG2tjNkU5sfkbVUBB1vRM6+RqF5i6Hs6xPSA==", null, false, "a6c6d84b-0bf9-4afe-931c-5b7a5bcb5b0a", false, null },
+                    { "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd", 0, "80c07620-46b4-4983-b83c-0fb8015d091e", "benjamin@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHxsYtHxpz9HyBedItZzsIRc7iybRV27X2PeYKQLtrK5ENo1GAEvlEj0MiIjGwJUZg==", null, false, "aeeafac7-82cf-4adf-8d05-f61274f8571b", false, null },
+                    { "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd", 0, "60922b0d-2689-45a0-96d6-b7a0ba40d7ee", "harper@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEGCc9A6Bw+7lTV6d/fx19XYUOvjQhdTvJIk+Uk/WPBGax8pclXAvkVCMzfj0vdhCuA==", null, false, "6cf48659-1fad-477d-ada6-966858bf3989", false, null },
+                    { "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd", 0, "3b2d2a80-f881-4ed1-b4c2-87947b1786f6", "william@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEL1h+KDxHPBed+I+FDyRSj1gh0+zWxAMhJ5RKXaCYJeLIuReKxl+i9mdIonswNVvbg==", null, false, "7fd8918a-9a96-4c8b-9cc6-561ba9a5ea67", false, null },
+                    { "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed", 0, "a353ce5c-e7e7-42db-ad5d-472fe4b1c010", "charlotte@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHoKKwz8OhiUsKUih5DWkBoIgl4FnbBCMWmJ0LIbg/HUh8C1hUNXxRPt7vJqjReQ9Q==", null, false, "d94a2c20-a276-4779-92e3-dfa64a6288f5", false, null },
+                    { "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 0, "40c060ae-c69e-446e-b789-5a634b52808b", "tom@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAED/e6FG6CMmhSh1RjDByRtKLGIghKCE9QjZ5DjdmfDSUQ4AxQCGwGD0/bxTA0dJRBg==", null, false, "db52c2b1-2524-4e66-b6ad-3885eacad482", false, null },
+                    { "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd", 0, "d4384421-1d19-4cb5-85c7-befa2643a95e", "james@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAECotA9GqyfO7RNGyeTKXBVigy7UptUewRSxVw3ZEyMZnHftUdWt0+lDvxT0Du78Smg==", null, false, "fab0ca41-64c8-4703-88b0-6ca067949cfc", false, null },
+                    { "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd", 0, "5465ce79-3650-4cca-b848-2d7f6269b978", "mia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEGsqQcSfNyYp0MGAqh3U1bnvt54ck+Z3b2REUjxnaN24vsXi4O6R/4pMLPeY1alaIQ==", null, false, "758801d1-eb7e-4c65-a5b6-88608ac14203", false, null },
+                    { "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md", 0, "4970a73e-f14a-4389-a2d8-17ee73b551e7", "madison@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDCdTAO2cCUckTUErbsX3zVLtQQB9ZrM8tItff6Dr7Gg0er30xWMYobU0i11est8jw==", null, false, "37cfb05d-daf8-4e09-885e-96a8a84401bd", false, null },
+                    { "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac", 0, "3545f2da-7455-4a77-9b78-5b94fdb76020", "noah@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEPhkM/UHtn5USW4vC8870LM4dytPX0eHj+W+ABePVCNtkRKUEetS+gW/X1kc5Awiqw==", null, false, "1aebf40b-4129-4ff5-9c29-5fea12c87c7a", false, null },
+                    { "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd", 0, "1ff58c07-a77f-4531-9f4f-e8777e99426b", "gabriel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAELFfu/54h6+gnVXT6Z51W3905oAqO2T8k//AqeSpFEEpv6OMHywS1ekbg+O2jmtK5w==", null, false, "510da1d9-f06c-400c-9f9d-c49fc28f76a6", false, null },
+                    { "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47", 0, "bc31bcdd-6b9f-4dde-8207-217384071430", "emily@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAECARqtx/Fjkw5qFI0iVWtT+uozSOkz2uLjQ8Ou8X+4FQKHXYmNcGjF9CurKcW7Vzug==", null, false, "4928a671-5046-4024-9eee-42badd0c4981", false, null },
+                    { "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68", 0, "483c0378-5f41-42a1-a092-ce1383cbd8cb", "oliver@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDJjDgfivNu1POLMSVAD5s3FCxGRpjIyyWy7yETygaT+BaljnRtwkgYYSWyXIbPI+A==", null, false, "92004a6f-2d40-4ed9-a7f0-5ac928c7f26f", false, null },
+                    { "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79", 0, "373ae313-c9f7-427e-b0c0-078a1272bc82", "Ava Martinez", false, false, null, null, null, "AQAAAAIAAYagAAAAEIk4wb3C84VNzEwPm9ug27fwCCdIGMm5oH3du4TyGqLohvsLr5yTuVTUeeBnr2luSQ==", null, false, "489a2740-551b-48fc-913a-ecb3784d5021", false, null },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "5002fac7-ac7e-4867-8746-9ddafc01cd0e", "josh@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEHBB2y57F6sGdVG2+5VQaUKpzazxdprpFrS3xU43rJr5tRx3SZv70dPCcLlYsjVzeA==", null, false, "cea3a2f6-8e8b-43ca-92ec-77fa8b67a398", false, null },
+                    { "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a", 0, "d4f37ecd-bd8b-4fdb-86f2-007c74ef6e7c", "liam@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEIKS9h+7RNKoMrMkUOgcErd5a1kZKkBWiVdX4K1jGnkeJtM0rjt7qLUSy8FfywX3Jw==", null, false, "7becf6de-4664-4f51-b394-9fdb75167635", false, null },
+                    { "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b", 0, "d4ce3f3d-ef70-4813-a8d1-890949ce8ea0", "sophia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEBnnFkLwCXpvuLl2zirMTZbV9fY+7NNI0t/OWuMo03uClmxKsJ1QPsTQ2/D5OZD4hA==", null, false, "2336b9c0-609b-4897-b8b5-8a80dc9be9ea", false, null }
                 });
 
             migrationBuilder.InsertData(
@@ -837,17 +864,23 @@ namespace BandBlend2.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Likes",
-                columns: new[] { "Id", "Date", "PostId", "UserProfileId" },
-                values: new object[] { 1, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 1, 2 });
-
-            migrationBuilder.InsertData(
                 table: "Messages",
                 columns: new[] { "Id", "Body", "Date", "IsRead", "ReceiverId", "SenderId" },
                 values: new object[,]
                 {
                     { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), false, 2, 1 },
                     { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), false, 1, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "PostLikes",
+                columns: new[] { "Id", "Date", "PostId", "UserProfileId" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 1, 3 },
+                    { 2, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 1, 2 },
+                    { 3, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 1, 4 },
+                    { 4, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 1, 5 }
                 });
 
             migrationBuilder.InsertData(
@@ -880,6 +913,17 @@ namespace BandBlend2.Migrations
                 table: "SavedProfiles",
                 columns: new[] { "Id", "ProfileId", "UserProfileId" },
                 values: new object[] { 1, 2, 1 });
+
+            migrationBuilder.InsertData(
+                table: "CommentLikes",
+                columns: new[] { "Id", "CommentId", "Date", "UserProfileId" },
+                values: new object[,]
+                {
+                    { 1, 1, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 3 },
+                    { 2, 1, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 2 },
+                    { 3, 1, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 4 },
+                    { 4, 1, new DateTime(2023, 11, 6, 12, 18, 0, 0, DateTimeKind.Unspecified), 5 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -919,6 +963,16 @@ namespace BandBlend2.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_CommentLikes_CommentId",
+                table: "CommentLikes",
+                column: "CommentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CommentLikes_UserProfileId",
+                table: "CommentLikes",
+                column: "UserProfileId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Comments_PostId",
                 table: "Comments",
                 column: "PostId");
@@ -926,16 +980,6 @@ namespace BandBlend2.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_UserProfileId",
                 table: "Comments",
-                column: "UserProfileId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Likes_PostId",
-                table: "Likes",
-                column: "PostId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Likes_UserProfileId",
-                table: "Likes",
                 column: "UserProfileId");
 
             migrationBuilder.CreateIndex(
@@ -947,6 +991,16 @@ namespace BandBlend2.Migrations
                 name: "IX_Messages_SenderId",
                 table: "Messages",
                 column: "SenderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PostLikes_PostId",
+                table: "PostLikes",
+                column: "PostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PostLikes_UserProfileId",
+                table: "PostLikes",
+                column: "UserProfileId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Posts_UserProfileId",
@@ -1032,13 +1086,13 @@ namespace BandBlend2.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Comments");
-
-            migrationBuilder.DropTable(
-                name: "Likes");
+                name: "CommentLikes");
 
             migrationBuilder.DropTable(
                 name: "Messages");
+
+            migrationBuilder.DropTable(
+                name: "PostLikes");
 
             migrationBuilder.DropTable(
                 name: "ProfileSubGenres");
@@ -1053,7 +1107,7 @@ namespace BandBlend2.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Posts");
+                name: "Comments");
 
             migrationBuilder.DropTable(
                 name: "SubGenres");
@@ -1063,6 +1117,9 @@ namespace BandBlend2.Migrations
 
             migrationBuilder.DropTable(
                 name: "Profiles");
+
+            migrationBuilder.DropTable(
+                name: "Posts");
 
             migrationBuilder.DropTable(
                 name: "PrimaryGenres");

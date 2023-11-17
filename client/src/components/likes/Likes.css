@@ -1,0 +1,6 @@
+.like-container {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-right: 7px;
+}

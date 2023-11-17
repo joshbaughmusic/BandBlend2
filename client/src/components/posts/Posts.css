@@ -31,6 +31,10 @@
   align-items: center;
 }
 
+.post-card-footer-left {
+  display: flex;
+}
+
 .post-submit-button-container {
   display: flex;
   justify-content: end;
