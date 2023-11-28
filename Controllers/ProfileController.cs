@@ -443,6 +443,38 @@ public class ProfileController : ControllerBase
 
     }
 
+    [HttpGet("search/{searchTerms}")]
+    [Authorize]
+    public IActionResult SearchForUserProfiles(string searchTerms)
+    {
+        var loggedInUser = _dbContext
+             .UserProfiles
+             .Include(up => up.Profile)
+             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        List<UserProfile> foundUserProfiles = _dbContext.UserProfiles
+        .Include(up => up.Profile)
+        .ThenInclude(p => p.PrimaryGenre)
+        .Include(up => up.Profile)
+        .ThenInclude(p => p.PrimaryInstrument)
+        .Include(up => up.Profile)
+        .ThenInclude(p => p.State)
+        .Where(up =>
+        up.Name.ToLower().Contains(searchTerms.ToLower()) ||
+        up.Profile.PrimaryGenre.Name.ToLower().Contains(searchTerms.ToLower()) ||
+        up.Profile.PrimaryInstrument.Name.ToLower().Contains(searchTerms.ToLower()) ||
+        up.Profile.State.Name.ToLower().Contains(searchTerms.ToLower()) ||
+        up.Profile.City.ToLower().Contains(searchTerms.ToLower())
+        )
+        .Where(up => up.Id != loggedInUser.Id)
+        .ToList();
+        
+        return Ok(foundUserProfiles);
+
+    }
+
+    
+
 
 
 

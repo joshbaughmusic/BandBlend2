@@ -2,6 +2,7 @@ import { Container, Input, TextField } from "@mui/material";
 import MainLogo from "../../images/Bandblend_Logos/Logo-top-black.png"
 import SubLogo from "../../images/Bandblend_Logos/Logo-bot-black.png"
 import "./Home.css"
+import { HomeSearchbar } from "./HomeSearchbar.js";
 
 export const Home = () => {
   return (
@@ -23,13 +24,11 @@ export const Home = () => {
             }}
           />
         </div>
-        <TextField
-         
-          label="Search placeholder"
-          variant="filled"
-        />
 
-        <div>Latest 3 placeholder</div>
+        <HomeSearchbar />
+        
+
+        {/* <div>Latest 3 placeholder</div> */}
       </Container>
     </>
   );

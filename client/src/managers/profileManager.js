@@ -14,6 +14,10 @@ export const fetchAllUsersWithProfiles = (page = 1, pageSize = 10, search, filte
     ).then((res) => res.json());
 }
 
+export const fetchSearchProfiles = (searchTerms) => {
+  return fetch(`${_apiUrl}/search/${searchTerms}`).then((res) => res.json());
+};
+
 export const fetchSaveProfile = (id) => {
   return fetch(`${_apiUrl}/${id}/save`, {
     method: "POST",
