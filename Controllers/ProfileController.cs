@@ -467,6 +467,7 @@ public class ProfileController : ControllerBase
         up.Profile.City.ToLower().Contains(searchTerms.ToLower())
         )
         .Where(up => up.Id != loggedInUser.Id)
+        .Take(10)
         .ToList();
         
         return Ok(foundUserProfiles);
