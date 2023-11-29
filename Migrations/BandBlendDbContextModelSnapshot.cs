@@ -278,6 +278,258 @@ namespace BandBlend2.Migrations
                     b.ToTable("CommentLikes");
                 });
 
+            modelBuilder.Entity("BandBlend.Models.FeedPrimaryGenreSubscription", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("PrimaryGenreId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserProfileId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PrimaryGenreId");
+
+                    b.HasIndex("UserProfileId");
+
+                    b.ToTable("FeedPrimaryGenreSubscriptions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            PrimaryGenreId = 1,
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            PrimaryGenreId = 2,
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            PrimaryGenreId = 3,
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            PrimaryGenreId = 11,
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            PrimaryGenreId = 10,
+                            UserProfileId = 2
+                        });
+                });
+
+            modelBuilder.Entity("BandBlend.Models.FeedPrimaryInstrumentSubscription", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("PrimaryInstrumentId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserProfileId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PrimaryInstrumentId");
+
+                    b.HasIndex("UserProfileId");
+
+                    b.ToTable("FeedPrimaryInstrumentSubscriptions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            PrimaryInstrumentId = 1,
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            PrimaryInstrumentId = 2,
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            PrimaryInstrumentId = 3,
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            PrimaryInstrumentId = 7,
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            PrimaryInstrumentId = 8,
+                            UserProfileId = 2
+                        });
+                });
+
+            modelBuilder.Entity("BandBlend.Models.FeedStateSubscription", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("StateId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserProfileId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StateId");
+
+                    b.HasIndex("UserProfileId");
+
+                    b.ToTable("FeedStateSubscriptions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            StateId = 1,
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            StateId = 2,
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            StateId = 3,
+                            UserProfileId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            StateId = 11,
+                            UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            StateId = 10,
+                            UserProfileId = 2
+                        });
+                });
+
+            modelBuilder.Entity("BandBlend.Models.FeedUserSubscription", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("UserSubbedToId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserThatSubbedId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserSubbedToId");
+
+                    b.HasIndex("UserThatSubbedId");
+
+                    b.ToTable("FeedUserSubscriptions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            UserSubbedToId = 2,
+                            UserThatSubbedId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            UserSubbedToId = 3,
+                            UserThatSubbedId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            UserSubbedToId = 4,
+                            UserThatSubbedId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            UserSubbedToId = 1,
+                            UserThatSubbedId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Date = new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified),
+                            UserSubbedToId = 3,
+                            UserThatSubbedId = 2
+                        });
+                });
+
             modelBuilder.Entity("BandBlend.Models.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -365,99 +617,148 @@ namespace BandBlend2.Migrations
                         {
                             Id = 2,
                             Body = "Post 2",
-                            Date = new DateTime(2023, 11, 6, 12, 3, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 7, 12, 3, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 1
                         },
                         new
                         {
                             Id = 3,
                             Body = "Post 3",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 8, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 2
                         },
                         new
                         {
                             Id = 4,
                             Body = "Post 4",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 9, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 1
                         },
                         new
                         {
                             Id = 5,
                             Body = "Post 5",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 10, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 1
                         },
                         new
                         {
                             Id = 6,
                             Body = "Post 6",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 11, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 1
                         },
                         new
                         {
                             Id = 7,
                             Body = "Post 7",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 12, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 1
                         },
                         new
                         {
                             Id = 8,
                             Body = "Post 8",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 13, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 1
                         },
                         new
                         {
                             Id = 9,
                             Body = "Post 9",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 14, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 1
                         },
                         new
                         {
                             Id = 10,
                             Body = "Post 10",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 15, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 1
                         },
                         new
                         {
                             Id = 11,
                             Body = "Post 11",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 16, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 1
                         },
                         new
                         {
                             Id = 12,
                             Body = "Post 12",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 17, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 1
                         },
                         new
                         {
                             Id = 13,
                             Body = "Post 13",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 18, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 2
                         },
                         new
                         {
                             Id = 14,
                             Body = "Post 14",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 11, 19, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 2
                         },
                         new
                         {
                             Id = 15,
-                            Body = "Post 15",
-                            Date = new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            Body = "Some Post",
+                            Date = new DateTime(2023, 11, 20, 12, 2, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 2
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Body = "That Post",
+                            Date = new DateTime(2023, 11, 21, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 3
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Body = "This Post",
+                            Date = new DateTime(2023, 11, 22, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 4
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Body = "A Post",
+                            Date = new DateTime(2023, 11, 23, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 5
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Body = "B Post",
+                            Date = new DateTime(2023, 11, 24, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 6
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Body = "C Post",
+                            Date = new DateTime(2023, 11, 25, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 7
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Body = "D Post",
+                            Date = new DateTime(2023, 11, 26, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 8
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Body = "E Post",
+                            Date = new DateTime(2023, 11, 27, 12, 2, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 9
                         });
                 });
 
@@ -763,7 +1064,7 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
+                            PrimaryGenreId = 1,
                             PrimaryInstrumentId = 2,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
@@ -778,11 +1079,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 6,
+                            PrimaryInstrumentId = 3,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 2,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 3
                         },
@@ -793,11 +1094,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 3,
+                            PrimaryInstrumentId = 6,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 6,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 4
                         },
@@ -812,7 +1113,7 @@ namespace BandBlend2.Migrations
                             PrimaryInstrumentId = 2,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 7,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 5
                         },
@@ -827,7 +1128,7 @@ namespace BandBlend2.Migrations
                             PrimaryInstrumentId = 2,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 7,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 6
                         },
@@ -838,11 +1139,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 4,
+                            PrimaryInstrumentId = 7,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 8,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 7
                         },
@@ -853,11 +1154,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 3,
+                            PrimaryInstrumentId = 1,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 11,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 8
                         },
@@ -868,11 +1169,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 10,
+                            PrimaryInstrumentId = 9,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 12,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 9
                         },
@@ -883,11 +1184,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 5,
+                            PrimaryInstrumentId = 5,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 19,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 10
                         },
@@ -898,11 +1199,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 10,
+                            PrimaryInstrumentId = 10,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 20,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 11
                         },
@@ -913,11 +1214,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 9,
+                            PrimaryInstrumentId = 5,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 17,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 12
                         },
@@ -928,11 +1229,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 4,
+                            PrimaryInstrumentId = 8,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 45,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 13
                         },
@@ -943,11 +1244,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 3,
+                            PrimaryInstrumentId = 4,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 49,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 14
                         },
@@ -958,11 +1259,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 1,
+                            PrimaryInstrumentId = 10,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 43,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 15
                         },
@@ -973,11 +1274,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 5,
+                            PrimaryInstrumentId = 4,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 42,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 16
                         },
@@ -988,11 +1289,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 4,
+                            PrimaryInstrumentId = 8,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 37,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 17
                         },
@@ -1003,11 +1304,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 6,
+                            PrimaryInstrumentId = 6,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 27,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 18
                         },
@@ -1018,11 +1319,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 7,
+                            PrimaryInstrumentId = 7,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 39,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 19
                         },
@@ -1033,11 +1334,11 @@ namespace BandBlend2.Migrations
                             City = "Somewhere",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
-                            PrimaryGenreId = 2,
-                            PrimaryInstrumentId = 2,
+                            PrimaryGenreId = 8,
+                            PrimaryInstrumentId = 10,
                             ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                             SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
-                            StateId = 40,
+                            StateId = 26,
                             TikTokLink = "https://www.facebook.com/joshbaughmusic/",
                             UserProfileId = 20
                         });
@@ -2055,260 +2356,260 @@ namespace BandBlend2.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ae34fa7e-f046-4002-a536-0f35b93f3815",
+                            ConcurrencyStamp = "912c7c91-0194-4375-bbdd-b3fdf712babf",
                             Email = "josh@bandblend.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEO7MMFdgwaA1hJQcC2RqJEHMUlC6EBbghYC5TsapAYO6uLC5uVnpit7m9iYoIqvRmA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAED+cE1gfJuX3gqvG0+0uvEYu8zT89EyV0j0CqiexmDrnYW3IuZql8lg6rUIqZ3UW+w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5363876b-02e7-421b-a316-0012179f5986",
+                            SecurityStamp = "e8b1d73b-246c-4512-9bb7-4946f08dd9aa",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7980dcff-5169-446e-bcd4-aac31f71acd4",
+                            ConcurrencyStamp = "56bc039f-9cf4-4951-b840-f23489e596bf",
                             Email = "tom@bandblend.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEDSUl9WVEAY4ADlT80ly2NB93INpw+a1KTulVM5yTioqrSeUBqrwv4M0g139BtOcog==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJcZmMqHKuql+mNQRAyMmoPNuxWoDQNAiXHowa1zOY9WgeZ4m6V8cBEqREeCoMYw+w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1aa24659-ca36-4f53-8a56-de911f48d3e1",
+                            SecurityStamp = "e8c99d75-6079-4d45-a1fb-3a8381a0f157",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b7045af1-1668-476e-a0bf-6f1d6e514a4a",
+                            ConcurrencyStamp = "73775281-5467-4342-b2de-ca037c2238cf",
                             Email = "emily@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEPAfmhZ1E3mfhfB3XyOEo/j+V4x8dMgL5Xl00OHtfDTxo5AxgVQ8L1dGjw74y7LKvA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGo+UrIXHEqjPz4CcxgazYoJuhl1dCSirr/pq2dtl0Vbj6NB1+8xup/J0EBBG8layA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1191dd3a-f677-403d-a744-45b89f47bade",
+                            SecurityStamp = "b2c0a925-036b-480e-8cd0-5f48201d5f77",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a07ad351-b9fe-439d-927a-c6d3e9302f9d",
+                            ConcurrencyStamp = "1589cfa0-9263-4b05-977d-682abecd54c2",
                             Email = "oliver@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGLUGnd5JMbvho8IUFDElJuaqzAs03GYR6vasmFPvDCNbwMI81HayXbs15BrtHP9SQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKKtj3W1lF4N4Oo3R74mJb4rQnCIlAJ7C3ql5rsDYUB2sDEF/0qDnF9KgTMsYHgnkQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5ef42145-be4d-407e-a2c8-9297d431ab0a",
+                            SecurityStamp = "66e7be4c-4bf3-411a-a9c9-5f3326eb79ed",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "267f422a-9944-4d3d-a8f8-af9de4e706e4",
+                            ConcurrencyStamp = "4e590f89-4d89-48c5-814a-5055acecf04e",
                             Email = "Ava Martinez",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEDMSyv+9jj5Pt/6ZnPVgm+5W8PwDasE8rB7BlN4tTVYMqjnsuY9s7gwrfG5Pb5XMcg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAzAl6aKDwOZiIUGfo3Y+NsrUG+3dkjfBWgY1epBS0u1/VEkI734O77R9yKu7hP6sQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "26d8bc44-05d5-4f99-8b26-da044255235f",
+                            SecurityStamp = "f1e94f6d-87a1-4d30-80c8-b7bfb318712b",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c4fa2d99-4b77-422e-b602-647ae29d82e9",
+                            ConcurrencyStamp = "29b0f75e-38cc-4b53-a68d-19164a451f9c",
                             Email = "liam@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEK5oow8/xTpVrGwytNf97S6nElGg93eavnPavLhtcfQqvp2qIuQrIx9rYX0Gn7FVug==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBvlnJuT9Lpr03b5ZDsD7paMvmMyBDXeG2Q+wlH1IGzAhIRa8M+wR7N8E91KUfP9Qw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b72c0949-43da-42cf-9668-2c8cf7379876",
+                            SecurityStamp = "6baf2677-b906-4d06-84e5-60e5a0a66cab",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0fd6599f-383a-4f8e-8cbe-61c0b0819bcc",
+                            ConcurrencyStamp = "c9acfad1-eb5f-4a12-b56f-f5151f88142a",
                             Email = "sophia@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEH1squg48KdXOJ2xc6T+D2NR29gPwpcrvmtGlFUwsN8lDwAzSupuwpPfi9+H8ibyew==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJMPeLzFvK0V6QkAvnwZwnvYKeRDe7a588M+5xlMIdD8uErG/sWF2Qq5/doxsvejHg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "659e0980-a686-40fc-88c6-67d5977e76f2",
+                            SecurityStamp = "0bc43403-2d5e-4123-b081-096c62634a53",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c5494867-a666-415f-832a-f738aca4c226",
+                            ConcurrencyStamp = "bdfa7a47-a0b4-4acb-a18b-479dd44fcea9",
                             Email = "noah@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEK0Gj5/MaJJRzTq5kTKSWDx6rZAIUP7oU3c6iJyXT1PzhjvMCY/wlkYZb8JRq9eISw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEA+F39DvVNwVyFKOoykZNGnKiWKBEJtD1WiI+ZUK5jECplxaA+DGlvJNVf0T8ygWig==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e54d94ea-def8-492b-b505-a9b4f2d82fd5",
+                            SecurityStamp = "fd814014-6d13-4e9a-b5be-0957b0a84728",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "267075b0-6234-4802-89fa-87d1ee9415c0",
+                            ConcurrencyStamp = "53098891-a667-4e97-aadb-0cf45a13198f",
                             Email = "mia@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEMC9QSoZOcyssQIK8U6gllmelO3TZ4QHhbqW3rfM4BdTHNY3SU9u9MiVwXNedXpZnA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENJ8D6fOT4rO6sD+OfjJMvJMCK0/Y3LqKnW31Xdwa21c6CHRC7Nse+qc1xTbgYo3Wg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c1b4a312-5a6a-4dd7-9281-286cc93d621c",
+                            SecurityStamp = "1e7c48e5-481b-4e3e-9669-aae719f8caed",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "52d3a3fd-e843-4b6e-b02a-a87eab9027c6",
+                            ConcurrencyStamp = "e0fbe6e0-685d-4ef8-849b-5f6e3fbd4881",
                             Email = "james@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEDSdxH0lJgAvfbqgKVMBP6nhoa2Fo7sPsxApsvzn/FbibKF8H3QOVenKHao7lwsv3w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJZQ9aI1mhJwr9oEVTwp2bkOcjwvKNgbieOIKNfQlgvrgwe09//8THETcNdXh2VDsQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "020fa282-59fd-46ef-8954-937e3a94bba8",
+                            SecurityStamp = "00fd4616-480c-46f8-aefa-353118276591",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ae6b42f9-de25-4d32-b922-590a958579a1",
+                            ConcurrencyStamp = "003a9eb6-aaf1-42f7-800f-e4467e9bbfe8",
                             Email = "charlotte@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGlaHimW4igkrq8W1mXyz/E/FvNkfsiKL6S0VD4t6rd8dsMT12bR26Y72qHAie7gNw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFQ9OF5AgzMv9oeAwe5Hv1Lz/w8ss7EusN+2uaISNOoRCeRGZcMmx2giT4I1XDrIPw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3fb0ff32-bb02-499c-98b3-5fdfeeacd15a",
+                            SecurityStamp = "93f0ca5c-1ab2-4fc2-adb5-79234e30bfd8",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "99dfe9fc-2c6a-4e92-9549-cacfdf5590fc",
+                            ConcurrencyStamp = "a8f9ee0e-eee8-4649-923e-4ca018196fa2",
                             Email = "william@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ0NbRXSEoIyAQW8+Y9ltC1OnNEcyldWFVtrNBZThffKBB7uAb8e6V0VqQ8i9mt+rQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDBNT3aezjUHTVw1ZtRl0jsjwstsEdRviKhzPK7iPTh3cd0Duk6M9iEg728Ot67DZQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c5503096-b72a-4c61-b305-fe6144e05362",
+                            SecurityStamp = "405f0a55-e845-41af-a057-e0f77223de80",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4bf6d5d6-f2c8-4bbf-80a6-5551906dfe58",
+                            ConcurrencyStamp = "16115166-f155-483f-93cc-2edfb746bb74",
                             Email = "harper@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAELyhQt6iShmhQPy6i5sHUlZEQoD2bhhR4pFNnI7nijgHuVwNlS/ju9kD2d8U/Xc3sA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJT2bV5AEUpgW+KAt5AW2GKDZ0F4Q6KJM6h47dUXF40NAr7uRacIQ1VC8qBoObRxAg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a9ba092e-5080-4118-abe8-7031ab1d9376",
+                            SecurityStamp = "3224dbcd-4a7d-4b53-be5b-85bd7a1bbfef",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "20db1f10-beb1-4163-b456-97f3f09193bc",
+                            ConcurrencyStamp = "5c7d66b7-5b6d-4777-88db-a89ad0f1f9a4",
                             Email = "benjamin@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEMjJ/NHPtfoLx9PBG+w4id7kL1TDNW2eE+1gQm5lTO1hGcdKZW6zdiksfly5LdQ+LQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHrxgGS/Uz/D+hbtHNepAl9VzOwi20zPA4eXB7HLWUPv6eC2Jf677xOzTiAtkR5G3A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f1af1123-4e12-4c1b-aca2-2bff2cf7615d",
+                            SecurityStamp = "9afa98f6-8ae7-45a7-a3e0-c5a874f3d583",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0c84ba2b-836e-41cf-a040-6a934fc9cf84",
+                            ConcurrencyStamp = "b8303569-f8bc-4de8-9b42-fa99316fb614",
                             Email = "evelyn@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEPC8q6MB66BYZkMIs+KSa138uEpCU/B2nBKVEwg4s1i638rdyl8j02FwE2ipuYXq6Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAcPNEiijtLv5m+XKEjke+fIcqvci0MTl+sMJ3xhRAgEZ0gOiC54GiKQAFqec86M4Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b8640cfd-5d33-41b0-831e-1cf60beccc06",
+                            SecurityStamp = "5d688753-8279-457f-8864-ad411b3f7be8",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "44cbd76d-8cd2-435e-8717-e6fff92b4864",
+                            ConcurrencyStamp = "54aca762-c99f-4186-a4e2-c1335f959e08",
                             Email = "alexander@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAENh6sIM119T5a9ZTjFpjGerjvj4R3NXV0PJyE5XFC1bUBmQn0UYe+P1McfnMOGfR7Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFB/Kcalj+Fh0+6x8manqlljx7BzQr2saVj3Y5avzp1jnpH0sFprPdvgoSaMTtiOdA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0f9233b2-ee18-42f9-b502-225e48bd7602",
+                            SecurityStamp = "26c921da-746b-4fd2-b7f6-915571575f9c",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "87cb4dc9-2dfb-4d2f-8521-0ed41526c53b",
+                            ConcurrencyStamp = "d3e749a9-dbba-4c84-a1c9-3190e436bc58",
                             Email = "grace@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEI4KraBdRPXzeZav6BBP/Lr1iKaxOVd6Vgi3dP6sQKP1/TR5+rDluVkqVlJzmg2Z5Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENhYl8yGJsJ+ofJd5nGaXyl4WoQnnM8SFRX4MvL5mHQMe1E6ixVjVPbtrmKPZ6sbGg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "db9ce4b1-6d3f-4bfa-869e-74741b709729",
+                            SecurityStamp = "3af5ad93-f5f7-44fe-9953-d1f1224da0a8",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "00a40af9-6o6o-6o66-po6k-kk00a38j90ld",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6fbe524f-a404-42fa-abae-8dedc4cfe1ef",
+                            ConcurrencyStamp = "d4cbbf1f-7666-4479-ab9f-5935b3cf8c44",
                             Email = "daniel@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEKvFOJf5GFLAKFRSBKoSyLtcm4RZZKdnbCP8C+MPKhD4QYmceG1XHjKct2YyHJp/+w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBZTFpnudzDCICcujMfnkf7j8QwlDtzTNmgzL5+2Z+ID1xbIowJGf8IKeFSShxA7Gw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cf35810e-eaca-49c9-9040-8b3197adafe0",
+                            SecurityStamp = "78072472-72d0-4c71-857d-9550d87ae2d9",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d5122850-f47a-49ca-bead-6e1ad6af037f",
+                            ConcurrencyStamp = "a3148c98-af22-4dbe-b98a-9aaca5c85270",
                             Email = "madison@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEEnFRNbZEDx4P6XX+i4sE3TKSxK3newgkJ7LIcJxGW+7xOZuOt2FCz0AM4lcr5ZauA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECUM217DJNvGSZuhCt4uaHXeJ4WFoFO5SQKwsNhIdpCXzbsisOi7eStYOdMk3fscmw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d7c11fc9-672e-4f2a-b8b3-3e446977c1af",
+                            SecurityStamp = "ada98fb6-597c-47d3-ac7e-1dc89ea661dd",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9b999f0a-d2eb-42c4-9917-b3bf8c03a2b4",
+                            ConcurrencyStamp = "e2e92054-308b-40d2-8617-8682efd6fc2b",
                             Email = "gabriel@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEMNE6Tl++SMwg2kFRXqp0en/4tVRr1eKfiNf8+m7e+8HZEYJlumMgfFh3dwMt4Y8ng==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEEGhpk0JWjNVDAkYwtmcsvLUCaqD2gb+1QJI9VVKaC1yxQaKDdhnFHUpw7BSrU77w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9cded469-c7bd-4434-b159-9e2192c798d1",
+                            SecurityStamp = "bc7ebe47-5170-49f9-b70c-6d28b6f8dc6d",
                             TwoFactorEnabled = false
                         });
                 });
@@ -2534,15 +2835,91 @@ namespace BandBlend2.Migrations
                     b.Navigation("UserProfile");
                 });
 
+            modelBuilder.Entity("BandBlend.Models.FeedPrimaryGenreSubscription", b =>
+                {
+                    b.HasOne("BandBlend.Models.PrimaryGenre", "PrimaryGenre")
+                        .WithMany()
+                        .HasForeignKey("PrimaryGenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BandBlend.Models.UserProfile", "UserProfile")
+                        .WithMany()
+                        .HasForeignKey("UserProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PrimaryGenre");
+
+                    b.Navigation("UserProfile");
+                });
+
+            modelBuilder.Entity("BandBlend.Models.FeedPrimaryInstrumentSubscription", b =>
+                {
+                    b.HasOne("BandBlend.Models.PrimaryInstrument", "PrimaryInstrument")
+                        .WithMany()
+                        .HasForeignKey("PrimaryInstrumentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BandBlend.Models.UserProfile", "UserProfile")
+                        .WithMany()
+                        .HasForeignKey("UserProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PrimaryInstrument");
+
+                    b.Navigation("UserProfile");
+                });
+
+            modelBuilder.Entity("BandBlend.Models.FeedStateSubscription", b =>
+                {
+                    b.HasOne("BandBlend.Models.State", "State")
+                        .WithMany()
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BandBlend.Models.UserProfile", "UserProfile")
+                        .WithMany()
+                        .HasForeignKey("UserProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("State");
+
+                    b.Navigation("UserProfile");
+                });
+
+            modelBuilder.Entity("BandBlend.Models.FeedUserSubscription", b =>
+                {
+                    b.HasOne("BandBlend.Models.UserProfile", "UserSubbedTo")
+                        .WithMany()
+                        .HasForeignKey("UserSubbedToId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BandBlend.Models.UserProfile", "UserThatSubbed")
+                        .WithMany()
+                        .HasForeignKey("UserThatSubbedId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserSubbedTo");
+
+                    b.Navigation("UserThatSubbed");
+                });
+
             modelBuilder.Entity("BandBlend.Models.Message", b =>
                 {
-                    b.HasOne("BandBlend.Models.Profile", "Receiver")
+                    b.HasOne("BandBlend.Models.UserProfile", "Receiver")
                         .WithMany()
                         .HasForeignKey("ReceiverId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BandBlend.Models.Profile", "Sender")
+                    b.HasOne("BandBlend.Models.UserProfile", "Sender")
                         .WithMany()
                         .HasForeignKey("SenderId")
                         .OnDelete(DeleteBehavior.Cascade)

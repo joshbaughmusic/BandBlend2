@@ -23,6 +23,11 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
     public DbSet<ProfileSubGenre> ProfileSubGenres { get; set; }
     public DbSet<PrimaryGenre> PrimaryGenres { get; set; }
     public DbSet<PrimaryInstrument> PrimaryInstruments { get; set; }
+    public DbSet<FeedUserSubscription> FeedUserSubscriptions { get; set; }
+    public DbSet<FeedStateSubscription> FeedStateSubscriptions { get; set; }
+    public DbSet<FeedPrimaryGenreSubscription> FeedPrimaryGenreSubscriptions { get; set; }
+    public DbSet<FeedPrimaryInstrumentSubscription> FeedPrimaryInstrumentSubscriptions { get; set; }
+    // public DbSet<FeedCitySubscription> FeedCitySubscriptions { get; set; }
 
     public BandBlendDbContext(DbContextOptions<BandBlendDbContext> context, IConfiguration config) : base(context)
     {
@@ -465,7 +470,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 City = "Somewhere",
                 StateId = 40,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
+                PrimaryGenreId = 1,
                 PrimaryInstrumentId = 2,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
@@ -479,10 +484,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 3,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 2,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 6,
+                PrimaryInstrumentId = 3,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -495,10 +500,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 4,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 6,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 3,
+                PrimaryInstrumentId = 6,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -511,7 +516,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 5,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 7,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 PrimaryGenreId = 2,
                 PrimaryInstrumentId = 2,
@@ -527,7 +532,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 6,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 7,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 PrimaryGenreId = 2,
                 PrimaryInstrumentId = 2,
@@ -543,10 +548,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 7,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 8,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 4,
+                PrimaryInstrumentId = 7,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -559,10 +564,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 8,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 11,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 3,
+                PrimaryInstrumentId = 1,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -575,10 +580,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 9,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 12,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 10,
+                PrimaryInstrumentId = 9,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -591,10 +596,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 10,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 19,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 5,
+                PrimaryInstrumentId = 5,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -607,10 +612,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 11,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 20,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 10,
+                PrimaryInstrumentId = 10,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -623,10 +628,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 12,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 17,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 9,
+                PrimaryInstrumentId = 5,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -639,10 +644,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 13,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 45,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 4,
+                PrimaryInstrumentId = 8,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -655,10 +660,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 14,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 49,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 3,
+                PrimaryInstrumentId = 4,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -671,10 +676,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 15,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 43,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 1,
+                PrimaryInstrumentId = 10,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -687,10 +692,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 16,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 42,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 5,
+                PrimaryInstrumentId = 4,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -703,10 +708,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 17,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 37,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 4,
+                PrimaryInstrumentId = 8,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -719,10 +724,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 18,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 27,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 6,
+                PrimaryInstrumentId = 6,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -735,10 +740,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 19,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 39,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 7,
+                PrimaryInstrumentId = 7,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -751,10 +756,10 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 UserProfileId = 20,
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Somewhere",
-                StateId = 40,
+                StateId = 26,
                 About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                PrimaryGenreId = 2,
-                PrimaryInstrumentId = 2,
+                PrimaryGenreId = 8,
+                PrimaryInstrumentId = 10,
                 SpotifyLink = "https://www.facebook.com/joshbaughmusic/",
                 FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                 InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -1370,98 +1375,147 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 Id = 2,
                 UserProfileId = 1,
                 Body = "Post 2",
-                Date = new DateTime(2023, 11, 6, 12, 3, 0)
+                Date = new DateTime(2023, 11, 7, 12, 3, 0)
             },
             new Post
             {
                 Id = 3,
                 UserProfileId = 2,
                 Body = "Post 3",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Date = new DateTime(2023, 11, 8, 12, 2, 0)
             },
             new Post
             {
                 Id = 4,
                 UserProfileId = 1,
                 Body = "Post 4",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Date = new DateTime(2023, 11, 9, 12, 2, 0)
             },
             new Post
             {
                 Id = 5,
                 UserProfileId = 1,
                 Body = "Post 5",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Date = new DateTime(2023, 11, 10, 12, 2, 0)
             },
             new Post
             {
                 Id = 6,
                 UserProfileId = 1,
                 Body = "Post 6",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Date = new DateTime(2023, 11, 11, 12, 2, 0)
             },
             new Post
             {
                 Id = 7,
                 UserProfileId = 1,
                 Body = "Post 7",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Date = new DateTime(2023, 11, 12, 12, 2, 0)
             },
             new Post
             {
                 Id = 8,
                 UserProfileId = 1,
                 Body = "Post 8",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Date = new DateTime(2023, 11, 13, 12, 2, 0)
             },
             new Post
             {
                 Id = 9,
                 UserProfileId = 1,
                 Body = "Post 9",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Date = new DateTime(2023, 11, 14, 12, 2, 0)
             },
             new Post
             {
                 Id = 10,
                 UserProfileId = 1,
                 Body = "Post 10",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Date = new DateTime(2023, 11, 15, 12, 2, 0)
             },
             new Post
             {
                 Id = 11,
                 UserProfileId = 1,
                 Body = "Post 11",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Date = new DateTime(2023, 11, 16, 12, 2, 0)
             },
             new Post
             {
                 Id = 12,
                 UserProfileId = 1,
                 Body = "Post 12",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Date = new DateTime(2023, 11, 17, 12, 2, 0)
             },
             new Post
             {
                 Id = 13,
                 UserProfileId = 2,
                 Body = "Post 13",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Date = new DateTime(2023, 11, 18, 12, 2, 0)
             },
             new Post
             {
                 Id = 14,
                 UserProfileId = 2,
                 Body = "Post 14",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Date = new DateTime(2023, 11, 19, 12, 2, 0)
             },
             new Post
             {
                 Id = 15,
                 UserProfileId = 2,
-                Body = "Post 15",
-                Date = new DateTime(2023, 11, 6, 12, 2, 0)
+                Body = "Some Post",
+                Date = new DateTime(2023, 11, 20, 12, 2, 0)
+            },
+            new Post
+            {
+                Id = 16,
+                UserProfileId = 3,
+                Body = "That Post",
+                Date = new DateTime(2023, 11, 21, 12, 2, 0)
+            },
+            new Post
+            {
+                Id = 17,
+                UserProfileId = 4,
+                Body = "This Post",
+                Date = new DateTime(2023, 11, 22, 12, 2, 0)
+            },
+            new Post
+            {
+                Id = 18,
+                UserProfileId = 5,
+                Body = "A Post",
+                Date = new DateTime(2023, 11, 23, 12, 2, 0)
+            },
+            new Post
+            {
+                Id = 19,
+                UserProfileId = 6,
+                Body = "B Post",
+                Date = new DateTime(2023, 11, 24, 12, 2, 0)
+            },
+            new Post
+            {
+                Id = 20,
+                UserProfileId = 7,
+                Body = "C Post",
+                Date = new DateTime(2023, 11, 25, 12, 2, 0)
+            },
+            new Post
+            {
+                Id = 21,
+                UserProfileId = 8,
+                Body = "D Post",
+                Date = new DateTime(2023, 11, 26, 12, 2, 0)
+            },
+            new Post
+            {
+                Id = 22,
+                UserProfileId = 9,
+                Body = "E Post",
+                Date = new DateTime(2023, 11, 27, 12, 2, 0)
             }
         );
         modelBuilder.Entity<Comment>().HasData(
@@ -1656,6 +1710,195 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
 
             }
         );
+        modelBuilder.Entity<FeedUserSubscription>().HasData(
+       new FeedUserSubscription
+       {
+           Id = 1,
+           UserSubbedToId = 2,
+           UserThatSubbedId = 1,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedUserSubscription
+       {
+           Id = 2,
+           UserSubbedToId = 3,
+           UserThatSubbedId = 1,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedUserSubscription
+       {
+           Id = 3,
+           UserSubbedToId = 4,
+           UserThatSubbedId = 1,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedUserSubscription
+       {
+           Id = 4,
+           UserSubbedToId = 1,
+           UserThatSubbedId = 2,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedUserSubscription
+       {
+           Id = 5,
+           UserSubbedToId = 3,
+           UserThatSubbedId = 2,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       }
+       );
+
+        modelBuilder.Entity<FeedStateSubscription>().HasData(
+       new FeedStateSubscription
+       {
+           Id = 1,
+           UserProfileId = 1,
+           StateId = 1,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedStateSubscription
+       {
+           Id = 2,
+           UserProfileId = 1,
+           StateId = 2,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedStateSubscription
+       {
+           Id = 3,
+           UserProfileId = 1,
+           StateId = 3,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedStateSubscription
+       {
+           Id = 4,
+           UserProfileId = 2,
+           StateId = 11,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedStateSubscription
+       {
+           Id = 5,
+           UserProfileId = 2,
+           StateId = 10,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       }
+       );
+
+        modelBuilder.Entity<FeedPrimaryGenreSubscription>().HasData(
+       new FeedPrimaryGenreSubscription
+       {
+           Id = 1,
+           UserProfileId = 1,
+           PrimaryGenreId = 1,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedPrimaryGenreSubscription
+       {
+           Id = 2,
+           UserProfileId = 1,
+           PrimaryGenreId = 2,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedPrimaryGenreSubscription
+       {
+           Id = 3,
+           UserProfileId = 1,
+           PrimaryGenreId = 3,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedPrimaryGenreSubscription
+       {
+           Id = 4,
+           UserProfileId = 2,
+           PrimaryGenreId = 11,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedPrimaryGenreSubscription
+       {
+           Id = 5,
+           UserProfileId = 2,
+           PrimaryGenreId = 10,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       }
+       );
+       
+        modelBuilder.Entity<FeedPrimaryInstrumentSubscription>().HasData(
+       new FeedPrimaryInstrumentSubscription
+       {
+           Id = 1,
+           UserProfileId = 1,
+           PrimaryInstrumentId = 1,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedPrimaryInstrumentSubscription
+       {
+           Id = 2,
+           UserProfileId = 1,
+           PrimaryInstrumentId = 2,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedPrimaryInstrumentSubscription
+       {
+           Id = 3,
+           UserProfileId = 1,
+           PrimaryInstrumentId = 3,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedPrimaryInstrumentSubscription
+       {
+           Id = 4,
+           UserProfileId = 2,
+           PrimaryInstrumentId = 7,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       },
+       new FeedPrimaryInstrumentSubscription
+       {
+           Id = 5,
+           UserProfileId = 2,
+           PrimaryInstrumentId = 8,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       }
+       );
+
+    //     modelBuilder.Entity<FeedCitySubscription>().HasData(
+    //    new FeedCitySubscription
+    //    {
+    //        Id = 1,
+    //        UserProfileId = 1,
+    //        CityName = "Nashville",
+    //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
+    //    },
+    //    new FeedCitySubscription
+    //    {
+    //        Id = 2,
+    //        UserProfileId = 1,
+    //        CityName = "Appleton",
+    //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
+    //    },
+    //    new FeedCitySubscription
+    //    {
+    //        Id = 3,
+    //        UserProfileId = 1,
+    //        CityName = "Boulder",
+    //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
+    //    },
+    //    new FeedCitySubscription
+    //    {
+    //        Id = 4,
+    //        UserProfileId = 2,
+    //        CityName = "Franklin",
+    //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
+    //    },
+    //    new FeedCitySubscription
+    //    {
+    //        Id = 5,
+    //        UserProfileId = 2,
+    //        CityName = "Oshkosh",
+    //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
+    //    }
+    //    );
 
 
 

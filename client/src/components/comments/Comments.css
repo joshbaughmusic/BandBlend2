@@ -46,3 +46,11 @@
 .comment-card-footer-left {
   display: flex;
 }
+
+.comment-avatar-clickable:hover {
+  cursor: pointer;
+}
+
+.comment-name-clickable:hover {
+  cursor: pointer;
+}

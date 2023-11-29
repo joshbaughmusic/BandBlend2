@@ -52,11 +52,13 @@ export const OtherPosts = ({ profile, loggedInUser }) => {
           <div>No Posts yet!</div>
         ) : (
           <div>
-            {Array(profile.profile.postCount)
-              .fill(0)
-              .map((obj, index) => (
-                <PostSkeleton key={index} />
-              ))}
+            {profile.profile.postCount > 5
+              ? Array(5)
+                  .fill(0)
+                  .map((obj, index) => <PostSkeleton key={index} />)
+              : Array(profile.profile.postCount)
+                  .fill(0)
+                  .map((obj, index) => <PostSkeleton key={index} />)}
           </div>
         )}
       </>

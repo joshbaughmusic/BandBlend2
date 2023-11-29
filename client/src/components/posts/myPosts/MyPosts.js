@@ -118,46 +118,48 @@ export const MyPosts = ({ profile, loggedInUser }) => {
     }
   };
 
-  if (!posts) {
-    return (
-      <>
-        <div className="divider-header-container">
-          <div className="profile-section-header">
-            <Typography variant="h6">Posts</Typography>
-            {expanded ? (
-              <IconButton onClick={handleCloseNewPost}>
-                <CloseIcon />
-              </IconButton>
-            ) : (
-              <Tooltip
-                title="New Post"
-                placement="left-start"
-              >
-                <IconButton onClick={handleOpenNewPost}>
-                  <PostAddIcon />
-                </IconButton>
-              </Tooltip>
-            )}
-          </div>
-          <Divider />
-        </div>
-        <div>
-          {profile.profile.postCount === null ||
-          profile.profile.postCount === 0 ? (
-            <div>No posts yet!</div>
+if (!posts) {
+  return (
+    <>
+      <div className="divider-header-container">
+        <div className="profile-section-header">
+          <Typography variant="h6">Posts</Typography>
+          {expanded ? (
+            <IconButton onClick={handleCloseNewPost}>
+              <CloseIcon />
+            </IconButton>
           ) : (
-            <div>
-              {Array(profile.profile.postCount)
-                .fill(0)
-                .map((obj, index) => (
-                  <PostSkeleton key={index} />
-                ))}
-            </div>
+            <Tooltip
+              title="New Post"
+              placement="left-start"
+            >
+              <IconButton onClick={handleOpenNewPost}>
+                <PostAddIcon />
+              </IconButton>
+            </Tooltip>
           )}
         </div>
-      </>
-    );
-  }
+        <Divider />
+      </div>
+      <div>
+        {profile.profile.postCount === null ||
+        profile.profile.postCount === 0 ? (
+          <div>No posts yet!</div>
+        ) : (
+          <div>
+            {profile.profile.postCount > 5
+              ? Array(5)
+                  .fill(0)
+                  .map((obj, index) => <PostSkeleton key={index} />)
+              : Array(profile.profile.postCount)
+                  .fill(0)
+                  .map((obj, index) => <PostSkeleton key={index} />)}
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
 
   if (posts.length === 0) {
     return (

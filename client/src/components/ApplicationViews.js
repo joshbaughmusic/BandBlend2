@@ -6,6 +6,7 @@ import { Home } from './homepage/Home.js';
 import { MyProfile } from './profile/singleProfile/myProfile/MyProfile.js';
 import { OtherProfile } from './profile/singleProfile/otherProfile/OtherProfile.js';
 import { AllProfiles } from './profile/allProfiles/AllProfiles.js';
+import { MyFeed } from './feed/MyFeed.js';
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -43,6 +44,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
                 <AllProfiles loggedInUser={loggedInUser} />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path="feed"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <MyFeed loggedInUser={loggedInUser} />
               </AuthorizedRoute>
             }
           />
