@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { register } from '../../managers/authManager';
 import { Link, useNavigate } from 'react-router-dom';
+import { Container } from '@mui/material';
 
 export default function Register({ setLoggedInUser }) {
   const [firstName, setFirstName] = useState('');
@@ -21,16 +22,15 @@ export default function Register({ setLoggedInUser }) {
     if (password !== confirmPassword) {
       setPasswordMismatch(true);
     } else {
-      let newUser = {}
+      let newUser = {};
       if (isBand) {
-         newUser = {
+        newUser = {
           name: `${firstName} ${lastName}`,
           email,
           password,
         };
-
       } else {
-         newUser = {
+        newUser = {
           name: bandName,
           email,
           password,
@@ -44,10 +44,7 @@ export default function Register({ setLoggedInUser }) {
   };
 
   return (
-    <div
-      className="container"
-      style={{ maxWidth: '500px' }}
-    >
+    <Container>
       <h3>Sign Up</h3>
       <div>
         <label>Are you a band?</label>
@@ -140,6 +137,6 @@ export default function Register({ setLoggedInUser }) {
       <p>
         Already signed up? Log in <Link to="/login">here</Link>
       </p>
-    </div>
+    </Container>
   );
 }

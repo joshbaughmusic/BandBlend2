@@ -69,6 +69,33 @@ export const MyFeed = ({ loggedInUser }) => {
     );
   }
 
+  if (feedPostCount === 0) {
+    return (
+      <>
+        <Container>
+          <Paper
+            elevation={4}
+            className="profile-right-section-item feed-container"
+          >
+            <Typography
+              sx={{ m: 1, textAlign: 'center' }}
+              variant="h4"
+            >
+              Recent Activity:
+            </Typography>
+            <Divider sx={{ mb: 3 }} />
+            <Typography
+              sx={{ mt: 3, textAlign: 'center' }}
+              variant="h6"
+            >
+              No Activity Based on Your Preferences! Adjust your feed settings or subscribe to more users!
+            </Typography>
+          </Paper>
+        </Container>
+      </>
+    );
+  }
+
   return (
     <>
       <Container>

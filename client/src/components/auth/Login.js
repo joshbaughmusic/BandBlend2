@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../managers/authManager";
+import { Container } from "@mui/material";
 
 export default function Login({ setLoggedInUser }) {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function Login({ setLoggedInUser }) {
   };
 
   return (
-    <div>
+    <Container>
       <h3>Login</h3>
       <div>
         <label>Email</label>
@@ -55,6 +56,6 @@ export default function Login({ setLoggedInUser }) {
       <p>
         Not signed up? Register <Link to="/register">here</Link>
       </p>
-    </div>
+    </Container>
   );
 }
