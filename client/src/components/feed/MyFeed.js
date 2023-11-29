@@ -82,7 +82,7 @@ export const MyFeed = ({ loggedInUser }) => {
           >
             Recent Activity:
           </Typography>
-          <Divider sx={{mb: 3}} />
+          <Divider sx={{ mb: 3 }} />
           <div>
             {feedPosts.map((p, index) => (
               <FeedPostCard
