@@ -11,7 +11,7 @@ public class Message
     public DateTime Date { get; set; }
     public bool IsRead { get; set; }
     [ForeignKey("SenderId")]
-    public Profile Sender { get; set; }
+    public UserProfile Sender { get; set; }
     [ForeignKey("ReceiverId")]
-    public Profile Receiver { get; set; }
+    public UserProfile Receiver { get; set; }
 }

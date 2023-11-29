@@ -9,6 +9,7 @@ import { dateFormatter } from '../../utilities/dateFormatter.js';
 import { DeleteComment } from './DeleteComment.js';
 import { EditComment } from './EditComment.js';
 import { CommentLikes } from '../likes/commentLikes/CommentLike.js';
+import { useNavigate } from 'react-router-dom';
 
 export const MyCommentCard = ({
   comment,
@@ -16,6 +17,8 @@ export const MyCommentCard = ({
   loggedInUser,
   commentPage
 }) => {
+      const navigate = useNavigate();
+
   return (
     <>
       <Card className="comment-card">
@@ -23,17 +26,25 @@ export const MyCommentCard = ({
           <div className="comment-card-header">
             <div className="comment-card-header-left">
               <Avatar
-                className="single-profile-pic"
+                onClick={() => navigate(`/profile/me`)}
+                className="single-profile-pic comment-avatar-clickable"
                 src={comment.userProfile.profile.profilePicture}
                 alt={comment.userProfile.name}
                 sx={{ width: '30px', height: '30px' }}
               />
-              <Typography>{comment.userProfile.name}</Typography>
+              <Typography
+                onClick={() => navigate(`/profile/me`)}
+                className="comment-name-clickable"
+              >
+                {comment.userProfile.name}
+              </Typography>
             </div>
             <Typography>{dateFormatter(comment.date)}</Typography>
           </div>
           <div>
-            <Typography>{comment.body}</Typography>
+            <Typography className="comment-name-clickable">
+              {comment.body}
+            </Typography>
           </div>
         </CardContent>
         <CardActions disableSpacing>

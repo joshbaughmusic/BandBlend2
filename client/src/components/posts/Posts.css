@@ -55,6 +55,23 @@
   margin-bottom: 20px;
 }
 
+.feedPost-avatar:hover {
+  cursor: pointer;
+}
+
+.feedPost-name:hover {
+  cursor: pointer;
+}
+
+.feed-post-card {
+  margin: 0px auto 20px auto;
+}
+
+.feed-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
 /* .commentCount-chip {
   margin-right: 7px;
 } */

@@ -51,11 +51,13 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment, logg
           loggedInUser={loggedInUser}
         />
 
-        {Array(post.commentCount)
-          .fill(0)
-          .map((obj, index) => (
-            <CommentSkeleton key={index} />
-          ))}
+        {post.commentCount > 5
+          ? Array(5)
+              .fill(0)
+              .map((obj, index) => <CommentSkeleton key={index} />)
+          : Array(post.commentCount)
+              .fill(0)
+              .map((obj, index) => <CommentSkeleton key={index} />)}
         <div className="pagination-allprofiles-container">
           <Pagination
             count={Math.ceil(commentCount / amountPerPage)}
