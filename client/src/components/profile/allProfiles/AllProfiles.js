@@ -72,7 +72,7 @@ export const AllProfiles = () => {
               profiles.map((p, index) => (
                 <AllProfilesCard
                   profile={p}
-                  key={index}
+                  key={`${p.id}-${index}`}
                   getAllUsersWithProfiles={getAllUsersWithProfiles}
                 />
               ))

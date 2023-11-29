@@ -313,7 +313,7 @@ export const MyPosts = ({ profile, loggedInUser }) => {
             getUserPosts={getUserPosts}
             profile={profile}
             post={p}
-            key={index}
+            key={`${p.id}-${index}`}
             page={page}
             loggedInUser={loggedInUser}
           />

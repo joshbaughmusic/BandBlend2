@@ -99,7 +99,7 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment, logg
         {comments.map((c, index) => {
           return c.userProfileId === loggedInUser.id ? (
             <MyCommentCard
-              key={index}
+              key={`${c.id}-${index}`}
               profile={profile}
               comment={c}
               getCommentsForPost={getCommentsForPost}
@@ -108,7 +108,7 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment, logg
             />
           ) : (
             <OtherCommentCard
-              key={index}
+              key={`${c.id}-${index}`}
               profile={profile}
               comment={c}
               loggedInUser={loggedInUser}

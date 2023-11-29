@@ -87,7 +87,7 @@ export const OtherPosts = ({ profile, loggedInUser }) => {
           <OtherPostsCard
             profile={profile}
             post={p}
-            key={index}
+            key={`${p.id}-${index}`}
             page={page}
             loggedInUser={loggedInUser}
           />
