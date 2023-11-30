@@ -75,5 +75,53 @@ public class FeedController : ControllerBase
         return Ok(data);
     }
 
+    [HttpGet("states")]
+    [Authorize]
+    public IActionResult GetFeedStateSubscriptions()
+    {
+        var loggedInUser = _dbContext
+            .UserProfiles
+            .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        List<FeedStateSubscription> foundFeedStateSubscriptions = _dbContext.FeedStateSubscriptions
+         .Include(sub => sub.State)
+        .Where(sub => sub.UserProfileId == loggedInUser.Id)
+        .ToList();
+
+        return Ok(foundFeedStateSubscriptions);
+    }
+
+    [HttpGet("primarygenres")]
+    [Authorize]
+    public IActionResult GetFeedPrimaryGenreSubscriptions()
+    {
+        var loggedInUser = _dbContext
+            .UserProfiles
+            .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        List<FeedPrimaryGenreSubscription> foundFeedPrimaryGenreSubscriptions = _dbContext.FeedPrimaryGenreSubscriptions
+        .Include(sub => sub.PrimaryGenre)
+        .Where(sub => sub.UserProfileId == loggedInUser.Id)
+        .ToList();
+
+        return Ok(foundFeedPrimaryGenreSubscriptions);
+    }
+
+    [HttpGet("primaryinstruments")]
+    [Authorize]
+    public IActionResult GetFeedPrimaryInstrumentSubscriptions()
+    {
+        var loggedInUser = _dbContext
+            .UserProfiles
+            .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        List<FeedPrimaryInstrumentSubscription> foundFeedPrimaryInstrumentSubscriptions = _dbContext.FeedPrimaryInstrumentSubscriptions
+         .Include(sub => sub.PrimaryInstrument)
+        .Where(sub => sub.UserProfileId == loggedInUser.Id)
+        .ToList();
+
+        return Ok(foundFeedPrimaryInstrumentSubscriptions);
+    }
+
 
 }

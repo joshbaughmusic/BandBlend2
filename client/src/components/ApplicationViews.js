@@ -7,6 +7,10 @@ import { MyProfile } from './profile/singleProfile/myProfile/MyProfile.js';
 import { OtherProfile } from './profile/singleProfile/otherProfile/OtherProfile.js';
 import { AllProfiles } from './profile/allProfiles/AllProfiles.js';
 import { MyFeed } from './feed/MyFeed.js';
+import { Settings } from './settings/Settings.js';
+import { FeedSettings } from './settings/subSettings/FeedSettings.js';
+import { BlockedAccountsSettings } from './settings/subSettings/BlockedAccountsSettings.js';
+import { DeleteAccountSettings } from './settings/subSettings/DeleteAccountSettings.js';
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -55,6 +59,40 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
               </AuthorizedRoute>
             }
           />
+          <Route path="settings">
+            <Route
+              index
+              element={
+                <AuthorizedRoute loggedInUser={loggedInUser}>
+                  <Settings loggedInUser={loggedInUser} />
+                </AuthorizedRoute>
+              }
+            />
+            {/* <Route
+              path="feed"
+              element={
+                <AuthorizedRoute loggedInUser={loggedInUser}>
+                  <FeedSettings loggedInUser={loggedInUser} />
+                </AuthorizedRoute>
+              }
+            />
+            <Route
+              path="blocked"
+              element={
+                <AuthorizedRoute loggedInUser={loggedInUser}>
+                  <BlockedAccountsSettings loggedInUser={loggedInUser} />
+                </AuthorizedRoute>
+              }
+            />
+            <Route
+              path="delete"
+              element={
+                <AuthorizedRoute loggedInUser={loggedInUser}>
+                  <DeleteAccountSettings loggedInUser={loggedInUser} />
+                </AuthorizedRoute>
+              }
+            /> */}
+          </Route>
           <Route
             path="login"
             element={<Login setLoggedInUser={setLoggedInUser} />}

@@ -1,4 +1,4 @@
-import { Container, Input, TextField } from "@mui/material";
+import { Container } from "@mui/material";
 import MainLogo from "../../images/Bandblend_Logos/Logo-top-black.png"
 import SubLogo from "../../images/Bandblend_Logos/Logo-bot-black.png"
 import "./Home.css"
@@ -28,7 +28,7 @@ export const Home = () => {
         <HomeSearchbar />
         
 
-        {/* <div>Latest 3 placeholder</div> */}
+        <div>Latest 3 placeholder</div>
       </Container>
     </>
   );
