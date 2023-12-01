@@ -140,25 +140,24 @@ export const MyAdditionalPhotos = ({ profile }) => {
     return (
       <>
         <div className="divider-header-container">
-                        <div className="profile-section-header">
-
-          <Typography variant="h6">Additional Photos</Typography>
-          <Tooltip
-            title="Add Photo"
-            placement="left-start"
-          >
-            <IconButton
-              component="label"
-              variant="contained"
+          <div className="profile-section-header">
+            <Typography variant="h6">Additional Photos</Typography>
+            <Tooltip
+              title="Add Photo"
+              placement="left-start"
             >
-              <AddIcon />
-              <VisuallyHiddenInput
-                type="file"
-                accept="image"
-                onChange={handleUpload}
-              />
-            </IconButton>
-          </Tooltip>
+              <IconButton
+                component="label"
+                variant="contained"
+              >
+                <AddIcon />
+                <VisuallyHiddenInput
+                  type="file"
+                  accept="image"
+                  onChange={handleUpload}
+                />
+              </IconButton>
+            </Tooltip>
           </div>
           <div className="profile-section-header"></div>
           <Divider />
