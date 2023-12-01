@@ -19,6 +19,7 @@ import {
   FormGroup,
   IconButton,
   Modal,
+  Skeleton,
   Stack,
   Tooltip,
   Typography,
@@ -132,6 +133,11 @@ export const FeedStates = () => {
             </IconButton>
           </Tooltip>
         </div>
+        <Skeleton
+          variant="rounded"
+          width="100%"
+          height={66}
+        />
       </>
     );
   }
@@ -155,6 +161,7 @@ export const FeedStates = () => {
       </div>
       <Box
         sx={{
+          minHeight: "66px",
           border: 1,
           borderColor: 'divider',
           padding: 2,

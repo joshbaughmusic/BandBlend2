@@ -7,25 +7,33 @@ import {
   Divider,
   Grid,
   Paper,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { fetchOtherUserWithProfile, fetchSaveProfile, fetchUnsaveProfile } from '../../../../managers/profileManager.js';
+import {
+  fetchOtherUserWithProfile,
+  fetchSaveProfile,
+  fetchUnsaveProfile,
+} from '../../../../managers/profileManager.js';
 import '../SingleProfile.css';
 import SpotifyLogo from '../../../../images/SocialMediaLogos/spotify.png';
 import FacebookLogo from '../../../../images/SocialMediaLogos/facebook.png';
 import InstagramLogo from '../../../../images/SocialMediaLogos/instagram.png';
 import TikTokLogo from '../../../../images/SocialMediaLogos/tiktok.png';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import BookmarkIcon from '@mui/icons-material/Bookmark';import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import MailIcon from '@mui/icons-material/Mail';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import { OtherPosts } from '../../../posts/otherPosts/OtherPosts.js';
 import { OtherAdditionalPhotos } from '../../../additonalPhotos/otherAdditionalPhotos/OtherAdditionalPhotos.js';
+import { fetchCreateUserFeedUser, fetchDeleteUserFeedUser, fetchUserFeedUsers } from '../../../../managers/feedManager.js';
 
 export const OtherProfile = ({ loggedInUser }) => {
   const [profile, setProfile] = useState();
+  const [userFeedUsers, setUserFeedUsers] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -39,16 +47,29 @@ export const OtherProfile = ({ loggedInUser }) => {
     });
   };
 
+  const getUserFeedUsers = () => {
+    fetchUserFeedUsers().then(setUserFeedUsers);
+  };
+
   useEffect(() => {
     getOtherUserWithProfile();
+    getUserFeedUsers();
   }, []);
 
   const handleSaveProfile = () => {
-    fetchSaveProfile(profile.id).then(() => getOtherUserWithProfile())
-  }
+    fetchSaveProfile(profile.id).then(() => getOtherUserWithProfile());
+  };
 
   const handleUnsaveProfile = () => {
-    fetchUnsaveProfile(profile.id).then(() => getOtherUserWithProfile())
+    fetchUnsaveProfile(profile.id).then(() => getOtherUserWithProfile());
+  };
+
+  const handleFollowUser = () => {
+    fetchCreateUserFeedUser(profile.id).then(() => getUserFeedUsers())
+  }
+
+  const handleUnfollowUser = () => {
+    fetchDeleteUserFeedUser(profile.id).then(() => getUserFeedUsers())
   }
 
   if (!profile) {
@@ -158,28 +179,68 @@ export const OtherProfile = ({ loggedInUser }) => {
                   ))}
                 </div>
               </div>
-              <ButtonGroup className='otherProfile-buttonGroup'>
+              <ButtonGroup className="otherProfile-buttonGroup">
                 {profile.profile.savedProfile ? (
-                  <Button
-                    variant="contained"
-                    onClick={() => handleUnsaveProfile()}
+                  <Tooltip
+                    title="Unsave Profile"
+                    placement="bottom"
                   >
-                    <BookmarkIcon />
-                  </Button>
+                    <Button
+                      variant="contained"
+                      onClick={() => handleUnsaveProfile()}
+                    >
+                      <BookmarkIcon />
+                    </Button>
+                  </Tooltip>
                 ) : (
-                  <Button
-                    variant="contained"
-                    onClick={() => handleSaveProfile()}
+                  <Tooltip
+                    title="Save Profile"
+                    placement="bottom"
                   >
-                    <BookmarkBorderIcon />
-                  </Button>
+                    <Button
+                      variant="contained"
+                      onClick={() => handleSaveProfile()}
+                    >
+                      <BookmarkBorderIcon />
+                    </Button>
+                  </Tooltip>
                 )}
-                <Button variant="contained">
-                  <MailIcon />
-                </Button>
-                <Button variant="contained">
-                  <PersonAddAlt1Icon />
-                </Button>
+                <Tooltip
+                  title="Message"
+                  placement="bottom"
+                >
+                  <Button variant="contained">
+                    <MailIcon />
+                  </Button>
+                </Tooltip>
+
+                {userFeedUsers.some(
+                  (sub) => sub.userSubbedToId == profile.id
+                ) ? (
+                  <Tooltip
+                    title="Unfollow"
+                    placement="bottom"
+                  >
+                    <Button
+                      variant="contained"
+                      onClick={() => handleUnfollowUser()}
+                    >
+                      <PersonRemoveIcon />
+                    </Button>
+                  </Tooltip>
+                ) : (
+                  <Tooltip
+                    title="Follow"
+                    placement="bottom"
+                  >
+                    <Button
+                      variant="contained"
+                      onClick={() => handleFollowUser()}
+                    >
+                      <PersonAddAlt1Icon />
+                    </Button>
+                  </Tooltip>
+                )}
               </ButtonGroup>
             </Paper>
           </Grid>

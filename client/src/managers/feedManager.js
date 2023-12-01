@@ -71,10 +71,10 @@ export const fetchDeleteUserFeedUser = (userId) => {
   });
 };
 
-export const fetchCreateUserFeedUser = (userArr) => {
+export const fetchCreateUserFeedUser = (userId) => {
   return fetch(`${_apiUrl}/users`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(userArr),
+    body: JSON.stringify(userId),
   });
 };

@@ -19,6 +19,7 @@ import {
   FormGroup,
   IconButton,
   Modal,
+  Skeleton,
   Tooltip,
   Typography,
 } from '@mui/material';
@@ -141,6 +142,11 @@ export const FeedPrimaryGenres = () => {
             </IconButton>
           </Tooltip>
         </div>
+        <Skeleton
+          variant="rounded"
+          width="100%"
+          height={66}
+        />
       </>
     );
   }
@@ -164,6 +170,7 @@ export const FeedPrimaryGenres = () => {
       </div>
       <Box
         sx={{
+          minHeight: '66px',
           border: 1,
           borderColor: 'divider',
           padding: 2,
@@ -174,7 +181,6 @@ export const FeedPrimaryGenres = () => {
           justifyContent: 'flex-start',
         }}
       >
-        
         {feedPrimaryGenres.length === 0 ? (
           <Typography>No followed genres!</Typography>
         ) : (

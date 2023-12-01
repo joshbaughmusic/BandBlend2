@@ -19,6 +19,7 @@ import {
   FormGroup,
   IconButton,
   Modal,
+  Skeleton,
   Tooltip,
   Typography,
 } from '@mui/material';
@@ -141,6 +142,11 @@ export const FeedPrimaryInstruments = () => {
             </IconButton>
           </Tooltip>
         </div>
+        <Skeleton
+          variant="rounded"
+          width="100%"
+          height={66}
+        />
       </>
     );
   }
@@ -164,6 +170,7 @@ export const FeedPrimaryInstruments = () => {
       </div>
       <Box
         sx={{
+          minHeight: '66px',
           border: 1,
           borderColor: 'divider',
           padding: 2,

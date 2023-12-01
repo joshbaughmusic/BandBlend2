@@ -103,7 +103,8 @@ public class FeedController : ControllerBase
         FeedStateSubscription foundFeedStateSubscription = _dbContext.FeedStateSubscriptions
         .SingleOrDefault(sub => sub.StateId == stateId && sub.UserProfileId == loggedInUser.Id);
 
-        if (foundFeedStateSubscription == null) {
+        if (foundFeedStateSubscription == null)
+        {
             return NotFound();
         }
 
@@ -129,10 +130,10 @@ public class FeedController : ControllerBase
 
         foreach (int stateId in stateIds)
         {
-            if(matchedFeedStateSubscriptions.Any(sub => sub.StateId == stateId))
+            if (matchedFeedStateSubscriptions.Any(sub => sub.StateId == stateId))
             {
                 return BadRequest();
-            } 
+            }
             else
             {
                 FeedStateSubscription newStateSub = new FeedStateSubscription()
@@ -145,7 +146,7 @@ public class FeedController : ControllerBase
                 _dbContext.Add(newStateSub);
             }
         }
-        
+
         _dbContext.SaveChanges();
 
         return NoContent();
@@ -219,7 +220,7 @@ public class FeedController : ControllerBase
                     Date = DateTime.Now
                 };
 
-                _dbContext.Add(newPrimaryGenreSub);
+                _dbContext.FeedPrimaryGenreSubscriptions.Add(newPrimaryGenreSub);
             }
         }
 
@@ -296,7 +297,7 @@ public class FeedController : ControllerBase
                     Date = DateTime.Now
                 };
 
-                _dbContext.Add(newPrimaryInstrumentSub);
+                _dbContext.FeedPrimaryInstrumentSubscriptions.Add(newPrimaryInstrumentSub);
             }
         }
 
@@ -316,7 +317,7 @@ public class FeedController : ControllerBase
 
         List<FeedUserSubscription> foundFeedUserSubscriptions = _dbContext.FeedUserSubscriptions
          .Include(sub => sub.UserSubbedTo)
-        .Where(sub => sub.UserThatSubbedId== loggedInUser.Id)
+        .Where(sub => sub.UserThatSubbedId == loggedInUser.Id)
         .ToList();
 
         return Ok(foundFeedUserSubscriptions);
@@ -347,7 +348,7 @@ public class FeedController : ControllerBase
 
     [HttpPost("users")]
     [Authorize]
-    public IActionResult CreateFeedUserSubscriptions([FromBody] int[] userIds)
+    public IActionResult CreateFeedUserSubscriptions([FromBody] int userId)
     {
 
         var loggedInUser = _dbContext
@@ -358,24 +359,14 @@ public class FeedController : ControllerBase
         .Where(sub => sub.UserSubbedToId == loggedInUser.Id)
         .ToList();
 
-        foreach (int userId in userIds)
+        FeedUserSubscription newUserSub = new FeedUserSubscription()
         {
-            if (matchedFeedUserSubscriptions.Any(sub => sub.UserSubbedToId == userId))
-            {
-                return BadRequest();
-            }
-            else
-            {
-                FeedUserSubscription newUserSub = new FeedUserSubscription()
-                {
-                    UserThatSubbedId = loggedInUser.Id,
-                    UserSubbedToId = userId,
-                    Date = DateTime.Now
-                };
+            UserThatSubbedId = loggedInUser.Id,
+            UserSubbedToId = userId,
+            Date = DateTime.Now
+        };
 
-                _dbContext.Add(newUserSub);
-            }
-        }
+        _dbContext.Add(newUserSub);
 
         _dbContext.SaveChanges();
 
