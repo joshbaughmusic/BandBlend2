@@ -3,8 +3,9 @@ import MainLogo from "../../images/Bandblend_Logos/Logo-top-black.png"
 import SubLogo from "../../images/Bandblend_Logos/Logo-bot-black.png"
 import "./Home.css"
 import { HomeSearchbar } from "./HomeSearchbar.js";
+import { LatestThree } from "./LatestThree.js";
 
-export const Home = () => {
+export const Home = ({loggedInUser}) => {
   return (
     <>
       <Container>
@@ -28,7 +29,7 @@ export const Home = () => {
         <HomeSearchbar />
         
 
-        <div>Latest 3 placeholder</div>
+        <LatestThree loggedInUser={loggedInUser} />
       </Container>
     </>
   );
