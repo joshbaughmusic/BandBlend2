@@ -6,6 +6,12 @@ export const fetchUserFeed = (page = 1, pageSize = 10) => {
   );
 };
 
+export const fetchLatestThree = () => {
+  return fetch(`${_apiUrl}/latestthree`).then((res) =>
+    res.json()
+  );
+};
+
 export const fetchUserFeedStates = () => {
   return fetch(`${_apiUrl}/states`).then((res) => res.json());
 };

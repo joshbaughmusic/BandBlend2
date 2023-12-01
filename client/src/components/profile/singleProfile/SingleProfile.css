@@ -5,6 +5,7 @@
   border: 2px solid black;
   border-radius: 4px;
   padding: 2em;
+  margin: 10px;
 }
 
 .single-profile-pic {
@@ -39,6 +40,8 @@
   border: 2px solid black;
   border-radius: 4px;
   padding: 2em;
+    margin: 10px;
+
 }
 
 .profile-section-header {

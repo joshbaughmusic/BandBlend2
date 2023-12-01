@@ -64,7 +64,7 @@ export const AllProfilesSearchSortFilter = ({
   }, [searchTerms]);
 
   return (
-    <Grid container>
+    <Grid container className='allprofiles-sortsearchfilter-container'>
       <Grid
         item
         xs={6}

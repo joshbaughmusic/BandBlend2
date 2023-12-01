@@ -1,7 +1,7 @@
 .homeSearchBar-parent {
     position: relative;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0px auto 60px auto;
 }
 
 .homeSearchBar-list {

@@ -19,6 +19,7 @@
 .post-card-skeleton {
   height: 200px;
 }
+
 .post-card-footer {
   display: flex;
   width: 100%;
@@ -53,34 +54,6 @@
 
 .post-card {
   margin-bottom: 20px;
-}
-
-.feedPost-avatar:hover {
-  cursor: pointer;
-}
-
-.feedPost-name:hover {
-  cursor: pointer;
-}
-
-.feed-post-card {
-  margin: 0px auto 20px auto;
-}
-
-.feed-container {
-  /* max-width: 1000px; */
-  margin: auto;
-}
-
-.feedSettingsLink {
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-.feedSettingsLink:hover {
-  cursor: pointer;
-  color: rgb(80, 80, 80);
-  transition: all 0.2s;
 }
 
 /* .commentCount-chip {
