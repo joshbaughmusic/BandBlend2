@@ -9,17 +9,19 @@ import {
   Typography,
   Container,
   Paper,
+  Link,
 } from '@mui/material';
-import { OtherPostsCard } from '../posts/otherPosts/OtherPostsCard.js';
 import { PostSkeleton } from '../posts/PostSkeleton.js';
 import { fetchUserFeed } from '../../managers/feedManager.js';
 import { FeedPostCard } from './FeedPostCard.js';
+import { useNavigate } from 'react-router-dom';
 
 export const MyFeed = ({ loggedInUser }) => {
   const [feedPosts, setFeedPosts] = useState();
   const [feedPostCount, setFeedPostCount] = useState(0);
   const [page, setPage] = useState(1);
   const [amountPerPage, setAmountPerPage] = useState(5);
+  const navigate = useNavigate()
 
   const getUserFeed = () => {
     fetchUserFeed(page, amountPerPage).then((res) => {
@@ -88,7 +90,19 @@ export const MyFeed = ({ loggedInUser }) => {
               sx={{ mt: 3, textAlign: 'center' }}
               variant="h6"
             >
-              No Activity Based on Your Preferences! Adjust your feed settings or subscribe to more users!
+              Wow, much quiet...
+            </Typography>
+            <Typography
+              sx={{ mt: 3, textAlign: 'center' }}
+            >
+              Adjust your{' '}
+              <span
+                onClick={() => navigate('/settings')}
+                className="feedSettingsLink"
+              >
+                feed settings
+              </span>{' '}
+              or follow some other users to see expand your feed.
             </Typography>
           </Paper>
         </Container>

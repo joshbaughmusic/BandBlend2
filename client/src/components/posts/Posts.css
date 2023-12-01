@@ -72,6 +72,17 @@
   margin: auto;
 }
 
+.feedSettingsLink {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.feedSettingsLink:hover {
+  cursor: pointer;
+  color: rgb(80, 80, 80);
+  transition: all 0.2s;
+}
+
 /* .commentCount-chip {
   margin-right: 7px;
 } */
