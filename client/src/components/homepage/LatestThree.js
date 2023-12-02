@@ -34,7 +34,7 @@ export const LatestThree = ({ loggedInUser }) => {
           >
             <Typography
               sx={{ m: 1, textAlign: 'center' }}
-              variant="h4"
+              variant="h6"
             >
               What's happening:
             </Typography>
@@ -95,10 +95,11 @@ export const LatestThree = ({ loggedInUser }) => {
         <Paper
           elevation={4}
           className="profile-right-section-item feed-container"
+          
         >
           <Typography
             sx={{ m: 1, textAlign: 'center' }}
-            variant="h4"
+            variant="h6"
           >
             What's happening:
           </Typography>

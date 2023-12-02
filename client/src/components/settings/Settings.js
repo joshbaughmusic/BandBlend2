@@ -61,7 +61,7 @@ export const Settings = () => {
         >
           <Typography
             sx={{ mb: 2, textAlign: 'center' }}
-            variant="h4"
+            variant="h6"
           >
             Settings
           </Typography>
