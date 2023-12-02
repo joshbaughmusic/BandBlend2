@@ -57,6 +57,7 @@ export const MyProfile = ({ loggedInUser }) => {
   const [editAboutState, setEditAboutState] = useState(false);
   const [error, setError] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const [picPopUp, setPicPopUp] = useState(null);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
 
@@ -170,16 +171,34 @@ export const MyProfile = ({ loggedInUser }) => {
                   </Tooltip>
                 </div>
 
-                <Avatar
-                  className="single-profile-pic"
-                  src={profile.profile.profilePicture}
-                  alt={profile.name}
-                  sx={{ width: '125px', height: '125px' }}
-                />
+                <div
+                  className="photoItem-primary"
+                  onClick={() => setPicPopUp(profile.profile.profilePicture)}
+                >
+                  <img
+                    className="profilePic"
+                    src={profile.profile.profilePicture}
+                    alt={profile.name}
+                  />
+                </div>
               </div>
+
+              {picPopUp ? (
+                <div className="popup-media">
+                  <span onClick={() => setPicPopUp(null)}>&times;</span>
+                  <img
+                    className="popup-photoItem"
+                    src={picPopUp}
+                    alt="An enlarged photo"
+                  />
+                </div>
+              ) : (
+                ''
+              )}
               <Typography
                 variant="h5"
                 component="h1"
+                sx={{ textAlign: 'center' }}
               >
                 {profile.name}
               </Typography>
@@ -347,7 +366,10 @@ export const MyProfile = ({ loggedInUser }) => {
                 elevation={4}
                 className="profile-right-section-item"
               >
-                <MyPosts profile={profile} loggedInUser={loggedInUser}/>
+                <MyPosts
+                  profile={profile}
+                  loggedInUser={loggedInUser}
+                />
               </Paper>
             </div>
           </Grid>

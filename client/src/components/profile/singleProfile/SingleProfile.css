@@ -73,3 +73,26 @@
   top: -20px;
   right: -20px;
 }
+
+.photoItem-primary {
+  position: relative;
+  line-height: 0;
+  width: 125px;
+  height: 125px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.profilePic {
+   width: 125px;
+  height: 125px;
+  transition: all 0.3s linear;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profilePic:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}

@@ -1,12 +1,23 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@mui/material';
 import '../AdditionalPhotos.css';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSnackBar } from '../../context/SnackBarContext.js';
 import { useState } from 'react';
 import { fetchDeleteAdditionalPhoto } from '../../../managers/additonalPhotosManager.js';
 
-
-export const MyAdditionalPhotosItem = ({ photo, getMyAdditonalPhotos }) => {
+export const MyAdditionalPhotosItem = ({
+  photo,
+  getMyAdditonalPhotos,
+  picPopUp,
+  setPicPopUp,
+}) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
@@ -38,11 +49,24 @@ export const MyAdditionalPhotosItem = ({ photo, getMyAdditonalPhotos }) => {
           className="additional-photo"
           src={photo.url}
           alt="picture"
+          onClick={() => setPicPopUp(photo)}
         />
         <div className="deletePic-X">
           <CloseIcon onClick={() => setConfirmOpen(true)} />
         </div>
       </div>
+      {picPopUp ? (
+        <div className="popup-media">
+          <span onClick={() => setPicPopUp(null)}>&times;</span>
+          <img
+            className="popup-photoItem"
+            src={picPopUp?.url}
+            alt="An enlarged photo"
+          />
+        </div>
+      ) : (
+        ''
+      )}
       <Dialog
         open={confirmOpen}
         onClose={handleConfirmClose}

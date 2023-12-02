@@ -29,11 +29,16 @@ import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import { OtherPosts } from '../../../posts/otherPosts/OtherPosts.js';
 import { OtherAdditionalPhotos } from '../../../additonalPhotos/otherAdditionalPhotos/OtherAdditionalPhotos.js';
-import { fetchCreateUserFeedUser, fetchDeleteUserFeedUser, fetchUserFeedUsers } from '../../../../managers/feedManager.js';
+import {
+  fetchCreateUserFeedUser,
+  fetchDeleteUserFeedUser,
+  fetchUserFeedUsers,
+} from '../../../../managers/feedManager.js';
 
 export const OtherProfile = ({ loggedInUser }) => {
   const [profile, setProfile] = useState();
   const [userFeedUsers, setUserFeedUsers] = useState([]);
+  const [picPopUp, setPicPopUp] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -65,12 +70,12 @@ export const OtherProfile = ({ loggedInUser }) => {
   };
 
   const handleFollowUser = () => {
-    fetchCreateUserFeedUser(profile.id).then(() => getUserFeedUsers())
-  }
+    fetchCreateUserFeedUser(profile.id).then(() => getUserFeedUsers());
+  };
 
   const handleUnfollowUser = () => {
-    fetchDeleteUserFeedUser(profile.id).then(() => getUserFeedUsers())
-  }
+    fetchDeleteUserFeedUser(profile.id).then(() => getUserFeedUsers());
+  };
 
   if (!profile) {
     return null;
@@ -89,15 +94,33 @@ export const OtherProfile = ({ loggedInUser }) => {
               elevation={4}
               className="profile-left-sidebar"
             >
-              <Avatar
-                className="single-profile-pic"
-                src={profile.profile.profilePicture}
-                alt={profile.name}
-                sx={{ width: '125px', height: '125px' }}
-              />
+              <div
+                className="photoItem-primary"
+                onClick={() => setPicPopUp(profile.profile.profilePicture)}
+              >
+                <img
+                  className="profilePic"
+                  src={profile.profile.profilePicture}
+                  alt={profile.name}
+                />
+              </div>
+
+              {picPopUp ? (
+                <div className="popup-media">
+                  <span onClick={() => setPicPopUp(null)}>&times;</span>
+                  <img
+                    className="popup-photoItem"
+                    src={picPopUp}
+                    alt="An enlarged photo"
+                  />
+                </div>
+              ) : (
+                ''
+              )}
               <Typography
                 variant="h5"
                 component="h1"
+                sx={{textAlign: "center"}}
               >
                 {profile.name}
               </Typography>

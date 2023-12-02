@@ -29,6 +29,7 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 export const MyAdditionalPhotos = ({ profile }) => {
+  const [picPopUp, setPicPopUp] = useState(null);
   const [photos, setPhotos] = useState();
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
@@ -194,6 +195,8 @@ export const MyAdditionalPhotos = ({ profile }) => {
       <div className="additional-pictures-container">
         {photos.map((p, index) => (
           <MyAdditionalPhotosItem
+            picPopUp={picPopUp}
+            setPicPopUp={setPicPopUp}
             key={index}
             photo={p}
             getMyAdditonalPhotos={getMyAdditonalPhotos}

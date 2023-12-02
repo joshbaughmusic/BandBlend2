@@ -54,7 +54,7 @@ export const MyFeed = ({ loggedInUser }) => {
           >
             <Typography
               sx={{ m: 1, textAlign: 'center' }}
-              variant="h4"
+              variant="h6"
             >
               Recent Activity:
             </Typography>
@@ -82,7 +82,7 @@ export const MyFeed = ({ loggedInUser }) => {
           >
             <Typography
               sx={{ m: 1, textAlign: 'center' }}
-              variant="h4"
+              variant="h6"
             >
               Recent Activity:
             </Typography>
@@ -120,7 +120,7 @@ export const MyFeed = ({ loggedInUser }) => {
         >
           <Typography
             sx={{ m: 1, textAlign: 'center' }}
-            variant="h4"
+            variant="h6"
           >
             Recent Activity:
           </Typography>
