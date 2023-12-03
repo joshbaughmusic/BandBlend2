@@ -113,7 +113,7 @@ export const MyProfile = ({ loggedInUser }) => {
   const handleSubmit = () => {
     setError(false);
     if (updatedAbout.length > 0) {
-      fetchEditAbout(profile.profile.id, updatedAbout).then((res) => {
+      fetchEditAbout(profile.id, updatedAbout).then((res) => {
         if (res.status === 204) {
           getCurrentUserWithProfile();
           setSuccessAlert(true);
@@ -353,6 +353,10 @@ export const MyProfile = ({ loggedInUser }) => {
                     </div>
                   </>
                 ) : (
+                  profile.profile.about === null ?
+
+                  <Typography>No about written yet!</Typography>
+                  :
                   <Typography>{profile.profile.about}</Typography>
                 )}
               </Paper>

@@ -22,7 +22,7 @@ public class TagController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
+    // [Authorize]
     public IActionResult GetTags()
     {
         return Ok(_dbContext.Tags);

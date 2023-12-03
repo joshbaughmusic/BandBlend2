@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { AuthorizedRoute } from './auth/AuthorizedRoute';
 import Login from './auth/Login';
 import Register from './auth/Register';
@@ -14,7 +14,7 @@ import { DeleteAccountSettings } from './settings/subSettings/DeleteAccountSetti
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
-    <div className="appviews">
+    <div className={loggedInUser ? 'appviews' : ''}>
       <Routes>
         <Route path="/">
           <Route
@@ -93,15 +93,32 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
               }
             /> */}
           </Route>
-          <Route
-            path="login"
-            element={<Login setLoggedInUser={setLoggedInUser} />}
-          />
-          <Route
-            path="register"
-            element={<Register setLoggedInUser={setLoggedInUser} />}
-          />
         </Route>
+        {/* handle already logged in user tyring to go to login or register */}
+        {loggedInUser ? (
+          <>
+            <Route
+              path="login"
+              element={<Navigate to="/" />}
+            />
+            <Route
+              path="register"
+              element={<Navigate to="/" />}
+            />
+          </>
+        ) : (
+          <>
+            <Route
+              path="login"
+              element={<Login setLoggedInUser={setLoggedInUser} />}
+            />
+            <Route
+              path="register"
+              element={<Register setLoggedInUser={setLoggedInUser} />}
+            />
+          </>
+        )}
+
         <Route
           path="*"
           element={<p>Whoops, nothing here...</p>}

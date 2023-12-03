@@ -21,7 +21,6 @@ public class PrimaryGenreController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
     public IActionResult GetPrimaryGenress()
     {
         return Ok(_dbContext.PrimaryGenres);

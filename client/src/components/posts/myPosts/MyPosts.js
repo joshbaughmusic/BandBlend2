@@ -188,23 +188,32 @@ if (!posts) {
             </Button>
           </DialogActions>
         </Dialog>
-        <div className="profile-section-header">
-          <Typography variant="h6">No Posts Yet</Typography>
-          {expanded ? (
-            <IconButton onClick={handleCloseNewPost}>
-              <CloseIcon />
-            </IconButton>
-          ) : (
-            <Tooltip
-              title="New Post"
-              placement="left-start"
-            >
-              <IconButton onClick={handleOpenNewPost}>
-                <PostAddIcon />
+        <div className="divider-header-container">
+          <div className="profile-section-header">
+            <Typography variant="h6">Posts</Typography>
+            {expanded ? (
+              <IconButton onClick={handleCloseNewPost}>
+                <CloseIcon />
               </IconButton>
-            </Tooltip>
-          )}
+            ) : (
+              <Tooltip
+                title="New Post"
+                placement="left-start"
+              >
+                <IconButton onClick={handleOpenNewPost}>
+                  <PostAddIcon />
+                </IconButton>
+              </Tooltip>
+            )}
+          </div>
+          <Divider />
         </div>
+        {
+          expanded ?
+          ""
+          :
+          <Typography>No Posts Yet!</Typography>
+        }
         <div>
           <Collapse
             in={expanded}

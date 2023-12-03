@@ -7,11 +7,11 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
   const navigate = useNavigate();
 
   const handleSaveProfile = () => {
-    fetchSaveProfile(profile.id).then(() => getAllUsersWithProfiles());
+    fetchSaveProfile(profile.profile.id).then(() => getAllUsersWithProfiles());
   };
 
   const handleUnsaveProfile = () => {
-    fetchUnsaveProfile(profile.id).then(() => getAllUsersWithProfiles());
+    fetchUnsaveProfile(profile.profile.id).then(() => getAllUsersWithProfiles());
   };
 
   return (

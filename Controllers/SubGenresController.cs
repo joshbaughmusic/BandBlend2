@@ -22,7 +22,7 @@ public class SubGenreController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
+    // [Authorize]
     public IActionResult GetSubGenres()
     {
         return Ok(_dbContext.SubGenres);
