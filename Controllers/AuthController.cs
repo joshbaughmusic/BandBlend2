@@ -112,6 +112,12 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register(Registration registration)
     {
+
+        if (_dbContext.Users.Any(u => u.Email == registration.Email))
+        {
+            return BadRequest("This email is already in use.");
+        }
+
         var user = new IdentityUser
         {
             UserName = registration.Email,
@@ -167,6 +173,17 @@ public class AuthController : ControllerBase
                 TagId = tag
             }).ToList();
 
+            FeedStateSubscription newFeedStateSubscription = new FeedStateSubscription {
+                UserProfileId = newUserProfile.Id,
+                StateId = registration.StateId
+            };
+            FeedPrimaryGenreSubscription newFeedPrimaryGenreSubscription = new FeedPrimaryGenreSubscription {
+                UserProfileId = newUserProfile.Id,
+                PrimaryGenreId = registration.PrimaryGenreId
+            };
+
+            _dbContext.FeedStateSubscriptions.Add(newFeedStateSubscription);
+            _dbContext.FeedPrimaryGenreSubscriptions.Add(newFeedPrimaryGenreSubscription);
             _dbContext.ProfileSubGenres.AddRange(newProfileSubGenres);
             _dbContext.ProfileTags.AddRange(newProfileTags);
 

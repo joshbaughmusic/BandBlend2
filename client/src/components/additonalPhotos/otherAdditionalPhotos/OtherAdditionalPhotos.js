@@ -25,7 +25,7 @@ export const OtherAdditionalPhotos = ({ profile }) => {
               <Typography variant="h6">Additional Photos</Typography>
               <Divider />
             </div>
-            <div>No Photos yet!</div>
+            <div>No photos yet!</div>
           </>
         ) : (
           <>
@@ -58,7 +58,7 @@ export const OtherAdditionalPhotos = ({ profile }) => {
           <Typography variant="h6">Additional Photos</Typography>
           <Divider />
         </div>
-        <div>No Photos yet!</div>
+        <div>No photos yet!</div>
       </>
     );
   }

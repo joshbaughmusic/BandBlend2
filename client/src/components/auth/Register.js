@@ -134,7 +134,7 @@ export default function Register({ setLoggedInUser }) {
       setProfilePicture(null);
       setProfilePictureUrl(null);
     }
-     e.target.value = null;
+    e.target.value = null;
   };
 
   const handleSubmit = (e) => {
@@ -211,10 +211,17 @@ export default function Register({ setLoggedInUser }) {
           isBand: false,
         };
       }
-      register(newUser).then((user) => {
-        setLoggedInUser(user);
-        navigate('/');
-      });
+      register(newUser)
+        .then((res) => {
+          setLoggedInUser(res);
+          navigate('/');
+        })
+        .catch((error) => {
+          setSuccessAlert(false);
+          setSnackBarMessage(error.message);
+          handleSnackBarOpen();
+          console.error('Registration process failed:', error);
+        });
     }
   };
 

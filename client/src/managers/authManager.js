@@ -28,6 +28,7 @@ export const tryGetLoggedInUser = () => {
 
 export const register = (userProfile) => {
   userProfile.password = btoa(userProfile.password);
+
   return fetch(_apiUrl + '/register', {
     credentials: 'same-origin',
     method: 'POST',
@@ -35,5 +36,22 @@ export const register = (userProfile) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(userProfile),
-  }).then(() => fetch(_apiUrl + '/me').then((res) => res.json()));
+  })
+    .then((res) => {
+      if (!res.ok) {
+        const statusCode = res.status;
+        if (statusCode === 400) {
+          throw new Error('Email already in use');
+        } else if (statusCode === 500) {
+          throw new Error('Failed to create a new account');
+        } else {
+          throw new Error(`Unexpected error with status: ${statusCode}`);
+        }
+      }
+      return fetch(_apiUrl + '/me').then((res) => res.json());
+    })
+    .catch((error) => {
+      console.error('Registration error:', error);
+      throw error;
+    });
 };

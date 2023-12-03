@@ -12,6 +12,7 @@
     max-height: 400px;
     overflow: auto;
     border-radius: 4px;
+    z-index: 1000;
 }
 
 .homeSearchBar-list .css-1p823my-MuiListItem-root {

@@ -93,7 +93,7 @@ export const MyAdditionalPhotos = ({ profile }) => {
               </div>
               <Divider />
             </div>
-            <div>No Photos yet!</div>
+            <div>No photos yet!</div>
           </>
         ) : (
           <>
@@ -163,7 +163,7 @@ export const MyAdditionalPhotos = ({ profile }) => {
           <div className="profile-section-header"></div>
           <Divider />
         </div>
-        <div>No Photos yet!</div>
+        <div>No photos yet!</div>
       </>
     );
   }

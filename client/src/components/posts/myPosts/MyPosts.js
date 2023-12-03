@@ -212,7 +212,7 @@ if (!posts) {
           expanded ?
           ""
           :
-          <Typography>No Posts Yet!</Typography>
+          <Typography>No posts yet!</Typography>
         }
         <div>
           <Collapse
