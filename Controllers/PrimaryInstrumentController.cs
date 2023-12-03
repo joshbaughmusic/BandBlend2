@@ -21,7 +21,6 @@ public class PrimaryInstrumentController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
     public IActionResult GetPrimaryInstruments()
     {
         return Ok(_dbContext.PrimaryInstruments);

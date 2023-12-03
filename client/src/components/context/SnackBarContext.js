@@ -43,7 +43,7 @@ export const SnackBarProvider = ({ children }) => {
           <Alert
             onClose={handleSnackBarClose}
             severity="success"
-            sx={{ width: '100%' }}
+            sx={{ width: '100%', ml: 7 }}
           >
             {snackBarMessage}
           </Alert>
@@ -57,7 +57,7 @@ export const SnackBarProvider = ({ children }) => {
           <Alert
             onClose={handleSnackBarClose}
             severity="error"
-            sx={{ width: '100%' }}
+            sx={{ width: '100%', ml: 7 }}
           >
             {snackBarMessage}
           </Alert>

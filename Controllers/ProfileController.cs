@@ -25,44 +25,6 @@ public class ProfileController : ControllerBase
 
     }
 
-    // [HttpGet]
-    // // [Authorize]
-    // public IActionResult GetAllProfiles(string search, string filter, string sort, int page = 1, int pageSize = 10)
-    // {
-
-    //     var loggedInUser = _dbContext
-    //                  .UserProfiles
-    //                  .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
-
-    //     var allProfiles = _dbContext.UserProfiles
-    //         .Include(up => up.Profile)
-    //             .ThenInclude(p => p.PrimaryGenre)
-    //         .Include(up => up.Profile)
-    //             .ThenInclude(p => p.PrimaryInstrument)
-    //         .Include(up => up.Profile)
-    //             .ThenInclude(p => p.State)
-    //         .Include(up => up.Profile)
-    //             .ThenInclude(p => p.ProfileSubGenres)
-    //             .ThenInclude(ps => ps.SubGenre)
-    //         .Include(up => up.Profile)
-    //             .ThenInclude(p => p.ProfileTags)
-    //             .ThenInclude(pt => pt.Tag)
-    //         .Where(up => up.Id != loggedInUser.Id)
-    //         .Skip((page - 1) * pageSize)  // Skip records based on the page number and page size
-    //         .Take(pageSize)  // Take only the records for the current page
-    //         .ToList();
-
-    //     int count = _dbContext.Profiles.Count();
-
-    //     var data = new
-    //     {
-    //         profiles = allProfiles,
-    //         totalCount = count
-    //     };
-
-    //     return Ok(data);
-    // }
-
     [HttpGet]
     public IActionResult GetAllProfiles(string search = null, string filter = null, string sort = null, int page = 1, int pageSize = 10)
     {
@@ -403,6 +365,7 @@ public class ProfileController : ControllerBase
 
         var loggedInUser = _dbContext
                  .UserProfiles
+                 .Include(up => up.Profile)
                  .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
         Profile foundProfile = _dbContext.Profiles

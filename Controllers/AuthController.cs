@@ -114,6 +114,7 @@ public class AuthController : ControllerBase
     {
         var user = new IdentityUser
         {
+            UserName = registration.Email,
             Email = registration.Email
         };
 
@@ -124,12 +125,53 @@ public class AuthController : ControllerBase
         var result = await _userManager.CreateAsync(user, password);
         if (result.Succeeded)
         {
-            _dbContext.UserProfiles.Add(new UserProfile
+            UserProfile newUserProfile = new UserProfile
             {
                 Name = registration.Name,
                 IdentityUserId = user.Id,
-            });
+                IsBand = registration.IsBand,
+                Email = registration.Email
+            };
+
+            _dbContext.UserProfiles.Add(newUserProfile);
+
             _dbContext.SaveChanges();
+
+            Profile newProfile = new Profile
+            {
+                UserProfileId = newUserProfile.Id,
+                ProfilePicture = registration.ProfilePicUrl,
+                StateId = registration.StateId,
+                City = registration.City,
+                PrimaryGenreId = registration.PrimaryGenreId,
+                PrimaryInstrumentId = registration.PrimaryInstrumentId,
+                SpotifyLink = registration.Spotify,
+                FacebookLink = registration.Facebook,
+                InstagramLink = registration.Instagram,
+                TikTokLink = registration.TikTok,
+            };
+
+            _dbContext.Profiles.Add(newProfile);
+
+            _dbContext.SaveChanges();
+
+            List<ProfileSubGenre> newProfileSubGenres = registration.SubGenreIds.Select(sg => new ProfileSubGenre
+            {
+                ProfileId = newProfile.Id,
+                SubGenreId = sg
+            }).ToList();
+
+            List<ProfileTag> newProfileTags = registration.TagIds.Select(tag => new ProfileTag
+            {
+                ProfileId = newProfile.Id,
+                TagId = tag
+            }).ToList();
+
+            _dbContext.ProfileSubGenres.AddRange(newProfileSubGenres);
+            _dbContext.ProfileTags.AddRange(newProfileTags);
+
+            _dbContext.SaveChanges();
+
 
             var claims = new List<Claim>
                 {

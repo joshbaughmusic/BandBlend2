@@ -21,7 +21,6 @@ public class StateController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
     public IActionResult GetStates()
     {
        return Ok(_dbContext.States);

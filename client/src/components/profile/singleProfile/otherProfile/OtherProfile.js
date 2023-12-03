@@ -62,11 +62,11 @@ export const OtherProfile = ({ loggedInUser }) => {
   }, []);
 
   const handleSaveProfile = () => {
-    fetchSaveProfile(profile.id).then(() => getOtherUserWithProfile());
+    fetchSaveProfile(profile.profile.id).then(() => getOtherUserWithProfile());
   };
 
   const handleUnsaveProfile = () => {
-    fetchUnsaveProfile(profile.id).then(() => getOtherUserWithProfile());
+    fetchUnsaveProfile(profile.profile.id).then(() => getOtherUserWithProfile());
   };
 
   const handleFollowUser = () => {
@@ -120,7 +120,7 @@ export const OtherProfile = ({ loggedInUser }) => {
               <Typography
                 variant="h5"
                 component="h1"
-                sx={{textAlign: "center"}}
+                sx={{ textAlign: 'center' }}
               >
                 {profile.name}
               </Typography>
@@ -281,7 +281,11 @@ export const OtherProfile = ({ loggedInUser }) => {
                   <Typography variant="h6">About</Typography>
                   <Divider />
                 </div>
-                <Typography>{profile.profile.about}</Typography>
+                {profile.profile.about === null ? (
+                  <Typography>No about written yet!</Typography>
+                ) : (
+                  <Typography>{profile.profile.about}</Typography>
+                )}
               </Paper>
               <Paper
                 elevation={4}

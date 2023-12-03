@@ -1,0 +1,32 @@
+
+.login-container-inner{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.register-section-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.auth-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.register-heading-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register-container-inner{
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.register-subItem-checklist-container {
+    min-width: 100%;
+    background-color: firebrick;
+}

@@ -109,6 +109,10 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
     setOpen(false);
   };
 
+  if (!loggedInUser) {
+    return null
+  }
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -562,6 +566,9 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
               </Tooltip>
             )}
           </ListItem>
+          {
+            loggedInUser ?
+
           <ListItem
             disablePadding
             sx={{ display: 'block' }}
@@ -635,6 +642,9 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
               </Tooltip>
             )}
           </ListItem>
+          :
+          ''
+          }
         </List>
       </Drawer>
       <Box
