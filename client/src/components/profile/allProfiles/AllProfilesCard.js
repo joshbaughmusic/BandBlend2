@@ -80,18 +80,19 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
         </Grid>
         <Grid
           item
-          xs={1}
+          md={1}
+          sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
         >
           <div className="allprofile-card-flexstack-icon">
-              {profile.profile.savedProfile ? (
-            <IconButton onClick={() => handleUnsaveProfile()}>
+            {profile.profile.savedProfile ? (
+              <IconButton onClick={() => handleUnsaveProfile()}>
                 <BookmarkIcon style={{ fontSize: 40 }} />
-            </IconButton>
-              ) : (
-            <IconButton onClick={() => handleSaveProfile()}>
+              </IconButton>
+            ) : (
+              <IconButton onClick={() => handleSaveProfile()}>
                 <BookmarkBorderIcon style={{ fontSize: 40 }} />
-            </IconButton>
-              )}
+              </IconButton>
+            )}
           </div>
         </Grid>
       </Grid>
