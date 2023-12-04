@@ -63,35 +63,17 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             <Route
               index
               element={
-                <AuthorizedRoute loggedInUser={loggedInUser}>
-                  <Settings loggedInUser={loggedInUser} />
-                </AuthorizedRoute>
+                loggedInUser.roles.includes('Admin') ? (
+                  <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                    <Settings loggedInUser={loggedInUser} />
+                  </AuthorizedRoute>
+                ) : (
+                  <AuthorizedRoute loggedInUser={loggedInUser}>
+                    <Settings loggedInUser={loggedInUser} />
+                  </AuthorizedRoute>
+                )
               }
             />
-            {/* <Route
-              path="feed"
-              element={
-                <AuthorizedRoute loggedInUser={loggedInUser}>
-                  <FeedSettings loggedInUser={loggedInUser} />
-                </AuthorizedRoute>
-              }
-            />
-            <Route
-              path="blocked"
-              element={
-                <AuthorizedRoute loggedInUser={loggedInUser}>
-                  <BlockedAccountsSettings loggedInUser={loggedInUser} />
-                </AuthorizedRoute>
-              }
-            />
-            <Route
-              path="delete"
-              element={
-                <AuthorizedRoute loggedInUser={loggedInUser}>
-                  <DeleteAccountSettings loggedInUser={loggedInUser} />
-                </AuthorizedRoute>
-              }
-            /> */}
           </Route>
         </Route>
         {/* handle already logged in user tyring to go to login or register */}
