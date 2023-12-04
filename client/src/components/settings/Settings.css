@@ -1,0 +1,16 @@
+.feedSettingsItem-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blockedAccount-avatar {
+    width: 56px;
+    height: 56px;
+}
+.settings-section {
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 2em;
+    margin: 10px;
+
+}

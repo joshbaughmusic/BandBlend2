@@ -33,7 +33,16 @@ public class ProfileController : ControllerBase
             .UserProfiles
             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
+        List<BlockedAccount> userBlockedAccounts = _dbContext.BlockedAccounts.Where(ba => ba.UserProfileThatBlockedId == loggedInUser.Id).ToList();
+
+        List<BlockedAccount> userBlockedByAccounts = _dbContext.BlockedAccounts.Where(ba => ba.BlockedUserProfileId == loggedInUser.Id).ToList();
+
+        var blockedUserProfileIds = userBlockedAccounts.Select(ba => ba.BlockedUserProfileId).ToList();
+
+        var blockedByUserProfileIds = userBlockedByAccounts.Select(ba => ba.UserProfileThatBlockedId).ToList();
+
         List<SavedProfile> savedProfilesByUser = _dbContext.SavedProfiles.Where(sp => sp.UserProfileId == loggedInUser.Id).ToList();
+
 
         var query = _dbContext.UserProfiles
             .Include(up => up.Profile)
@@ -48,8 +57,9 @@ public class ProfileController : ControllerBase
             .Include(up => up.Profile)
                 .ThenInclude(p => p.ProfileTags)
                 .ThenInclude(pt => pt.Tag)
-            .Where(up => up.Id != loggedInUser.Id);
-
+            .Where(up => up.Id != loggedInUser.Id && !blockedUserProfileIds.Contains(up.Id) &&
+            !blockedByUserProfileIds.Contains(up.Id));
+           
         foreach (UserProfile up in query)
         {
             if (savedProfilesByUser.Any(sp => sp.ProfileId == up.Profile.Id))
@@ -228,6 +238,19 @@ public class ProfileController : ControllerBase
             return BadRequest();
         }
 
+        List<BlockedAccount> userBlockedAccounts = _dbContext.BlockedAccounts.Where(ba => ba.UserProfileThatBlockedId == loggedInUser.Id).ToList();
+
+        List<BlockedAccount> userBlockedByAccounts = _dbContext.BlockedAccounts.Where(ba => ba.BlockedUserProfileId == loggedInUser.Id).ToList();
+
+        var blockedUserProfileIds = userBlockedAccounts.Select(ba => ba.BlockedUserProfileId).ToList();
+
+        var blockedByUserProfileIds = userBlockedByAccounts.Select(ba => ba.UserProfileThatBlockedId).ToList();
+
+        if (blockedUserProfileIds.Contains(id) || blockedByUserProfileIds.Contains(id)) 
+        {
+            return Unauthorized();
+        }
+
         UserProfile foundUserProfile = _dbContext.UserProfiles
         .Include(up => up.IdentityUser)
         .SingleOrDefault(up => up.Id == id);
@@ -350,7 +373,7 @@ public class ProfileController : ControllerBase
             foundProfile.TikTokLink = updatedProfile.TikTokLink;
 
             _dbContext.SaveChanges();
-            
+
             return NoContent();
         }
 
@@ -379,9 +402,9 @@ public class ProfileController : ControllerBase
             }
 
             foundProfile.About = updatedAbout;
-        
+
             _dbContext.SaveChanges();
-            
+
             return NoContent();
         }
 
@@ -415,6 +438,15 @@ public class ProfileController : ControllerBase
              .Include(up => up.Profile)
              .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
+        List<BlockedAccount> userBlockedAccounts = _dbContext.BlockedAccounts.Where(ba => ba.UserProfileThatBlockedId == loggedInUser.Id).ToList();
+
+        List<BlockedAccount> userBlockedByAccounts = _dbContext.BlockedAccounts.Where(ba => ba.BlockedUserProfileId == loggedInUser.Id).ToList();
+
+        var blockedUserProfileIds = userBlockedAccounts.Select(ba => ba.BlockedUserProfileId).ToList();
+
+        var blockedByUserProfileIds = userBlockedByAccounts.Select(ba => ba.UserProfileThatBlockedId).ToList();
+
+
         List<UserProfile> foundUserProfiles = _dbContext.UserProfiles
         .Include(up => up.Profile)
         .ThenInclude(p => p.PrimaryGenre)
@@ -429,15 +461,16 @@ public class ProfileController : ControllerBase
         up.Profile.State.Name.ToLower().Contains(searchTerms.ToLower()) ||
         up.Profile.City.ToLower().Contains(searchTerms.ToLower())
         )
-        .Where(up => up.Id != loggedInUser.Id)
+        .Where(up => up.Id != loggedInUser.Id && !blockedUserProfileIds.Contains(up.Id) &&
+        !blockedByUserProfileIds.Contains(up.Id))
         .Take(10)
         .ToList();
-        
+
         return Ok(foundUserProfiles);
 
     }
 
-    
+
 
 
 
@@ -474,6 +507,6 @@ public class ProfileController : ControllerBase
         return NoContent();
     }
 
-    
+
 
 }

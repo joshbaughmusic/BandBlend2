@@ -27,10 +27,23 @@ public class CommentController : ControllerBase
     [Authorize]
     public IActionResult GetCommentsForPost(int postId, int page, int pageSize)
     {
+        var loggedInUser = _dbContext
+            .UserProfiles
+            .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        List<BlockedAccount> userBlockedAccounts = _dbContext.BlockedAccounts.Where(ba => ba.UserProfileThatBlockedId == loggedInUser.Id).ToList();
+
+        List<BlockedAccount> userBlockedByAccounts = _dbContext.BlockedAccounts.Where(ba => ba.BlockedUserProfileId == loggedInUser.Id).ToList();
+
+        var blockedUserProfileIds = userBlockedAccounts.Select(ba => ba.BlockedUserProfileId).ToList();
+
+        var blockedByUserProfileIds = userBlockedByAccounts.Select(ba => ba.UserProfileThatBlockedId).ToList();
+
         var query = _dbContext.Comments
         .Include(c => c.UserProfile)
         .ThenInclude(up => up.Profile)
-        .Where(c => c.PostId == postId)
+        .Where(c => c.PostId == postId && !blockedUserProfileIds.Contains(c.UserProfileId) &&
+        !blockedByUserProfileIds.Contains(c.UserProfileId))
         .OrderByDescending(p => p.Date);
 
         var allComments = query

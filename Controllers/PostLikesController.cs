@@ -24,6 +24,17 @@ public class PostLikeController : ControllerBase
     [Authorize]
     public IActionResult GetPostLike(int postId)
     {
+        var loggedInUser = _dbContext
+                   .UserProfiles
+                   .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        List<BlockedAccount> userBlockedAccounts = _dbContext.BlockedAccounts.Where(ba => ba.UserProfileThatBlockedId == loggedInUser.Id).ToList();
+
+        List<BlockedAccount> userBlockedByAccounts = _dbContext.BlockedAccounts.Where(ba => ba.BlockedUserProfileId == loggedInUser.Id).ToList();
+
+        var blockedUserProfileIds = userBlockedAccounts.Select(ba => ba.BlockedUserProfileId).ToList();
+
+        var blockedByUserProfileIds = userBlockedByAccounts.Select(ba => ba.UserProfileThatBlockedId).ToList();
 
         Post foundPost = _dbContext.Posts.SingleOrDefault(p => p.Id == postId);
 
@@ -34,7 +45,8 @@ public class PostLikeController : ControllerBase
         return Ok(_dbContext.PostLikes
         .Include(pl => pl.UserProfile)
         .ThenInclude(up => up.Profile)
-        .Where(pl => pl.PostId == postId)
+        .Where(pl => pl.PostId == postId && !blockedUserProfileIds.Contains(pl.UserProfileId) &&
+        !blockedByUserProfileIds.Contains(pl.UserProfileId))
         .ToList());
     }
 

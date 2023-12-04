@@ -39,11 +39,12 @@ export const SnackBarProvider = ({ children }) => {
           open={snackBarOpen}
           autoHideDuration={3000}
           onClose={handleSnackBarClose}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         >
           <Alert
             onClose={handleSnackBarClose}
             severity="success"
-            sx={{ width: '100%', ml: 7 }}
+            sx={{ width: '100%' }}
           >
             {snackBarMessage}
           </Alert>
@@ -53,11 +54,12 @@ export const SnackBarProvider = ({ children }) => {
           open={snackBarOpen}
           autoHideDuration={3000}
           onClose={handleSnackBarClose}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         >
           <Alert
             onClose={handleSnackBarClose}
             severity="error"
-            sx={{ width: '100%', ml: 7 }}
+            sx={{ width: '100%' }}
           >
             {snackBarMessage}
           </Alert>

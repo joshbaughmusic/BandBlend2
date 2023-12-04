@@ -584,10 +584,12 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                   e.preventDefault();
                   setOpen(false);
                   logout().then(() => {
-                    setLoggedInUser(null);
-                    setOpen(false);
+                    setTimeout(() => {
+                      setLoggedInUser(null);
+                      setOpen(false);
+                      navigate('/');
+                    }, 1000)
                   });
-                  navigate('/');
                 }}
               >
                 <ListItemIcon
@@ -600,7 +602,7 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                   <ExitToAppIcon />
                 </ListItemIcon>
                 <ListItemText
-                  primary={'Settings'}
+                  primary={'Logout'}
                   sx={{ opacity: open ? 1 : 0 }}
                 />
               </ListItemButton>
@@ -619,10 +621,12 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                     e.preventDefault();
                     setOpen(false);
                     logout().then(() => {
-                      setLoggedInUser(null);
-                      setOpen(false);
+                      setTimeout(() => {
+                        setLoggedInUser(null);
+                        setOpen(false);
+                        navigate('/');
+                      }, 1000);
                     });
-                    navigate('/');
                   }}
                 >
                   <ListItemIcon

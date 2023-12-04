@@ -3,11 +3,9 @@ import {
   Card,
   CardActions,
   CardContent,
-  IconButton,
   Typography,
 } from '@mui/material';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+
 import { dateFormatter } from '../../utilities/dateFormatter.js';
 import { CommentLikes } from '../likes/commentLikes/CommentLike.js';
 import { useNavigate } from 'react-router-dom';
