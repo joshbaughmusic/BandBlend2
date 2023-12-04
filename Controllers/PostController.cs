@@ -27,8 +27,22 @@ public class PostController : ControllerBase
     [Authorize]
     public IActionResult GetUserPosts(int id, int page, int pageSize)
     {
+
+        var loggedInUser = _dbContext
+            .UserProfiles
+            .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        List<BlockedAccount> userBlockedAccounts = _dbContext.BlockedAccounts.Where(ba => ba.UserProfileThatBlockedId == loggedInUser.Id).ToList();
+
+        List<BlockedAccount> userBlockedByAccounts = _dbContext.BlockedAccounts.Where(ba => ba.BlockedUserProfileId == loggedInUser.Id).ToList();
+
+        var blockedUserProfileIds = userBlockedAccounts.Select(ba => ba.BlockedUserProfileId).ToList();
+
+        var blockedByUserProfileIds = userBlockedByAccounts.Select(ba => ba.UserProfileThatBlockedId).ToList();
+        
         var query = _dbContext.Posts
-        .Where(p => p.UserProfileId == id)
+        .Where(p => p.UserProfileId == id && !blockedUserProfileIds.Contains(p.UserProfileId) &&
+        !blockedByUserProfileIds.Contains(p.UserProfileId))
         .OrderByDescending(p => p.Date);
 
         var allPosts = query
@@ -38,7 +52,9 @@ public class PostController : ControllerBase
 
         foreach (Post post in allPosts)
         {
-            post.CommentCount = _dbContext.Comments.Where(c => c.PostId == post.Id).Count();
+            post.CommentCount = _dbContext.Comments.Where(c => c.PostId == post.Id &&
+            !blockedUserProfileIds.Contains(c.UserProfileId) &&
+            !blockedByUserProfileIds.Contains(c.UserProfileId)).Count();
         }
 
         int count = query.Count();

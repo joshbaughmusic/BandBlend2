@@ -255,6 +255,33 @@ namespace BandBlend2.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BlockedAccounts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    BlockedUserProfileId = table.Column<int>(type: "integer", nullable: false),
+                    UserProfileThatBlockedId = table.Column<int>(type: "integer", nullable: false),
+                    Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlockedAccounts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BlockedAccounts_UserProfiles_BlockedUserProfileId",
+                        column: x => x.BlockedUserProfileId,
+                        principalTable: "UserProfiles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BlockedAccounts_UserProfiles_UserProfileThatBlockedId",
+                        column: x => x.UserProfileThatBlockedId,
+                        principalTable: "UserProfiles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FeedPrimaryGenreSubscriptions",
                 columns: table => new
                 {
@@ -642,26 +669,26 @@ namespace BandBlend2.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "00a40af9-6o6o-6o66-po6k-kk00a38j90ld", 0, "c9e84a01-37b8-4377-bca5-6ab523db9bdb", "daniel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEIaKEAJV/agaaQRokHktcNo31ky/qnU7CLrBw0HWqMaavXdOid7qDM6+MYxxDO0eAg==", null, false, "6e87864d-75ba-43e8-8058-55582ed382b6", false, null },
-                    { "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd", 0, "b5a317de-b3e6-49b4-ac0d-4ab7e6abf5b2", "grace@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAED/MXGWh0qvwqKOXtM6cqNES1G68i94PPepIW3BNBQCCRGizjsyJbuJoiTVDYgWtHg==", null, false, "4ccb0293-54dd-42b6-aa72-7742c6eaa544", false, null },
-                    { "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd", 0, "7ad6ff84-5522-43ea-89d0-bf0fc744c08a", "alexander@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEI6NamxaXnExEMU0JSMW2cJ/LPDrLP4O8bnqn23i+5t5L5tVpVfFYSJq2LcxNzyq9w==", null, false, "7b48cf6b-567e-4311-8b0e-e950f9aba66d", false, null },
-                    { "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id", 0, "c1125300-7ba9-4e1e-a631-fb94fe15e80b", "evelyn@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAELWSDqC7Bt8JhLoyMIycZ4r/9ufBOBzOASXG41qpaR061uem/swybelQnMZ4YlLAuQ==", null, false, "8a2d385d-aaaa-45e7-afcb-4013d6bdd1da", false, null },
-                    { "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd", 0, "c7a10d32-57d3-46ee-8fde-25e6026ad413", "benjamin@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEG6iYFAV5tDWGSXf54rW5+FYbt/mMpHJ1l/kJZSMOBnq2ycEiINd38JgkGu1KNkCPg==", null, false, "3a7a339a-9e07-438f-b5e2-691bea39ea3b", false, null },
-                    { "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd", 0, "70001791-606f-4728-a0ee-d20ffff97bfa", "harper@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHifcnNE37+NIvs7y43ui+F9+XF4pCx9ifoazljcLq36PoI9AWBXjrvYcHy2U3wj8w==", null, false, "77c54851-692d-4b23-bd25-15a26f2d3366", false, null },
-                    { "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd", 0, "6f57dce3-eb0f-418a-9fb3-ec2aed618a45", "william@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDbkWzfZG+tef+5hFqtkPvGOBd/MnKMrgEYrVMxCsbM9WEvY05b5Hmdch6Pa66WZIw==", null, false, "4ea8dcf5-9e57-4089-8ca7-5fe27a1b7224", false, null },
-                    { "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed", 0, "a5a50b88-b041-4cd9-8f71-f8d477d05859", "charlotte@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEKR8oTaAxAnw9DvU9VOhc/wKqe/kd3AsH/X+MePbaEg2GNPuahZ0x9y4d1bAkCgQFA==", null, false, "0b1d8f44-b47e-4c3c-8735-750a3ceff515", false, null },
-                    { "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 0, "755fe1e3-372f-4385-abdc-fcd32895b284", "tom@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAECvtAHCWlH5pAuH0PgP0aLCwrwap2HjMNhB9dHvs967jwoRgiZ39bcEIPn8bFRtVmg==", null, false, "896f9b12-4f93-4da4-9495-a6d0e1628bc3", false, null },
-                    { "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd", 0, "efb10cda-a806-4ef2-b627-1c7a5f126ee3", "james@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEF0EvywO55ykkoMoV9QI478+wTgqiFHi4uu2OotUAZBy3BI29qZSIE3adCMVPeGqCQ==", null, false, "d5728a67-ab85-4a27-9d08-e2570421d54f", false, null },
-                    { "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd", 0, "4762efab-92bb-435e-869c-b6c9174293f6", "mia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDtS735SdIegXLjGKauNUJk/K6JheCzHPbsq1UdVhnaR/SRvaC8pIy8WMCn3ji5C6A==", null, false, "2c5495dc-4183-430c-8190-f0057e16a8b6", false, null },
-                    { "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md", 0, "4abb0b25-3b78-41ec-b70a-c425695799f3", "madison@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEJhZo781JILF2YXmQQQK9t2G4vLRgKlka5K3Vj+vj6fDGNHFnVfLApaPnbnP6mow7g==", null, false, "3184f7aa-4b5c-4e78-bacd-947d5e4f267a", false, null },
-                    { "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac", 0, "62e61a25-9b63-4412-8b83-6a112a90259a", "noah@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEFO7ke2NkdNzcKazYdpNBRnQMf2NDkwMzqUFOXnlr0Iy7E2a8dIw17ityCbtkIHTUw==", null, false, "ea162f4c-e124-494f-9250-4739928c7713", false, null },
-                    { "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd", 0, "53a9631b-6547-4c81-b10f-3628bff9e6c0", "gabriel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEAhYgRE1+pD+AXJNhdVC18X00xXbBcwl98jNJcnlIcH1D0nC8P15uglQQTk2yit2Mg==", null, false, "761ade86-82b0-475a-87b1-ee59b9fbab51", false, null },
-                    { "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47", 0, "269d688d-4fd3-4772-a003-3432d1489582", "emily@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAENsn5iOqJLVtXLRNWgYmliNvbcQYywdFhMnQc2wDWpP85m4dQz+0NCBgAEl4lPyslA==", null, false, "ec2fa931-0ef5-4636-8e99-04a1327602ff", false, null },
-                    { "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68", 0, "fe3a188a-1937-4130-a4fc-ddf291f4b044", "oliver@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEGu8eJ7lEfKHZy8GuzjAvK/0UXelS5oxuLwYTS/fK4DQwvAlKoaYJILVm/e3RawU6A==", null, false, "3577c669-a7d9-4ebe-bd40-e91974be1942", false, null },
-                    { "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79", 0, "205f49af-7c02-451b-b4b9-3cbc29a46611", "Ava Martinez", false, false, null, null, null, "AQAAAAIAAYagAAAAEK2qp8UPneB8lHyiIkcvP2FsMHtcJUmh78RS8JVCalKFE/mgUU9X3hWFwDI2c7hdGQ==", null, false, "30b9c2d3-8a15-4f65-b703-1de93a16b9c9", false, null },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "941f5f93-fb6e-449d-bcd1-d35604127bfb", "josh@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAENiSCc+NPfcnLx9JS5hrr7sMmaa7wLCAhTy7fSLNLmMdPhnaFiNSrdV8t1km5vVk+Q==", null, false, "3db34752-897f-44f0-a3fb-9ac0dd598b1e", false, null },
-                    { "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a", 0, "097b2e4d-ba87-40c0-b6ce-b9c26f1ea4d4", "liam@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDlDD7PoM2YRoWLIp/kTnNlFfwVp5lECki6y2nsTOI8hwONQlgaQlUiH6Y9CZJbzUw==", null, false, "2499be7b-10fa-438a-b035-72a4a5c6eaaa", false, null },
-                    { "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b", 0, "59174b57-542b-49cb-95d7-c7d3a29c8242", "sophia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEIc8dvlsEd5cjPj6Tu9BVuwPY3D840X4BH6G5kqY6HS4NpRf0MIiaLRopaNZ/ReIAA==", null, false, "b7c886ea-6dd0-46cb-8317-9a4945ad7830", false, null }
+                    { "00a40af9-6o6o-6o66-po6k-kk00a38j90ld", 0, "e366cbd1-81f3-4d32-bf2d-722961ee1d1c", "daniel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDzVbyjPTH64O8bFBympj/4Ny/OQW8NBWf79ZiHfnKcOn5G5f41ZIYDS7ICmace10w==", null, false, "ff232b25-ee88-47ec-a569-e44312fad1dc", false, null },
+                    { "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd", 0, "ddbbe59c-0673-4187-a554-d25702ad8575", "grace@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEEX3epEykEgbAKUkKUy3mCQsi3P2Qo3GitgTWtgJcrJnf9hk0JAI1YGcvHQ9JedOkg==", null, false, "21a2c264-a76d-46f7-96c2-6eb7c64382d6", false, null },
+                    { "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd", 0, "11edfcf6-ae49-4fab-a245-1075bbda0a23", "alexander@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEMxRCqOpTV6kAsvu9yuDZ8nv2xytO5qW6Rfx2MbXgZbfjUwCp3bJs7IHCOMdusfHJQ==", null, false, "6db0f993-4381-45db-a091-5b9e9f693832", false, null },
+                    { "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id", 0, "c7602df8-b769-4030-8d69-9b6fa4c0993d", "evelyn@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEK2PMUYG5ujnwOgr/pqAj2eitBpzgKSmaR7HojLf7hwtrnO1blsJKV7aOVxaRBLKEg==", null, false, "0927e118-86ef-4c47-a9d7-9091d52deefe", false, null },
+                    { "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd", 0, "599362a1-f6d7-46bb-9e4c-8760c50a2159", "benjamin@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEERsy4EkOjryTVEHRaWA2rMxM9xQUcIlmL1+K531TfRCVixUgfflrudUFOlyIaYo2w==", null, false, "4a9aaa5d-f5b6-4f86-8899-7b6244595575", false, null },
+                    { "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd", 0, "f4b18061-08d7-4996-9303-0123b92da1f2", "harper@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEP9atWRyGrvbOJ2CHLpGY49AMYXrlsjqowWlUZNb7Ougm1jj8ZWGtCiH0sF/QZ12xg==", null, false, "a3c1bc77-2bd7-4409-ad17-b386233bedb2", false, null },
+                    { "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd", 0, "ac188499-5b2d-4eb8-9d95-988733828669", "william@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEPt0lvis9IEpXJUBFbQQ5AUYFCfFu4qgS1eMALfjSeQhXE1tVuu3WIHbmZaVZjeZ8w==", null, false, "eec2bba2-95f4-44b5-8402-87abdcde0f63", false, null },
+                    { "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed", 0, "603347ec-923d-437d-a557-f666d50fdfc0", "charlotte@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEFwoxEuzOyuuqPNJa4mx8HUCfYk9urmc2euT5vhwmoJuu1xj1P1j6v9wKuELBSsQZw==", null, false, "080b3d6a-14fc-482c-ad92-f8597bae4233", false, null },
+                    { "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 0, "6bba3c6a-4f95-41c4-9976-e68627ceb8f8", "tom@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEB1UCJJrnl3UrkgpDzBMxDlJkPy+D+RjiuXlQ3mynEfmSL3vmjMUBU+o6fYaxNS6OA==", null, false, "f2de8062-82ca-4c74-bd2f-042744b51eeb", false, null },
+                    { "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd", 0, "4f58774c-40ff-41c7-b8a6-eb9143aa793c", "james@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEIH/DGLGdP6vuGbNIDfw/hDzOFe+93Zj0BRizGo4B979zd57zEhaQIBlyvWp5+fCxA==", null, false, "874989d7-a87c-4a41-bea4-c250ce69100b", false, null },
+                    { "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd", 0, "2b2247d0-528d-4b03-b9d1-19d3fb0c6ba5", "mia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEK3G8+GwXNNgu+kNHXm/avoQxb/HGOyf2sPsiH/0+acKFH0ay57w4vNI6Vo8v0jvug==", null, false, "b902c03d-fda5-4866-8924-cd9cf2dc6b66", false, null },
+                    { "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md", 0, "e150da43-68bc-49e6-b414-391071ff14f5", "madison@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEH7wZa9AQJAAeAhHDFXivqyqS2o+eX5sQCEHZ3WZoXBAudHhfUMBs6DqfLZYCkJlxA==", null, false, "004ed941-f2a7-48cb-873b-4c934ae7b2d7", false, null },
+                    { "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac", 0, "1479f47c-f376-4f7a-9d44-455a5ad3eabc", "noah@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEBOfvUbj5GNenGIjCYJY4SRjaWb9LfJisVkgUqPTgw2x/AeDMdmI0BQYUg22djWM5g==", null, false, "ae93adf5-71e1-4586-921d-d0c8f8f4ddb6", false, null },
+                    { "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd", 0, "f6754ee9-cff8-42cf-8a21-b0c0a76335be", "gabriel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEIobrRzvlrYCHnWai72WhgFnasCVLOWviPx3qEwkuIwFIUKls/K02D0OS8WKgQynJw==", null, false, "3e6f7201-d13b-465f-a79e-7424b37cd978", false, null },
+                    { "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47", 0, "237808bf-f378-42af-9585-53d538061846", "emily@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEKnIfI1AhwQpDJ3S42G8K26cBa4womD0ddbEt7MLwhn3KifJWQUVGdcV7qL/Rj8R0A==", null, false, "312e60e8-eef9-4200-998a-093a95e31aca", false, null },
+                    { "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68", 0, "376b3bb9-8a23-4673-9c65-82f60c0a453b", "oliver@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEOdLLpf+bnQndl6F3PgSdxXHXGV9FpVYnyZj9CXQYdOi/DaxLLnIYwhmV65c+wgpBQ==", null, false, "cad88b15-f21a-4c06-a672-ce6ae835ef91", false, null },
+                    { "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79", 0, "90670962-84b8-44bc-bb4d-b93f4c965aa5", "Ava Martinez", false, false, null, null, null, "AQAAAAIAAYagAAAAELmlXXf9dbtWBcarfAWS7XEQt1HCT5kLXelagY7dJ4oKrYdl5ll6XKF2cAR+Lh5HVA==", null, false, "ba8c3bcf-52bc-4826-b0c2-f243406ee862", false, null },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "c953ce29-f313-4a07-bca9-0d164b22cb53", "josh@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEDPzoRNACktr+WzDEntkJ33jm12pUPgdrnf5VJrtA7qPVIX+cj+FCPKJnOBmfHOEKg==", null, false, "bb555c69-42b2-4876-b55c-f47dd266c23f", false, null },
+                    { "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a", 0, "21c44118-17cb-4ebf-a9f0-924d9dfb393d", "liam@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEB/RHLzVnr5ZC/GXvBus6WdSPpPZIfYl2UiB70VNWlNQIvM/T48WjN+vQ9wmnoc4qA==", null, false, "6a6cca3b-7e69-4654-8f52-279ece23d1b7", false, null },
+                    { "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b", 0, "a708d91c-d7ef-4b30-860b-3b4010885d50", "sophia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHun0DVI7VeWK1SL8pQIrJcSxFd5hd9exNJlfsG4ZfkzoV55BQHRXEBsBmgX3hn8Ww==", null, false, "2531d636-779c-4473-902b-86f786fa2d16", false, null }
                 });
 
             migrationBuilder.InsertData(
@@ -888,6 +915,11 @@ namespace BandBlend2.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "BlockedAccounts",
+                columns: new[] { "Id", "BlockedUserProfileId", "Date", "UserProfileThatBlockedId" },
+                values: new object[] { 1, 2, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 1 });
+
+            migrationBuilder.InsertData(
                 table: "FeedPrimaryGenreSubscriptions",
                 columns: new[] { "Id", "Date", "PrimaryGenreId", "UserProfileId" },
                 values: new object[,]
@@ -1096,6 +1128,16 @@ namespace BandBlend2.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_BlockedAccounts_BlockedUserProfileId",
+                table: "BlockedAccounts",
+                column: "BlockedUserProfileId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BlockedAccounts_UserProfileThatBlockedId",
+                table: "BlockedAccounts",
+                column: "UserProfileThatBlockedId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CommentLikes_CommentId",
                 table: "CommentLikes",
                 column: "CommentId");
@@ -1257,6 +1299,9 @@ namespace BandBlend2.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "BlockedAccounts");
 
             migrationBuilder.DropTable(
                 name: "CommentLikes");

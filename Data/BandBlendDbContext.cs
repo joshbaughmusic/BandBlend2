@@ -28,6 +28,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
     public DbSet<FeedPrimaryGenreSubscription> FeedPrimaryGenreSubscriptions { get; set; }
     public DbSet<FeedPrimaryInstrumentSubscription> FeedPrimaryInstrumentSubscriptions { get; set; }
     // public DbSet<FeedCitySubscription> FeedCitySubscriptions { get; set; }
+    public DbSet<BlockedAccount> BlockedAccounts { get; set; }
 
     public BandBlendDbContext(DbContextOptions<BandBlendDbContext> context, IConfiguration config) : base(context)
     {
@@ -1862,43 +1863,53 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
        }
        );
 
-    //     modelBuilder.Entity<FeedCitySubscription>().HasData(
-    //    new FeedCitySubscription
-    //    {
-    //        Id = 1,
-    //        UserProfileId = 1,
-    //        CityName = "Nashville",
-    //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
-    //    },
-    //    new FeedCitySubscription
-    //    {
-    //        Id = 2,
-    //        UserProfileId = 1,
-    //        CityName = "Appleton",
-    //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
-    //    },
-    //    new FeedCitySubscription
-    //    {
-    //        Id = 3,
-    //        UserProfileId = 1,
-    //        CityName = "Boulder",
-    //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
-    //    },
-    //    new FeedCitySubscription
-    //    {
-    //        Id = 4,
-    //        UserProfileId = 2,
-    //        CityName = "Franklin",
-    //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
-    //    },
-    //    new FeedCitySubscription
-    //    {
-    //        Id = 5,
-    //        UserProfileId = 2,
-    //        CityName = "Oshkosh",
-    //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
-    //    }
-    //    );
+        //     modelBuilder.Entity<FeedCitySubscription>().HasData(
+        //    new FeedCitySubscription
+        //    {
+        //        Id = 1,
+        //        UserProfileId = 1,
+        //        CityName = "Nashville",
+        //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
+        //    },
+        //    new FeedCitySubscription
+        //    {
+        //        Id = 2,
+        //        UserProfileId = 1,
+        //        CityName = "Appleton",
+        //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
+        //    },
+        //    new FeedCitySubscription
+        //    {
+        //        Id = 3,
+        //        UserProfileId = 1,
+        //        CityName = "Boulder",
+        //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
+        //    },
+        //    new FeedCitySubscription
+        //    {
+        //        Id = 4,
+        //        UserProfileId = 2,
+        //        CityName = "Franklin",
+        //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
+        //    },
+        //    new FeedCitySubscription
+        //    {
+        //        Id = 5,
+        //        UserProfileId = 2,
+        //        CityName = "Oshkosh",
+        //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
+        //    }
+        //    );
+
+        modelBuilder.Entity<BlockedAccount>().HasData(
+         new BlockedAccount
+         {
+             Id = 1,
+             BlockedUserProfileId = 2,
+             UserProfileThatBlockedId = 1,
+             Date = new DateTime(2023, 11, 6, 12, 6, 0)
+         }
+         );
 
 
 

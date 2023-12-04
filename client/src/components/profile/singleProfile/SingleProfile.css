@@ -6,6 +6,7 @@
   border-radius: 4px;
   padding: 2em;
   margin: 10px;
+  position: relative;
 }
 
 .single-profile-pic {
@@ -95,4 +96,10 @@
 .profilePic:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+
+.profile-moreOptions {
+  position: absolute;
+  top: 10px;
+  right: 5px;
 }

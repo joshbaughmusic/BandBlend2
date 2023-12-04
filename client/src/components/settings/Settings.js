@@ -12,6 +12,8 @@ import { useState } from 'react';
 import { FeedSettings } from './subSettings/FeedSettings.js';
 import { BlockedAccountsSettings } from './subSettings/BlockedAccountsSettings.js';
 import { DeleteAccountSettings } from './subSettings/DeleteAccountSettings.js';
+import './Settings.css';
+
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,7 +59,7 @@ export const Settings = () => {
       <Container>
         <Paper
           elevation={4}
-          className="profile-right-section-item"
+          className="settings-section"
         >
           <Typography
             sx={{ mb: 2, textAlign: 'center' }}

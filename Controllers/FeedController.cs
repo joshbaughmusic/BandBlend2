@@ -29,6 +29,14 @@ public class FeedController : ControllerBase
             .UserProfiles
             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
+        List<BlockedAccount> userBlockedAccounts = _dbContext.BlockedAccounts.Where(ba => ba.UserProfileThatBlockedId == loggedInUser.Id).ToList();
+
+        List<BlockedAccount> userBlockedByAccounts = _dbContext.BlockedAccounts.Where(ba => ba.BlockedUserProfileId == loggedInUser.Id).ToList();
+
+        var blockedUserProfileIds = userBlockedAccounts.Select(ba => ba.BlockedUserProfileId).ToList();
+
+        var blockedByUserProfileIds = userBlockedByAccounts.Select(ba => ba.UserProfileThatBlockedId).ToList();
+
         List<FeedUserSubscription> foundUserSubscriptions = _dbContext.FeedUserSubscriptions
             .Where(sub => sub.UserThatSubbedId == loggedInUser.Id)
             .ToList();
@@ -57,7 +65,8 @@ public class FeedController : ControllerBase
                 foundStateSubscriptions.Any(sub => sub.StateId == p.UserProfile.Profile.StateId) ||
                 foundPrimaryGenreSubscriptions.Any(sub => sub.PrimaryGenreId == p.UserProfile.Profile.PrimaryGenreId) ||
                 foundPrimaryInstrumentSubscriptions.Any(sub => sub.PrimaryInstrumentId == p.UserProfile.Profile.PrimaryInstrumentId))
-            .Where(p => p.UserProfileId != loggedInUser.Id)
+            .Where(p => p.UserProfileId != loggedInUser.Id && !blockedUserProfileIds.Contains(p.UserProfileId) &&
+            !blockedByUserProfileIds.Contains(p.UserProfileId))
             .ToList();
 
         foreach (Post post in filteredPosts)
@@ -84,6 +93,14 @@ public class FeedController : ControllerBase
             .UserProfiles
             .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
+        List<BlockedAccount> userBlockedAccounts = _dbContext.BlockedAccounts.Where(ba => ba.UserProfileThatBlockedId == loggedInUser.Id).ToList();
+
+        List<BlockedAccount> userBlockedByAccounts = _dbContext.BlockedAccounts.Where(ba => ba.BlockedUserProfileId == loggedInUser.Id).ToList();
+
+        var blockedUserProfileIds = userBlockedAccounts.Select(ba => ba.BlockedUserProfileId).ToList();
+
+        var blockedByUserProfileIds = userBlockedByAccounts.Select(ba => ba.UserProfileThatBlockedId).ToList();
+
         List<FeedUserSubscription> foundUserSubscriptions = _dbContext.FeedUserSubscriptions
             .Where(sub => sub.UserThatSubbedId == loggedInUser.Id)
             .ToList();
@@ -112,7 +129,8 @@ public class FeedController : ControllerBase
                 foundStateSubscriptions.Any(sub => sub.StateId == p.UserProfile.Profile.StateId) ||
                 foundPrimaryGenreSubscriptions.Any(sub => sub.PrimaryGenreId == p.UserProfile.Profile.PrimaryGenreId) ||
                 foundPrimaryInstrumentSubscriptions.Any(sub => sub.PrimaryInstrumentId == p.UserProfile.Profile.PrimaryInstrumentId))
-            .Where(p => p.UserProfileId != loggedInUser.Id)
+            .Where(p => p.UserProfileId != loggedInUser.Id && !blockedUserProfileIds.Contains(p.UserProfileId) &&
+            !blockedByUserProfileIds.Contains(p.UserProfileId))
             .ToList();
 
         foreach (Post post in filteredPosts)

@@ -25,6 +25,19 @@ public class CommentLikeController : ControllerBase
     public IActionResult GetCommentLike(int commentId)
     {
 
+        var loggedInUser = _dbContext
+                   .UserProfiles
+                   .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+
+        List<BlockedAccount> userBlockedAccounts = _dbContext.BlockedAccounts.Where(ba => ba.UserProfileThatBlockedId == loggedInUser.Id).ToList();
+
+        List<BlockedAccount> userBlockedByAccounts = _dbContext.BlockedAccounts.Where(ba => ba.BlockedUserProfileId == loggedInUser.Id).ToList();
+
+        var blockedUserProfileIds = userBlockedAccounts.Select(ba => ba.BlockedUserProfileId).ToList();
+
+        var blockedByUserProfileIds = userBlockedByAccounts.Select(ba => ba.UserProfileThatBlockedId).ToList();
+
         Comment foundComment = _dbContext.Comments.SingleOrDefault(p => p.Id == commentId);
 
         if (foundComment == null)
@@ -34,7 +47,8 @@ public class CommentLikeController : ControllerBase
         return Ok(_dbContext.CommentLikes
         .Include(pl => pl.UserProfile)
         .ThenInclude(up => up.Profile)
-        .Where(pl => pl.CommentId == commentId)
+        .Where(pl => pl.CommentId == commentId && !blockedUserProfileIds.Contains(pl.UserProfileId) &&
+        !blockedUserProfileIds.Contains(pl.UserProfileId))
         .ToList());
     }
 
