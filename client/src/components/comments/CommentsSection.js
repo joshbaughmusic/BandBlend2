@@ -115,6 +115,7 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment, logg
               comment={c}
               loggedInUser={loggedInUser}
               commentPage={page}
+              getCommentsForPost={getCommentsForPost}
             />
           );
         })}

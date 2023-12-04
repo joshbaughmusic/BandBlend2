@@ -24,6 +24,8 @@ import { styled } from '@mui/material/styles';
 import { dateFormatter } from '../../../utilities/dateFormatter.js';
 import { CommentsSection } from '../../comments/CommentsSection.js';
 import { PostLikes } from '../../likes/postLikes/PostLikes.js';
+import { DeletePost } from '../DeletePost.js';
+import { AdminDeletePost } from '../../adminViews/adminPosts/AdminDeletePost.js';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -36,12 +38,17 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const OtherPostsCard = ({ post, profile, page, loggedInUser }) => {
+export const OtherPostsCard = ({
+  post,
+  profile,
+  page,
+  loggedInUser,
+  getUserPosts,
+}) => {
   const [expanded, setExpanded] = useState(false);
   //defining newComment state here so when expanded is clicked, warning can be given if there is a comment in progress
   const [newComment, setNewComment] = useState('');
-    const [confirmOpen, setConfirmOpen] = useState(false);
-
+  const [confirmOpen, setConfirmOpen] = useState(false);
 
   useEffect(() => {
     setExpanded(false);
@@ -82,13 +89,28 @@ export const OtherPostsCard = ({ post, profile, page, loggedInUser }) => {
         </CardContent>
         <CardActions disableSpacing>
           <div className="post-card-footer">
-            <div>
-              <PostLikes
-                post={post}
-                loggedInUser={loggedInUser}
-                postPage={page}
-              />
-            </div>
+            {loggedInUser.roles.includes('Admin') ? (
+              <div className="post-card-footer-left">
+                <PostLikes
+                  post={post}
+                  loggedInUser={loggedInUser}
+                  postPage={page}
+                />
+                <AdminDeletePost
+                  postId={post.id}
+                  getUserPosts={getUserPosts}
+                />
+              </div>
+            ) : (
+              <div>
+                <PostLikes
+                  post={post}
+                  loggedInUser={loggedInUser}
+                  postPage={page}
+                />
+              </div>
+            )}
+
             {post.commentCount === 0 || post.commentCount === null ? (
               <div className="post-card-footer-right">
                 <Typography>Be the first to comment</Typography>

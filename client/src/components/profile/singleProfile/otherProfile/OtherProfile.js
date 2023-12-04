@@ -41,6 +41,7 @@ import BlockIcon from '@mui/icons-material/Block';
 import MailIcon from '@mui/icons-material/Mail';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { OtherPosts } from '../../../posts/otherPosts/OtherPosts.js';
 import { OtherAdditionalPhotos } from '../../../additonalPhotos/otherAdditionalPhotos/OtherAdditionalPhotos.js';
 import {
@@ -48,6 +49,8 @@ import {
   fetchDeleteUserFeedUser,
   fetchUserFeedUsers,
 } from '../../../../managers/feedManager.js';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import LocalPoliceIcon from '@mui/icons-material/LocalPolice';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { fetchCreateNewBlockedAccount } from '../../../../managers/blockedAccountsManager.js';
 import { useSnackBar } from '../../../context/SnackBarContext.js';
@@ -59,9 +62,10 @@ export const OtherProfile = ({ loggedInUser }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
-    const [confirmOpen, setConfirmOpen] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
+  const [actionPicked, setActionPicked] = useState('');
 
   const getOtherUserWithProfile = () => {
     fetchOtherUserWithProfile(id).then((res) => {
@@ -108,7 +112,6 @@ export const OtherProfile = ({ loggedInUser }) => {
 
   const handleConfirmClose = () => {
     setConfirmOpen(false);
-    
   };
 
   const handleBlock = () => {
@@ -167,14 +170,63 @@ export const OtherProfile = ({ loggedInUser }) => {
                 >
                   <Box sx={{ border: 1, bgcolor: 'background.paper' }}>
                     <List disablePadding>
-                      <ListItem disablePadding>
-                        <ListItemButton onClick={() => setConfirmOpen(true)}>
-                          <ListItemIcon>
-                            <BlockIcon />
-                          </ListItemIcon>
-                          <ListItemText primary="Block" />
-                        </ListItemButton>
-                      </ListItem>
+                      {loggedInUser.roles.includes('Admin') ? (
+                        <>
+                          <ListItem disablePadding>
+                            <ListItemButton
+                              onClick={() => {
+                                setActionPicked('ban');
+                                setConfirmOpen(true);
+                              }}
+                            >
+                              <ListItemIcon>
+                                <RemoveCircleOutlineIcon />
+                              </ListItemIcon>
+                              <ListItemText primary="Ban" />
+                            </ListItemButton>
+                          </ListItem>
+                          <ListItem disablePadding>
+                            <ListItemButton
+                              onClick={() => {
+                                setActionPicked('promote');
+                                setConfirmOpen(true);
+                              }}
+                            >
+                              <ListItemIcon>
+                                <LocalPoliceIcon />
+                              </ListItemIcon>
+                              <ListItemText primary="Promote" />
+                            </ListItemButton>
+                          </ListItem>
+                          <ListItem disablePadding>
+                            <ListItemButton
+                              onClick={() => {
+                                setActionPicked('delete');
+                                setConfirmOpen(true);
+                              }}
+                            >
+                              <ListItemIcon>
+                                <DeleteIcon />
+                              </ListItemIcon>
+                              <ListItemText primary="Delete" />
+                            </ListItemButton>
+                          </ListItem>
+                        </>
+                      ) : (
+                        <ListItem disablePadding>
+                          <ListItemButton
+                            onClick={() => {
+                              setActionPicked('block');
+                              setConfirmOpen(true);
+                            }}
+                          >
+                            <ListItemIcon>
+                              <BlockIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Block" />
+                          </ListItemButton>
+                        </ListItem>
+                      )}
                     </List>
                   </Box>
                 </Popper>
@@ -257,7 +309,7 @@ export const OtherProfile = ({ loggedInUser }) => {
               </Typography>
               {profile.isBand ? null : (
                 <div className="chip-section">
-                  <Typography>Primary Instrument</Typography>
+                  <Typography textAlign="center">Primary Instrument</Typography>
                   <Chip label={profile.profile.primaryInstrument.name} />
                 </div>
               )}
@@ -376,7 +428,10 @@ export const OtherProfile = ({ loggedInUser }) => {
                 elevation={4}
                 className="profile-right-section-item"
               >
-                <OtherAdditionalPhotos profile={profile} />
+                <OtherAdditionalPhotos
+                  loggedInUser={loggedInUser}
+                  profile={profile}
+                />
               </Paper>
               <Paper
                 elevation={4}
@@ -397,16 +452,63 @@ export const OtherProfile = ({ loggedInUser }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{'Block User?'}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            {`Are you sure you want block ${profile.name}? You will no longer be able to view each other's content or contact one another. This can be undone in the settings section later.`}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => handleBlock()}>Block User</Button>
-          <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
-        </DialogActions>
+        {actionPicked === 'block' ? (
+          <>
+            <DialogTitle id="alert-dialog-title">{'Block User?'}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                {`Are you sure you want block ${profile.name}? You will no longer be able to view each other's content or contact one another (his can be undone in the settings section).`}
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => handleBlock()}>Block User</Button>
+              <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+            </DialogActions>
+          </>
+        ) : actionPicked === 'ban' ? (
+          <>
+            <DialogTitle id="alert-dialog-title">{'Ban User?'}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                {`Are you sure you want ban ${profile.name}? They will no longer be able to access their account until the ban is lifted (this can be done in the settings section).`}
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button>Ban User</Button>
+              <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+            </DialogActions>
+          </>
+        ) : actionPicked === 'delete' ? (
+          <>
+            <DialogTitle id="alert-dialog-title">
+              {'Delete User Account?'}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                {`Are you sure you want delete ${profile.name}'s account? Their account and all of their content and activity will be permanently deleted. This cannot be undone.`}
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button>Promote User</Button>
+              <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+            </DialogActions>
+          </>
+        ) : (
+          <>
+            <DialogTitle id="alert-dialog-title">
+              {'Promote User to Admin?'}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                {`Are you sure you want promote ${profile.name} to an admin? They will be given full admin rights across the website (this can be changed in the settings section).`}
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button>Promote User</Button>
+              <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+            </DialogActions>
+          </>
+        )}
       </Dialog>
     </>
   );

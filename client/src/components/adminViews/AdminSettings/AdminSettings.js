@@ -9,8 +9,9 @@ import {
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import './Settings.css';
-import { FeedSettings } from '../../settings/subSettings/FeedSettings.js/index.js';
+import { AdminFeedSettings } from './AdminFeedSettings.js';
+import { AdminBannedSettings } from './AdminBannedSettings.js';
+import { AdminRoleAdjustSettings } from './AdminRoleAdjustSettings.js';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,7 +63,7 @@ export const AdminSettings = () => {
             sx={{ mb: 2, textAlign: 'center' }}
             variant="h6"
           >
-            Settings
+            {`Settings (Admin)`}
           </Typography>
           <Box
             sx={{
@@ -82,29 +83,35 @@ export const AdminSettings = () => {
                 {...a11yProps(0)}
               />
               <Tab
-                label="Blocked"
+                label="Banned"
                 {...a11yProps(1)}
               />
               <Tab
-                label="Delete"
+                label="Roles"
                 {...a11yProps(2)}
               />
+            
             </Tabs>
           </Box>
           <CustomTabPanel
             value={value}
             index={0}
           >
-            <FeedSettings />
+            <AdminFeedSettings />
           </CustomTabPanel>
           <CustomTabPanel
             value={value}
             index={1}
-          ></CustomTabPanel>
+          >
+            <AdminBannedSettings />
+          </CustomTabPanel>
           <CustomTabPanel
             value={value}
             index={2}
-          ></CustomTabPanel>
+          >
+           <AdminRoleAdjustSettings />
+          </CustomTabPanel>
+         
         </Paper>
       </Container>
     </>

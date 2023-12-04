@@ -250,7 +250,7 @@ export const MyProfile = ({ loggedInUser }) => {
               </Typography>
               {profile.isBand ? null : (
                 <div className="chip-section">
-                  <Typography>Primary Instrument</Typography>
+                  <Typography textAlign="center">Primary Instrument</Typography>
                   <Chip label={profile.profile.primaryInstrument.name} />
                 </div>
               )}
@@ -352,11 +352,9 @@ export const MyProfile = ({ loggedInUser }) => {
                       </Button>
                     </div>
                   </>
-                ) : (
-                  profile.profile.about === null ?
-
+                ) : profile.profile.about === null ? (
                   <Typography>No about written yet!</Typography>
-                  :
+                ) : (
                   <Typography>{profile.profile.about}</Typography>
                 )}
               </Paper>

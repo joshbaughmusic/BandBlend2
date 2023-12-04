@@ -11,6 +11,7 @@ import { Settings } from './settings/Settings.js';
 import { FeedSettings } from './settings/subSettings/FeedSettings.js';
 import { BlockedAccountsSettings } from './settings/subSettings/BlockedAccountsSettings.js';
 import { DeleteAccountSettings } from './settings/subSettings/DeleteAccountSettings.js';
+import { AdminSettings } from './adminViews/adminSettings/AdminSettings.js';
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -63,9 +64,9 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             <Route
               index
               element={
-                loggedInUser.roles.includes('Admin') ? (
+                loggedInUser?.roles.includes('Admin') ? (
                   <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
-                    <Settings loggedInUser={loggedInUser} />
+                    <AdminSettings loggedInUser={loggedInUser} />
                   </AuthorizedRoute>
                 ) : (
                   <AuthorizedRoute loggedInUser={loggedInUser}>

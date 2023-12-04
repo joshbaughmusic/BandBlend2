@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { fetchOtherAdditionalPhotos } from '../../../managers/additonalPhotosManager.js';
 import { OtherAdditionalPhotosItem } from './OtherAdditionalPhotosItem.js';
 import { Divider, Skeleton, Typography } from '@mui/material';
+import { AdminAdditionalPhotosItem } from '../../adminViews/adminPhotos/adminAdditionalPhotoItem.js';
 
-export const OtherAdditionalPhotos = ({ profile }) => {
+export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
   const [photos, setPhotos] = useState();
   const [picPopUp, setPicPopUp] = useState(null);
 
@@ -70,14 +71,24 @@ export const OtherAdditionalPhotos = ({ profile }) => {
         <Divider />
       </div>
       <div className="additional-pictures-container">
-        {photos.map((p, index) => (
-          <OtherAdditionalPhotosItem
-            key={index}
-            photo={p}
-            setPicPopUp={setPicPopUp}
-            picPopUp={picPopUp}
-          />
-        ))}
+        {photos.map((p, index) =>
+          loggedInUser.roles.includes('Admin') ? (
+            <AdminAdditionalPhotosItem
+              key={index}
+              photo={p}
+              setPicPopUp={setPicPopUp}
+              picPopUp={picPopUp}
+              getOtherAdditonalPhotos={getOtherAdditonalPhotos}
+            />
+          ) : (
+            <OtherAdditionalPhotosItem
+              key={index}
+              photo={p}
+              setPicPopUp={setPicPopUp}
+              picPopUp={picPopUp}
+            />
+          )
+        )}
       </div>
     </>
   );
