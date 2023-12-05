@@ -54,6 +54,10 @@ import LocalPoliceIcon from '@mui/icons-material/LocalPolice';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { fetchCreateNewBlockedAccount } from '../../../../managers/blockedAccountsManager.js';
 import { useSnackBar } from '../../../context/SnackBarContext.js';
+import {
+  fetchAdminDeleteProfilePhoto,
+  fetchPromoteToAdmin,
+} from '../../../../managers/adminFunctionsManager.js';
 
 export const OtherProfile = ({ loggedInUser }) => {
   const [profile, setProfile] = useState();
@@ -98,6 +102,22 @@ export const OtherProfile = ({ loggedInUser }) => {
     );
   };
 
+  const handleProfilePictureDelete = () => {
+    fetchAdminDeleteProfilePhoto(profile.profile.id).then((res) => {
+      if (res.status === 204) {
+        getOtherUserWithProfile();
+        handleConfirmClose();
+        setSuccessAlert(true);
+        setSnackBarMessage('Successfully deleted photo.');
+        handleSnackBarOpen();
+      } else {
+        setSuccessAlert(false);
+        setSnackBarMessage('Failed to delete photo.');
+        handleSnackBarOpen();
+      }
+    });
+  };
+
   const handleFollowUser = () => {
     fetchCreateUserFeedUser(profile.id).then(() => getUserFeedUsers());
   };
@@ -127,6 +147,22 @@ export const OtherProfile = ({ loggedInUser }) => {
         );
         handleSnackBarOpen();
         navigate('/settings');
+      }
+    });
+  };
+
+  const handlePromote = () => {
+    fetchPromoteToAdmin(profile.identityUserId).then((res) => {
+      if (res.status !== 204) {
+        setSuccessAlert(false);
+        setSnackBarMessage('Failed to promote user.');
+        handleSnackBarOpen();
+      } else {
+        handleConfirmClose();
+        getOtherUserWithProfile();
+        setSuccessAlert(true);
+        setSnackBarMessage('User successfully promoted to admin.');
+        handleSnackBarOpen();
       }
     });
   };
@@ -185,19 +221,23 @@ export const OtherProfile = ({ loggedInUser }) => {
                               <ListItemText primary="Ban" />
                             </ListItemButton>
                           </ListItem>
-                          <ListItem disablePadding>
-                            <ListItemButton
-                              onClick={() => {
-                                setActionPicked('promote');
-                                setConfirmOpen(true);
-                              }}
-                            >
-                              <ListItemIcon>
-                                <LocalPoliceIcon />
-                              </ListItemIcon>
-                              <ListItemText primary="Promote" />
-                            </ListItemButton>
-                          </ListItem>
+                          {profile.roles.includes('Admin') ? (
+                            ''
+                          ) : (
+                            <ListItem disablePadding>
+                              <ListItemButton
+                                onClick={() => {
+                                  setActionPicked('promote');
+                                  setConfirmOpen(true);
+                                }}
+                              >
+                                <ListItemIcon>
+                                  <LocalPoliceIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Promote" />
+                              </ListItemButton>
+                            </ListItem>
+                          )}
                           <ListItem disablePadding>
                             <ListItemButton
                               onClick={() => {
@@ -231,15 +271,43 @@ export const OtherProfile = ({ loggedInUser }) => {
                   </Box>
                 </Popper>
               </div>
-              <div
-                className="photoItem-primary"
-                onClick={() => setPicPopUp(profile.profile.profilePicture)}
-              >
-                <img
-                  className="profilePic"
-                  src={profile.profile.profilePicture}
-                  alt={profile.name}
-                />
+              <div className="myProfilePicture-container">
+                {profile.profile.profilePicture ? (
+                  <div className="editProfilePic-button">
+                    <Tooltip
+                      title="Delete Profile Picture"
+                      placement="right-start"
+                    >
+                      <IconButton
+                        component="label"
+                        variant="contained"
+                        onClick={() => {
+                          setActionPicked('deleteProfilePic');
+                          setConfirmOpen(true);
+                        }}
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </div>
+                ) : (
+                  ''
+                )}
+
+                {profile.profile.profilePicture ? (
+                  <div
+                    className="photoItem-primary"
+                    onClick={() => setPicPopUp(profile.profile.profilePicture)}
+                  >
+                    <img
+                      className="profilePic"
+                      src={profile.profile.profilePicture}
+                      alt={profile.name}
+                    />
+                  </div>
+                ) : (
+                  <Avatar sx={{ width: '125px', height: '125px' }}></Avatar>
+                )}
               </div>
 
               {picPopUp ? (
@@ -489,7 +557,24 @@ export const OtherProfile = ({ loggedInUser }) => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button>Promote User</Button>
+              <Button>Delete User</Button>
+              <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+            </DialogActions>
+          </>
+        ) : actionPicked === 'deleteProfilePic' ? (
+          <>
+            <DialogTitle id="alert-dialog-title">
+              {'Delete Profile Photo?'}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                {`Are you sure you want delete ${profile.name}'s profile photo? This cannot be undone.`}
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => handleProfilePictureDelete()}>
+                Delete
+              </Button>
               <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
             </DialogActions>
           </>
@@ -504,7 +589,7 @@ export const OtherProfile = ({ loggedInUser }) => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button>Promote User</Button>
+              <Button onClick={() => handlePromote()}>Promote User</Button>
               <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
             </DialogActions>
           </>

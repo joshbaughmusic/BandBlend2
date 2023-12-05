@@ -25,6 +25,31 @@ public class AdminController : ControllerBase
 
     }
 
+    [HttpGet()]
+    [Authorize(Roles = "Admin")]
+    public IActionResult GetAllAdmins()
+    {
+        var loggedInUser = _dbContext
+                        .UserProfiles
+                        .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        var adminRole = _dbContext.Roles.Single(r => r.Name ==
+        "Admin");
+
+        List<string> adminUserIds = _dbContext.UserRoles
+            .Where(ur => ur.RoleId == adminRole.Id)
+            .Select(ur => ur.UserId)
+            .Distinct()
+            .ToList();
+
+        List<UserProfile> foundAdmins = _dbContext.UserProfiles
+            .Include(up => up.Profile)
+            .Where(up => adminUserIds.Contains(up.IdentityUserId) && up.Id != loggedInUser.Id)
+            .ToList();
+
+        return Ok(foundAdmins);
+    }
+
     [HttpDelete("post/{id}")]
     [Authorize(Roles = "Admin")]
     public IActionResult AdminDeletePost(int id)
@@ -81,11 +106,35 @@ public class AdminController : ControllerBase
 
     }
 
+    [HttpDelete("profilephoto/{profileId}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult AdminDeleteProfilePhoto(int profileId)
+    {
+
+        Profile foundProfile = _dbContext.Profiles.SingleOrDefault(p => p.Id == profileId);
+
+        if (foundProfile == null)
+        {
+            return NotFound();
+        }
+
+        foundProfile.ProfilePicture = "";
+
+        _dbContext.SaveChanges();
+
+        return NoContent();
+
+    }
+
     [HttpPost("promote/{id}")]
     [Authorize(Roles = "Admin")]
     public IActionResult AdminPromote(string id)
     {
         IdentityRole role = _dbContext.Roles.SingleOrDefault(r => r.Name == "Admin");
+
+        List<IdentityUserRole<string>> foundUserRoles = _dbContext.UserRoles.Where(ur => ur.UserId == id).ToList();
+
+        _dbContext.UserRoles.RemoveRange(foundUserRoles);
 
         _dbContext.UserRoles.Add(new IdentityUserRole<string>
         {
@@ -100,15 +149,17 @@ public class AdminController : ControllerBase
     [Authorize(Roles = "Admin")]
     public IActionResult AdminDemote(string id)
     {
-        IdentityRole role = _dbContext.Roles
-            .SingleOrDefault(r => r.Name == "Admin");
-        IdentityUserRole<string> userRole = _dbContext
-            .UserRoles
-            .SingleOrDefault(ur =>
-                ur.RoleId == role.Id &&
-                ur.UserId == id);
+        IdentityRole role = _dbContext.Roles.SingleOrDefault(r => r.Name == "User");
 
-        _dbContext.UserRoles.Remove(userRole);
+        List<IdentityUserRole<string>> foundUserRoles = _dbContext.UserRoles.Where(ur => ur.UserId == id).ToList();
+
+        _dbContext.UserRoles.RemoveRange(foundUserRoles);
+
+        _dbContext.UserRoles.Add(new IdentityUserRole<string>
+        {
+            RoleId = role.Id,
+            UserId = id
+        });
         _dbContext.SaveChanges();
         return NoContent();
     }

@@ -171,16 +171,20 @@ export const MyProfile = ({ loggedInUser }) => {
                   </Tooltip>
                 </div>
 
-                <div
-                  className="photoItem-primary"
-                  onClick={() => setPicPopUp(profile.profile.profilePicture)}
-                >
-                  <img
-                    className="profilePic"
-                    src={profile.profile.profilePicture}
-                    alt={profile.name}
-                  />
-                </div>
+                {profile.profile.profilePicture ? (
+                  <div
+                    className="photoItem-primary"
+                    onClick={() => setPicPopUp(profile.profile.profilePicture)}
+                  >
+                    <img
+                      className="profilePic"
+                      src={profile.profile.profilePicture}
+                      alt={profile.name}
+                    />
+                  </div>
+                ) : (
+                  <Avatar sx={{ width: '125px', height: '125px' }}></Avatar>
+                )}
               </div>
 
               {picPopUp ? (

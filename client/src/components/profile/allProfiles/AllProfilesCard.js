@@ -26,12 +26,16 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
           md={1}
         >
           <div className="allprofile-card-flexstack-img">
-            <img
-              className="allprofiles-card-image"
-              src={profile.profile.profilePicture}
-              alt=""
-              onClick={() => navigate(`/profile/${profile.id}`)}
-            />
+            {profile.profile.profilePicture ? (
+              <img
+                className="allprofiles-card-image"
+                src={profile.profile.profilePicture}
+                alt=""
+                onClick={() => navigate(`/profile/${profile.id}`)}
+              />
+            ) : (
+              <Avatar sx={{height: "80px", width: "80px"}}></Avatar>
+            )}
           </div>
         </Grid>
         <Grid
