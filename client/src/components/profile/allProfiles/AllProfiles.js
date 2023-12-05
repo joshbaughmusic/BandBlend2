@@ -23,7 +23,13 @@ export const AllProfiles = () => {
   const [sortTerms, setSortTerms] = useState('');
 
   const getAllUsersWithProfiles = () => {
-    fetchAllUsersWithProfiles(page, amountPerPage, searchTerms, filterTerms, sortTerms).then((res) => {
+    fetchAllUsersWithProfiles(
+      page,
+      amountPerPage,
+      searchTerms,
+      filterTerms,
+      sortTerms
+    ).then((res) => {
       setProfiles(res.profiles);
       setProfileCount(res.totalCount);
     });

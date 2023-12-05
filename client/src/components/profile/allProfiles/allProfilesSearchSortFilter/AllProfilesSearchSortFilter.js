@@ -43,6 +43,7 @@ export const AllProfilesSearchSortFilter = ({
 
   const handleSearchClick = () => {
     getProfilesByTerms();
+    setPage(1);
   };
 
   useEffect(() => {
