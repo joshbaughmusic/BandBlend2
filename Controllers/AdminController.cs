@@ -50,6 +50,53 @@ public class AdminController : ControllerBase
         return Ok(foundAdmins);
     }
 
+    [HttpGet("banned")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult AdmimGetAllBannedAccounts()
+    {
+
+        List<UserProfile> foundBannedAccounts = _dbContext.UserProfiles
+            .Include(up => up.Profile)
+            .Where(up => up.AccountBanned)
+            .ToList();
+
+        return Ok(foundBannedAccounts);
+    }
+
+    [HttpPut("unban/{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult AdminUnbanAccount(int id)
+    {
+        UserProfile foundUserProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == id);
+
+        if (foundUserProfile == null) {
+            return NotFound();
+        }
+
+        foundUserProfile.AccountBanned = false;
+        
+        _dbContext.SaveChanges();
+
+        return NoContent();
+    }
+
+    [HttpPut("ban/{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult AdminBanAccount(int id)
+    {
+        UserProfile foundUserProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == id);
+
+        if (foundUserProfile == null) {
+            return NotFound();
+        }
+
+        foundUserProfile.AccountBanned = true;
+        
+        _dbContext.SaveChanges();
+
+        return NoContent();
+    }
+
     [HttpDelete("post/{id}")]
     [Authorize(Roles = "Admin")]
     public IActionResult AdminDeletePost(int id)

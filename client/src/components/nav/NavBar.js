@@ -111,7 +111,224 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
   };
 
   if (!loggedInUser) {
-    return null
+    return null;
+  }
+
+  if (loggedInUser.accountBanned) {
+    return (
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+
+        <Drawer
+          variant="permanent"
+          open={open}
+          PaperProps={{
+            sx: {
+              backgroundColor: 'grey',
+            },
+          }}
+        >
+          <DrawerHeader>
+            {open ? (
+              <>
+                <img
+                  className="nav-drawer-header-logo"
+                  src={MainLogo}
+                  alt=""
+                />
+                <IconButton onClick={handleDrawerClose}>
+                  {theme.direction === 'rtl' ? (
+                    <ChevronRightIcon />
+                  ) : (
+                    <ChevronLeftIcon />
+                  )}
+                </IconButton>
+              </>
+            ) : (
+              <Tooltip
+                title="Expand"
+                placement="right"
+              >
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  edge="start"
+                  sx={{
+                    margin: '0 auto',
+
+                    ...(open && { display: 'none' }),
+                  }}
+                >
+                  {/* <MenuIcon /> */}
+                  <img
+                    className="navlogo"
+                    src={NavLogo}
+                    alt=""
+                  />
+                </IconButton>
+              </Tooltip>
+            )}
+          </DrawerHeader>
+          <Divider />
+          <List
+            sx={{
+              display: 'flex',
+              height: '100%',
+              flexDirection: 'column',
+              justifyContent: 'between',
+            }}
+          >
+            {loggedInUser ? (
+              <ListItem
+                disablePadding
+                sx={{ display: 'block' }}
+              >
+                {open ? (
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setOpen(false);
+                      logout().then(() => {
+                        setTimeout(() => {
+                          setLoggedInUser(null);
+                          setOpen(false);
+                          navigate('/');
+                        }, 1000);
+                      });
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <ExitToAppIcon />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={'Logout'}
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                ) : (
+                  <Tooltip
+                    title="Logout"
+                    placement="right"
+                  >
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? 'initial' : 'center',
+                        px: 2.5,
+                      }}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setOpen(false);
+                        logout().then(() => {
+                          setTimeout(() => {
+                            setLoggedInUser(null);
+                            setOpen(false);
+                            navigate('/');
+                          }, 1000);
+                        });
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : 'auto',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <ExitToAppIcon />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={'Logout'}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </Tooltip>
+                )}
+              </ListItem>
+            ) : (
+              ''
+            )}
+          </List>
+          {loggedInUser.roles.includes('Admin') ? (
+            <ListItem
+              disablePadding
+              sx={{ display: 'block' }}
+            >
+              {open ? (
+                <ListItem
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <LocalPoliceIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={'Admin View'}
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItem>
+              ) : (
+                <Tooltip
+                  title="Admin View"
+                  placement="right"
+                >
+                  <ListItem
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <LocalPoliceIcon />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={'Settings'}
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItem>
+                </Tooltip>
+              )}
+            </ListItem>
+          ) : (
+            ''
+          )}
+        </Drawer>
+        <Box
+          component="main"
+          sx={{ flexGrow: 1, p: 3 }}
+        >
+          <DrawerHeader />
+        </Box>
+      </Box>
+    );
   }
 
   return (
@@ -170,7 +387,14 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
           )}
         </DrawerHeader>
         <Divider />
-        <List sx={{display: "flex", height: "100%", flexDirection: "column", justifyContent: "between"}}>
+        <List
+          sx={{
+            display: 'flex',
+            height: '100%',
+            flexDirection: 'column',
+            justifyContent: 'between',
+          }}
+        >
           <ListItem
             disablePadding
             sx={{ display: 'block' }}
@@ -649,12 +873,38 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
             ''
           )}
         </List>
-          {loggedInUser.roles.includes('Admin') ? (
-            <ListItem
-              disablePadding
-              sx={{ display: 'block' }}
-            >
-              {open ? (
+        {loggedInUser.roles.includes('Admin') ? (
+          <ListItem
+            disablePadding
+            sx={{ display: 'block' }}
+          >
+            {open ? (
+              <ListItem
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <LocalPoliceIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary={'Admin View'}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItem>
+            ) : (
+              <Tooltip
+                title="Admin View"
+                placement="right"
+              >
                 <ListItem
                   sx={{
                     minHeight: 48,
@@ -672,42 +922,16 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                     <LocalPoliceIcon />
                   </ListItemIcon>
                   <ListItemText
-                    primary={'Admin View'}
+                    primary={'Settings'}
                     sx={{ opacity: open ? 1 : 0 }}
                   />
                 </ListItem>
-              ) : (
-                <Tooltip
-                  title="Admin View"
-                  placement="right"
-                >
-                  <ListItem
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? 'initial' : 'center',
-                      px: 2.5,
-                    }}
-                  >
-                    <ListItemIcon
-                      sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : 'auto',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <LocalPoliceIcon />
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={'Settings'}
-                      sx={{ opacity: open ? 1 : 0 }}
-                    />
-                  </ListItem>
-                </Tooltip>
-              )}
-            </ListItem>
-          ) : (
-            ''
-          )}
+              </Tooltip>
+            )}
+          </ListItem>
+        ) : (
+          ''
+        )}
       </Drawer>
       <Box
         component="main"

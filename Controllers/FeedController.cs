@@ -66,7 +66,8 @@ public class FeedController : ControllerBase
                 foundPrimaryGenreSubscriptions.Any(sub => sub.PrimaryGenreId == p.UserProfile.Profile.PrimaryGenreId) ||
                 foundPrimaryInstrumentSubscriptions.Any(sub => sub.PrimaryInstrumentId == p.UserProfile.Profile.PrimaryInstrumentId))
             .Where(p => p.UserProfileId != loggedInUser.Id && !blockedUserProfileIds.Contains(p.UserProfileId) &&
-            !blockedByUserProfileIds.Contains(p.UserProfileId))
+            !blockedByUserProfileIds.Contains(p.UserProfileId) &&
+            !p.UserProfile.AccountBanned)
             .ToList();
 
         foreach (Post post in filteredPosts)
@@ -130,7 +131,7 @@ public class FeedController : ControllerBase
                 foundPrimaryGenreSubscriptions.Any(sub => sub.PrimaryGenreId == p.UserProfile.Profile.PrimaryGenreId) ||
                 foundPrimaryInstrumentSubscriptions.Any(sub => sub.PrimaryInstrumentId == p.UserProfile.Profile.PrimaryInstrumentId))
             .Where(p => p.UserProfileId != loggedInUser.Id && !blockedUserProfileIds.Contains(p.UserProfileId) &&
-            !blockedByUserProfileIds.Contains(p.UserProfileId))
+            !blockedByUserProfileIds.Contains(p.UserProfileId) && !p.UserProfile.AccountBanned)
             .ToList();
 
         foreach (Post post in filteredPosts)

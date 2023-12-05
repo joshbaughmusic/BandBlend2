@@ -46,7 +46,8 @@ public class PostLikeController : ControllerBase
         .Include(pl => pl.UserProfile)
         .ThenInclude(up => up.Profile)
         .Where(pl => pl.PostId == postId && !blockedUserProfileIds.Contains(pl.UserProfileId) &&
-        !blockedByUserProfileIds.Contains(pl.UserProfileId))
+        !blockedByUserProfileIds.Contains(pl.UserProfileId) &&
+        !pl.UserProfile.AccountBanned)
         .ToList());
     }
 

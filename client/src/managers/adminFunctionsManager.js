@@ -4,6 +4,24 @@ export const fetchAdminAllAdmins = () => {
   return fetch(`${_apiUrl}`).then(res => res.json());
 };
 
+export const fetchAdminAllBannedUsers = () => {
+  return fetch(`${_apiUrl}/banned`).then(res => res.json());
+};
+
+export const fetchAdminUnbanAccount = (userProfileId) => {
+  return fetch(`${_apiUrl}/unban/${userProfileId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+  });
+};
+
+export const fetchAdminBanAccount = (userProfileId) => {
+  return fetch(`${_apiUrl}/ban/${userProfileId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+  });
+};
+
 export const fetchAdminDeletePostOtherPost = (id) => {
   return fetch(`${_apiUrl}/post/${id}`, {
     method: 'DELETE',

@@ -20,7 +20,6 @@ export const AdminRoleAdjustSettings = () => {
 
   const getAdmins = () => {
     fetchAdminAllAdmins().then((res) => {
-        console.log(res)
         setAdmins(res)
     });
   };
