@@ -43,7 +43,8 @@ public class CommentController : ControllerBase
         .Include(c => c.UserProfile)
         .ThenInclude(up => up.Profile)
         .Where(c => c.PostId == postId && !blockedUserProfileIds.Contains(c.UserProfileId) &&
-        !blockedByUserProfileIds.Contains(c.UserProfileId))
+        !blockedByUserProfileIds.Contains(c.UserProfileId) &&
+        !c.UserProfile.AccountBanned)
         .OrderByDescending(p => p.Date);
 
         var allComments = query

@@ -136,7 +136,8 @@ public class AuthController : ControllerBase
                 Name = registration.Name,
                 IdentityUserId = user.Id,
                 IsBand = registration.IsBand,
-                Email = registration.Email
+                Email = registration.Email,
+                AccountBanned = false
             };
 
             _dbContext.UserProfiles.Add(newUserProfile);

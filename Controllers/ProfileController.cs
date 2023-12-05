@@ -58,8 +58,9 @@ public class ProfileController : ControllerBase
                 .ThenInclude(p => p.ProfileTags)
                 .ThenInclude(pt => pt.Tag)
             .Where(up => up.Id != loggedInUser.Id && !blockedUserProfileIds.Contains(up.Id) &&
-            !blockedByUserProfileIds.Contains(up.Id));
-           
+            !blockedByUserProfileIds.Contains(up.Id) &&
+            !up.AccountBanned);
+
         foreach (UserProfile up in query)
         {
             if (savedProfilesByUser.Any(sp => sp.ProfileId == up.Profile.Id))
@@ -246,25 +247,29 @@ public class ProfileController : ControllerBase
 
         var blockedByUserProfileIds = userBlockedByAccounts.Select(ba => ba.UserProfileThatBlockedId).ToList();
 
-        if (blockedUserProfileIds.Contains(id) || blockedByUserProfileIds.Contains(id)) 
+        UserProfile foundUserProfile = _dbContext.UserProfiles
+        .Include(up => up.IdentityUser)
+        .Select(up => new UserProfile
+        {
+            Id = up.Id,
+            Name = up.Name,
+            Email = up.IdentityUser.Email,
+            IsBand = up.IsBand,
+            AccountBanned = up.AccountBanned,
+            IdentityUserId = up.IdentityUserId,
+            Roles = _dbContext.UserRoles
+                .Where(ur => ur.UserId == up.IdentityUserId)
+                .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
+                .ToList()
+        })
+        .SingleOrDefault(up => up.Id == id);
+
+        if (blockedUserProfileIds.Contains(id) || blockedByUserProfileIds.Contains(id) ||
+            foundUserProfile.AccountBanned)
         {
             return Unauthorized();
         }
 
-        UserProfile foundUserProfile = _dbContext.UserProfiles
-        .Include(up => up.IdentityUser)
-        .Select(up => new UserProfile
-            {
-                Id = up.Id,
-                Name = up.Name,
-                Email = up.IdentityUser.Email,
-                IdentityUserId = up.IdentityUserId,
-                Roles = _dbContext.UserRoles
-                .Where(ur => ur.UserId == up.IdentityUserId)
-                .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
-                .ToList()
-            })
-        .SingleOrDefault(up => up.Id == id);
 
         if (foundUserProfile != null)
         {
@@ -473,7 +478,8 @@ public class ProfileController : ControllerBase
         up.Profile.City.ToLower().Contains(searchTerms.ToLower())
         )
         .Where(up => up.Id != loggedInUser.Id && !blockedUserProfileIds.Contains(up.Id) &&
-        !blockedByUserProfileIds.Contains(up.Id))
+        !blockedByUserProfileIds.Contains(up.Id) &&
+            !up.AccountBanned)
         .Take(10)
         .ToList();
 

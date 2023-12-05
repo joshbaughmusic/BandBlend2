@@ -48,7 +48,8 @@ public class CommentLikeController : ControllerBase
         .Include(pl => pl.UserProfile)
         .ThenInclude(up => up.Profile)
         .Where(pl => pl.CommentId == commentId && !blockedUserProfileIds.Contains(pl.UserProfileId) &&
-        !blockedUserProfileIds.Contains(pl.UserProfileId))
+        !blockedUserProfileIds.Contains(pl.UserProfileId) &&
+        !pl.UserProfile.AccountBanned)
         .ToList());
     }
 

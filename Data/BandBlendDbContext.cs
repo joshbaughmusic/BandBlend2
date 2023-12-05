@@ -291,6 +291,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                 Name = "Josh Baugh",
                 Email = "josh@bandblend.comx",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -299,6 +300,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
                 Name = "Tom Jones",
                 Email = "tom@bandblend.comx",
+                AccountBanned = true,
                 IsBand = false
             },
             new UserProfile
@@ -307,6 +309,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47",
                 Name = "Emily Davis",
                 Email = "emily@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -315,6 +318,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68",
                 Name = "Oliver Wilson",
                 Email = "oliver@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -323,6 +327,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79",
                 Name = "Ava Martinez",
                 Email = "ava@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -331,6 +336,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a",
                 Name = "Liam Garcia",
                 Email = "liam@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -339,6 +345,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b",
                 Name = "Sophia Rodriguez",
                 Email = "sophia@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -347,6 +354,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac",
                 Name = "Noah Lopez",
                 Email = "noah@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -355,6 +363,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd",
                 Name = "Mia Gonzalez",
                 Email = "mia@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -363,6 +372,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd",
                 Name = "James Perez",
                 Email = "james@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -371,6 +381,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed",
                 Name = "Charlotte Lee",
                 Email = "charlotte@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -379,6 +390,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd",
                 Name = "William Moore",
                 Email = "william@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -387,6 +399,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd",
                 Name = "Harper Adams",
                 Email = "harper@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -395,6 +408,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd",
                 Name = "Benjamin Clark",
                 Email = "benjamin@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -403,6 +417,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id",
                 Name = "Evelyn Hill",
                 Email = "evelyn@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -411,6 +426,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd",
                 Name = "Alexander Scott",
                 Email = "alexander@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -419,6 +435,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd",
                 Name = "Grace Ward",
                 Email = "grace@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -427,6 +444,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "00a40af9-6o6o-6o66-po6k-kk00a38j90ld",
                 Name = "Daniel Young",
                 Email = "daniel@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -435,6 +453,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md",
                 Name = "Madison Turner",
                 Email = "madison@example.com",
+                AccountBanned = false,
                 IsBand = false
             },
             new UserProfile
@@ -443,6 +462,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 IdentityUserId = "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd",
                 Name = "Gabriel Baker",
                 Email = "gabriel@example.com",
+                AccountBanned = false,
                 IsBand = false
             }
             );
@@ -1900,17 +1920,6 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
         //        Date = new DateTime(2023, 11, 6, 12, 6, 0)
         //    }
         //    );
-
-        modelBuilder.Entity<BlockedAccount>().HasData(
-         new BlockedAccount
-         {
-             Id = 1,
-             BlockedUserProfileId = 2,
-             UserProfileThatBlockedId = 1,
-             Date = new DateTime(2023, 11, 6, 12, 6, 0)
-         }
-         );
-
 
 
     }

@@ -9,8 +9,29 @@ import { AllProfiles } from './profile/allProfiles/AllProfiles.js';
 import { MyFeed } from './feed/MyFeed.js';
 import { Settings } from './settings/Settings.js';
 import { AdminSettings } from './adminViews/adminSettings/AdminSettings.js';
+import { BannedAccountView } from './bannedAccountView/BannedAccountView.js';
+import { EmptyView } from './emptyView/EmptyView.js';
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
+  if (loggedInUser?.accountBanned) {
+    return (
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <BannedAccountView loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="*"
+          element={<EmptyView loggedInUser={loggedInUser} />}
+        />
+      </Routes>
+    );
+  }
+
   return (
     <div className={loggedInUser ? 'appviews' : ''}>
       <Routes>
@@ -77,6 +98,18 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             />
           </Route>
         </Route>
+        {/* {loggedInUser?.accountBanned ? (
+          <Route
+            path="banned"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <BannedAccountView loggedInUser={loggedInUser} />
+              </AuthorizedRoute>
+            }
+          />
+        ) : (
+          ''
+        )} */}
         {/* handle already logged in user tyring to go to login or register */}
         {loggedInUser ? (
           <>
@@ -104,7 +137,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
 
         <Route
           path="*"
-          element={<p>Whoops, nothing here...</p>}
+          element={<EmptyView loggedInUser={loggedInUser} />}
         />
       </Routes>
     </div>

@@ -55,6 +55,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { fetchCreateNewBlockedAccount } from '../../../../managers/blockedAccountsManager.js';
 import { useSnackBar } from '../../../context/SnackBarContext.js';
 import {
+  fetchAdminBanAccount,
   fetchAdminDeleteProfilePhoto,
   fetchPromoteToAdmin,
 } from '../../../../managers/adminFunctionsManager.js';
@@ -163,6 +164,23 @@ export const OtherProfile = ({ loggedInUser }) => {
         setSuccessAlert(true);
         setSnackBarMessage('User successfully promoted to admin.');
         handleSnackBarOpen();
+      }
+    });
+  };
+
+  const handleBan = () => {
+    fetchAdminBanAccount(profile.id).then((res) => {
+      if (res.status !== 204) {
+        setSuccessAlert(false);
+        setSnackBarMessage('Failed to ban user account.');
+        handleSnackBarOpen();
+      } else {
+        handleConfirmClose();
+        getOtherUserWithProfile();
+        setSuccessAlert(true);
+        setSnackBarMessage('User account successfully banned.');
+        handleSnackBarOpen();
+        navigate("/")
       }
     });
   };
@@ -542,7 +560,7 @@ export const OtherProfile = ({ loggedInUser }) => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button>Ban User</Button>
+              <Button onClick={() => handleBan()}>Ban User</Button>
               <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
             </DialogActions>
           </>

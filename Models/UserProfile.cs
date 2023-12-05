@@ -8,16 +8,13 @@ public class UserProfile
     public int Id { get; set; }
     public string Name { get; set; }
     public bool IsBand { get; set; }
-
-    [NotMapped] // not mapped means that EF Core won't create column for this property in the db
+    [NotMapped]
     public string Email { get; set; }
     [NotMapped]
     public List<string> Roles { get; set; }
-
     public string IdentityUserId { get; set; }
-
+    public bool AccountBanned { get; set; }
     public IdentityUser IdentityUser { get; set; }
-    // public Profile Profile { get; set; }
     public Profile Profile { get; set; }
 
 }
