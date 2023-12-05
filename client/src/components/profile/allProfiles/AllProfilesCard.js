@@ -48,6 +48,7 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
               variant="h6"
               onClick={() => navigate(`/profile/${profile.id}`)}
             >
+              
               {profile.name}
             </Typography>
             {profile.isBand ? (

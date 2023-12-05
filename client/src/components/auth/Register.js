@@ -140,41 +140,40 @@ export default function Register({ setLoggedInUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError(false);
-    if (
-      !firstName ||
-      !lastName ||
-      !password ||
-      !city ||
-      !usStateId ||
-      !profilePicture ||
-      !profilePictureUrl ||
-      !selectedPrimaryGenre ||
-      !selectedPrimaryInstrument
-    ) {
-      setSnackBarMessage('Please fill out all primary info. ');
-      setSuccessAlert(false);
-      handleSnackBarOpen();
-    } else if (password !== confirmPassword) {
-      setError(true);
-      setSnackBarMessage('Passwords do not match.');
-      setSuccessAlert(false);
-      handleSnackBarOpen();
-    } else if (password.length < 8) {
-      setError(true);
-      setSnackBarMessage('Password must be at least 8 characters.');
-      setSuccessAlert(false);
-      handleSnackBarOpen();
-    } else if (selectedSubGenres.length < 3) {
-      setSnackBarMessage('Please select 3 subgenres.');
-      setSuccessAlert(false);
-      handleSnackBarOpen();
-    } else if (selectedTags.length < 3) {
-      setSnackBarMessage('Pleasse select 3 tags.');
-      setSuccessAlert(false);
-      handleSnackBarOpen();
-    } else {
-      let newUser = {};
-      if (isBand) {
+    let newUser = {};
+
+    if (isBand) {
+      if (
+        !bandName ||
+        !password ||
+        !city ||
+        !usStateId ||
+        !profilePicture ||
+        !profilePictureUrl ||
+        !selectedPrimaryGenre
+      ) {
+        setSnackBarMessage('Please fill out all primary info. ');
+        setSuccessAlert(false);
+        handleSnackBarOpen();
+      } else if (password !== confirmPassword) {
+        setError(true);
+        setSnackBarMessage('Passwords do not match.');
+        setSuccessAlert(false);
+        handleSnackBarOpen();
+      } else if (password.length < 8) {
+        setError(true);
+        setSnackBarMessage('Password must be at least 8 characters.');
+        setSuccessAlert(false);
+        handleSnackBarOpen();
+      } else if (selectedSubGenres.length < 3) {
+        setSnackBarMessage('Please select 3 subgenres.');
+        setSuccessAlert(false);
+        handleSnackBarOpen();
+      } else if (selectedTags.length < 3) {
+        setSnackBarMessage('Please select 3 tags.');
+        setSuccessAlert(false);
+        handleSnackBarOpen();
+      } else {
         newUser = {
           name: bandName,
           email,
@@ -183,7 +182,7 @@ export default function Register({ setLoggedInUser }) {
           stateId: usStateId,
           profilePicUrl: profilePictureUrl,
           primaryGenreId: selectedPrimaryGenre,
-          primaryInstrumentId: selectedPrimaryInstrument,
+          primaryInstrumentId: 17,
           facebook,
           instagram,
           spotify,
@@ -192,6 +191,40 @@ export default function Register({ setLoggedInUser }) {
           tagIds: selectedTags,
           isBand: true,
         };
+      }
+    } else {
+      if (
+        !firstName ||
+        !lastName ||
+        !password ||
+        !city ||
+        !usStateId ||
+        !profilePicture ||
+        !profilePictureUrl ||
+        !selectedPrimaryGenre ||
+        !selectedPrimaryInstrument
+      ) {
+        setSnackBarMessage('Please fill out all primary info. ');
+        setSuccessAlert(false);
+        handleSnackBarOpen();
+      } else if (password !== confirmPassword) {
+        setError(true);
+        setSnackBarMessage('Passwords do not match.');
+        setSuccessAlert(false);
+        handleSnackBarOpen();
+      } else if (password.length < 8) {
+        setError(true);
+        setSnackBarMessage('Password must be at least 8 characters.');
+        setSuccessAlert(false);
+        handleSnackBarOpen();
+      } else if (selectedSubGenres.length < 3) {
+        setSnackBarMessage('Please select 3 subgenres.');
+        setSuccessAlert(false);
+        handleSnackBarOpen();
+      } else if (selectedTags.length < 3) {
+        setSnackBarMessage('Please select 3 tags.');
+        setSuccessAlert(false);
+        handleSnackBarOpen();
       } else {
         newUser = {
           name: `${firstName} ${lastName}`,
@@ -211,19 +244,21 @@ export default function Register({ setLoggedInUser }) {
           isBand: false,
         };
       }
-      register(newUser)
-        .then((res) => {
-          setLoggedInUser(res);
-          navigate('/');
-        })
-        .catch((error) => {
-          setSuccessAlert(false);
-          setSnackBarMessage(error.message);
-          handleSnackBarOpen();
-          console.error('Registration process failed:', error);
-        });
     }
+
+    register(newUser)
+      .then((res) => {
+        setLoggedInUser(res);
+        navigate('/');
+      })
+      .catch((error) => {
+        setSuccessAlert(false);
+        setSnackBarMessage(error.message);
+        handleSnackBarOpen();
+        console.error('Registration process failed:', error);
+      });
   };
+
 
   if (!usStates || !primaryGenres || !primaryInstruments) {
     return null;
@@ -490,6 +525,9 @@ export default function Register({ setLoggedInUser }) {
               ))}
             </Select>
           </FormControl>
+          { isBand ?
+          ""
+          :
           <FormControl fullWidth>
             <InputLabel id="primaryInstrument-select">
               Primary Instrument
@@ -514,6 +552,8 @@ export default function Register({ setLoggedInUser }) {
               ))}
             </Select>
           </FormControl>
+
+        }
         </Stack>
         <RegisterSocials
           setFacebook={setFacebook}
