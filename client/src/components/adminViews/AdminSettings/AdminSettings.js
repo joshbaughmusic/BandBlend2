@@ -90,7 +90,6 @@ export const AdminSettings = () => {
                 label="Roles"
                 {...a11yProps(2)}
               />
-            
             </Tabs>
           </Box>
           <CustomTabPanel
@@ -109,9 +108,8 @@ export const AdminSettings = () => {
             value={value}
             index={2}
           >
-           <AdminRoleAdjustSettings />
+            <AdminRoleAdjustSettings />
           </CustomTabPanel>
-         
         </Paper>
       </Container>
     </>

@@ -8,9 +8,6 @@ import { OtherProfile } from './profile/singleProfile/otherProfile/OtherProfile.
 import { AllProfiles } from './profile/allProfiles/AllProfiles.js';
 import { MyFeed } from './feed/MyFeed.js';
 import { Settings } from './settings/Settings.js';
-import { FeedSettings } from './settings/subSettings/FeedSettings.js';
-import { BlockedAccountsSettings } from './settings/subSettings/BlockedAccountsSettings.js';
-import { DeleteAccountSettings } from './settings/subSettings/DeleteAccountSettings.js';
 import { AdminSettings } from './adminViews/adminSettings/AdminSettings.js';
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -65,7 +62,10 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
               index
               element={
                 loggedInUser?.roles.includes('Admin') ? (
-                  <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                  <AuthorizedRoute
+                    roles={['Admin']}
+                    loggedInUser={loggedInUser}
+                  >
                     <AdminSettings loggedInUser={loggedInUser} />
                   </AuthorizedRoute>
                 ) : (
