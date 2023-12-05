@@ -133,6 +133,7 @@ export const MyFeed = ({ loggedInUser }) => {
                 key={`${p.id}-${index}`}
                 page={page}
                 loggedInUser={loggedInUser}
+                getUserFeed={getUserFeed}
               />
             ))}
           </div>

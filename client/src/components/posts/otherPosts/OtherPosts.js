@@ -92,6 +92,7 @@ export const OtherPosts = ({ profile, loggedInUser }) => {
             key={`${p.id}-${index}`}
             page={page}
             loggedInUser={loggedInUser}
+            getUserPosts={getUserPosts}
           />
         ))}
       </div>

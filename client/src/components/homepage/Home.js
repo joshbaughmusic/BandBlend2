@@ -9,13 +9,13 @@ export const Home = ({loggedInUser}) => {
   return (
     <>
       <Container>
-    {
+    {/* {
       loggedInUser.roles.includes("Admin") ?
 
       <Typography variant="h6" textAlign="center">Admin view</Typography>
       :
       ''
-    }
+    } */}
         <div className="container-home-logos">
           <img
             src={MainLogo}

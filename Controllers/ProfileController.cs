@@ -253,6 +253,17 @@ public class ProfileController : ControllerBase
 
         UserProfile foundUserProfile = _dbContext.UserProfiles
         .Include(up => up.IdentityUser)
+        .Select(up => new UserProfile
+            {
+                Id = up.Id,
+                Name = up.Name,
+                Email = up.IdentityUser.Email,
+                IdentityUserId = up.IdentityUserId,
+                Roles = _dbContext.UserRoles
+                .Where(ur => ur.UserId == up.IdentityUserId)
+                .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
+                .ToList()
+            })
         .SingleOrDefault(up => up.Id == id);
 
         if (foundUserProfile != null)

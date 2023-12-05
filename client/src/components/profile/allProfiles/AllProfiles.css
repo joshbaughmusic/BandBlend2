@@ -14,8 +14,8 @@
 }
 
 .allprofiles-card-image {
-  width: 5em;
-  height: 5em;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
 }

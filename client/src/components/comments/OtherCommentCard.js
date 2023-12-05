@@ -9,9 +9,15 @@ import {
 import { dateFormatter } from '../../utilities/dateFormatter.js';
 import { CommentLikes } from '../likes/commentLikes/CommentLike.js';
 import { useNavigate } from 'react-router-dom';
+import { AdminDeleteComment } from '../adminViews/adminComments/AdminDeleteComment.js';
 
-export const OtherCommentCard = ({ comment, loggedInUser, commentPage }) => {
-    const navigate = useNavigate();
+export const OtherCommentCard = ({
+  comment,
+  loggedInUser,
+  commentPage,
+  getCommentsForPost,
+}) => {
+  const navigate = useNavigate();
   return (
     <>
       <Card className="comment-card">
@@ -44,15 +50,31 @@ export const OtherCommentCard = ({ comment, loggedInUser, commentPage }) => {
         </CardContent>
         <CardActions disableSpacing>
           <div className="comment-card-footer">
-            <div>
-              <div>
-                <CommentLikes
-                  comment={comment}
-                  loggedInUser={loggedInUser}
-                  commentPage={commentPage}
+            {loggedInUser.roles.includes('Admin') ? (
+              <div className="comment-card-footer-left">
+                <div>
+                  <CommentLikes
+                    comment={comment}
+                    loggedInUser={loggedInUser}
+                    commentPage={commentPage}
+                  />
+                </div>
+                <AdminDeleteComment
+                  commentId={comment.id}
+                  getCommentsForPost={getCommentsForPost}
                 />
               </div>
-            </div>
+            ) : (
+              <div>
+                <div>
+                  <CommentLikes
+                    comment={comment}
+                    loggedInUser={loggedInUser}
+                    commentPage={commentPage}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </CardActions>
       </Card>

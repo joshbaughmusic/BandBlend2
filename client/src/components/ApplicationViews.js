@@ -11,6 +11,7 @@ import { Settings } from './settings/Settings.js';
 import { FeedSettings } from './settings/subSettings/FeedSettings.js';
 import { BlockedAccountsSettings } from './settings/subSettings/BlockedAccountsSettings.js';
 import { DeleteAccountSettings } from './settings/subSettings/DeleteAccountSettings.js';
+import { AdminSettings } from './adminViews/adminSettings/AdminSettings.js';
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -63,35 +64,17 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             <Route
               index
               element={
-                <AuthorizedRoute loggedInUser={loggedInUser}>
-                  <Settings loggedInUser={loggedInUser} />
-                </AuthorizedRoute>
+                loggedInUser?.roles.includes('Admin') ? (
+                  <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+                    <AdminSettings loggedInUser={loggedInUser} />
+                  </AuthorizedRoute>
+                ) : (
+                  <AuthorizedRoute loggedInUser={loggedInUser}>
+                    <Settings loggedInUser={loggedInUser} />
+                  </AuthorizedRoute>
+                )
               }
             />
-            {/* <Route
-              path="feed"
-              element={
-                <AuthorizedRoute loggedInUser={loggedInUser}>
-                  <FeedSettings loggedInUser={loggedInUser} />
-                </AuthorizedRoute>
-              }
-            />
-            <Route
-              path="blocked"
-              element={
-                <AuthorizedRoute loggedInUser={loggedInUser}>
-                  <BlockedAccountsSettings loggedInUser={loggedInUser} />
-                </AuthorizedRoute>
-              }
-            />
-            <Route
-              path="delete"
-              element={
-                <AuthorizedRoute loggedInUser={loggedInUser}>
-                  <DeleteAccountSettings loggedInUser={loggedInUser} />
-                </AuthorizedRoute>
-              }
-            /> */}
           </Route>
         </Route>
         {/* handle already logged in user tyring to go to login or register */}
