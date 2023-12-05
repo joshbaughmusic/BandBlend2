@@ -87,7 +87,7 @@ export const AdminSettings = () => {
                 {...a11yProps(1)}
               />
               <Tab
-                label="Roles"
+                label="Admins"
                 {...a11yProps(2)}
               />
             </Tabs>
