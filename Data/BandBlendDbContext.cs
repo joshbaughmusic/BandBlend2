@@ -1711,26 +1711,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 ProfileId = 2,
             }
         );
-        modelBuilder.Entity<Message>().HasData(
-            new Message
-            {
-                Id = 1,
-                SenderId = 1,
-                ReceiverId = 2,
-                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                Date = new DateTime(2023, 11, 6, 12, 5, 0)
-
-            },
-            new Message
-            {
-                Id = 2,
-                SenderId = 2,
-                ReceiverId = 1,
-                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                Date = new DateTime(2023, 11, 6, 12, 6, 0)
-
-            }
-        );
+       
         modelBuilder.Entity<FeedUserSubscription>().HasData(
        new FeedUserSubscription
        {
@@ -1880,6 +1861,87 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
            UserProfileId = 2,
            PrimaryInstrumentId = 8,
            Date = new DateTime(2023, 11, 6, 12, 6, 0)
+       }
+       );
+        modelBuilder.Entity<MessageConversation>().HasData(
+        new MessageConversation
+        {
+            Id = 1,
+            UserProfileId1 = 1,
+            UserProfileId2 = 2,
+            LastMessageDate = null
+        },
+        new MessageConversation
+        {
+            Id = 2,
+            UserProfileId1 = 1,
+            UserProfileId2 = 3,
+            LastMessageDate = null
+        },
+        new MessageConversation
+        {
+            Id = 3,
+            UserProfileId1 = 1,
+            UserProfileId2 = 4,
+            LastMessageDate = null
+        }
+        );
+
+        modelBuilder.Entity<Message>().HasData(
+       new Message
+       {
+           Id = 1,
+           MessageConversationId = 1,
+           SenderId = 1,
+           ReceiverId = 2,
+           Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+           IsRead = false,
+           Date = new DateTime(2023, 11, 6, 12, 6, 0)
+
+
+       },
+       new Message
+       {
+           Id = 2,
+           MessageConversationId = 1,
+           SenderId = 2,
+           ReceiverId = 1,
+           Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+           IsRead = false,
+           Date = new DateTime(2023, 11, 6, 12, 6, 1)
+       },
+       new Message
+       {
+           Id = 3,
+           MessageConversationId = 1,
+           SenderId = 1,
+           ReceiverId = 2,
+           Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+           IsRead = false,
+           Date = new DateTime(2023, 11, 6, 12, 6, 2)
+
+       },
+       new Message
+       {
+           Id = 4,
+           MessageConversationId = 2,
+           SenderId = 3,
+           ReceiverId = 1,
+           Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+           IsRead = false,
+           Date = new DateTime(2023, 11, 6, 12, 6, 3)
+
+       },
+       new Message
+       {
+           Id = 5,
+           MessageConversationId = 3,
+           SenderId = 1,
+           ReceiverId = 4,
+           Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+           IsRead = false,
+           Date = new DateTime(2023, 11, 6, 12, 6, 5)
+
        }
        );
 

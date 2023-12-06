@@ -5,6 +5,7 @@ import ApplicationViews from './components/ApplicationViews';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { NavBar } from './components/nav/NavBar.js';
 import { SnackBarProvider } from './components/context/SnackBarContext.js';
+import { MessagesProvider } from './components/context/MessagesContext.js';
 
 // const theme = createTheme({
 //   palette: {
@@ -38,14 +39,16 @@ function App() {
     <>
       {/* <ThemeProvider theme={theme}> */}
       <SnackBarProvider>
-        <NavBar
-          loggedInUser={loggedInUser}
-          setLoggedInUser={setLoggedInUser}
-        />
-        <ApplicationViews
-          loggedInUser={loggedInUser}
-          setLoggedInUser={setLoggedInUser}
-        />
+        <MessagesProvider>
+          <NavBar
+            loggedInUser={loggedInUser}
+            setLoggedInUser={setLoggedInUser}
+          />
+          <ApplicationViews
+            loggedInUser={loggedInUser}
+            setLoggedInUser={setLoggedInUser}
+          />
+        </MessagesProvider>
       </SnackBarProvider>
       {/* </ThemeProvider> */}
     </>
