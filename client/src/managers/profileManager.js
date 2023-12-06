@@ -56,3 +56,9 @@ export const fetchEditProfilePicture = (url) => {
     body: JSON.stringify(url),
   });
 };
+
+export const fetchDeleteMyUserProfile = () => {
+  return fetch(`${_apiUrl}/delete/`, {
+    method: 'DELETE',
+  });
+};

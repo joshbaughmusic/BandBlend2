@@ -60,3 +60,10 @@ export const fetchDemoteToUser = (userProfileId) => {
     });
 }
 
+export const fetchAdminDeleteUserProfile = (identityUserId) => {
+  return fetch(`${_apiUrl}/userprofile/${identityUserId}`, {
+    method: 'DELETE',
+  });
+};
+
+

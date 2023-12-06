@@ -12,11 +12,13 @@ import {
 } from '@mui/material';
 import { useSnackBar } from '../../context/SnackBarContext.js';
 import { fetchAdminAllAdmins, fetchDemoteToUser } from '../../../managers/adminFunctionsManager.js';
+import { useNavigate } from 'react-router-dom';
 
 export const AdminRoleAdjustSettings = () => {
   const [admins, setAdmins] = useState();
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
+    const navigate = useNavigate()
 
   const getAdmins = () => {
     fetchAdminAllAdmins().then((res) => {
@@ -113,21 +115,33 @@ export const AdminRoleAdjustSettings = () => {
                   <>
                     <ListItem
                       key={index}
-                      
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
-                      <ListItemAvatar>
-                        <Avatar>
-                          <img
-                            className="blockedAccount-avatar"
-                            src={a.profile.profilePicture}
-                            alt="Picture"
-                          />
-                        </Avatar>
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={a.name}
-                        
-                      />
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: "center"
+                        }}
+                      >
+                        <ListItemAvatar>
+                          <Avatar
+                            onClick={() => navigate(`/profile/${a.id}`)}
+                            sx={{ cursor: 'pointer' }}
+                          >
+                            <img
+                              className="blockedAccount-avatar"
+                              src={a.profile.profilePicture}
+                              alt="Picture"
+                            />
+                          </Avatar>
+                        </ListItemAvatar>
+                        <Typography
+                          onClick={() => navigate(`/profile/${a.id}`)}
+                          sx={{ cursor: 'pointer' }}
+                        >
+                          {a.name}
+                        </Typography>
+                      </div>
                       <Button
                         variant="contained"
                         value={a.identityUserId}

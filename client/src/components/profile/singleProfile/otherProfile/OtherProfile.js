@@ -57,6 +57,7 @@ import { useSnackBar } from '../../../context/SnackBarContext.js';
 import {
   fetchAdminBanAccount,
   fetchAdminDeleteProfilePhoto,
+  fetchAdminDeleteUserProfile,
   fetchPromoteToAdmin,
 } from '../../../../managers/adminFunctionsManager.js';
 
@@ -176,11 +177,26 @@ export const OtherProfile = ({ loggedInUser }) => {
         handleSnackBarOpen();
       } else {
         handleConfirmClose();
-        getOtherUserWithProfile();
         setSuccessAlert(true);
         setSnackBarMessage('User account successfully banned.');
         handleSnackBarOpen();
-        navigate("/")
+        navigate('/');
+      }
+    });
+  };
+
+  const handleDeleteUserProfile = () => {
+    fetchAdminDeleteUserProfile(profile.identityUserId).then((res) => {
+      if (res.status !== 204) {
+        setSuccessAlert(false);
+        setSnackBarMessage('Failed to delete user account.');
+        handleSnackBarOpen();
+      } else {
+        handleConfirmClose();
+        setSuccessAlert(true);
+        setSnackBarMessage('User account successfully deleted.');
+        handleSnackBarOpen();
+        navigate('/');
       }
     });
   };
@@ -205,92 +221,97 @@ export const OtherProfile = ({ loggedInUser }) => {
               elevation={4}
               className="profile-left-sidebar"
             >
-              <div className="profile-moreOptions">
-                <Tooltip
-                  title="Advanced"
-                  placement="right"
-                >
-                  <IconButton
-                    aria-describedby={popperId}
-                    onClick={handlePopperClick}
+              {profile.roles.includes('Admin') ? (
+                ''
+              ) : (
+                <div className="profile-moreOptions">
+                  <Tooltip
+                    title="Advanced"
+                    placement="right"
                   >
-                    <MoreVertIcon />
-                  </IconButton>
-                </Tooltip>
-                <Popper
-                  id={popperId}
-                  open={open}
-                  anchorEl={anchorEl}
-                >
-                  <Box sx={{ border: 1, bgcolor: 'background.paper' }}>
-                    <List disablePadding>
-                      {loggedInUser.roles.includes('Admin') ? (
-                        <>
-                          <ListItem disablePadding>
-                            <ListItemButton
-                              onClick={() => {
-                                setActionPicked('ban');
-                                setConfirmOpen(true);
-                              }}
-                            >
-                              <ListItemIcon>
-                                <RemoveCircleOutlineIcon />
-                              </ListItemIcon>
-                              <ListItemText primary="Ban" />
-                            </ListItemButton>
-                          </ListItem>
-                          {profile.roles.includes('Admin') ? (
-                            ''
-                          ) : (
+                    <IconButton
+                      aria-describedby={popperId}
+                      onClick={handlePopperClick}
+                    >
+                      <MoreVertIcon />
+                    </IconButton>
+                  </Tooltip>
+                  <Popper
+                    id={popperId}
+                    open={open}
+                    anchorEl={anchorEl}
+                  >
+                    <Box sx={{ border: 1, bgcolor: 'background.paper' }}>
+                      <List disablePadding>
+                        {loggedInUser.roles.includes('Admin') ? (
+                          <>
                             <ListItem disablePadding>
                               <ListItemButton
                                 onClick={() => {
-                                  setActionPicked('promote');
+                                  setActionPicked('ban');
                                   setConfirmOpen(true);
                                 }}
                               >
                                 <ListItemIcon>
-                                  <LocalPoliceIcon />
+                                  <RemoveCircleOutlineIcon />
                                 </ListItemIcon>
-                                <ListItemText primary="Promote" />
+                                <ListItemText primary="Ban" />
                               </ListItemButton>
                             </ListItem>
-                          )}
+                            {profile.roles.includes('Admin') ? (
+                              ''
+                            ) : (
+                              <ListItem disablePadding>
+                                <ListItemButton
+                                  onClick={() => {
+                                    setActionPicked('promote');
+                                    setConfirmOpen(true);
+                                  }}
+                                >
+                                  <ListItemIcon>
+                                    <LocalPoliceIcon />
+                                  </ListItemIcon>
+                                  <ListItemText primary="Promote" />
+                                </ListItemButton>
+                              </ListItem>
+                            )}
+                            <ListItem disablePadding>
+                              <ListItemButton
+                                onClick={() => {
+                                  setActionPicked('delete');
+                                  setConfirmOpen(true);
+                                }}
+                              >
+                                <ListItemIcon>
+                                  <DeleteIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Delete" />
+                              </ListItemButton>
+                            </ListItem>
+                          </>
+                        ) : (
                           <ListItem disablePadding>
                             <ListItemButton
                               onClick={() => {
-                                setActionPicked('delete');
+                                setActionPicked('block');
                                 setConfirmOpen(true);
                               }}
                             >
                               <ListItemIcon>
-                                <DeleteIcon />
+                                <BlockIcon />
                               </ListItemIcon>
-                              <ListItemText primary="Delete" />
+                              <ListItemText primary="Block" />
                             </ListItemButton>
                           </ListItem>
-                        </>
-                      ) : (
-                        <ListItem disablePadding>
-                          <ListItemButton
-                            onClick={() => {
-                              setActionPicked('block');
-                              setConfirmOpen(true);
-                            }}
-                          >
-                            <ListItemIcon>
-                              <BlockIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Block" />
-                          </ListItemButton>
-                        </ListItem>
-                      )}
-                    </List>
-                  </Box>
-                </Popper>
-              </div>
+                        )}
+                      </List>
+                    </Box>
+                  </Popper>
+                </div>
+              )}
               <div className="myProfilePicture-container">
-                {profile.profile.profilePicture ? (
+                {profile.profile.profilePicture &&
+                loggedInUser.roles.includes('Admin') ? (
                   <div className="editProfilePic-button">
                     <Tooltip
                       title="Delete Profile Picture"
@@ -340,13 +361,33 @@ export const OtherProfile = ({ loggedInUser }) => {
               ) : (
                 ''
               )}
-              <Typography
-                variant="h5"
-                component="h1"
-                sx={{ textAlign: 'center' }}
-              >
-                {profile.name}
-              </Typography>
+
+              {profile.roles.includes('Admin') ? (
+                <div className="profileName-adminContainer">
+                  <Typography
+                    variant="h5"
+                    component="h1"
+                    sx={{ textAlign: 'center' }}
+                  >
+                    {profile.name}
+                  </Typography>
+                  <Tooltip
+                    title="Admin account"
+                    placement="top-start"
+                  >
+                    <LocalPoliceIcon sx={{ width: '20px' }} />
+                  </Tooltip>
+                </div>
+              ) : (
+                <Typography
+                  variant="h5"
+                  component="h1"
+                  sx={{ textAlign: 'center' }}
+                >
+                  {profile.name}
+                </Typography>
+              )}
+
               {profile.isBand ? (
                 <Typography>Band</Typography>
               ) : (
@@ -575,7 +616,9 @@ export const OtherProfile = ({ loggedInUser }) => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button>Delete User</Button>
+              <Button onClick={() => handleDeleteUserProfile()}>
+                Delete User
+              </Button>
               <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
             </DialogActions>
           </>

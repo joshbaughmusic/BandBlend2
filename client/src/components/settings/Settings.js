@@ -14,7 +14,6 @@ import { BlockedAccountsSettings } from './subSettings/BlockedAccountsSettings.j
 import { DeleteAccountSettings } from './subSettings/DeleteAccountSettings.js';
 import './Settings.css';
 
-
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -48,12 +47,12 @@ function a11yProps(index) {
   };
 }
 
-export const Settings = () => {
-   const [value, setValue] = useState(0);
+export const Settings = ({ setLoggedInUser }) => {
+  const [value, setValue] = useState(0);
 
-   const handleChange = (event, newValue) => {
-     setValue(newValue);
-   };
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   return (
     <>
       <Container>
@@ -110,12 +109,10 @@ export const Settings = () => {
             value={value}
             index={2}
           >
-            <DeleteAccountSettings />
+            <DeleteAccountSettings setLoggedInUser={setLoggedInUser} />
           </CustomTabPanel>
         </Paper>
       </Container>
     </>
   );
 };
-
-
