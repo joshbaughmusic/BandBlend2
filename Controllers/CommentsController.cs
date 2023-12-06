@@ -110,6 +110,8 @@ public class CommentController : ControllerBase
 
             if (loggedInUser.Id == foundComment.UserProfileId)
             {
+                List<CommentLike> foundCommentLikes = _dbContext.CommentLikes.Where(cl => cl.CommentId == foundComment.Id).ToList();
+                _dbContext.CommentLikes.RemoveRange(foundCommentLikes);
                 _dbContext.Comments.Remove(foundComment);
                 _dbContext.SaveChanges();
                 return NoContent();

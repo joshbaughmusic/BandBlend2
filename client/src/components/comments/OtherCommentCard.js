@@ -16,6 +16,7 @@ export const OtherCommentCard = ({
   loggedInUser,
   commentPage,
   getCommentsForPost,
+  getUserPosts,
 }) => {
   const navigate = useNavigate();
   return (
@@ -62,6 +63,7 @@ export const OtherCommentCard = ({
                 <AdminDeleteComment
                   commentId={comment.id}
                   getCommentsForPost={getCommentsForPost}
+                  getUserPosts={getUserPosts}
                 />
               </div>
             ) : (

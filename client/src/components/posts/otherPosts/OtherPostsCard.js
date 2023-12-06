@@ -158,6 +158,7 @@ export const OtherPostsCard = ({
               post={post}
               newComment={newComment}
               setNewComment={setNewComment}
+              getUserPosts={getUserPosts}
             />
           </CardContent>
         </Collapse>

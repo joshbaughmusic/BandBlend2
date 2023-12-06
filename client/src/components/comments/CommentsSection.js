@@ -13,7 +13,14 @@ import { CommentSkeleton } from './CommentSkeleton.js';
 import { OtherCommentCard } from './OtherCommentCard.js';
 import { NewComment } from './NewComment.js';
 
-export const CommentsSection = ({ profile, post, newComment, setNewComment, loggedInUser }) => {
+export const CommentsSection = ({
+  profile,
+  post,
+  newComment,
+  setNewComment,
+  loggedInUser,
+  getUserPosts,
+}) => {
   const [comments, setComments] = useState(0);
   const [commentCount, setCommentCount] = useState(0);
   const [page, setPage] = useState(1);
@@ -49,6 +56,7 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment, logg
           newComment={newComment}
           setNewComment={setNewComment}
           loggedInUser={loggedInUser}
+          getUserPosts={getUserPosts}
         />
 
         {post.commentCount > 5
@@ -86,7 +94,6 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment, logg
     );
   }
 
- 
   return (
     <>
       <NewComment
@@ -96,6 +103,7 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment, logg
         newComment={newComment}
         setNewComment={setNewComment}
         loggedInUser={loggedInUser}
+        getUserPosts={getUserPosts}
       />
       <div>
         {comments.map((c, index) => {
@@ -107,6 +115,7 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment, logg
               getCommentsForPost={getCommentsForPost}
               loggedInUser={loggedInUser}
               commentPage={page}
+              getUserPosts={getUserPosts}
             />
           ) : (
             <OtherCommentCard
@@ -116,6 +125,7 @@ export const CommentsSection = ({ profile, post, newComment, setNewComment, logg
               loggedInUser={loggedInUser}
               commentPage={page}
               getCommentsForPost={getCommentsForPost}
+              getUserPosts={getUserPosts}
             />
           );
         })}

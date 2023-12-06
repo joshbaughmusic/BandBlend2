@@ -13,7 +13,7 @@ import { useState } from 'react';
 import { useSnackBar } from '../context/SnackBarContext.js';
 import { fetchDeleteComment } from '../../managers/commentsManager.js';
 
-export const DeleteComment = ({ commentId, getCommentsForPost }) => {
+export const DeleteComment = ({ commentId, getCommentsForPost, getUserPosts }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
@@ -26,6 +26,7 @@ export const DeleteComment = ({ commentId, getCommentsForPost }) => {
     fetchDeleteComment(commentId).then((res) => {
       if (res.status === 204) {
         getCommentsForPost();
+        getUserPosts();
         handleConfirmClose();
         setSuccessAlert(true);
         setSnackBarMessage('Comment successfully deleted!');

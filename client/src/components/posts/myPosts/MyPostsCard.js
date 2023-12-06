@@ -37,7 +37,13 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const MyPostsCard = ({ post, profile, getUserPosts, page, loggedInUser }) => {
+export const MyPostsCard = ({
+  post,
+  profile,
+  getUserPosts,
+  page,
+  loggedInUser,
+}) => {
   const [expanded, setExpanded] = useState(false);
   //defining newComment state here so when expanded is clicked, warning can be given if there is a comment in progress
   const [newComment, setNewComment] = useState('');
@@ -54,7 +60,7 @@ export const MyPostsCard = ({ post, profile, getUserPosts, page, loggedInUser })
   const handleConfirmClose = () => {
     setConfirmOpen(false);
     setExpanded(false);
-    setNewComment('')
+    setNewComment('');
   };
 
   useEffect(() => {
@@ -82,8 +88,12 @@ export const MyPostsCard = ({ post, profile, getUserPosts, page, loggedInUser })
         </CardContent>
         <CardActions disableSpacing>
           <div className="post-card-footer">
-            <div className='post-card-footer-left'>
-              <PostLikes post={post} loggedInUser={loggedInUser} postPage={page}/>
+            <div className="post-card-footer-left">
+              <PostLikes
+                post={post}
+                loggedInUser={loggedInUser}
+                postPage={page}
+              />
               <DeletePost
                 postId={post.id}
                 getUserPosts={getUserPosts}
@@ -115,10 +125,9 @@ export const MyPostsCard = ({ post, profile, getUserPosts, page, loggedInUser })
                   <Typography>Hide Comments</Typography>
                 ) : (
                   <>
-                  {/* <Chip className='commentCount-chip' label={post.commentCount} /> */}
-                  <Typography>View Comments</Typography>
+                    {/* <Chip className='commentCount-chip' label={post.commentCount} /> */}
+                    <Typography>View Comments</Typography>
                   </>
-
                 )}
                 <ExpandMore
                   expand={expanded}
@@ -144,6 +153,7 @@ export const MyPostsCard = ({ post, profile, getUserPosts, page, loggedInUser })
               newComment={newComment}
               setNewComment={setNewComment}
               loggedInUser={loggedInUser}
+              getUserPosts={getUserPosts}
             />
           </CardContent>
         </Collapse>

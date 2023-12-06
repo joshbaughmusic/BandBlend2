@@ -104,6 +104,23 @@ public class PostController : ControllerBase
 
             if (loggedInUser.Id == foundPost.UserProfileId)
             {
+
+                List<PostLike> foundPostLikes = _dbContext.PostLikes.Where(pl => pl.PostId == foundPost.Id).ToList();
+
+                List<Comment> foundComments = _dbContext.Comments.Where(c => c.PostId == foundPost.Id).ToList();
+
+                List<CommentLike> foundCommentLikes = new List<CommentLike>();
+
+                foreach (Comment c in foundComments)
+                {
+                    List<CommentLike> commentLikes = _dbContext.CommentLikes.Where(cl => cl.CommentId == c.Id).ToList();
+
+                    foundCommentLikes.AddRange(commentLikes);
+                }
+
+                _dbContext.PostLikes.RemoveRange(foundPostLikes);
+                _dbContext.Comments.RemoveRange(foundComments);
+                _dbContext.CommentLikes.RemoveRange(foundCommentLikes);
                 _dbContext.Posts.Remove(foundPost);
                 _dbContext.SaveChanges();
                 return NoContent();

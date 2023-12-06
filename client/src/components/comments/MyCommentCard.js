@@ -15,7 +15,8 @@ export const MyCommentCard = ({
   comment,
   getCommentsForPost,
   loggedInUser,
-  commentPage
+  commentPage,
+  getUserPosts
 }) => {
       const navigate = useNavigate();
 
@@ -58,6 +59,7 @@ export const MyCommentCard = ({
               <DeleteComment
                 commentId={comment.id}
                 getCommentsForPost={getCommentsForPost}
+                getUserPosts={getUserPosts}
               />
               <EditComment
                 comment={comment}

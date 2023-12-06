@@ -17,11 +17,8 @@ import { useSnackBar } from '../context/SnackBarContext.js';
 
 export const DeletePost = ({ postId, getUserPosts }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const {
-    handleSnackBarOpen,
-    setSnackBarMessage,
-    setSuccessAlert,
-  } = useSnackBar();
+  const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
+    useSnackBar();
 
   const handleDeleteClick = () => {
     setConfirmOpen(true);

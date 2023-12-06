@@ -44,6 +44,9 @@ export const MyPosts = ({ profile, loggedInUser }) => {
 
   const getUserPosts = () => {
     fetchUserPosts(profile.id, page, amountPerPage).then((res) => {
+      if (res.posts.length === 0 && page != 1) {
+        setPage(page - 1)
+      }
       setPosts(res.posts);
       setPostCount(res.totalCount);
     });

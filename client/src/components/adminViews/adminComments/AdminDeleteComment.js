@@ -13,7 +13,7 @@ import { useState } from 'react';
 import { fetchAdminDeleteCommentOtherPost } from '../../../managers/adminFunctionsManager.js';
 import { useSnackBar } from '../../context/SnackBarContext.js';
 
-export const AdminDeleteComment = ({ commentId, getCommentsForPost }) => {
+export const AdminDeleteComment = ({ commentId, getCommentsForPost, getUserPosts }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
@@ -26,6 +26,7 @@ export const AdminDeleteComment = ({ commentId, getCommentsForPost }) => {
     fetchAdminDeleteCommentOtherPost(commentId).then((res) => {
       if (res.status === 204) {
         getCommentsForPost();
+        getUserPosts();
         handleConfirmClose();
         setSuccessAlert(true);
         setSnackBarMessage('Comment successfully deleted!');
