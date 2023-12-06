@@ -3,6 +3,12 @@ import {
   Avatar,
   Box,
   Button,
+  ButtonGroup,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   List,
   ListItem,
   ListItemAvatar,
@@ -11,11 +17,15 @@ import {
   Typography,
 } from '@mui/material';
 import { useSnackBar } from '../../context/SnackBarContext.js';
-import { fetchAdminAllBannedUsers, fetchAdminUnbanAccount } from '../../../managers/adminFunctionsManager.js';
-
+import {
+  fetchAdminAllBannedUsers,
+  fetchAdminDeleteUserProfile,
+  fetchAdminUnbanAccount,
+} from '../../../managers/adminFunctionsManager.js';
 
 export const AdminBannedSettings = () => {
   const [bannedAccounts, setBannedAccounts] = useState();
+  const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
 
@@ -28,6 +38,10 @@ export const AdminBannedSettings = () => {
   useEffect(() => {
     getBannedAccounts();
   }, []);
+
+  const handleConfirmClose = () => {
+    setConfirmOpen(false);
+  };
 
   const handleUnban = (e) => {
     fetchAdminUnbanAccount(e.target.value)
@@ -49,6 +63,22 @@ export const AdminBannedSettings = () => {
         setSnackBarMessage('Failed to unban user account.');
         handleSnackBarOpen();
       });
+  };
+
+  const handleDeleteUserProfile = (e) => {
+    fetchAdminDeleteUserProfile(e.target.value).then((res) => {
+      if (res.status !== 204) {
+        setSuccessAlert(false);
+        setSnackBarMessage('Failed to delete user account.');
+        handleSnackBarOpen();
+      } else {
+        handleConfirmClose();
+        setSuccessAlert(true);
+        setSnackBarMessage('User account successfully deleted.');
+        handleSnackBarOpen();
+        getBannedAccounts();
+      }
+    });
   };
 
   if (!bannedAccounts) {
@@ -123,14 +153,45 @@ export const AdminBannedSettings = () => {
                         </Avatar>
                       </ListItemAvatar>
                       <ListItemText primary={a.name} />
-                      <Button
-                        variant="contained"
-                        value={a.id}
-                        onClick={(e) => handleUnban(e)}
-                      >
-                        Unban
-                      </Button>
+                      <ButtonGroup>
+                        <Button
+                          variant="contained"
+                          value={a.id}
+                          onClick={(e) => handleUnban(e)}
+                        >
+                          Unban
+                        </Button>
+                        <Button
+                          variant="contained"
+                          value={a.identityUserId}
+                          onClick={() => setConfirmOpen(true)}
+                          color="error"
+                        >
+                          Delete
+                        </Button>
+                      </ButtonGroup>
                     </ListItem>
+                    <Dialog
+                      open={confirmOpen}
+                      onClose={handleConfirmClose}
+                      aria-labelledby="alert-dialog-title"
+                      aria-describedby="alert-dialog-description"
+                    >
+                      <DialogTitle id="alert-dialog-title">
+                        {'Confirm Deletion'}
+                      </DialogTitle>
+                      <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                          {`Are you sure you want delete ${a.name}'s account? Their account and all of their content and activity will be permanently deleted. This cannot be undone.`}
+                        </DialogContentText>
+                      </DialogContent>
+                      <DialogActions>
+                        <Button value={a.identityUserId} onClick={(e) => handleDeleteUserProfile(e)}>
+                          Delete
+                        </Button>
+                        <Button onClick={handleConfirmClose}>Cancel</Button>
+                      </DialogActions>
+                    </Dialog>
                   </>
                 );
               })}

@@ -12,5 +12,11 @@
   border-radius: 4px;
   padding: 2em;
     margin: 10px;
+}
 
+.deleteaccount-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-top: 20px;
 }

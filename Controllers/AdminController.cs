@@ -22,7 +22,86 @@ public class AdminController : ControllerBase
     {
         _dbContext = context;
         _userManager = userManager;
+    }
 
+    [HttpDelete("userprofile/{identityUserId}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> AdminDeleteUserAccount(string identityUserId)
+    {
+        var user = await _userManager.FindByIdAsync(identityUserId);
+
+        UserProfile foundUserProfile = _dbContext.UserProfiles
+        .Include(up => up.Profile)
+        .SingleOrDefault(up => up.IdentityUserId == identityUserId);
+
+        if (user == null || foundUserProfile == null)
+        {
+            return NotFound();
+        }
+
+        var roles = await _userManager.GetRolesAsync(user);
+        await _userManager.RemoveFromRolesAsync(user, roles);
+
+        var claims = await _userManager.GetClaimsAsync(user);
+        await _userManager.RemoveClaimsAsync(user, claims);
+
+        var logins = await _userManager.GetLoginsAsync(user);
+        foreach (var login in logins)
+        {
+            await _userManager.RemoveLoginAsync(user, login.LoginProvider, login.ProviderKey);
+        }
+
+        Profile foundProfile = _dbContext.Profiles.SingleOrDefault(p => p.UserProfileId == foundUserProfile.Id);
+        _dbContext.Profiles.Remove(foundProfile);
+
+        List<AdditionalPicture> foundAdditionalPictures = _dbContext.AdditionalPictures.Where(ap => ap.UserProfileId == foundUserProfile.Id).ToList();
+        _dbContext.AdditionalPictures.RemoveRange(foundAdditionalPictures);
+
+        List<ProfileTag> foundProfileTags = _dbContext.ProfileTags.Where(pt => pt.ProfileId == foundUserProfile.Profile.Id).ToList();
+        _dbContext.ProfileTags.RemoveRange(foundProfileTags);
+
+        List<ProfileSubGenre> foundProfileSubGenres = _dbContext.ProfileSubGenres.Where(ps => ps.ProfileId == foundUserProfile.Profile.Id).ToList();
+        _dbContext.ProfileSubGenres.RemoveRange(foundProfileSubGenres);
+
+        List<Post> foundPosts = _dbContext.Posts.Where(p => p.UserProfileId == foundUserProfile.Id).ToList();
+        _dbContext.Posts.RemoveRange(foundPosts);
+
+        List<Comment> foundComments = _dbContext.Comments.Where(c => c.UserProfileId == foundUserProfile.Id).ToList();
+        _dbContext.Comments.RemoveRange(foundComments);
+
+        List<PostLike> foundPostLikes = _dbContext.PostLikes.Where(pl => pl.UserProfileId == foundUserProfile.Id).ToList();
+        _dbContext.PostLikes.RemoveRange(foundPostLikes);
+
+        List<CommentLike> foundCommentLikes = _dbContext.CommentLikes.Where(pl => pl.UserProfileId == foundUserProfile.Id).ToList();
+        _dbContext.CommentLikes.RemoveRange(foundCommentLikes);
+
+        List<BlockedAccount> foundBlockedAccounts = _dbContext.BlockedAccounts.Where(ba => ba.BlockedUserProfileId == foundUserProfile.Id || ba.UserProfileThatBlockedId == foundUserProfile.Id).ToList();
+        _dbContext.BlockedAccounts.RemoveRange(foundBlockedAccounts);
+
+        List<FeedUserSubscription> foundFeedUserSubscriptions = _dbContext.FeedUserSubscriptions.Where(us => us.UserThatSubbedId == foundUserProfile.Id || us.UserSubbedToId == foundUserProfile.Id).ToList();
+        _dbContext.FeedUserSubscriptions.RemoveRange(foundFeedUserSubscriptions);
+        
+        List<FeedStateSubscription> foundFeedStateSubscriptions = _dbContext.FeedStateSubscriptions.Where(ss => ss.UserProfileId == foundUserProfile.Id).ToList();
+        _dbContext.FeedStateSubscriptions.RemoveRange(foundFeedStateSubscriptions);
+        
+        List<FeedPrimaryGenreSubscription> foundFeedPrimaryGenreSubscriptions = _dbContext.FeedPrimaryGenreSubscriptions.Where(pg => pg.UserProfileId == foundUserProfile.Id).ToList();
+        _dbContext.FeedPrimaryGenreSubscriptions.RemoveRange(foundFeedPrimaryGenreSubscriptions);
+
+        List<FeedPrimaryInstrumentSubscription> foundFeedPrimaryInstrumentSubscriptions = _dbContext.FeedPrimaryInstrumentSubscriptions.Where(pi => pi.UserProfileId == foundUserProfile.Id).ToList();
+        _dbContext.FeedPrimaryInstrumentSubscriptions.RemoveRange(foundFeedPrimaryInstrumentSubscriptions);
+
+        List<SavedProfile> foundSavedProfiles = _dbContext.SavedProfiles.Where(pi => pi.UserProfileId == foundUserProfile.Id || pi.ProfileId == foundUserProfile.Profile.Id).ToList();
+        _dbContext.SavedProfiles.RemoveRange(foundSavedProfiles);
+
+        //update later to take care of messages too
+
+        _dbContext.UserProfiles.Remove(foundUserProfile);
+
+        await _userManager.DeleteAsync(user);
+
+        _dbContext.SaveChanges();
+
+        return NoContent();
     }
 
     [HttpGet()]
@@ -69,12 +148,13 @@ public class AdminController : ControllerBase
     {
         UserProfile foundUserProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == id);
 
-        if (foundUserProfile == null) {
+        if (foundUserProfile == null)
+        {
             return NotFound();
         }
 
         foundUserProfile.AccountBanned = false;
-        
+
         _dbContext.SaveChanges();
 
         return NoContent();
@@ -86,12 +166,13 @@ public class AdminController : ControllerBase
     {
         UserProfile foundUserProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == id);
 
-        if (foundUserProfile == null) {
+        if (foundUserProfile == null)
+        {
             return NotFound();
         }
 
         foundUserProfile.AccountBanned = true;
-        
+
         _dbContext.SaveChanges();
 
         return NoContent();
@@ -210,6 +291,8 @@ public class AdminController : ControllerBase
         _dbContext.SaveChanges();
         return NoContent();
     }
+
+
 
 
 

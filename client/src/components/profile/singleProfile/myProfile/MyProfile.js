@@ -30,6 +30,7 @@ import TikTokLogo from '../../../../images/SocialMediaLogos/tiktok.png';
 import { Link } from 'react-router-dom';
 import { MyPosts } from '../../../posts/myPosts/MyPosts.js';
 import EditIcon from '@mui/icons-material/Edit';
+import LocalPoliceIcon from '@mui/icons-material/LocalPolice';
 import { MyAdditionalPhotos } from '../../../additonalPhotos/myAdditionalPhotos/MyAdditionalPhotos.js';
 import { EditPrimaryInfo } from './EditPrimaryInfo.js';
 import CloseIcon from '@mui/icons-material/Close';
@@ -199,13 +200,31 @@ export const MyProfile = ({ loggedInUser }) => {
               ) : (
                 ''
               )}
-              <Typography
-                variant="h5"
-                component="h1"
-                sx={{ textAlign: 'center' }}
-              >
-                {profile.name}
-              </Typography>
+              {profile.roles.includes('Admin') ? (
+                <div className="profileName-adminContainer">
+                  <Typography
+                    variant="h5"
+                    component="h1"
+                    sx={{ textAlign: 'center' }}
+                  >
+                    {profile.name}
+                  </Typography>
+                  <Tooltip
+                    title="Admin account"
+                    placement="top-start"
+                  >
+                    <LocalPoliceIcon sx={{ width: '20px' }} />
+                  </Tooltip>
+                </div>
+              ) : (
+                <Typography
+                  variant="h5"
+                  component="h1"
+                  sx={{ textAlign: 'center' }}
+                >
+                  {profile.name}
+                </Typography>
+              )}
               {profile.isBand ? (
                 <Typography>Band</Typography>
               ) : (

@@ -91,25 +91,17 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                   </AuthorizedRoute>
                 ) : (
                   <AuthorizedRoute loggedInUser={loggedInUser}>
-                    <Settings loggedInUser={loggedInUser} />
+                    <Settings
+                      setLoggedInUser={setLoggedInUser}
+                      loggedInUser={loggedInUser}
+                    />
                   </AuthorizedRoute>
                 )
               }
             />
           </Route>
         </Route>
-        {/* {loggedInUser?.accountBanned ? (
-          <Route
-            path="banned"
-            element={
-              <AuthorizedRoute loggedInUser={loggedInUser}>
-                <BannedAccountView loggedInUser={loggedInUser} />
-              </AuthorizedRoute>
-            }
-          />
-        ) : (
-          ''
-        )} */}
+
         {/* handle already logged in user tyring to go to login or register */}
         {loggedInUser ? (
           <>
@@ -134,7 +126,6 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             />
           </>
         )}
-
         <Route
           path="*"
           element={<EmptyView loggedInUser={loggedInUser} />}
