@@ -7,6 +7,7 @@ import SendIcon from '@mui/icons-material/Send';
 import AddIcon from '@mui/icons-material/Add';
 import { useMessages } from '../context/MessagesContext.js';
 import {
+  Button,
   Container,
   Divider,
   Fade,
@@ -15,10 +16,12 @@ import {
   Typography,
 } from '@mui/material';
 import './Messages.css';
+import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 
 export const MessagesMain = () => {
   const [conversations, setConversations] = useState();
   const [user, setUser] = useState('');
+  const [room, setRoom] = useState('');
   const [chosenConversation, setChosenConversation] = useState('');
   const [newMessageView, setNewMessageView] = useState(false);
   const [connection, setConnection] = useState();
@@ -29,23 +32,28 @@ export const MessagesMain = () => {
     handleToggleMessages,
   } = useMessages();
 
-//   const joinConversation = async (user, conversation, message) => {
-//     try {
-//       const connection = new HubConnectionBuilder()
-//         .withUrl('https://localhost:5001/chat')
-//         .configureLogging(LogLevel.Information)
-//         .build();
+  const joinRoom = async (user, room) => {
+    try {
+      const connection = new HubConnectionBuilder()
+        .withUrl('https://localhost:5001/message-hub')
+        .configureLogging(LogLevel.Information)
+        .build();
 
-//       connection.on('ReceiveMessage', (user, message));
-//       console.log('message received:', message);
+      connection.on('ReceiveMessage', (user, message) => {
+        console.log('message received:', message);
+      });
 
-//       await connection.start();
-//       await connection.invoke('JoinConversation', { user, conversation });
-//       setConnection(connection);
-//     } catch (e) {
-//       console.log(e);
-//     }
-//   };
+      await connection.start();
+      await connection.invoke('JoinRoom', { user, room });
+      setConnection(connection);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleSubmit = () => {
+    joinRoom(user, room);
+  };
 
   return (
     <div>
@@ -69,15 +77,10 @@ export const MessagesMain = () => {
             height: 500,
             overflow: 'auto',
             border: '2px solid black',
-            zIndex: "2000"
+            zIndex: '2000',
           }}
         >
           <Container>
-            {/* <div>
-              <div>Sample Message 1</div>
-              <div>Sample Message 2</div>
-            </div> */}
-
             <div className="messagesMain-header">
               <Typography variant="h6">Messages</Typography>
               <Tooltip
@@ -91,23 +94,22 @@ export const MessagesMain = () => {
             </div>
             <Divider />
             <TextField
-              placeholder="Type your message..."
+              placeholder="User..."
               fullWidth
               margin="normal"
               value={user}
               onChange={(e) => setUser(e.target.value)}
-              InputProps={{
-                endAdornment: (
-                  <Fab
-                    size="small"
-                    color="primary"
-                    onClick={handleCloseMessages}
-                  >
-                    <SendIcon />
-                  </Fab>
-                ),
-              }}
+              InputProps={{}}
             />
+            <TextField
+              placeholder="Room..."
+              fullWidth
+              margin="normal"
+              value={room}
+              onChange={(e) => setRoom(e.target.value)}
+              InputProps={{}}
+            />
+            <Button onClick={() => handleSubmit()}>Submit</Button>
           </Container>
         </Paper>
       </Fade>
