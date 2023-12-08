@@ -39,7 +39,7 @@ function App() {
     <>
       {/* <ThemeProvider theme={theme}> */}
       <SnackBarProvider>
-        <MessagesProvider>
+        <MessagesProvider loggedInUser={loggedInUser}>
           <NavBar
             loggedInUser={loggedInUser}
             setLoggedInUser={setLoggedInUser}
