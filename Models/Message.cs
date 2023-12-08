@@ -7,7 +7,9 @@ public class Message
     public int Id { get; set; }
     public int MessageConversationId { get; set; }
     public int SenderId { get; set; }
+    public string SenderIdentityUserId { get; set; }
     public int ReceiverId { get; set; }
+    public string ReceiverIdentityUserId { get; set; }
     public string Body { get; set; }
     public DateTime Date { get; set; }
     public bool IsRead { get; set; }

@@ -15,6 +15,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
     public DbSet<SavedProfile> SavedProfiles { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Message> Messages { get; set; }
+    public DbSet<MessageConversation> MessageConversations { get; set; }
     public DbSet<PostLike> PostLikes { get; set; }
     public DbSet<CommentLike> CommentLikes { get; set; }
     public DbSet<Tag> Tags { get; set; }
@@ -1868,21 +1869,27 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
         {
             Id = 1,
             UserProfileId1 = 1,
+            UserProfileIdIdentityUserId1 = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
             UserProfileId2 = 2,
+            UserProfileIdIdentityUserId2 = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
             LastMessageDate = null
         },
         new MessageConversation
         {
             Id = 2,
             UserProfileId1 = 1,
+            UserProfileIdIdentityUserId1 = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
             UserProfileId2 = 3,
+            UserProfileIdIdentityUserId2 = "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47",
             LastMessageDate = null
         },
         new MessageConversation
         {
             Id = 3,
             UserProfileId1 = 1,
+            UserProfileIdIdentityUserId1 = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
             UserProfileId2 = 4,
+            UserProfileIdIdentityUserId2 = "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68",
             LastMessageDate = null
         }
         );
@@ -1893,7 +1900,9 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
            Id = 1,
            MessageConversationId = 1,
            SenderId = 1,
+           SenderIdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
            ReceiverId = 2,
+           ReceiverIdentityUserId = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
            IsRead = false,
            Date = new DateTime(2023, 11, 6, 12, 6, 0)
@@ -1905,7 +1914,9 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
            Id = 2,
            MessageConversationId = 1,
            SenderId = 2,
+           SenderIdentityUserId = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
            ReceiverId = 1,
+           ReceiverIdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
            IsRead = false,
            Date = new DateTime(2023, 11, 6, 12, 6, 1)
@@ -1915,7 +1926,9 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
            Id = 3,
            MessageConversationId = 1,
            SenderId = 1,
+           SenderIdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
            ReceiverId = 2,
+           ReceiverIdentityUserId = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
            IsRead = false,
            Date = new DateTime(2023, 11, 6, 12, 6, 2)
@@ -1926,7 +1939,9 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
            Id = 4,
            MessageConversationId = 2,
            SenderId = 3,
+           SenderIdentityUserId = "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47",
            ReceiverId = 1,
+           ReceiverIdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
            IsRead = false,
            Date = new DateTime(2023, 11, 6, 12, 6, 3)
@@ -1937,7 +1952,9 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
            Id = 5,
            MessageConversationId = 3,
            SenderId = 1,
+           SenderIdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
            ReceiverId = 4,
+           ReceiverIdentityUserId = "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68",
            Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
            IsRead = false,
            Date = new DateTime(2023, 11, 6, 12, 6, 5)

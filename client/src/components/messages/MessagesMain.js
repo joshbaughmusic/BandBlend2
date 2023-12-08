@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 import Fab from '@mui/material/Fab';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
-import SendIcon from '@mui/icons-material/Send';
-import AddIcon from '@mui/icons-material/Add';
 import { useMessages } from '../context/MessagesContext.js';
 import {
+  Button,
   Container,
   Divider,
   Fade,
@@ -15,53 +14,111 @@ import {
   Typography,
 } from '@mui/material';
 import './Messages.css';
+import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
+import { fetchMyConversations } from '../../managers/messagesManager.js';
+import MailIcon from '@mui/icons-material/Mail';
+import CloseIcon from '@mui/icons-material/Close';
+import { MessageConversationSidebar } from './MessageConversationSidebar.js';
+import { MessageConversationView } from './MessageConversationView.js';
+import { MessageConversationNewTextField } from './MessageConversationNewTextField.js';
+import { MessageNewMessageView } from './MessageNewMessageView.js';
 
-export const MessagesMain = () => {
+export const MessagesMain = ({ loggedInUser }) => {
   const [conversations, setConversations] = useState();
-  const [user, setUser] = useState('');
-  const [chosenConversation, setChosenConversation] = useState('');
-  const [newMessageView, setNewMessageView] = useState(false);
+  const [newInputMessage, setNewInputMessage] = useState();
   const [connection, setConnection] = useState();
   const {
     openMessages,
     setOpenMessages,
     handleCloseMessages,
     handleToggleMessages,
+    activeConversationId,
+    setActiveConversationId,
+    newMessageView,
+    setNewMessageView,
   } = useMessages();
 
-//   const joinConversation = async (user, conversation, message) => {
-//     try {
-//       const connection = new HubConnectionBuilder()
-//         .withUrl('https://localhost:5001/chat')
-//         .configureLogging(LogLevel.Information)
-//         .build();
+  const getMyConversations = () => {
+    fetchMyConversations().then((res) => {
+      const conversationsWithOnlyOtherUserAttached = res.map((c) => {
+        return c.userProfileIdIdentityUserId1 === loggedInUser.identityUserId
+          ? {
+              id: c.id,
+              userProfileId: c.userProfileId2,
+              userProfileIdentityUserId: c.userProfileIdIdentityUserId2,
+              lastMessageDate: c.lastMessageDate,
+              userProfile: c.userProfile2,
+            }
+          : {
+              id: c.id,
+              userProfileId: c.userProfileId1,
+              userProfileIdentityUserId: c.userProfileIdIdentityUserId1,
+              lastMessageDate: c.lastMessageDate,
+              userProfile: c.userProfile1,
+            };
+      });
+      setConversations(conversationsWithOnlyOtherUserAttached);
+      setActiveConversationId(conversationsWithOnlyOtherUserAttached[0].id);
+    });
+  };
 
-//       connection.on('ReceiveMessage', (user, message));
-//       console.log('message received:', message);
+  useEffect(() => {
+    getMyConversations();
 
-//       await connection.start();
-//       await connection.invoke('JoinConversation', { user, conversation });
-//       setConnection(connection);
-//     } catch (e) {
-//       console.log(e);
-//     }
-//   };
+    const connection = new HubConnectionBuilder()
+      .withUrl('https://localhost:5001/message-hub')
+      .configureLogging(LogLevel.Information)
+      .build();
+
+    setConnection(connection);
+
+    connection
+      .start()
+      .then(() => {
+        console.log('Connection Established');
+      })
+      .catch((error) => console.error(error));
+
+    return () => {
+      connection.stop();
+    };
+  }, []);
+
+  const handleSendNewMessage = () => {
+    if (!activeConversationId) {
+      console.error('No active conversation selected');
+      return;
+    }
+
+    connection
+      .invoke('SendMessage', {
+        senderUserProfileId: loggedInUser.IdentityUserId,
+        recipientUserProfileId: 2, // Replace with the recipient's actual UserProfileId
+        body: newInputMessage,
+      })
+      .then(() => setNewInputMessage(''))
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div>
       <Fab
         color="primary"
         aria-label="messages"
-        onClick={handleToggleMessages}
+        onClick={() => {
+          setNewMessageView(true);
+          handleToggleMessages();
+        }}
         style={{ position: 'fixed', bottom: 16, right: 16 }}
       >
-        <SendIcon />
+        {openMessages ? <CloseIcon /> : <MailIcon />}
       </Fab>
 
       <Fade in={openMessages}>
         <Paper
           elevation={5}
-          style={{
+          variant="outlined"
+          sx={{
             position: 'fixed',
             bottom: 80,
             right: 16,
@@ -69,46 +126,58 @@ export const MessagesMain = () => {
             height: 500,
             overflow: 'auto',
             border: '2px solid black',
-            zIndex: "2000"
+            zIndex: '1500',
           }}
         >
-          <Container>
-            {/* <div>
-              <div>Sample Message 1</div>
-              <div>Sample Message 2</div>
-            </div> */}
+          <div
+            className="messagesMain-header"
+            style={{
+              paddingLeft: '24px',
+              paddingRight: '24px',
+            }}
+          >
+            <Typography variant="h6">Messages</Typography>
+          </div>
+          <Divider />
+          <MessageConversationSidebar
+            loggedInUser={loggedInUser}
+            conversations={conversations}
+          />
 
-            <div className="messagesMain-header">
-              <Typography variant="h6">Messages</Typography>
-              <Tooltip
-                title="New Message"
-                placement="left-start"
-              >
-                <IconButton>
-                  <AddIcon />
-                </IconButton>
-              </Tooltip>
-            </div>
-            <Divider />
-            <TextField
-              placeholder="Type your message..."
-              fullWidth
-              margin="normal"
-              value={user}
-              onChange={(e) => setUser(e.target.value)}
-              InputProps={{
-                endAdornment: (
-                  <Fab
-                    size="small"
-                    color="primary"
-                    onClick={handleCloseMessages}
-                  >
-                    <SendIcon />
-                  </Fab>
-                ),
+          <div
+            style={{
+              marginLeft: '60px',
+            }}
+          >
+            <div
+              style={{
+                paddingLeft: '16px',
               }}
-            />
-          </Container>
+            >
+              {activeConversationId && !newMessageView ? (
+                <div style={{ position: 'relative' }}>
+                  <MessageConversationView
+                    loggedInUser={loggedInUser}
+                    connection={connection}
+                    conversation={conversations.find(
+                      (c) => c.id == activeConversationId
+                    )}
+                  />
+                  <MessageConversationNewTextField
+                    connection={connection}
+                    loggedInUser={loggedInUser}
+                    conversation={conversations.find(
+                      (c) => c.id == activeConversationId
+                    )}
+                  />
+                </div>
+              ) : (
+                <>
+                 <MessageNewMessageView />
+                </>
+              )}
+            </div>
+          </div>
         </Paper>
       </Fade>
     </div>

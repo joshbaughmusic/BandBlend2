@@ -7,11 +7,14 @@ export const useMessages = () => {
   return useContext(MessagesContext);
 };
 
-export const MessagesProvider = ({ children }) => {
+export const MessagesProvider = ({ children, loggedInUser }) => {
   const [openMessages, setOpenMessages] = useState(false);
+  const [activeConversationId, setActiveConversationId] = useState(null);
+  const [newMessageView, setNewMessageView] = useState(true);
 
   const handleToggleMessages = () => {
     setOpenMessages(!openMessages);
+    setActiveConversationId(null)
   };
 
   const handleCloseMessages = () => {
@@ -25,9 +28,13 @@ export const MessagesProvider = ({ children }) => {
         setOpenMessages,
         handleToggleMessages,
         handleCloseMessages,
+        activeConversationId,
+        setActiveConversationId,
+        newMessageView,
+        setNewMessageView,
       }}
     >
-      <MessagesMain />
+      <MessagesMain loggedInUser={loggedInUser} />
       {children}
     </MessagesContext.Provider>
   );
