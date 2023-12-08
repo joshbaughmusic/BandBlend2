@@ -46,7 +46,7 @@ export const MessageConversationView = ({ loggedInUser, connection, conversation
 
   return (
     <>
-      <div>
+      <div style={{overflow: "auto", height: "435px"}}>
         {messages.map((m, index) => (
           <Message message={m} key={index} />
         ))}

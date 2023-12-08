@@ -26,10 +26,9 @@ export const MessageConversationSidebar = ({ conversations }) => {
         <div
           style={{
             position: 'absolute',
-
             left: 0,
-            width: 60, // Adjust width of sidebar
-            height: '435px', // Adjust height of sidebar
+            width: 60, 
+            height: '435px',
             overflow: 'auto',
             borderRight: '1px solid black',
             zIndex: '2000',
@@ -53,7 +52,6 @@ export const MessageConversationSidebar = ({ conversations }) => {
       <div
         style={{
           position: 'absolute',
-
           left: 0,
           width: 60,
           height: '435px',

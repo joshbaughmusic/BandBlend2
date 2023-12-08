@@ -142,17 +142,19 @@ export const MessagesMain = ({ loggedInUser }) => {
             </Tooltip>
           </div>
           <Divider />
-
           <MessageConversationSidebar
             loggedInUser={loggedInUser}
             conversations={conversations}
           />
+
           <div
             style={{
               marginLeft: '60px',
             }}
           >
-            <Container>
+            <div style={{
+              paddingLeft: "16px" 
+            }}>
               {activeConversationId && !newMessageView ? (
                 <div>
                   <MessageConversationView
@@ -181,7 +183,7 @@ export const MessagesMain = ({ loggedInUser }) => {
                   />
                 </>
               )}
-            </Container>
+            </div>
           </div>
         </Paper>
       </Fade>
