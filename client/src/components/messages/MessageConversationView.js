@@ -50,7 +50,7 @@ export const MessageConversationView = ({ loggedInUser, connection, conversation
       <div style={{overflow: "auto", height: "435px", paddingBottom: "80px"}}>
         <Typography variant='h6' sx={{mt: 1, ml: "86.5px"}}>{`${conversation.userProfile.name}`}</Typography>
         {messages.map((m, index) => (
-          <Message message={m} key={index} />
+          <Message message={m} key={index} loggedInUser={loggedInUser} />
         ))}
         
       </div>
