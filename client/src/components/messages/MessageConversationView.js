@@ -3,6 +3,7 @@ import { useMessages } from '../context/MessagesContext.js';
 import { fetchMyMessagesByConversation } from '../../managers/messagesManager.js';
 import { Message } from './Message.js';
 import { MessageConversationNewTextField } from './MessageConversationNewTextField.js';
+import { Typography } from '@mui/material';
 
 export const MessageConversationView = ({ loggedInUser, connection, conversation }) => {
   const [messages, setMessages] = useState();
@@ -46,11 +47,12 @@ export const MessageConversationView = ({ loggedInUser, connection, conversation
 
   return (
     <>
-      <div style={{overflow: "auto", height: "435px"}}>
+      <div style={{overflow: "auto", height: "435px", paddingBottom: "80px"}}>
+        <Typography variant='h6' sx={{mt: 1, ml: "86.5px"}}>{`${conversation.userProfile.name}`}</Typography>
         {messages.map((m, index) => (
           <Message message={m} key={index} />
         ))}
-        <MessageConversationNewTextField connection={connection} loggedInUser={loggedInUser} conversation={conversation} />
+        
       </div>
     </>
   );

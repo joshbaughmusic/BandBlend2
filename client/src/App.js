@@ -39,16 +39,29 @@ function App() {
     <>
       {/* <ThemeProvider theme={theme}> */}
       <SnackBarProvider>
-        <MessagesProvider loggedInUser={loggedInUser}>
-          <NavBar
-            loggedInUser={loggedInUser}
-            setLoggedInUser={setLoggedInUser}
-          />
-          <ApplicationViews
-            loggedInUser={loggedInUser}
-            setLoggedInUser={setLoggedInUser}
-          />
-        </MessagesProvider>
+        {loggedInUser ? (
+          <MessagesProvider loggedInUser={loggedInUser}>
+            <NavBar
+              loggedInUser={loggedInUser}
+              setLoggedInUser={setLoggedInUser}
+            />
+            <ApplicationViews
+              loggedInUser={loggedInUser}
+              setLoggedInUser={setLoggedInUser}
+            />
+          </MessagesProvider>
+        ) : (
+          <>
+            <NavBar
+              loggedInUser={loggedInUser}
+              setLoggedInUser={setLoggedInUser}
+            />
+            <ApplicationViews
+              loggedInUser={loggedInUser}
+              setLoggedInUser={setLoggedInUser}
+            />
+          </>
+        )}
       </SnackBarProvider>
       {/* </ThemeProvider> */}
     </>

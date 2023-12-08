@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Fab from '@mui/material/Fab';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
-import AddIcon from '@mui/icons-material/Add';
 import { useMessages } from '../context/MessagesContext.js';
 import {
   Button,
@@ -21,6 +20,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import CloseIcon from '@mui/icons-material/Close';
 import { MessageConversationSidebar } from './MessageConversationSidebar.js';
 import { MessageConversationView } from './MessageConversationView.js';
+import { MessageConversationNewTextField } from './MessageConversationNewTextField.js';
+import { MessageNewMessageView } from './MessageNewMessageView.js';
 
 export const MessagesMain = ({ loggedInUser }) => {
   const [conversations, setConversations] = useState();
@@ -57,6 +58,7 @@ export const MessagesMain = ({ loggedInUser }) => {
             };
       });
       setConversations(conversationsWithOnlyOtherUserAttached);
+      setActiveConversationId(conversationsWithOnlyOtherUserAttached[0].id);
     });
   };
 
@@ -103,7 +105,10 @@ export const MessagesMain = ({ loggedInUser }) => {
       <Fab
         color="primary"
         aria-label="messages"
-        onClick={handleToggleMessages}
+        onClick={() => {
+          setNewMessageView(true);
+          handleToggleMessages();
+        }}
         style={{ position: 'fixed', bottom: 16, right: 16 }}
       >
         {openMessages ? <CloseIcon /> : <MailIcon />}
@@ -132,14 +137,6 @@ export const MessagesMain = ({ loggedInUser }) => {
             }}
           >
             <Typography variant="h6">Messages</Typography>
-            <Tooltip
-              title="New Message"
-              placement="left-start"
-            >
-              <IconButton>
-                {newMessageView ? <CloseIcon /> : <AddIcon />}
-              </IconButton>
-            </Tooltip>
           </div>
           <Divider />
           <MessageConversationSidebar
@@ -152,35 +149,31 @@ export const MessagesMain = ({ loggedInUser }) => {
               marginLeft: '60px',
             }}
           >
-            <div style={{
-              paddingLeft: "16px" 
-            }}>
+            <div
+              style={{
+                paddingLeft: '16px',
+              }}
+            >
               {activeConversationId && !newMessageView ? (
-                <div>
+                <div style={{ position: 'relative' }}>
                   <MessageConversationView
-                    conversation={conversations.find(c => c.id == activeConversationId)}
                     loggedInUser={loggedInUser}
                     connection={connection}
+                    conversation={conversations.find(
+                      (c) => c.id == activeConversationId
+                    )}
+                  />
+                  <MessageConversationNewTextField
+                    connection={connection}
+                    loggedInUser={loggedInUser}
+                    conversation={conversations.find(
+                      (c) => c.id == activeConversationId
+                    )}
                   />
                 </div>
               ) : (
                 <>
-                  <TextField
-                    placeholder="User..."
-                    fullWidth
-                    margin="normal"
-                    // value={user}
-                    // onChange={(e) => setUser(e.target.value)}
-                    InputProps={{}}
-                  />
-                  <TextField
-                    placeholder="Room..."
-                    fullWidth
-                    margin="normal"
-                    // value={room}
-                    // onChange={(e) => setRoom(e.target.value)}
-                    InputProps={{}}
-                  />
+                 <MessageNewMessageView />
                 </>
               )}
             </div>

@@ -10,7 +10,7 @@ export const useMessages = () => {
 export const MessagesProvider = ({ children, loggedInUser }) => {
   const [openMessages, setOpenMessages] = useState(false);
   const [activeConversationId, setActiveConversationId] = useState(null);
-  const [newMessageView, setNewMessageView] = useState(false);
+  const [newMessageView, setNewMessageView] = useState(true);
 
   const handleToggleMessages = () => {
     setOpenMessages(!openMessages);

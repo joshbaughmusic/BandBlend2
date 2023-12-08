@@ -41,6 +41,8 @@ export const MessageConversationNewTextField = ({
 
   return (
     <>
+    <div style={{position: "absolute", bottom: "0px", width: "297px", backgroundColor: "white"}}>
+
       <TextField
         placeholder="New message..."
         fullWidth
@@ -50,15 +52,16 @@ export const MessageConversationNewTextField = ({
         InputProps={{
           endAdornment: (
             <IconButton
-              edge="end"
-              aria-label="send"
-              onClick={() => handleSendMessage()}
+            edge="end"
+            aria-label="send"
+            onClick={() => handleSendMessage()}
             >
               <SendIcon />
             </IconButton>
           ),
         }}
-      />
+        />
+        </div>
     </>
   );
 };

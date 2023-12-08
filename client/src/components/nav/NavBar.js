@@ -624,7 +624,7 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
             )}
           </ListItem>
 
-          <ListItem
+          {/* <ListItem
             disablePadding
             sx={{ display: 'block' }}
           >
@@ -678,7 +678,7 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                 </ListItemButton>
               </Tooltip>
             )}
-          </ListItem>
+          </ListItem> */}
           <ListItem
             disablePadding
             sx={{ display: 'block' }}
