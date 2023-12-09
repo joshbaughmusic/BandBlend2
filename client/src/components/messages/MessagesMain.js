@@ -123,7 +123,7 @@ export const MessagesMain = ({ loggedInUser }) => {
             bottom: 80,
             right: 16,
             width: 410,
-            height: 500,
+            height: 492,
             overflow: 'auto',
             border: '2px solid black',
             zIndex: '1500',
@@ -155,22 +155,23 @@ export const MessagesMain = ({ loggedInUser }) => {
               }}
             >
               {activeConversationId && !newMessageView ? (
-                <div style={{ position: 'relative' }}>
+               <>
                   <MessageConversationView
                     loggedInUser={loggedInUser}
                     connection={connection}
                     conversation={conversations.find(
                       (c) => c.id == activeConversationId
-                    )}
-                  />
+                      )}
+                      />
                   <MessageConversationNewTextField
                     connection={connection}
                     loggedInUser={loggedInUser}
                     conversation={conversations.find(
                       (c) => c.id == activeConversationId
-                    )}
-                  />
-                </div>
+                      )}
+                      />
+                      </>
+                
               ) : (
                 <>
                  <MessageNewMessageView />

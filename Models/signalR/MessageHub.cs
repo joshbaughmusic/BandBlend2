@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 namespace BandBlend.Hubs;
+using System.Linq;
+
 
 public class MessageHub : Hub
 {
@@ -14,15 +16,16 @@ public class MessageHub : Hub
         _dbContext = context;
     }
 
-    private UserProfile GetUserProfileById(string userProfileId)
+    public async Task SendMessage(Message message)
     {
-        return _dbContext.UserProfiles.FirstOrDefault(u => u.IdentityUserId == userProfileId);
-    }
+        UserProfile senderUserProfile = _dbContext.UserProfiles
+        .SingleOrDefault(up => up.IdentityUserId == message.SenderIdentityUserId);
+        UserProfile recipientUserProfile = _dbContext.UserProfiles.
+        SingleOrDefault(up => up.IdentityUserId == message.ReceiverIdentityUserId);
 
-    public async Task SendMessage(Message message) 
-    {
-        UserProfile senderUserProfile = GetUserProfileById(message.SenderIdentityUserId);
-        UserProfile recipientUserProfile = GetUserProfileById(message.ReceiverIdentityUserId);
+        // senderUserProfile.Profile = _dbContext.Profiles.Single(p => p.UserProfileId == senderUserProfile.Id);
+
+        // recipientUserProfile.Profile = _dbContext.Profiles.Single(p => p.UserProfileId == recipientUserProfile.Id);
 
         if (senderUserProfile == null || recipientUserProfile == null)
         {
@@ -59,7 +62,9 @@ public class MessageHub : Hub
             Body = message.Body,
             Date = DateTime.Now,
             IsRead = false,
-            MessageConversationId = conversation.Id
+            MessageConversationId = conversation.Id,
+            Sender = senderUserProfile,
+            Receiver = recipientUserProfile
         };
         _dbContext.Messages.Add(newMessage);
         await _dbContext.SaveChangesAsync();

@@ -72,7 +72,8 @@ public class BlockedAccountController : ControllerBase
 
         BlockedAccount newBlockedAccount = new BlockedAccount{
             UserProfileThatBlockedId = loggedInUser.Id,
-            BlockedUserProfileId = id
+            BlockedUserProfileId = id,
+            Date = DateTime.Now 
         };
 
         _dbContext.BlockedAccounts.Add(newBlockedAccount);

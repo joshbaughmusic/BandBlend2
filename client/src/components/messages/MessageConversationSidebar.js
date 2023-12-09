@@ -79,7 +79,10 @@ export const MessageConversationSidebar = ({ conversations }) => {
                   placement="right"
                 >
               <IconButton
-                onClick={() => setNewMessageView(true)}
+                onClick={() => {
+                  setNewMessageView(true)
+                  setActiveConversationId(null)
+                }}
                 sx={{ mt: '5px' }}
               >
                 <AddIcon />
