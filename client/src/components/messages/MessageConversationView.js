@@ -69,7 +69,8 @@ export const MessageConversationView = ({
       >
         <Typography
           variant="h6"
-          sx={{ mt: 1, ml: '86.5px' }}
+          textAlign="center"
+          sx={{ mt: 1, mr: '24px' }}
         >{`${conversation.userProfile.name}`}</Typography>
         {messages.map((m, index) => (
           <Message

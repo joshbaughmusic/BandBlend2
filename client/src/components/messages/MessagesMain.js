@@ -36,6 +36,8 @@ export const MessagesMain = ({ loggedInUser }) => {
     setActiveConversationId,
     newMessageView,
     setNewMessageView,
+    selectedRecipient,
+    setSelectedRecipient,
   } = useMessages();
 
   const getMyConversations = () => {
@@ -108,6 +110,7 @@ export const MessagesMain = ({ loggedInUser }) => {
         onClick={() => {
           setNewMessageView(true);
           handleToggleMessages();
+          setSelectedRecipient(null)
         }}
         style={{ position: 'fixed', bottom: 16, right: 16 }}
       >
@@ -174,7 +177,7 @@ export const MessagesMain = ({ loggedInUser }) => {
                 
               ) : (
                 <>
-                 <MessageNewMessageView />
+                 <MessageNewMessageView conversations={conversations} />
                 </>
               )}
             </div>

@@ -69,7 +69,7 @@ public class MessageHub : Hub
         _dbContext.Messages.Add(newMessage);
         await _dbContext.SaveChangesAsync();
 
-        await Clients.All.SendAsync("SendMessage", newMessage);
+        await Clients.User(senderUserProfile.IdentityUserId).SendAsync("SendMessage", newMessage);
     }
 
 }
