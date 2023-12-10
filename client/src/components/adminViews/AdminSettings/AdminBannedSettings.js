@@ -176,6 +176,7 @@ export const AdminBannedSettings = () => {
                       onClose={handleConfirmClose}
                       aria-labelledby="alert-dialog-title"
                       aria-describedby="alert-dialog-description"
+                      sx={{ marginBottom: '10vh' }}
                     >
                       <DialogTitle id="alert-dialog-title">
                         {'Confirm Deletion'}
@@ -186,7 +187,10 @@ export const AdminBannedSettings = () => {
                         </DialogContentText>
                       </DialogContent>
                       <DialogActions>
-                        <Button value={a.identityUserId} onClick={(e) => handleDeleteUserProfile(e)}>
+                        <Button
+                          value={a.identityUserId}
+                          onClick={(e) => handleDeleteUserProfile(e)}
+                        >
                           Delete
                         </Button>
                         <Button onClick={handleConfirmClose}>Cancel</Button>

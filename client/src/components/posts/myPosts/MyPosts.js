@@ -211,12 +211,7 @@ if (!posts) {
           </div>
           <Divider />
         </div>
-        {
-          expanded ?
-          ""
-          :
-          <Typography>No posts yet!</Typography>
-        }
+        {expanded ? '' : <Typography>No posts yet!</Typography>}
         <div>
           <Collapse
             in={expanded}
@@ -254,6 +249,7 @@ if (!posts) {
         onClose={handleAlert}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        sx={{ marginBottom: '10vh' }}
       >
         <DialogTitle id="alert-dialog-title">
           {'Confirm Post Discard'}

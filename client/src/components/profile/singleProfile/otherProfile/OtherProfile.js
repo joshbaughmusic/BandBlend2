@@ -60,6 +60,7 @@ import {
   fetchAdminDeleteUserProfile,
   fetchPromoteToAdmin,
 } from '../../../../managers/adminFunctionsManager.js';
+import { useMessages } from '../../../context/MessagesContext.js';
 
 export const OtherProfile = ({ loggedInUser }) => {
   const [profile, setProfile] = useState();
@@ -71,6 +72,26 @@ export const OtherProfile = ({ loggedInUser }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
+     const {
+       openMessages,
+       setOpenMessages,
+       handleToggleMessages,
+       handleCloseMessages,
+       activeConversationId,
+       setActiveConversationId,
+       newMessageView,
+       setNewMessageView,
+       selectedRecipient,
+       setSelectedRecipient,
+       messages,
+       setMessages,
+       getMyMessagesByConversation,
+       getMyConversations,
+       conversations,
+       setConversations,
+       conversation,
+       setConversation,
+     } = useMessages();
   const [actionPicked, setActionPicked] = useState('');
 
   const getOtherUserWithProfile = () => {
@@ -120,6 +141,18 @@ export const OtherProfile = ({ loggedInUser }) => {
     });
   };
 
+  const handleMessageClick = () => {
+    setOpenMessages(true)
+    const foundConversation = conversations.find(c => c.userProfileId === profile.id)
+
+    if (foundConversation) {
+      setActiveConversationId(foundConversation.id)
+      setNewMessageView(false)
+    } else {
+      setNewMessageView(true)
+    }
+  }
+
   const handleFollowUser = () => {
     fetchCreateUserFeedUser(profile.id).then(() => getUserFeedUsers());
   };
@@ -143,6 +176,8 @@ export const OtherProfile = ({ loggedInUser }) => {
         setSnackBarMessage('Failed to block user.');
         handleSnackBarOpen();
       } else {
+        getMyConversations()
+        setNewMessageView(true)
         setSuccessAlert(true);
         setSnackBarMessage(
           'User successfully blocked (you can undo this in settings).'
@@ -496,7 +531,7 @@ export const OtherProfile = ({ loggedInUser }) => {
                   title="Message"
                   placement="bottom"
                 >
-                  <Button variant="contained">
+                  <Button variant="contained" onClick={() => handleMessageClick()}>
                     <MailIcon />
                   </Button>
                 </Tooltip>
@@ -578,6 +613,7 @@ export const OtherProfile = ({ loggedInUser }) => {
         onClose={handleConfirmClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        sx={{ marginBottom: '10vh' }}
       >
         {actionPicked === 'block' ? (
           <>

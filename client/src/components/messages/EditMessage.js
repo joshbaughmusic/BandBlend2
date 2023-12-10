@@ -17,7 +17,8 @@ import { useEffect, useState } from 'react';
 import { useSnackBar } from '../context/SnackBarContext.js';
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
-import { fetchEditPost } from '../../managers/postsManager.js';
+import { fetchEditMessage } from '../../managers/messagesManager.js';
+import { useMessages } from '../context/MessagesContext.js';
 
 const style = {
   position: 'absolute',
@@ -31,24 +32,27 @@ const style = {
   p: 4,
 };
 
-export const EditPost = ({ post, getUserPosts }) => {
-  const [postBodyToEdit, setPostBodyToEdit] = useState(post.body);
+export const EditMessage = ({ message }) => {
+  const [messageBodyToEdit, setMessageBodyToEdit] = useState(message.body);
   const [error, setError] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
+    const {
+      getMyMessagesByConversation,
+    } = useMessages();
   const [openModal, setOpenModal] = useState(false);
-  
-useEffect(() => {
-  if (postBodyToEdit.length !== 0) {
-    setError(false);
-  }
-}, [postBodyToEdit]);
+
+  useEffect(() => {
+    if (messageBodyToEdit.length !== 0) {
+      setError(false);
+    }
+  }, [messageBodyToEdit]);
 
   const handleModalOpen = () => setOpenModal(true);
 
   const handleModalClose = () => {
-    if (post.body !== postBodyToEdit) {
+    if (message.body !== messageBodyToEdit) {
       setConfirmOpen(true);
     } else {
       setOpenModal(false);
@@ -56,24 +60,24 @@ useEffect(() => {
   };
   const handleSubmit = () => {
     setError(false);
-    if (postBodyToEdit.length > 0) {
-      fetchEditPost(post.id, postBodyToEdit).then((res) => {
+    if (messageBodyToEdit.length > 0) {
+      fetchEditMessage(message.id, messageBodyToEdit).then((res) => {
         if (res.status === 204) {
-          getUserPosts();
+          getMyMessagesByConversation();
           setSuccessAlert(true);
-          setSnackBarMessage('Post successfully edited!');
+          setSnackBarMessage('Message successfully edited!');
           handleConfirmClose();
           handleSnackBarOpen(true);
         } else {
           setSuccessAlert(false);
-          setSnackBarMessage('Failed to edit post.');
+          setSnackBarMessage('Failed to edit message.');
           handleSnackBarOpen(true);
         }
       });
     } else {
       setError(true);
       setSuccessAlert(false);
-      setSnackBarMessage('Post must not be empty.');
+      setSnackBarMessage('Message must not be empty.');
       handleSnackBarOpen(true);
     }
   };
@@ -81,20 +85,18 @@ useEffect(() => {
   const handleConfirmClose = () => {
     setConfirmOpen(false);
     setOpenModal(false);
-    setPostBodyToEdit(post.body);
+    setMessageBodyToEdit(message.body);
     setError(false);
   };
-
-  
 
   return (
     <>
       <Tooltip
         title="Edit"
-        placement="right-start"
+        placement="right"
       >
         <IconButton onClick={handleModalOpen}>
-          <EditIcon />
+          <EditIcon sx={{ width: '20px' }} />
         </IconButton>
       </Tooltip>
       <div>
@@ -113,7 +115,7 @@ useEffect(() => {
                   variant="h6"
                   component="h2"
                 >
-                  Edit Post
+                  Edit Message
                 </Typography>
                 <IconButton onClick={handleModalClose}>
                   <CloseIcon />
@@ -122,20 +124,20 @@ useEffect(() => {
               <Divider />
             </div>
             <TextField
-              className="post-text-field"
+              className="message-text-field"
               multiline
               minRows={5}
               fullWidth
-              label="Edit Post"
-              autoFocus={true}
-              value={postBodyToEdit}
-              onChange={(e) => setPostBodyToEdit(e.target.value)}
+              label="Edit Message"
+              value={messageBodyToEdit}
+              onChange={(e) => setMessageBodyToEdit(e.target.value)}
               error={error}
             />
-            <div className="post-submit-button-container">
+            <div className="message-submit-button-container">
               <Button
                 variant="contained"
                 onClick={handleSubmit}
+                sx={{mt: 2}}
               >
                 Submit
               </Button>

@@ -61,6 +61,7 @@ export const NewComment = ({
         <TextField
           className="comment-text-field"
           label="Add a comment..."
+          autoFocus={true}
           multiline
           minRows={1}
           fullWidth

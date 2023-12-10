@@ -10,30 +10,49 @@ import {
   Tooltip,
 } from '@mui/material';
 import { useState } from 'react';
-import { fetchAdminDeleteCommentOtherPost } from '../../../managers/adminFunctionsManager.js';
-import { useSnackBar } from '../../context/SnackBarContext.js';
+import { useSnackBar } from '../context/SnackBarContext.js';
+import { useMessages } from '../context/MessagesContext.js';
+import { fetchDeleteMessage } from '../../managers/messagesManager.js';
 
-export const AdminDeleteComment = ({ commentId, getCommentsForPost, getUserPosts }) => {
+export const DeleteMessage = ({ messageId }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
+  const {
+    setActiveConversationId,
+    setNewMessageView,
+    setSelectedRecipient,
+    getMyMessagesByConversation,
+    getMyConversations,
+  } = useMessages();
 
   const handleDeleteClick = () => {
     setConfirmOpen(true);
   };
 
   const handleConfirmClick = () => {
-    fetchAdminDeleteCommentOtherPost(commentId).then((res) => {
+    fetchDeleteMessage(messageId).then((res) => {
       if (res.status === 204) {
-        getCommentsForPost();
-        getUserPosts();
-        handleConfirmClose();
-        setSuccessAlert(true);
-        setSnackBarMessage('Comment successfully deleted!');
-        handleSnackBarOpen(true);
+        const result = res.headers.get('Result');
+        if (result == 'Deleted conversation') {
+          getMyConversations();
+          setActiveConversationId(null);
+          setSelectedRecipient(null);
+          setNewMessageView(true);
+          handleConfirmClose();
+          setSuccessAlert(true);
+          setSnackBarMessage('Message successfully deleted!');
+          handleSnackBarOpen(true);
+        } else {
+          getMyMessagesByConversation();
+          handleConfirmClose();
+          setSuccessAlert(true);
+          setSnackBarMessage('Message successfully deleted!');
+          handleSnackBarOpen(true);
+        }
       } else {
         setSuccessAlert(false);
-        setSnackBarMessage('Failed to delete comment.');
+        setSnackBarMessage('Failed to delete message.');
         handleSnackBarOpen(true);
       }
     });
@@ -47,10 +66,13 @@ export const AdminDeleteComment = ({ commentId, getCommentsForPost, getUserPosts
     <>
       <Tooltip
         title="Delete"
-        placement="right"
+        placement="left"
       >
-        <IconButton onClick={handleDeleteClick}>
-          <DeleteIcon />
+        <IconButton
+          sx={{ p: '5px' }}
+          onClick={handleDeleteClick}
+        >
+          <DeleteIcon sx={{ width: '20px' }} />
         </IconButton>
       </Tooltip>
       <Dialog
@@ -63,7 +85,7 @@ export const AdminDeleteComment = ({ commentId, getCommentsForPost, getUserPosts
         <DialogTitle id="alert-dialog-title">{'Confirm Deletion'}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Are you sure you want to delete this comment?
+            Are you sure you want to delete this messaage?
           </DialogContentText>
         </DialogContent>
         <DialogActions>

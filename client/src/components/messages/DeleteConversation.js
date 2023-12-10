@@ -1,38 +1,49 @@
+import DeleteIcon from '@mui/icons-material/Delete';
 import {
-  Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
+  IconButton,
+  Button,
+  Tooltip,
 } from '@mui/material';
-import '../AdditionalPhotos.css';
-import CloseIcon from '@mui/icons-material/Close';
-import { useSnackBar } from '../../context/SnackBarContext.js';
 import { useState } from 'react';
-import { fetchDeleteAdditionalPhoto } from '../../../managers/additonalPhotosManager.js';
+import { useSnackBar } from '../context/SnackBarContext.js';
+import { useMessages } from '../context/MessagesContext.js';
+import { fetchDeleteMessageConverstaion } from '../../managers/messagesManager.js';
 
-export const MyAdditionalPhotosItem = ({
-  photo,
-  getMyAdditonalPhotos,
-  picPopUp,
-  setPicPopUp,
-}) => {
+export const DeleteConversation = () => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
+  const {
+    setActiveConversationId,
+    setNewMessageView,
+    setSelectedRecipient,
+    getMyConversations,
+    conversation,
+  } = useMessages();
+
+  const handleDeleteClick = () => {
+    setConfirmOpen(true);
+  };
 
   const handleConfirmClick = () => {
-    fetchDeleteAdditionalPhoto(photo.id).then((res) => {
+    fetchDeleteMessageConverstaion(conversation.id).then((res) => {
       if (res.status === 204) {
-        getMyAdditonalPhotos();
+        getMyConversations();
+        setActiveConversationId(null);
+        setSelectedRecipient(null);
+        setNewMessageView(true);
         handleConfirmClose();
         setSuccessAlert(true);
-        setSnackBarMessage('Photo successfully deleted!');
+        setSnackBarMessage('Conversation successfully deleted!');
         handleSnackBarOpen(true);
       } else {
         setSuccessAlert(false);
-        setSnackBarMessage('Failed to delete photo.');
+        setSnackBarMessage('Failed to delete conversation.');
         handleSnackBarOpen(true);
       }
     });
@@ -44,29 +55,16 @@ export const MyAdditionalPhotosItem = ({
 
   return (
     <>
-      <div className="photoItem">
-        <img
-          className="additional-photo"
-          src={photo.url}
-          alt="picture"
-          onClick={() => setPicPopUp(photo)}
-        />
-        <div className="deletePic-X">
-          <CloseIcon onClick={() => setConfirmOpen(true)} />
-        </div>
+      <div style={{ position: 'absolute', right: '20px', top: '2px' }}>
+        <Tooltip
+          title="Delete Conversation"
+          placement="top-start"
+        >
+          <IconButton onClick={handleDeleteClick}>
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
       </div>
-      {picPopUp ? (
-        <div className="popup-media">
-          <span onClick={() => setPicPopUp(null)}>&times;</span>
-          <img
-            className="popup-photoItem"
-            src={picPopUp?.url}
-            alt="An enlarged photo"
-          />
-        </div>
-      ) : (
-        ''
-      )}
       <Dialog
         open={confirmOpen}
         onClose={handleConfirmClose}
@@ -77,7 +75,8 @@ export const MyAdditionalPhotosItem = ({
         <DialogTitle id="alert-dialog-title">{'Confirm Deletion'}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Are you sure you want to delete this photo?
+            Are you sure you want to delete this conversation? All associated
+            messages will be deleted as well.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
