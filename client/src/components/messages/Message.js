@@ -1,7 +1,9 @@
 import { Avatar, Card, CardContent, Typography } from '@mui/material';
 import { dateFormatter } from '../../utilities/dateFormatter.js';
+import { useNavigate } from 'react-router-dom';
 
 export const Message = ({ message, loggedInUser }) => {
+  const navigate = useNavigate()
   return (
     <>
       {loggedInUser.identityUserId === message.senderIdentityUserId ? (
@@ -15,13 +17,16 @@ export const Message = ({ message, loggedInUser }) => {
                 marginBottom: '8px',
               }}
             >
-              <Avatar
+              {/* <Avatar
                 sx={{
                   width: '25px',
                   height: '25px',
                 }}
                 src={loggedInUser.profile.profilePicture}
-              ></Avatar>
+              /> */}
+              <Typography sx={{ fontWeight: 'bold' }}>
+                {loggedInUser.name}
+              </Typography>
               <Typography variant="caption">
                 {dateFormatter(message.date)}
               </Typography>
@@ -40,13 +45,16 @@ export const Message = ({ message, loggedInUser }) => {
                 marginBottom: '8px',
               }}
             >
-              <Avatar
+              {/* <Avatar
                 sx={{
                   width: '25px',
                   height: '25px',
                 }}
                 src={message.receiver.profile.profilePicture}
-              ></Avatar>
+              /> */}
+              <Typography sx={{ fontWeight: 'bold' }}>
+                {message.sender.name}
+              </Typography>
               <Typography variant="caption">
                 {dateFormatter(message.date)}
               </Typography>

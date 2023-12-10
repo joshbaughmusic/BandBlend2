@@ -5,24 +5,49 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 namespace BandBlend.Hubs;
 
+using System.Collections.Concurrent;
+using System.Linq;
+using System.Security.Claims;
+
 public class MessageHub : Hub
 {
     private BandBlendDbContext _dbContext;
+    private static readonly ConcurrentDictionary<string, string> userConnectionMap = new ConcurrentDictionary<string, string>();
+
 
     public MessageHub(BandBlendDbContext context)
     {
         _dbContext = context;
     }
 
-    private UserProfile GetUserProfileById(string userProfileId)
+    public override async Task OnConnectedAsync()
     {
-        return _dbContext.UserProfiles.FirstOrDefault(u => u.IdentityUserId == userProfileId);
+        var userId = Context.GetHttpContext().Request.Query["userId"];
+        // Store the connection ID for the user
+        userConnectionMap.TryAdd(userId, Context.ConnectionId);
+        await base.OnConnectedAsync();
+    }
+    public override async Task OnDisconnectedAsync(Exception exception)
+    {
+        var connectionId = Context.ConnectionId;
+        var userIdToRemove = userConnectionMap.FirstOrDefault(x => x.Value == connectionId).Key;
+        if (userIdToRemove != null)
+        {
+            userConnectionMap.TryRemove(userIdToRemove, out _);
+        }
+        await base.OnDisconnectedAsync(exception);
     }
 
-    public async Task SendMessage(Message message) 
+    public async Task SendMessage(Message message)
     {
-        UserProfile senderUserProfile = GetUserProfileById(message.SenderIdentityUserId);
-        UserProfile recipientUserProfile = GetUserProfileById(message.ReceiverIdentityUserId);
+        UserProfile senderUserProfile = _dbContext.UserProfiles
+        .SingleOrDefault(up => up.IdentityUserId == message.SenderIdentityUserId);
+        UserProfile recipientUserProfile = _dbContext.UserProfiles.
+        SingleOrDefault(up => up.IdentityUserId == message.ReceiverIdentityUserId);
+
+        // senderUserProfile.Profile = _dbContext.Profiles.Single(p => p.UserProfileId == senderUserProfile.Id);
+
+        // recipientUserProfile.Profile = _dbContext.Profiles.Single(p => p.UserProfileId == recipientUserProfile.Id);
 
         if (senderUserProfile == null || recipientUserProfile == null)
         {
@@ -59,12 +84,20 @@ public class MessageHub : Hub
             Body = message.Body,
             Date = DateTime.Now,
             IsRead = false,
-            MessageConversationId = conversation.Id
+            MessageConversationId = conversation.Id,
+            Sender = senderUserProfile,
+            Receiver = recipientUserProfile
         };
         _dbContext.Messages.Add(newMessage);
         await _dbContext.SaveChangesAsync();
 
-        await Clients.All.SendAsync("SendMessage", newMessage);
+        userConnectionMap.TryGetValue(senderUserProfile.IdentityUserId, out var senderConnectionId);
+        userConnectionMap.TryGetValue(recipientUserProfile.IdentityUserId, out var recipientConnectionId);
+
+        string currentUserConnectionId = Context.ConnectionId;
+
+        await Clients.User(senderConnectionId).SendAsync("SendMessage", newMessage);
+        await Clients.User(recipientConnectionId).SendAsync("SendMessage", newMessage);
     }
 
 }

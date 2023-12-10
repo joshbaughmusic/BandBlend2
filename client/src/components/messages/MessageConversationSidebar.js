@@ -21,6 +21,8 @@ export const MessageConversationSidebar = ({ conversations }) => {
     setActiveConversationId,
     newMessageView,
     setNewMessageView,
+    selectedRecipient,
+    setSelectedRecipient,
   } = useMessages();
 
   if (!conversations) {
@@ -71,21 +73,34 @@ export const MessageConversationSidebar = ({ conversations }) => {
             alignItems: 'center',
           }}
         >
-            {newMessageView ? (
-                ''
-            ) : (
-                <Tooltip
-                  title="New Message"
-                  placement="right"
-                >
+          {newMessageView ? (
+            <IconButton
+              disabled
+              onClick={() => {
+                setNewMessageView(true);
+                setActiveConversationId(null);
+              }}
+              sx={{ mt: '5px' }}
+            >
+              <AddIcon />
+            </IconButton>
+          ) : (
+            <Tooltip
+              title="New Message"
+              placement="right"
+            >
               <IconButton
-                onClick={() => setNewMessageView(true)}
+                onClick={() => {
+                  setNewMessageView(true);
+                  setActiveConversationId(null);
+                  setSelectedRecipient(null)
+                }}
                 sx={{ mt: '5px' }}
               >
                 <AddIcon />
               </IconButton>
-          </Tooltip>
-            )}
+            </Tooltip>
+          )}
           {conversations.map((conversation) => (
             <div
               style={{

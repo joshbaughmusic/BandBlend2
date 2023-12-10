@@ -11,6 +11,8 @@ export const MessagesProvider = ({ children, loggedInUser }) => {
   const [openMessages, setOpenMessages] = useState(false);
   const [activeConversationId, setActiveConversationId] = useState(null);
   const [newMessageView, setNewMessageView] = useState(true);
+  const [selectedRecipient, setSelectedRecipient] = useState(null);
+
 
   const handleToggleMessages = () => {
     setOpenMessages(!openMessages);
@@ -32,6 +34,8 @@ export const MessagesProvider = ({ children, loggedInUser }) => {
         setActiveConversationId,
         newMessageView,
         setNewMessageView,
+        selectedRecipient,
+        setSelectedRecipient,
       }}
     >
       <MessagesMain loggedInUser={loggedInUser} />

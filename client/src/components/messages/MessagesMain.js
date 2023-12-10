@@ -36,6 +36,8 @@ export const MessagesMain = ({ loggedInUser }) => {
     setActiveConversationId,
     newMessageView,
     setNewMessageView,
+    selectedRecipient,
+    setSelectedRecipient,
   } = useMessages();
 
   const getMyConversations = () => {
@@ -61,17 +63,16 @@ export const MessagesMain = ({ loggedInUser }) => {
       setActiveConversationId(conversationsWithOnlyOtherUserAttached[0].id);
     });
   };
-
+  
   useEffect(() => {
     getMyConversations();
 
-    const connection = new HubConnectionBuilder()
-      .withUrl('https://localhost:5001/message-hub')
-      .configureLogging(LogLevel.Information)
-      .build();
-
-    setConnection(connection);
-
+  const connection = new HubConnectionBuilder()
+  .withUrl(`https://localhost:5001/message-hub?userId=${loggedInUser.identityUserId}`)
+  .configureLogging(LogLevel.Information)
+  .build();
+  setConnection(connection);
+  
     connection
       .start()
       .then(() => {
@@ -108,6 +109,7 @@ export const MessagesMain = ({ loggedInUser }) => {
         onClick={() => {
           setNewMessageView(true);
           handleToggleMessages();
+          setSelectedRecipient(null)
         }}
         style={{ position: 'fixed', bottom: 16, right: 16 }}
       >
@@ -123,7 +125,7 @@ export const MessagesMain = ({ loggedInUser }) => {
             bottom: 80,
             right: 16,
             width: 410,
-            height: 500,
+            height: 492,
             overflow: 'auto',
             border: '2px solid black',
             zIndex: '1500',
@@ -155,25 +157,26 @@ export const MessagesMain = ({ loggedInUser }) => {
               }}
             >
               {activeConversationId && !newMessageView ? (
-                <div style={{ position: 'relative' }}>
+               <>
                   <MessageConversationView
                     loggedInUser={loggedInUser}
                     connection={connection}
                     conversation={conversations.find(
                       (c) => c.id == activeConversationId
-                    )}
-                  />
+                      )}
+                      />
                   <MessageConversationNewTextField
                     connection={connection}
                     loggedInUser={loggedInUser}
                     conversation={conversations.find(
                       (c) => c.id == activeConversationId
-                    )}
-                  />
-                </div>
+                      )}
+                      />
+                      </>
+                
               ) : (
                 <>
-                 <MessageNewMessageView />
+                 <MessageNewMessageView conversations={conversations} />
                 </>
               )}
             </div>
