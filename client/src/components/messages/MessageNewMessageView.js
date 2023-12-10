@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMessages } from '../context/MessagesContext.js';
 import SendIcon from '@mui/icons-material/Send';
-import { IconButton, TextField, Typography } from '@mui/material';
+import { Fade, IconButton, TextField, Typography } from '@mui/material';
 import { MessageNewMessageRecipient } from './MessageNewMessageRecipientSearch.js';
 
 export const MessageNewMessageView = ({conversations}) => {
@@ -21,6 +21,8 @@ export const MessageNewMessageView = ({conversations}) => {
 
   return (
     <>
+    <Fade in={newMessageView}>
+
       <div style={{ marginTop: '8px', marginRight: '16px' }}>
         {selectedRecipient ? (
           <>
@@ -31,11 +33,11 @@ export const MessageNewMessageView = ({conversations}) => {
                 justifyContent: 'space-between',
                 height: '420px',
               }}
-            >
+              >
               <Typography
                 variant="h6"
                 textAlign="center"
-              >
+                >
                 {selectedRecipient.name}
               </Typography>
               <TextField
@@ -49,15 +51,15 @@ export const MessageNewMessageView = ({conversations}) => {
                 InputProps={{
                   endAdornment: (
                     <IconButton
-                      aria-label="send"
-                      style={{ position: 'absolute', bottom: 3, right: 3 }}
-                      // onClick={() => handleSendMessage()}
+                    aria-label="send"
+                    style={{ position: 'absolute', bottom: 3, right: 3 }}
+                    // onClick={() => handleSendMessage()}
                     >
                       <SendIcon />
                     </IconButton>
                   ),
                 }}
-              />
+                />
             </div>
           </>
         ) : (
@@ -65,13 +67,14 @@ export const MessageNewMessageView = ({conversations}) => {
             <Typography
               textAlign="center"
               variant="h6"
-            >
+              >
               New Message
             </Typography>
             <MessageNewMessageRecipient conversations={conversations} />
           </>
         )}
       </div>
+        </Fade>
     </>
   );
 };

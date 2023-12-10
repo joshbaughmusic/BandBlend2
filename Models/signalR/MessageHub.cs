@@ -4,16 +4,38 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 namespace BandBlend.Hubs;
-using System.Linq;
 
+using System.Collections.Concurrent;
+using System.Linq;
+using System.Security.Claims;
 
 public class MessageHub : Hub
 {
     private BandBlendDbContext _dbContext;
+    private static readonly ConcurrentDictionary<string, string> userConnectionMap = new ConcurrentDictionary<string, string>();
+
 
     public MessageHub(BandBlendDbContext context)
     {
         _dbContext = context;
+    }
+
+    public override async Task OnConnectedAsync()
+    {
+        var userId = Context.GetHttpContext().Request.Query["userId"];
+        // Store the connection ID for the user
+        userConnectionMap.TryAdd(userId, Context.ConnectionId);
+        await base.OnConnectedAsync();
+    }
+    public override async Task OnDisconnectedAsync(Exception exception)
+    {
+        var connectionId = Context.ConnectionId;
+        var userIdToRemove = userConnectionMap.FirstOrDefault(x => x.Value == connectionId).Key;
+        if (userIdToRemove != null)
+        {
+            userConnectionMap.TryRemove(userIdToRemove, out _);
+        }
+        await base.OnDisconnectedAsync(exception);
     }
 
     public async Task SendMessage(Message message)
@@ -69,7 +91,13 @@ public class MessageHub : Hub
         _dbContext.Messages.Add(newMessage);
         await _dbContext.SaveChangesAsync();
 
-        await Clients.User(senderUserProfile.IdentityUserId).SendAsync("SendMessage", newMessage);
+        userConnectionMap.TryGetValue(senderUserProfile.IdentityUserId, out var senderConnectionId);
+        userConnectionMap.TryGetValue(recipientUserProfile.IdentityUserId, out var recipientConnectionId);
+
+        string currentUserConnectionId = Context.ConnectionId;
+
+        await Clients.User(senderConnectionId).SendAsync("SendMessage", newMessage);
+        await Clients.User(recipientConnectionId).SendAsync("SendMessage", newMessage);
     }
 
 }

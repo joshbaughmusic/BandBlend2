@@ -63,17 +63,16 @@ export const MessagesMain = ({ loggedInUser }) => {
       setActiveConversationId(conversationsWithOnlyOtherUserAttached[0].id);
     });
   };
-
+  
   useEffect(() => {
     getMyConversations();
 
-    const connection = new HubConnectionBuilder()
-      .withUrl('https://localhost:5001/message-hub')
-      .configureLogging(LogLevel.Information)
-      .build();
-
-    setConnection(connection);
-
+  const connection = new HubConnectionBuilder()
+  .withUrl(`https://localhost:5001/message-hub?userId=${loggedInUser.identityUserId}`)
+  .configureLogging(LogLevel.Information)
+  .build();
+  setConnection(connection);
+  
     connection
       .start()
       .then(() => {

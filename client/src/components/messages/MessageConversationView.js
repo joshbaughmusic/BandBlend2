@@ -51,7 +51,10 @@ export const MessageConversationView = ({
   if (!messages) {
     return (
       <>
-        <div>Loading...</div>
+        <Typography
+          textAlign="center"
+          sx={{ mt: 1, mr: '24px' }}
+        >Loading...</Typography>
       </>
     );
   }
