@@ -30,3 +30,11 @@
       background-color: rgb(86, 72, 72);
       cursor: pointer;
 }
+
+.myMessageCard .css-46bh2p-MuiCardContent-root {
+  padding-bottom: 0px !important;
+}
+
+.myMessageCard .css-1rwjz6-MuiCardActions-root {
+  padding: 5px !important;
+}

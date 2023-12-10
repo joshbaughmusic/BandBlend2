@@ -47,7 +47,7 @@ export const DeleteAccountSettings = ({ setLoggedInUser }) => {
   return (
     <>
       <Container>
-        <div className='deleteaccount-container'>
+        <div className="deleteaccount-container">
           <Button
             variant="contained"
             onClick={() => setConfirmOpen(true)}
@@ -62,6 +62,7 @@ export const DeleteAccountSettings = ({ setLoggedInUser }) => {
         onClose={handleConfirmClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        sx={{ marginBottom: '10vh' }}
       >
         <DialogTitle id="alert-dialog-title">{'Discard Changes?'}</DialogTitle>
         <DialogContent>

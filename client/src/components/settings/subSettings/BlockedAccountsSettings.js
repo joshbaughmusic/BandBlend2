@@ -16,11 +16,13 @@ import {
 } from '@mui/material';
 import { dateFormatter } from '../../../utilities/dateFormatter.js';
 import { useSnackBar } from '../../context/SnackBarContext.js';
+import { useMessages } from '../../context/MessagesContext.js';
 
 export const BlockedAccountsSettings = () => {
   const [myBlockedAccounts, setMyBlockedAccounts] = useState();
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
+    const { getMyConversations } = useMessages();
 
   const getMyBlockedAccounts = () => {
     fetchMyBlockedAccounts().then(setMyBlockedAccounts);
@@ -38,6 +40,7 @@ export const BlockedAccountsSettings = () => {
           setSnackBarMessage('Account cannot be found.');
           handleSnackBarOpen();
         } else {
+          getMyConversations()
           setSuccessAlert(true);
           setSnackBarMessage('Successfully unblocked account.');
           handleSnackBarOpen();

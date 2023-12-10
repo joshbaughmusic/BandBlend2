@@ -1872,7 +1872,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
             UserProfileIdIdentityUserId1 = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
             UserProfileId2 = 2,
             UserProfileIdIdentityUserId2 = "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73",
-            LastMessageDate = null
+            LastMessageDate = new DateTime(2023, 11, 6, 12, 6, 0)
         },
         new MessageConversation
         {
@@ -1881,7 +1881,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
             UserProfileIdIdentityUserId1 = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
             UserProfileId2 = 3,
             UserProfileIdIdentityUserId2 = "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47",
-            LastMessageDate = null
+            LastMessageDate = new DateTime(2023, 11, 5, 12, 6, 0)
         },
         new MessageConversation
         {
@@ -1890,7 +1890,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
             UserProfileIdIdentityUserId1 = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
             UserProfileId2 = 4,
             UserProfileIdIdentityUserId2 = "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68",
-            LastMessageDate = null
+            LastMessageDate = new DateTime(2023, 11, 4, 12, 6, 0)
         }
         );
 

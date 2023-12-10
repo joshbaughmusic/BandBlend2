@@ -4,57 +4,46 @@ import { fetchMyMessagesByConversation } from '../../managers/messagesManager.js
 import { Message } from './Message.js';
 import { MessageConversationNewTextField } from './MessageConversationNewTextField.js';
 import { Typography } from '@mui/material';
+import { DeleteConversation } from './DeleteConversation.js';
 
-export const MessageConversationView = ({
-  loggedInUser,
-  connection,
-  conversation,
-}) => {
-  const [messages, setMessages] = useState();
-
+export const MessageConversationView = ({ loggedInUser, connection }) => {
   const {
-    openMessages,
-    setOpenMessages,
-    handleCloseMessages,
-    handleToggleMessages,
     activeConversationId,
-    setActiveConversationId,
-    newMessageView,
-    setNewMessageView,
+    messages,
+    getMyMessagesByConversation,
+    conversation,
   } = useMessages();
-
-  const getMyMessagesByConversation = () => {
-    fetchMyMessagesByConversation(activeConversationId).then(setMessages);
-  };
 
   useEffect(() => {
     getMyMessagesByConversation();
   }, [activeConversationId]);
 
+  // useEffect(() => {
+  //   if (connection) {
+  //     connection.on('SendMessage', (message) => {
+  //       console.log('message:', message);
+  //       setMessages((prevMessages) => [...prevMessages, message]);
+  //     });
+  //   }
+  // }, [connection]);
+
+  const el = document.getElementById(`message-container`);
+
   useEffect(() => {
-    if (connection) {
-      connection.on('SendMessage', (message) => {
-        console.log('message:', message);
-        setMessages((prevMessages) => [...prevMessages, message]);
-      });
+    if (el) {
+      el.scrollTop = el.scrollHeight;
     }
-  }, [connection]);
+  }, [messages]);
 
-  const el = document.getElementById(`message-container-${conversation.id}`);
-  
-  useEffect(() => {
-   if (el) {
-     el.scrollTop = el.scrollHeight;
-   }
-  }, [messages])
-
-  if (!messages) {
+  if (!messages || !conversation) {
     return (
       <>
         <Typography
           textAlign="center"
           sx={{ mt: 1, mr: '24px' }}
-        >Loading...</Typography>
+        >
+          Loading...
+        </Typography>
       </>
     );
   }
@@ -62,7 +51,7 @@ export const MessageConversationView = ({
   return (
     <>
       <div
-        id={`message-container-${conversation.id}`}
+        id={`message-container`}
         style={{
           overflow: 'auto',
           height: '435px',
@@ -70,11 +59,16 @@ export const MessageConversationView = ({
           position: 'relative',
         }}
       >
-        <Typography
-          variant="h6"
-          textAlign="center"
-          sx={{ mt: 1, mr: '24px' }}
-        >{`${conversation.userProfile.name}`}</Typography>
+       
+          <DeleteConversation />
+          <Typography
+            variant="h6"
+            textAlign="center"
+            sx={{ mt: 1, mr: '24px' }}
+          >
+            {`${conversation.userProfile.name}`}
+          </Typography>
+      
         {messages.map((m, index) => (
           <Message
             message={m}

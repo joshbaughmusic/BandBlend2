@@ -161,31 +161,31 @@ export const FeedStates = () => {
       </div>
       <Box
         sx={{
-          minHeight: "66px",
+          minHeight: '66px',
           border: 1,
           borderColor: 'divider',
           padding: 2,
           display: 'flex',
           flexDirection: 'row',
           flexWrap: 'wrap',
-          gap: "15px",
+          gap: '15px',
           justifyContent: 'flex-start',
         }}
       >
-        {feedStates.length === 0 ? 
-        <Typography>No followed states!</Typography>
-      :
-        feedStates.map((fs, index) => (
-          <Chip
-            key={index}
-            label={fs.state.name}
-            onDelete={() => handleDelete(fs.state.id)}
-            sx={{
-              width: "70px"
-            }}
-          />
-        ))
-      }
+        {feedStates.length === 0 ? (
+          <Typography>No followed states!</Typography>
+        ) : (
+          feedStates.map((fs, index) => (
+            <Chip
+              key={index}
+              label={fs.state.name}
+              onDelete={() => handleDelete(fs.state.id)}
+              sx={{
+                width: '70px',
+              }}
+            />
+          ))
+        )}
       </Box>
       <Modal
         open={openModal}
@@ -238,6 +238,7 @@ export const FeedStates = () => {
         onClose={handleConfirmClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        sx={{ marginBottom: '10vh' }}
       >
         <DialogTitle id="alert-dialog-title">{'Discard Changes?'}</DialogTitle>
         <DialogContent>

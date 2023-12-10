@@ -362,6 +362,7 @@ export const MyProfile = ({ loggedInUser }) => {
                       multiline
                       minRows={5}
                       fullWidth
+                      autoFocus={true}
                       value={updatedAbout}
                       onChange={(e) => setUpdatedAbout(e.target.value)}
                       error={error}
@@ -405,6 +406,7 @@ export const MyProfile = ({ loggedInUser }) => {
         onClose={handleConfirmClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        sx={{ marginBottom: '10vh' }}
       >
         <DialogTitle id="alert-dialog-title">{'Discard Changes?'}</DialogTitle>
         <DialogContent>

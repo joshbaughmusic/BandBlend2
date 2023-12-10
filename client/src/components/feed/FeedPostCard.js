@@ -75,7 +75,7 @@ export const FeedPostCard = ({ post, profile, page, loggedInUser }) => {
                 alt={profile.name}
               />
               <Typography
-              className='feedPost-name'
+                className="feedPost-name"
                 onClick={() => navigate(`/profile/${profile.profile.id}`)}
               >
                 {profile.name}
@@ -152,6 +152,7 @@ export const FeedPostCard = ({ post, profile, page, loggedInUser }) => {
         onClose={handleConfirmClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        sx={{ marginBottom: '10vh' }}
       >
         <DialogTitle id="alert-dialog-title">{'Discard Changes?'}</DialogTitle>
         <DialogContent>

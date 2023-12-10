@@ -96,6 +96,7 @@ export const EditComment = ({ comment, getCommentsForPost }) => {
           onClose={handleModalClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
+          sx={{ marginBottom: '20vh' }}
         >
           <Box sx={style}>
             <div className="divider-header-container">
@@ -139,6 +140,7 @@ export const EditComment = ({ comment, getCommentsForPost }) => {
         onClose={handleConfirmClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        sx={{ marginBottom: '10vh' }}
       >
         <DialogTitle id="alert-dialog-title">{'Discard Changes?'}</DialogTitle>
         <DialogContent>

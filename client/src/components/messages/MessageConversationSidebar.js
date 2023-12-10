@@ -11,18 +11,14 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import { useMessages } from '../context/MessagesContext.js';
 
-export const MessageConversationSidebar = ({ conversations }) => {
+export const MessageConversationSidebar = () => {
   const {
-    openMessages,
-    setOpenMessages,
-    handleCloseMessages,
-    handleToggleMessages,
     activeConversationId,
     setActiveConversationId,
     newMessageView,
     setNewMessageView,
-    selectedRecipient,
     setSelectedRecipient,
+    conversations,
   } = useMessages();
 
   if (!conversations) {
@@ -101,18 +97,18 @@ export const MessageConversationSidebar = ({ conversations }) => {
               </IconButton>
             </Tooltip>
           )}
-          {conversations.map((conversation) => (
+          {conversations.map((c) => (
             <div
               style={{
                 marginTop: '5px',
                 padding: '3px',
                 borderRadius: '50%',
                 backgroundColor:
-                  activeConversationId === conversation.id ? 'lightgrey' : '',
+                  activeConversationId === c.id ? 'lightgrey' : '',
               }}
             >
               <Tooltip
-                title={conversation.userProfile.name}
+                title={c.userProfile.name}
                 placement="right"
                 sx={{
                   zIndex: '2000',
@@ -121,12 +117,13 @@ export const MessageConversationSidebar = ({ conversations }) => {
                 <div
                   onClick={() => {
                     setNewMessageView(false);
-                    setActiveConversationId(conversation.id);
+                    setActiveConversationId(c.id);
                   }}
                 >
                   <Avatar
-                    alt={conversation.userProfile.name}
-                    src={conversation.userProfile.profile.profilePicture}
+                  sx={{width: "30px", height: "30px"}}
+                    alt={c.userProfile.name}
+                    src={c.userProfile.profile.profilePicture}
                   />
                 </div>
               </Tooltip>

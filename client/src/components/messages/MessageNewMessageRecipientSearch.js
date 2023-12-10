@@ -18,22 +18,16 @@ import { useNavigate } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useMessages } from '../context/MessagesContext.js';
 
-export const MessageNewMessageRecipient = ({ conversations }) => {
+export const MessageNewMessageRecipient = () => {
   const [searchTerms, setSearchTerms] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [currentSearch, setCurrentSearch] = useState(null);
   const navigate = useNavigate();
   const {
-    openMessages,
-    setOpenMessages,
-    handleCloseMessages,
-    handleToggleMessages,
-    activeConversationId,
     setActiveConversationId,
-    newMessageView,
     setNewMessageView,
-    selectedRecipient,
     setSelectedRecipient,
+    conversations,
   } = useMessages();
 
   const handleSearch = (currentSearch) => {
@@ -73,10 +67,14 @@ export const MessageNewMessageRecipient = ({ conversations }) => {
 
   return (
     <>
-      <FormGroup sx={{mt: 2}} className="messageSearchBar-parent">
+      <FormGroup
+        sx={{ mt: 2 }}
+        className="messageSearchBar-parent"
+      >
         <TextField
           label="Search for user..."
           value={searchTerms}
+          autoFocus={true}
           onChange={(e) => setSearchTerms(e.target.value)}
           InputProps={{
             endAdornment: (
