@@ -141,7 +141,7 @@ export const MyProfile = ({ loggedInUser }) => {
 
   return (
     <>
-      <Container>
+      <Container className='profile-container-all'>
         <Grid container>
           <Grid
             item

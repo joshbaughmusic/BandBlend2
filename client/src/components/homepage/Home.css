@@ -5,4 +5,20 @@
   justify-content: center;
   gap: 20px;
   margin: 7em 0em;
+  min-height: 115px;
+}
+
+.mainLogo {
+    animation: slideinleft-mainLogo 1s ease-in;
+
+}
+
+.subLogo {
+    animation: slideinright-subLogo 1s ease-in;
+
+}
+
+.latestThreeAndSearch {
+      animation: fadein-latestThreeAndSearch 1s ease-in;
+
 }

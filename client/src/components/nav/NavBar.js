@@ -122,11 +122,11 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
         <Drawer
           variant="permanent"
           open={open}
-          PaperProps={{
-            sx: {
-              backgroundColor: 'grey',
-            },
-          }}
+          // PaperProps={{
+          //   sx: {
+          //     backgroundColor: 'grey',
+          //   },
+          // }}
         >
           <DrawerHeader>
             {open ? (
@@ -338,11 +338,11 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
       <Drawer
         variant="permanent"
         open={open}
-        PaperProps={{
-          sx: {
-            backgroundColor: 'grey',
-          },
-        }}
+        // PaperProps={{
+        //   sx: {
+        //     backgroundColor: 'grey',
+        //   },
+        // }}
       >
         <DrawerHeader>
           {open ? (

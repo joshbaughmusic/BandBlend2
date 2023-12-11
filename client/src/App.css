@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -13,7 +14,7 @@ code {
 }
 
 html, #root {
-  background-color: rgb(136, 138, 138);
+  /* background-color: rgb(136, 138, 138); */
 }
 
 .appviews {

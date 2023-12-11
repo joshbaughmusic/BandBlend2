@@ -9,15 +9,9 @@ export const Home = ({loggedInUser}) => {
   return (
     <>
       <Container>
-    {/* {
-      loggedInUser.roles.includes("Admin") ?
-
-      <Typography variant="h6" textAlign="center">Admin view</Typography>
-      :
-      ''
-    } */}
         <div className="container-home-logos">
           <img
+            className="mainLogo"
             src={MainLogo}
             alt=""
             style={{
@@ -25,6 +19,7 @@ export const Home = ({loggedInUser}) => {
             }}
           />
           <img
+            className="subLogo"
             src={SubLogo}
             alt=""
             style={{
@@ -32,11 +27,11 @@ export const Home = ({loggedInUser}) => {
             }}
           />
         </div>
+        <div className="latestThreeAndSearch">
+          <HomeSearchbar />
 
-        <HomeSearchbar />
-        
-
-        <LatestThree loggedInUser={loggedInUser} />
+          <LatestThree loggedInUser={loggedInUser} />
+        </div>
       </Container>
     </>
   );
