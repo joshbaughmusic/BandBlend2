@@ -30,6 +30,7 @@ import NavLogo from '../../images/Bandblend_Logos/Logo-nav-black.png';
 import MainLogo from '../../images/Bandblend_Logos/Logo-top-black.png';
 import { Tooltip } from '@mui/material';
 import { logout } from '../../managers/authManager.js';
+import { useThemeContext } from '../context/ThemeContext.js';
 
 const drawerWidth = 240;
 
@@ -101,6 +102,7 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
+  const { darkMode, handleDarkModeClick } = useThemeContext();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -624,61 +626,6 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
             )}
           </ListItem>
 
-          {/* <ListItem
-            disablePadding
-            sx={{ display: 'block' }}
-          >
-            {open ? (
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <MailIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary={'Messages'}
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-            ) : (
-              <Tooltip
-                title="Messages"
-                placement="right"
-              >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <MailIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={'Messages'}
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </Tooltip>
-            )}
-          </ListItem> */}
           <ListItem
             disablePadding
             sx={{ display: 'block' }}
@@ -697,8 +644,9 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
                   }}
+                  onClick={() => handleDarkModeClick()}
                 >
-                  <DarkModeIcon />
+                  {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
                 </ListItemIcon>
                 <ListItemText
                   primary={'Theme'}
@@ -716,6 +664,7 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                     justifyContent: open ? 'initial' : 'center',
                     px: 2.5,
                   }}
+                  onClick={() => handleDarkModeClick()}
                 >
                   <ListItemIcon
                     sx={{
@@ -724,7 +673,7 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                       justifyContent: 'center',
                     }}
                   >
-                    <DarkModeIcon />
+                    {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
                   </ListItemIcon>
                   <ListItemText
                     primary={'Theme'}

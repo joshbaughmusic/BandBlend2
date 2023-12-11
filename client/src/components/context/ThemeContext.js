@@ -1,14 +1,28 @@
-import { Alert, Theme, createTheme } from '@mui/material';
-import { createContext, useContext } from 'react';
+import {
+  Alert,
+  CssBaseline,
+  Theme,
+  ThemeProvider,
+  createTheme,
+} from '@mui/material';
+import { dark } from '@mui/material/styles/createPalette';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 export const ThemeContext = createContext({});
 
-export const useTheme = () => {
+export const useThemeContext = () => {
   return useContext(ThemeContext);
 };
 
-export const theme = createTheme({
+export const themeLight = createTheme({
   palette: {
+    background: {
+      default: 'white',
+      paper: 'white',
+    },
+    text: {
+      primary: '#1D2625',
+    },
     primary: {
       main: '#8C4A4A',
       dark: '#602d2db4',
@@ -22,14 +36,49 @@ export const theme = createTheme({
   },
 });
 
-export const ThemeProvider = ({ children }) => {
+export const themeDark = createTheme({
+  palette: {
+    background: {
+      default: '#222222',
+      paper: '#8C4A4A',
+    },
+    text: {
+      primary: '#000000',
+    },
+    primary: {
+      main: '#1D2625',
+      dark: '#602d2db4',
+      light: '#9d5d5c',
+    },
+    secondary: {
+      main: '#1D2625',
+      dark: '#001220',
+      light: '#4F5957',
+    },
+  },
+});
+
+export const ThemeProviderContext = ({ children }) => {
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem('darkMode') ? true : false
+  );
+  const handleDarkModeClick = () => {
+    if (darkMode) {
+      localStorage.removeItem('darkMode');
+    } else {
+      localStorage.setItem('darkMode', true);
+    }
+    setDarkMode(!darkMode);
+  };
+
   return (
     <ThemeContext.Provider
-      value={{
-        theme,
-      }}
+      value={{ handleDarkModeClick, darkMode, setDarkMode }}
     >
-      {children}
+      <ThemeProvider theme={darkMode ? themeDark : themeLight}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
     </ThemeContext.Provider>
   );
 };
