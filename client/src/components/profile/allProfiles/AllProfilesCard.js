@@ -22,8 +22,9 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
       >
         <Grid
           item
-          xs={3}
-          md={1}
+          xs={2}
+          md={2}
+          sx={{ mr: { xs: 4, sm: 4, md: 0, lg: 0 } }}
         >
           <div className="allprofile-card-flexstack-img">
             {profile.profile.profilePicture ? (
@@ -34,7 +35,7 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
                 onClick={() => navigate(`/profile/${profile.id}`)}
               />
             ) : (
-              <Avatar sx={{height: "80px", width: "80px"}}></Avatar>
+              <Avatar sx={{ height: '80px', width: '80px' }}></Avatar>
             )}
           </div>
         </Grid>
@@ -48,7 +49,6 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
               variant="h6"
               onClick={() => navigate(`/profile/${profile.id}`)}
             >
-              
               {profile.name}
             </Typography>
             {profile.isBand ? (
@@ -74,7 +74,7 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
         <Grid
           item
           xs={3}
-          md={4}
+          md={2}
         >
           <div className="allprofile-card-flexstack">
             <Typography variant="h6">Tags</Typography>

@@ -55,7 +55,7 @@ export const AllProfiles = () => {
   return (
     <>
       <Container>
-        <div>
+        <div className='allProfilesContainer-all'>
           <AllProfilesSearchSortFilter
             setProfiles={setProfiles}
             setProfileCount={setProfileCount}

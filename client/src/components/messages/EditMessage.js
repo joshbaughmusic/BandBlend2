@@ -38,9 +38,7 @@ export const EditMessage = ({ message }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
-    const {
-      getMyMessagesByConversation,
-    } = useMessages();
+  const { getMyMessagesByConversation } = useMessages();
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
@@ -137,7 +135,7 @@ export const EditMessage = ({ message }) => {
               <Button
                 variant="contained"
                 onClick={handleSubmit}
-                sx={{mt: 2}}
+                sx={{ mt: 2 }}
               >
                 Submit
               </Button>

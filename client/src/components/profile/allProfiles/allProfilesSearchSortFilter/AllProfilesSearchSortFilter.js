@@ -65,7 +65,10 @@ export const AllProfilesSearchSortFilter = ({
   }, [searchTerms]);
 
   return (
-    <Grid container className='allprofiles-sortsearchfilter-container'>
+    <Grid
+      container
+      className="allprofiles-sortsearchfilter-container"
+    >
       <Grid
         item
         xs={6}
@@ -78,6 +81,7 @@ export const AllProfilesSearchSortFilter = ({
             value={searchTerms}
             label="Search"
             onChange={(e) => setSearchTerms(e.target.value)}
+            sx={{ mr: 1 }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -104,12 +108,11 @@ export const AllProfilesSearchSortFilter = ({
             id="filter"
             value={filterTerms}
             label="Filter"
+            sx={{ mr: 1 }}
             onChange={(e) => {
-              setFilterTerms(e.target.value)
-              setPage(1)
-            }
-
-            } 
+              setFilterTerms(e.target.value);
+              setPage(1);
+            }}
           >
             <MenuItem value={null}>--</MenuItem>
             <MenuItem value={'saved'}>Saved Only</MenuItem>

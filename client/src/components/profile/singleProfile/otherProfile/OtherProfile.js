@@ -245,7 +245,7 @@ export const OtherProfile = ({ loggedInUser }) => {
 
   return (
     <>
-      <Container>
+      <Container className="profile-container-all">
         <Grid container>
           <Grid
             item
@@ -531,7 +531,10 @@ export const OtherProfile = ({ loggedInUser }) => {
                   title="Message"
                   placement="bottom"
                 >
-                  <Button variant="contained" onClick={() => handleMessageClick()}>
+                  <Button
+                    variant="contained"
+                    onClick={() => handleMessageClick()}
+                  >
                     <MailIcon />
                   </Button>
                 </Tooltip>

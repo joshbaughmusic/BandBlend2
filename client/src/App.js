@@ -6,21 +6,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { NavBar } from './components/nav/NavBar.js';
 import { SnackBarProvider } from './components/context/SnackBarContext.js';
 import { MessagesProvider } from './components/context/MessagesContext.js';
-
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       main: '#8C4A4A',
-//       dark: '#602d2db4',
-//       light: '#9d5d5c',
-//     },
-//     secondary: {
-//       main: '#1D2625',
-//       dark: '#001220',
-//       light: '#4F5957',
-//     },
-//   },
-// });
+import './KeyFrames.css';
+import { useTheme } from '@emotion/react';
+import { ThemeProviderContext } from './components/context/ThemeContext.js';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState();
@@ -37,33 +25,33 @@ function App() {
 
   return (
     <>
-      {/* <ThemeProvider theme={theme}> */}
-      <SnackBarProvider>
-        {loggedInUser ? (
-          <MessagesProvider loggedInUser={loggedInUser}>
-            <NavBar
-              loggedInUser={loggedInUser}
-              setLoggedInUser={setLoggedInUser}
-            />
-            <ApplicationViews
-              loggedInUser={loggedInUser}
-              setLoggedInUser={setLoggedInUser}
-            />
-          </MessagesProvider>
-        ) : (
-          <>
-            <NavBar
-              loggedInUser={loggedInUser}
-              setLoggedInUser={setLoggedInUser}
-            />
-            <ApplicationViews
-              loggedInUser={loggedInUser}
-              setLoggedInUser={setLoggedInUser}
-            />
-          </>
-        )}
-      </SnackBarProvider>
-      {/* </ThemeProvider> */}
+      <ThemeProviderContext>
+          <SnackBarProvider>
+            {loggedInUser ? (
+              <MessagesProvider loggedInUser={loggedInUser}>
+                <NavBar
+                  loggedInUser={loggedInUser}
+                  setLoggedInUser={setLoggedInUser}
+                />
+                <ApplicationViews
+                  loggedInUser={loggedInUser}
+                  setLoggedInUser={setLoggedInUser}
+                />
+              </MessagesProvider>
+            ) : (
+              <>
+                <NavBar
+                  loggedInUser={loggedInUser}
+                  setLoggedInUser={setLoggedInUser}
+                />
+                <ApplicationViews
+                  loggedInUser={loggedInUser}
+                  setLoggedInUser={setLoggedInUser}
+                />
+              </>
+            )}
+          </SnackBarProvider>
+      </ThemeProviderContext>
     </>
   );
 }
