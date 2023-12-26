@@ -6,7 +6,6 @@ import { AdminAdditionalPhotosItem } from '../../adminViews/adminPhotos/adminAdd
 
 export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
   const [photos, setPhotos] = useState();
-  const [picPopUp, setPicPopUp] = useState(null);
 
   const getOtherAdditonalPhotos = () => {
     fetchOtherAdditionalPhotos(profile.id).then(setPhotos);
@@ -76,16 +75,14 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
             <AdminAdditionalPhotosItem
               key={index}
               photo={p}
-              setPicPopUp={setPicPopUp}
-              picPopUp={picPopUp}
+            
               getOtherAdditonalPhotos={getOtherAdditonalPhotos}
             />
           ) : (
             <OtherAdditionalPhotosItem
               key={index}
               photo={p}
-              setPicPopUp={setPicPopUp}
-              picPopUp={picPopUp}
+              
             />
           )
         )}

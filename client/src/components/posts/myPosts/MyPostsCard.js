@@ -141,6 +141,7 @@ export const MyPostsCard = ({
             )}
           </div>
         </CardActions>
+      </Card>
         <Collapse
           in={expanded}
           timeout="auto"
@@ -157,7 +158,6 @@ export const MyPostsCard = ({
             />
           </CardContent>
         </Collapse>
-      </Card>
       <Dialog
         open={confirmOpen}
         onClose={handleConfirmClose}

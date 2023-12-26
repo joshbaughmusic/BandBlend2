@@ -131,6 +131,7 @@ export const FeedPostCard = ({ post, profile, page, loggedInUser }) => {
             )}
           </div>
         </CardActions>
+      </Card>
         <Collapse
           in={expanded}
           timeout="auto"
@@ -146,7 +147,6 @@ export const FeedPostCard = ({ post, profile, page, loggedInUser }) => {
             />
           </CardContent>
         </Collapse>
-      </Card>
       <Dialog
         open={confirmOpen}
         onClose={handleConfirmClose}
