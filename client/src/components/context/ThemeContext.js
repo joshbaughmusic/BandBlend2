@@ -1,12 +1,9 @@
 import {
-  Alert,
   CssBaseline,
-  Theme,
   ThemeProvider,
   createTheme,
 } from '@mui/material';
-import { dark } from '@mui/material/styles/createPalette';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 export const ThemeContext = createContext({});
 
