@@ -4,6 +4,7 @@ import {
   createTheme,
 } from '@mui/material';
 import { createContext, useContext, useState } from 'react';
+import "./AdditionalThemeCss.css"
 
 export const ThemeContext = createContext({});
 
@@ -15,7 +16,7 @@ export const themeLight = createTheme({
   palette: {
     background: {
       default: 'white',
-      paper: 'white',
+      paper:"#E3E3E3"
     },
     text: {
       primary: '#1D2625',

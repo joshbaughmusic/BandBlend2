@@ -28,10 +28,7 @@ export const LatestThree = ({ loggedInUser }) => {
     return (
       <>
         <Container>
-          <Paper
-            elevation={4}
-            className="profile-right-section-item feed-container"
-          >
+         
             <Typography
               sx={{ m: 1, textAlign: 'center' }}
               variant="h6"
@@ -46,7 +43,7 @@ export const LatestThree = ({ loggedInUser }) => {
                   <FeedPostSkeleton key={index} />
                 ))}
             </div>
-          </Paper>
+         
         </Container>
       </>
     );
@@ -56,10 +53,7 @@ export const LatestThree = ({ loggedInUser }) => {
     return (
       <>
         <Container>
-          <Paper
-            elevation={4}
-            className="profile-right-section-item feed-container"
-          >
+         
             <Typography
               sx={{ m: 1, textAlign: 'center' }}
               variant="h4"
@@ -83,7 +77,7 @@ export const LatestThree = ({ loggedInUser }) => {
               </span>{' '}
               or follow some other users to see expand your feed.
             </Typography>
-          </Paper>
+       
         </Container>
       </>
     );
@@ -92,11 +86,7 @@ export const LatestThree = ({ loggedInUser }) => {
   return (
     <>
       <Container>
-        <Paper
-          elevation={4}
-          className="profile-right-section-item feed-container"
-          
-        >
+       
           <Typography
             sx={{ m: 1, textAlign: 'center' }}
             variant="h6"
@@ -115,7 +105,7 @@ export const LatestThree = ({ loggedInUser }) => {
             ))}
           </div>
          
-        </Paper>
+        
       </Container>
     </>
   );
