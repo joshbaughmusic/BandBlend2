@@ -48,7 +48,7 @@ export const DeletePost = ({ postId, getUserPosts }) => {
     <>
       <Tooltip
         title="Delete"
-        placement="left-start"
+        placement="top"
       >
         <IconButton onClick={handleDeleteClick}>
           <DeleteIcon />

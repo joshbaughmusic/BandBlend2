@@ -47,7 +47,7 @@ export const AdminDeleteComment = ({ commentId, getCommentsForPost, getUserPosts
     <>
       <Tooltip
         title="Delete"
-        placement="right"
+        placement="top"
       >
         <IconButton onClick={handleDeleteClick}>
           <DeleteIcon />

@@ -47,7 +47,7 @@ export const DeleteComment = ({ commentId, getCommentsForPost, getUserPosts }) =
     <>
       <Tooltip
         title="Delete"
-        placement="left-start"
+        placement="top"
       >
         <IconButton onClick={handleDeleteClick}>
           <DeleteIcon />

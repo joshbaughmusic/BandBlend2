@@ -91,7 +91,7 @@ useEffect(() => {
     <>
       <Tooltip
         title="Edit"
-        placement="right-start"
+        placement="top"
       >
         <IconButton onClick={handleModalOpen}>
           <EditIcon />
