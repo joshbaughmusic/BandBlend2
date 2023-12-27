@@ -4,15 +4,17 @@
 }
 
 .nav-drawer-header-logo {
-    width: 150px;
-    margin-right: 17px;
+  width: 150px;
+  margin-right: 17px;
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.css-zispzx-MuiList-root,
+.css-1r9jet7,
+.css-cwerg2-MuiListItem-root,
+.css-wlnzx3-MuiListItem-root {
+  background-color: var(--nav-bar);
+}
+
+.css-9mgopn-MuiDivider-root {
+  background-color: var(--nav-bar-divider);
 }

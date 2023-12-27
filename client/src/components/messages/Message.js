@@ -15,7 +15,10 @@ export const Message = ({ message, loggedInUser }) => {
   return (
     <>
       {loggedInUser.identityUserId === message.senderIdentityUserId ? (
-        <Card sx={{ my: 2, mr: 6, backgroundColor: 'lightgrey' }} className='myMessageCard'>
+        <Card
+          sx={{ my: 2, mr: 6 }}
+          className="myMessageCard"
+        >
           <CardContent>
             <div
               style={{
@@ -47,7 +50,10 @@ export const Message = ({ message, loggedInUser }) => {
           </CardActions>
         </Card>
       ) : (
-        <Card sx={{ my: 2, mr: 2, ml: 4, backgroundColor: 'darkgrey' }}>
+        <Card
+          sx={{ my: 2, mr: 2, ml: 4 }}
+          className="otherMessageCard"
+        >
           <CardContent>
             <div
               style={{

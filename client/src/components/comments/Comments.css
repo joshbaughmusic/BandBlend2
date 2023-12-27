@@ -33,14 +33,15 @@
 
 .comment-card {
   margin-bottom: 20px;
+  background: var(--comment-background) !important;
 }
 
 .new-comment-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 .comment-card-footer-left {

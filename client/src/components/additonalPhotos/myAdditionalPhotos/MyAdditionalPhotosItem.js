@@ -12,15 +12,11 @@ import { useSnackBar } from '../../context/SnackBarContext.js';
 import { useState } from 'react';
 import { fetchDeleteAdditionalPhoto } from '../../../managers/additonalPhotosManager.js';
 
-export const MyAdditionalPhotosItem = ({
-  photo,
-  getMyAdditonalPhotos,
-  picPopUp,
-  setPicPopUp,
-}) => {
+export const MyAdditionalPhotosItem = ({ photo, getMyAdditonalPhotos }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
+  const [picPopUp, setPicPopUp] = useState(null);
 
   const handleConfirmClick = () => {
     fetchDeleteAdditionalPhoto(photo.id).then((res) => {
@@ -81,8 +77,18 @@ export const MyAdditionalPhotosItem = ({
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleConfirmClick()}>Delete</Button>
-          <Button onClick={handleConfirmClose}>Cancel</Button>
+          <Button
+            variant="contained"
+            onClick={() => handleConfirmClick()}
+          >
+            Delete
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleConfirmClose}
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </>

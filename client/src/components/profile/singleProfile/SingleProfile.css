@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.24);
   border-radius: 4px;
   padding: 2em;
   margin: 20px 10px 10px 10px;
@@ -38,11 +38,10 @@
 }
 
 .profile-right-section-item {
-  border: 2px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.24);
   border-radius: 4px;
   padding: 2em;
-    margin: 20px 10px 20px 10px;
-
+  margin: 20px 10px 20px 10px;
 }
 
 .profile-section-header {
@@ -83,10 +82,12 @@
   overflow: hidden;
   cursor: pointer;
   border-radius: 50%;
+    border: 2px solid rgba(97, 97, 97, 0.627);
+
 }
 
 .profilePic {
-   width: 125px;
+  width: 125px;
   height: 125px;
   transition: all 0.3s linear;
   object-fit: cover;
@@ -111,6 +112,5 @@
 }
 
 .profile-container-all {
-        animation: fadein-profile .5s ease-in;
-
+  animation: fadein-profile 0.5s ease-in;
 }

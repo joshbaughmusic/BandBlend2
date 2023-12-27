@@ -26,8 +26,10 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
-import NavLogo from '../../images/Bandblend_Logos/Logo-nav-black.png';
-import MainLogo from '../../images/Bandblend_Logos/Logo-top-black.png';
+import NavLogoBlack from '../../images/Bandblend_Logos/Logo-nav-black.png';
+import NavLogoWhite from '../../images/Bandblend_Logos/Logo-nav-white.png';
+import MainLogoBlack from '../../images/Bandblend_Logos/Logo-top-black.png';
+import MainLogoWhite from '../../images/Bandblend_Logos/Logo-top-white.png';
 import { Tooltip } from '@mui/material';
 import { logout } from '../../managers/authManager.js';
 import { useThemeContext } from '../context/ThemeContext.js';
@@ -133,11 +135,19 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
           <DrawerHeader>
             {open ? (
               <>
-                <img
-                  className="nav-drawer-header-logo"
-                  src={MainLogo}
-                  alt=""
-                />
+                {darkMode ? (
+                  <img
+                    className="nav-drawer-header-logo"
+                    src={MainLogoWhite}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    className="nav-drawer-header-logo"
+                    src={MainLogoBlack}
+                    alt=""
+                  />
+                )}
                 <IconButton onClick={handleDrawerClose}>
                   {theme.direction === 'rtl' ? (
                     <ChevronRightIcon />
@@ -163,11 +173,19 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                   }}
                 >
                   {/* <MenuIcon /> */}
-                  <img
-                    className="navlogo"
-                    src={NavLogo}
-                    alt=""
-                  />
+                  {darkMode ? (
+                    <img
+                      className="navlogo"
+                      src={NavLogoWhite}
+                      alt=""
+                    />
+                  ) : (
+                    <img
+                      className="navlogo"
+                      src={NavLogoBlack}
+                      alt=""
+                    />
+                  )}
                 </IconButton>
               </Tooltip>
             )}
@@ -349,11 +367,19 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
         <DrawerHeader>
           {open ? (
             <>
-              <img
-                className="nav-drawer-header-logo"
-                src={MainLogo}
-                alt=""
-              />
+              {darkMode ? (
+                <img
+                  className="nav-drawer-header-logo"
+                  src={MainLogoWhite}
+                  alt=""
+                />
+              ) : (
+                <img
+                  className="nav-drawer-header-logo"
+                  src={MainLogoBlack}
+                  alt=""
+                />
+              )}
               <IconButton onClick={handleDrawerClose}>
                 {theme.direction === 'rtl' ? (
                   <ChevronRightIcon />
@@ -379,11 +405,19 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                 }}
               >
                 {/* <MenuIcon /> */}
-                <img
-                  className="navlogo"
-                  src={NavLogo}
-                  alt=""
-                />
+                {darkMode ? (
+                  <img
+                    className="navlogo"
+                    src={NavLogoWhite}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    className="navlogo"
+                    src={NavLogoBlack}
+                    alt=""
+                  />
+                )}
               </IconButton>
             </Tooltip>
           )}
@@ -637,6 +671,7 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                onClick={() => handleDarkModeClick()}
               >
                 <ListItemIcon
                   sx={{
@@ -644,7 +679,6 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
                   }}
-                  onClick={() => handleDarkModeClick()}
                 >
                   {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
                 </ListItemIcon>

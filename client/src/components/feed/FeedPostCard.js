@@ -37,7 +37,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const FeedPostCard = ({ post, profile, page, loggedInUser }) => {
+export const FeedPostCard = ({ post, profile, page, loggedInUser, getUserFeed }) => {
   const [expanded, setExpanded] = useState(false);
   //defining newComment state here so when expanded is clicked, warning can be given if there is a comment in progress
   const [newComment, setNewComment] = useState('');
@@ -77,6 +77,7 @@ export const FeedPostCard = ({ post, profile, page, loggedInUser }) => {
               <Typography
                 className="feedPost-name"
                 onClick={() => navigate(`/profile/${profile.profile.id}`)}
+                style={{ fontWeight: 'bold' }}
               >
                 {profile.name}
               </Typography>
@@ -131,22 +132,23 @@ export const FeedPostCard = ({ post, profile, page, loggedInUser }) => {
             )}
           </div>
         </CardActions>
-        <Collapse
-          in={expanded}
-          timeout="auto"
-          unmountOnExit
-        >
-          <CardContent>
-            <CommentsSection
-              profile={profile}
-              loggedInUser={loggedInUser}
-              post={post}
-              newComment={newComment}
-              setNewComment={setNewComment}
-            />
-          </CardContent>
-        </Collapse>
       </Card>
+      <Collapse
+        in={expanded}
+        timeout="auto"
+        unmountOnExit
+      >
+        <CardContent>
+          <CommentsSection
+            profile={profile}
+            loggedInUser={loggedInUser}
+            post={post}
+            newComment={newComment}
+            setNewComment={setNewComment}
+            getUserPosts={getUserFeed}
+          />
+        </CardContent>
+      </Collapse>
       <Dialog
         open={confirmOpen}
         onClose={handleConfirmClose}
@@ -161,8 +163,18 @@ export const FeedPostCard = ({ post, profile, page, loggedInUser }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleConfirmClose()}>Discard Changes</Button>
-          <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+          <Button
+            variant="contained"
+            onClick={() => handleConfirmClose()}
+          >
+            Discard Changes
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => setConfirmOpen(false)}
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </>

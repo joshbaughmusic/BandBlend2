@@ -47,7 +47,7 @@ export const RegisterSocials = ({facebook, instagram, spotify, tikTok, setFacebo
             <InputLabel htmlFor="outlined-facebook">{`Facebook URL`}</InputLabel>
             <OutlinedInput
               id="outlined-facebook"
-              label="Facebook"
+              label="Facebook URL"
               value={facebook}
               onChange={(e) => {
                 // setError(false);
@@ -60,7 +60,7 @@ export const RegisterSocials = ({facebook, instagram, spotify, tikTok, setFacebo
             <InputLabel htmlFor="outlined-instagram">{`Instagram URL`}</InputLabel>
             <OutlinedInput
               id="outlined-instagram"
-              label="Instagram"
+              label="Instagram URL"
               value={instagram}
               onChange={(e) => {
                 // setError(false);
@@ -73,7 +73,7 @@ export const RegisterSocials = ({facebook, instagram, spotify, tikTok, setFacebo
             <InputLabel htmlFor="outlined-spotify">{`Spotify URL`}</InputLabel>
             <OutlinedInput
               id="outlined-spotify"
-              label="Spotify"
+              label="Spotify URL"
               value={spotify}
               onChange={(e) => {
                 // setError(false);
@@ -86,7 +86,7 @@ export const RegisterSocials = ({facebook, instagram, spotify, tikTok, setFacebo
             <InputLabel htmlFor="outlined-tikTok">{`TikTok URL`}</InputLabel>
             <OutlinedInput
               id="outlined-tikTok"
-              label="TikTok"
+              label="TikTok URL"
               value={tikTok}
               onChange={(e) => {
                 // setError(false);

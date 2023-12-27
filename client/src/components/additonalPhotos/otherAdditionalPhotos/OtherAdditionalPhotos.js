@@ -6,7 +6,6 @@ import { AdminAdditionalPhotosItem } from '../../adminViews/adminPhotos/adminAdd
 
 export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
   const [photos, setPhotos] = useState();
-  const [picPopUp, setPicPopUp] = useState(null);
 
   const getOtherAdditonalPhotos = () => {
     fetchOtherAdditionalPhotos(profile.id).then(setPhotos);
@@ -24,7 +23,7 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
           <>
             <div className="divider-header-container">
               <Typography variant="h6">Additional Photos</Typography>
-              <Divider />
+              <Divider style={{ marginTop: '4px' }} />
             </div>
             <div>No photos yet!</div>
           </>
@@ -32,7 +31,7 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
           <>
             <div className="divider-header-container">
               <Typography variant="h6">Additional Photos</Typography>
-              <Divider />
+              <Divider style={{ marginTop: '4px' }} />
             </div>
             <div className="additional-pictures-container">
               {Array(profile.profile.photoCount)
@@ -57,7 +56,7 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
       <>
         <div className="divider-header-container">
           <Typography variant="h6">Additional Photos</Typography>
-          <Divider />
+          <Divider style={{ marginTop: '4px' }} />
         </div>
         <div>No photos yet!</div>
       </>
@@ -68,7 +67,7 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
     <>
       <div className="divider-header-container">
         <Typography variant="h6">Additional Photos</Typography>
-        <Divider />
+        <Divider style={{ marginTop: '4px' }} />
       </div>
       <div className="additional-pictures-container">
         {photos.map((p, index) =>
@@ -76,16 +75,12 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
             <AdminAdditionalPhotosItem
               key={index}
               photo={p}
-              setPicPopUp={setPicPopUp}
-              picPopUp={picPopUp}
               getOtherAdditonalPhotos={getOtherAdditonalPhotos}
             />
           ) : (
             <OtherAdditionalPhotosItem
               key={index}
               photo={p}
-              setPicPopUp={setPicPopUp}
-              picPopUp={picPopUp}
             />
           )
         )}

@@ -78,7 +78,9 @@ export const MyPostsCard = ({
                 src={profile.profile.profilePicture}
                 alt={profile.name}
               />
-              <Typography>{profile.name}</Typography>
+              <Typography style={{ fontWeight: 'bold' }}>
+                {profile.name}
+              </Typography>
             </div>
             <Typography>{dateFormatter(post.date)}</Typography>
           </div>
@@ -141,23 +143,23 @@ export const MyPostsCard = ({
             )}
           </div>
         </CardActions>
-        <Collapse
-          in={expanded}
-          timeout="auto"
-          unmountOnExit
-        >
-          <CardContent>
-            <CommentsSection
-              profile={profile}
-              post={post}
-              newComment={newComment}
-              setNewComment={setNewComment}
-              loggedInUser={loggedInUser}
-              getUserPosts={getUserPosts}
-            />
-          </CardContent>
-        </Collapse>
       </Card>
+      <Collapse
+        in={expanded}
+        timeout="auto"
+        unmountOnExit
+      >
+        <CardContent>
+          <CommentsSection
+            profile={profile}
+            post={post}
+            newComment={newComment}
+            setNewComment={setNewComment}
+            loggedInUser={loggedInUser}
+            getUserPosts={getUserPosts}
+          />
+        </CardContent>
+      </Collapse>
       <Dialog
         open={confirmOpen}
         onClose={handleConfirmClose}
@@ -172,8 +174,18 @@ export const MyPostsCard = ({
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleConfirmClose()}>Discard Changes</Button>
-          <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+          <Button
+            variant="contained"
+            onClick={() => handleConfirmClose()}
+          >
+            Discard Changes
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => setConfirmOpen(false)}
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </>

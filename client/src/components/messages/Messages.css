@@ -5,30 +5,49 @@
   margin: 10px 0;
 }
 
+.messages-sidebar {
+  background-color: var(--messages-sidebar);
+  border-right: var(--messageDivider);
+}
+
+.messages-sidebar-avatar:hover {
+  cursor: pointer;
+  background-color: #b87474;
+}
+
+.myMessageCard {
+  background-color: var(--messagePrimary) !important;
+}
+
+.otherMessageCard {
+  background-color: var(--messageSecondary) !important;
+}
+
 .messageSearchBar-parent {
-    position: relative;
-    max-width: 800px;
-    margin: 0px auto 60px auto;
+  position: relative;
+  max-width: 800px;
+  margin: 0px auto 60px auto;
 }
 
 .messageSearchBar-list {
-    position: absolute;
-    top: 56px;
-    background-color: rgb(119, 117, 117);
-    min-width: 100%;
-    max-height: 200px;
-    overflow: auto;
-    border-radius: 4px;
-    z-index: 1000;
+  position: absolute;
+  top: 56px;
+  background-color: var(--search-list);
+  min-width: 100%;
+  max-height: 200px;
+  overflow: auto;
+  border-radius: 4px;
+  z-index: 1000;
+  border: 1px solid var(--search-list-border);
 }
 
 .messageSearchBar-list .css-1p823my-MuiListItem-root {
   opacity: 1 !important;
 }
 
-.messageSearchBar-list .css-1p823my-MuiListItem-root:hover {
-      background-color: rgb(86, 72, 72);
-      cursor: pointer;
+.messageSearchBar-list .css-4f6uum-MuiListItem-root:hover {
+  background-color: var(--search-list-hover);
+  cursor: pointer;
 }
 
 .myMessageCard .css-46bh2p-MuiCardContent-root {
@@ -37,4 +56,8 @@
 
 .myMessageCard .css-1rwjz6-MuiCardActions-root {
   padding: 5px !important;
+}
+
+.messagesNewTextField {
+  background-color: var(--messagesNewTextField);
 }

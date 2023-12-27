@@ -15,14 +15,14 @@ import { fetchUserFeed } from '../../managers/feedManager.js';
 import { FeedPostCard } from './FeedPostCard.js';
 import { useNavigate } from 'react-router-dom';
 import { FeedPostSkeleton } from './FeedPostSkeleton.js';
-import "./Feed.css"
+import './Feed.css';
 
 export const MyFeed = ({ loggedInUser }) => {
   const [feedPosts, setFeedPosts] = useState();
   const [feedPostCount, setFeedPostCount] = useState(0);
   const [page, setPage] = useState(1);
   const [amountPerPage, setAmountPerPage] = useState(5);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const getUserFeed = () => {
     fetchUserFeed(page, amountPerPage).then((res) => {
@@ -56,7 +56,7 @@ export const MyFeed = ({ loggedInUser }) => {
               sx={{ m: 1, textAlign: 'center' }}
               variant="h6"
             >
-              Recent Activity:
+              Feed:
             </Typography>
             <Divider sx={{ mb: 3 }} />
             <div>
@@ -84,7 +84,7 @@ export const MyFeed = ({ loggedInUser }) => {
               sx={{ m: 1, textAlign: 'center' }}
               variant="h6"
             >
-              Recent Activity:
+              Feed:
             </Typography>
             <Divider sx={{ mb: 3 }} />
             <Typography
@@ -93,9 +93,7 @@ export const MyFeed = ({ loggedInUser }) => {
             >
               Wow, much empty...
             </Typography>
-            <Typography
-              sx={{ mt: 3, textAlign: 'center' }}
-            >
+            <Typography sx={{ mt: 3, textAlign: 'center' }}>
               Adjust your{' '}
               <span
                 onClick={() => navigate('/settings')}
@@ -122,7 +120,7 @@ export const MyFeed = ({ loggedInUser }) => {
             sx={{ m: 1, textAlign: 'center' }}
             variant="h6"
           >
-            Recent Activity:
+            Feed:
           </Typography>
           <Divider sx={{ mb: 3 }} />
           <div>

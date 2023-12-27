@@ -67,8 +67,18 @@ export const AdminDeletePost = ({ postId, getUserPosts }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleConfirmClick()}>Delete</Button>
-          <Button onClick={handleConfirmClose}>Cancel</Button>
+          <Button
+            variant="contained"
+            onClick={() => handleConfirmClick()}
+          >
+            Delete
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleConfirmClose}
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </>

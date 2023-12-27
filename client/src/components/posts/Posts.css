@@ -54,6 +54,7 @@
 
 .post-card {
   margin-bottom: 20px;
+  background: var(--post-background) !important;
 }
 
 /* .commentCount-chip {

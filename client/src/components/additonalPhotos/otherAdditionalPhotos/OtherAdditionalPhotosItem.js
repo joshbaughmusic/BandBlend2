@@ -1,8 +1,14 @@
-export const OtherAdditionalPhotosItem = ({ photo, picPopUp, setPicPopUp }) => {
+import { useState } from 'react';
+
+export const OtherAdditionalPhotosItem = ({ photo }) => {
+  const [picPopUp, setPicPopUp] = useState(null);
 
   return (
     <>
-      <div className="photoItem" onClick={() => setPicPopUp(photo)}>
+      <div
+        className="photoItem"
+        onClick={() => setPicPopUp(photo)}
+      >
         <img
           className="additional-photo"
           src={photo.url}

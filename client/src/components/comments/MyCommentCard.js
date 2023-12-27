@@ -36,6 +36,7 @@ export const MyCommentCard = ({
               <Typography
                 onClick={() => navigate(`/profile/me`)}
                 className="comment-name-clickable"
+                style={{ fontWeight: 'bold' }}
               >
                 {comment.userProfile.name}
               </Typography>

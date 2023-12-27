@@ -95,7 +95,6 @@ export const LatestThree = ({ loggedInUser }) => {
         <Paper
           elevation={4}
           className="profile-right-section-item feed-container"
-          
         >
           <Typography
             sx={{ m: 1, textAlign: 'center' }}
@@ -111,10 +110,10 @@ export const LatestThree = ({ loggedInUser }) => {
                 post={p}
                 key={`${p.id}-${index}`}
                 loggedInUser={loggedInUser}
+                getUserFeed={getUserFeed}
               />
             ))}
           </div>
-         
         </Paper>
       </Container>
     </>

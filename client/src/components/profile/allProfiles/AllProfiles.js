@@ -84,7 +84,6 @@ export const AllProfiles = () => {
               ))
             )}
           </div>
-        </div>
         <div className="pagination-allprofiles-container">
           <Pagination
             count={Math.ceil(profileCount / amountPerPage)}
@@ -108,6 +107,7 @@ export const AllProfiles = () => {
               <MenuItem value={20}>20</MenuItem>
             </Select>
           </FormControl>
+        </div>
         </div>
       </Container>
     </>

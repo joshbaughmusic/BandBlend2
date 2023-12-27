@@ -173,7 +173,10 @@ export const EditTags = ({ profile, getCurrentUserWithProfile }) => {
         title="Edit"
         placement="right-start"
       >
-        <IconButton onClick={handleModalOpen}>
+        <IconButton
+          style={{ marginRight: '-4px', marginLeft: '4px' }}
+          onClick={handleModalOpen}
+        >
           <EditIcon />
         </IconButton>
       </Tooltip>
@@ -251,8 +254,18 @@ export const EditTags = ({ profile, getCurrentUserWithProfile }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleConfirmClose()}>Discard Changes</Button>
-          <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+          <Button
+            variant="contained"
+            onClick={() => handleConfirmClose()}
+          >
+            Discard Changes
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => setConfirmOpen(false)}
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </>

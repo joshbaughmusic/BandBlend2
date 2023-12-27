@@ -25,15 +25,15 @@ export const MessageConversationSidebar = () => {
     return (
       <>
         <div
+          className="messages-sidebar"
           style={{
             position: 'absolute',
             left: 0,
             width: 60,
-            height: '435px',
+            height: '438px',
             overflow: 'auto',
-            borderRight: '1px solid black',
+            borderRight: '1px solid #C7C7C7',
             zIndex: '2000',
-            background: 'white',
           }}
         >
           <div
@@ -51,15 +51,14 @@ export const MessageConversationSidebar = () => {
   return (
     <>
       <div
+        className="messages-sidebar"
         style={{
           position: 'absolute',
           left: 0,
           width: 60,
-          height: '435px',
+          height: '438px',
           overflow: 'auto',
-          borderRight: '1px solid black',
           zIndex: '1500',
-          background: 'white',
         }}
       >
         <div
@@ -89,7 +88,7 @@ export const MessageConversationSidebar = () => {
                 onClick={() => {
                   setNewMessageView(true);
                   setActiveConversationId(null);
-                  setSelectedRecipient(null)
+                  setSelectedRecipient(null);
                 }}
                 sx={{ mt: '5px' }}
               >
@@ -99,12 +98,12 @@ export const MessageConversationSidebar = () => {
           )}
           {conversations.map((c) => (
             <div
+              className="messages-sidebar-avatar"
               style={{
                 marginTop: '5px',
                 padding: '3px',
                 borderRadius: '50%',
-                backgroundColor:
-                  activeConversationId === c.id ? 'lightgrey' : '',
+                backgroundColor: activeConversationId === c.id ? '#8C4A4A' : '',
               }}
             >
               <Tooltip
@@ -121,7 +120,7 @@ export const MessageConversationSidebar = () => {
                   }}
                 >
                   <Avatar
-                  sx={{width: "30px", height: "30px"}}
+                    sx={{ width: '30px', height: '30px' }}
                     alt={c.userProfile.name}
                     src={c.userProfile.profile.profilePicture}
                   />

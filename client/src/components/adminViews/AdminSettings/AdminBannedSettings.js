@@ -188,12 +188,18 @@ export const AdminBannedSettings = () => {
                       </DialogContent>
                       <DialogActions>
                         <Button
+                          variant="contained"
                           value={a.identityUserId}
                           onClick={(e) => handleDeleteUserProfile(e)}
                         >
                           Delete
                         </Button>
-                        <Button onClick={handleConfirmClose}>Cancel</Button>
+                        <Button
+                          variant="contained"
+                          onClick={handleConfirmClose}
+                        >
+                          Cancel
+                        </Button>
                       </DialogActions>
                     </Dialog>
                   </>

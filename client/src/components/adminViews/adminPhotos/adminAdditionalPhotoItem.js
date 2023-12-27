@@ -14,12 +14,11 @@ import { fetchAdminDeleteOtherAdditionalPhoto } from '../../../managers/adminFun
 export const AdminAdditionalPhotosItem = ({
   photo,
   getOtherAdditonalPhotos,
-  picPopUp,
-  setPicPopUp,
 }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
+  const [picPopUp, setPicPopUp] = useState(null);
 
   const handleConfirmClick = () => {
     fetchAdminDeleteOtherAdditionalPhoto(photo.id).then((res) => {
@@ -80,8 +79,18 @@ export const AdminAdditionalPhotosItem = ({
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleConfirmClick()}>Delete</Button>
-          <Button onClick={handleConfirmClose}>Cancel</Button>
+          <Button
+            variant="contained"
+            onClick={() => handleConfirmClick()}
+          >
+            Delete
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleConfirmClose}
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </>

@@ -72,26 +72,26 @@ export const OtherProfile = ({ loggedInUser }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
-     const {
-       openMessages,
-       setOpenMessages,
-       handleToggleMessages,
-       handleCloseMessages,
-       activeConversationId,
-       setActiveConversationId,
-       newMessageView,
-       setNewMessageView,
-       selectedRecipient,
-       setSelectedRecipient,
-       messages,
-       setMessages,
-       getMyMessagesByConversation,
-       getMyConversations,
-       conversations,
-       setConversations,
-       conversation,
-       setConversation,
-     } = useMessages();
+  const {
+    openMessages,
+    setOpenMessages,
+    handleToggleMessages,
+    handleCloseMessages,
+    activeConversationId,
+    setActiveConversationId,
+    newMessageView,
+    setNewMessageView,
+    selectedRecipient,
+    setSelectedRecipient,
+    messages,
+    setMessages,
+    getMyMessagesByConversation,
+    getMyConversations,
+    conversations,
+    setConversations,
+    conversation,
+    setConversation,
+  } = useMessages();
   const [actionPicked, setActionPicked] = useState('');
 
   const getOtherUserWithProfile = () => {
@@ -142,16 +142,19 @@ export const OtherProfile = ({ loggedInUser }) => {
   };
 
   const handleMessageClick = () => {
-    setOpenMessages(true)
-    const foundConversation = conversations.find(c => c.userProfileId === profile.id)
+    setOpenMessages(true);
+    const foundConversation = conversations.find(
+      (c) => c.userProfileId === profile.id
+    );
 
     if (foundConversation) {
-      setActiveConversationId(foundConversation.id)
-      setNewMessageView(false)
+      setActiveConversationId(foundConversation.id);
+      setNewMessageView(false);
     } else {
-      setNewMessageView(true)
+      setSelectedRecipient(profile)
+      setNewMessageView(true);
     }
-  }
+  };
 
   const handleFollowUser = () => {
     fetchCreateUserFeedUser(profile.id).then(() => getUserFeedUsers());
@@ -176,8 +179,8 @@ export const OtherProfile = ({ loggedInUser }) => {
         setSnackBarMessage('Failed to block user.');
         handleSnackBarOpen();
       } else {
-        getMyConversations()
-        setNewMessageView(true)
+        getMyConversations();
+        setNewMessageView(true);
         setSuccessAlert(true);
         setSnackBarMessage(
           'User successfully blocked (you can undo this in settings).'
@@ -372,6 +375,7 @@ export const OtherProfile = ({ loggedInUser }) => {
                   <div
                     className="photoItem-primary"
                     onClick={() => setPicPopUp(profile.profile.profilePicture)}
+                    style={{ marginBottom: '4px' }}
                   >
                     <img
                       className="profilePic"
@@ -398,7 +402,10 @@ export const OtherProfile = ({ loggedInUser }) => {
               )}
 
               {profile.roles.includes('Admin') ? (
-                <div className="profileName-adminContainer">
+                <div
+                  className="profileName-adminContainer"
+                  style={{ marginBottom: '4px' }}
+                >
                   <Typography
                     variant="h5"
                     component="h1"
@@ -414,13 +421,15 @@ export const OtherProfile = ({ loggedInUser }) => {
                   </Tooltip>
                 </div>
               ) : (
-                <Typography
-                  variant="h5"
-                  component="h1"
-                  sx={{ textAlign: 'center' }}
-                >
-                  {profile.name}
-                </Typography>
+                <div style={{ marginBottom: '4px' }}>
+                  <Typography
+                    variant="h5"
+                    component="h1"
+                    sx={{ textAlign: 'center' }}
+                  >
+                    {profile.name}
+                  </Typography>
+                </div>
               )}
 
               {profile.isBand ? (
@@ -428,7 +437,10 @@ export const OtherProfile = ({ loggedInUser }) => {
               ) : (
                 <Typography>Musician</Typography>
               )}
-              <div className="socialmedia-icons-container">
+              <div
+                className="socialmedia-icons-container"
+                style={{ marginTop: '4px', marginBottom: '4px' }}
+              >
                 {profile.profile.spotifyLink ? (
                   <Link to={profile.profile.spotifyLink}>
                     <img
@@ -472,12 +484,22 @@ export const OtherProfile = ({ loggedInUser }) => {
               {profile.isBand ? null : (
                 <div className="chip-section">
                   <Typography textAlign="center">Primary Instrument</Typography>
-                  <Chip label={profile.profile.primaryInstrument.name} />
+                  <Chip
+                    label={profile.profile.primaryInstrument.name}
+                    style={{
+                      marginTop: '4px',
+                    }}
+                  />
                 </div>
               )}
               <div className="chip-section">
                 <Typography>Primary Genre</Typography>
-                <Chip label={profile.profile.primaryGenre.name} />
+                <Chip
+                  label={profile.profile.primaryGenre.name}
+                  style={{
+                    marginTop: '4px',
+                  }}
+                />
               </div>
               <div className="chip-section">
                 <Typography>Tags</Typography>
@@ -486,6 +508,9 @@ export const OtherProfile = ({ loggedInUser }) => {
                     <Chip
                       key={index}
                       label={pt.tag.name}
+                      style={{
+                        marginTop: '4px',
+                      }}
                     />
                   ))}
                 </div>
@@ -497,6 +522,9 @@ export const OtherProfile = ({ loggedInUser }) => {
                     <Chip
                       key={index}
                       label={ps.subGenre.name}
+                      style={{
+                        marginTop: '4px',
+                      }}
                     />
                   ))}
                 </div>
@@ -581,7 +609,7 @@ export const OtherProfile = ({ loggedInUser }) => {
               >
                 <div className="divider-header-container">
                   <Typography variant="h6">About</Typography>
-                  <Divider />
+                  <Divider style={{ marginTop: '4px' }} />
                 </div>
                 {profile.profile.about === null ? (
                   <Typography>No about written yet!</Typography>
@@ -627,8 +655,18 @@ export const OtherProfile = ({ loggedInUser }) => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={() => handleBlock()}>Block User</Button>
-              <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+              <Button
+                variant="contained"
+                onClick={() => handleBlock()}
+              >
+                Block User
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => setConfirmOpen(false)}
+              >
+                Cancel
+              </Button>
             </DialogActions>
           </>
         ) : actionPicked === 'ban' ? (
@@ -640,8 +678,18 @@ export const OtherProfile = ({ loggedInUser }) => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={() => handleBan()}>Ban User</Button>
-              <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+              <Button
+                variant="contained"
+                onClick={() => handleBan()}
+              >
+                Ban User
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => setConfirmOpen(false)}
+              >
+                Cancel
+              </Button>
             </DialogActions>
           </>
         ) : actionPicked === 'delete' ? (
@@ -655,10 +703,18 @@ export const OtherProfile = ({ loggedInUser }) => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={() => handleDeleteUserProfile()}>
+              <Button
+                variant="contained"
+                onClick={() => handleDeleteUserProfile()}
+              >
                 Delete User
               </Button>
-              <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+              <Button
+                variant="contained"
+                onClick={() => setConfirmOpen(false)}
+              >
+                Cancel
+              </Button>
             </DialogActions>
           </>
         ) : actionPicked === 'deleteProfilePic' ? (
@@ -672,10 +728,18 @@ export const OtherProfile = ({ loggedInUser }) => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={() => handleProfilePictureDelete()}>
+              <Button
+                variant="contained"
+                onClick={() => handleProfilePictureDelete()}
+              >
                 Delete
               </Button>
-              <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+              <Button
+                variant="contained"
+                onClick={() => setConfirmOpen(false)}
+              >
+                Cancel
+              </Button>
             </DialogActions>
           </>
         ) : (
@@ -689,8 +753,18 @@ export const OtherProfile = ({ loggedInUser }) => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={() => handlePromote()}>Promote User</Button>
-              <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+              <Button
+                variant="contained"
+                onClick={() => handlePromote()}
+              >
+                Promote User
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => setConfirmOpen(false)}
+              >
+                Cancel
+              </Button>
             </DialogActions>
           </>
         )}
