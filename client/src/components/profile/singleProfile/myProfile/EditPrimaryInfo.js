@@ -357,10 +357,18 @@ export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => handleConfirmClose()}>
+            <Button
+              variant="contained"
+              onClick={() => handleConfirmClose()}
+            >
               Discard Changes
             </Button>
-            <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+            <Button
+              variant="contained"
+              onClick={() => setConfirmOpen(false)}
+            >
+              Cancel
+            </Button>
           </DialogActions>
         </Dialog>
       </div>

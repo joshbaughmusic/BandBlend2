@@ -1,4 +1,3 @@
-
 .feedPost-avatar:hover {
   cursor: pointer;
 }
@@ -14,6 +13,7 @@
 .feed-container {
   /* max-width: 1000px; */
   margin: 20px 0px;
+  animation: fadein-profile 0.5s ease-in;
 }
 
 .feedSettingsLink {

@@ -1,7 +1,18 @@
-import { Avatar, Grid, IconButton, Paper, Typography } from '@mui/material';
-import BookmarkIcon from '@mui/icons-material/Bookmark';import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import {
+  Avatar,
+  Grid,
+  IconButton,
+  Paper,
+  Tooltip,
+  Typography,
+} from '@mui/material';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { useNavigate } from 'react-router-dom';
-import { fetchSaveProfile, fetchUnsaveProfile } from '../../../managers/profileManager.js';
+import {
+  fetchSaveProfile,
+  fetchUnsaveProfile,
+} from '../../../managers/profileManager.js';
 
 export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
   const navigate = useNavigate();
@@ -11,7 +22,9 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
   };
 
   const handleUnsaveProfile = () => {
-    fetchUnsaveProfile(profile.profile.id).then(() => getAllUsersWithProfiles());
+    fetchUnsaveProfile(profile.profile.id).then(() =>
+      getAllUsersWithProfiles()
+    );
   };
 
   return (
@@ -33,6 +46,9 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
                 src={profile.profile.profilePicture}
                 alt=""
                 onClick={() => navigate(`/profile/${profile.id}`)}
+                style={{
+                  cursor: 'pointer',
+                }}
               />
             ) : (
               <Avatar sx={{ height: '80px', width: '80px' }}></Avatar>
@@ -48,6 +64,10 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
             <Typography
               variant="h6"
               onClick={() => navigate(`/profile/${profile.id}`)}
+              style={{
+                cursor: 'pointer',
+                width: 'fit-content',
+              }}
             >
               {profile.name}
             </Typography>
@@ -90,13 +110,23 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
         >
           <div className="allprofile-card-flexstack-icon">
             {profile.profile.savedProfile ? (
-              <IconButton onClick={() => handleUnsaveProfile()}>
-                <BookmarkIcon style={{ fontSize: 40 }} />
-              </IconButton>
+              <Tooltip
+                title="Unsave Profile"
+                placement="right"
+              >
+                <IconButton onClick={() => handleUnsaveProfile()}>
+                  <BookmarkIcon style={{ fontSize: 40 }} />
+                </IconButton>
+              </Tooltip>
             ) : (
-              <IconButton onClick={() => handleSaveProfile()}>
-                <BookmarkBorderIcon style={{ fontSize: 40 }} />
-              </IconButton>
+              <Tooltip
+                title="Save Profile"
+                placement="right"
+              >
+                <IconButton onClick={() => handleSaveProfile()}>
+                  <BookmarkBorderIcon style={{ fontSize: 40 }} />
+                </IconButton>
+              </Tooltip>
             )}
           </div>
         </Grid>

@@ -30,3 +30,18 @@
     min-width: 100%;
     background-color: firebrick;
 }
+
+.login-theme-button {
+    margin-bottom: -20px;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.register-link {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.register-link:hover {
+   color: #8C4A4A !important;
+}

@@ -7,13 +7,14 @@
 
 .allProfilesContainer-all {
   margin: 20px 0px;
+  animation: fadein-profile 0.5s ease-in;
 }
 
 .allprofiles-card {
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.24);
   margin-top: 10px;
   border-radius: 4px;
-  /* background-color: rgb(124, 122, 122); */
+  background-color: var(--allprofile-card-var1);
   padding: 10px;
 }
 
@@ -22,7 +23,8 @@
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  
+    border: 1px solid rgba(97, 97, 97, 0.627);
+
 }
 
 .allprofile-card-flexstack {
@@ -47,7 +49,7 @@
 }
 
 .allprofiles-noresults {
-    display: flex;
-    justify-content: center;
-    margin: 3em 0;
+  display: flex;
+  justify-content: center;
+  margin: 3em 0;
 }

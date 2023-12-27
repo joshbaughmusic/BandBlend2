@@ -141,7 +141,7 @@ export const MyProfile = ({ loggedInUser }) => {
 
   return (
     <>
-      <Container className='profile-container-all'>
+      <Container className="profile-container-all">
         <Grid container>
           <Grid
             item
@@ -149,7 +149,6 @@ export const MyProfile = ({ loggedInUser }) => {
             md={3}
           >
             <Paper
-              elevation={4}
               className="profile-left-sidebar"
             >
               <div className="myProfilePicture-container">
@@ -176,6 +175,7 @@ export const MyProfile = ({ loggedInUser }) => {
                   <div
                     className="photoItem-primary"
                     onClick={() => setPicPopUp(profile.profile.profilePicture)}
+                    style={{ marginBottom: '4px' }}
                   >
                     <img
                       className="profilePic"
@@ -201,7 +201,10 @@ export const MyProfile = ({ loggedInUser }) => {
                 ''
               )}
               {profile.roles.includes('Admin') ? (
-                <div className="profileName-adminContainer">
+                <div
+                  className="profileName-adminContainer"
+                  style={{ marginBottom: '4px' }}
+                >
                   <Typography
                     variant="h5"
                     component="h1"
@@ -217,20 +220,25 @@ export const MyProfile = ({ loggedInUser }) => {
                   </Tooltip>
                 </div>
               ) : (
-                <Typography
-                  variant="h5"
-                  component="h1"
-                  sx={{ textAlign: 'center' }}
-                >
-                  {profile.name}
-                </Typography>
+                <div style={{ marginBottom: '4px' }}>
+                  <Typography
+                    variant="h5"
+                    component="h1"
+                    sx={{ textAlign: 'center' }}
+                  >
+                    {profile.name}
+                  </Typography>
+                </div>
               )}
               {profile.isBand ? (
                 <Typography>Band</Typography>
               ) : (
                 <Typography>Musician</Typography>
               )}
-              <div className="socialmedia-icons-container">
+              <div
+                className="socialmedia-icons-container"
+                style={{ marginTop: '4px', marginBottom: '4px' }}
+              >
                 {profile.profile.spotifyLink ? (
                   <Link to={profile.profile.spotifyLink}>
                     <img
@@ -274,12 +282,22 @@ export const MyProfile = ({ loggedInUser }) => {
               {profile.isBand ? null : (
                 <div className="chip-section">
                   <Typography textAlign="center">Primary Instrument</Typography>
-                  <Chip label={profile.profile.primaryInstrument.name} />
+                  <Chip
+                    label={profile.profile.primaryInstrument.name}
+                    style={{
+                      marginTop: '4px',
+                    }}
+                  />
                 </div>
               )}
               <div className="chip-section">
                 <Typography>Primary Genre</Typography>
-                <Chip label={profile.profile.primaryGenre.name} />
+                <Chip
+                  label={profile.profile.primaryGenre.name}
+                  style={{
+                    marginTop: '4px',
+                  }}
+                />
               </div>
 
               <div className="chip-section">
@@ -295,6 +313,9 @@ export const MyProfile = ({ loggedInUser }) => {
                     <Chip
                       key={index}
                       label={pt.tag.name}
+                      style={{
+                        marginTop: '4px',
+                      }}
                     />
                   ))}
                 </div>
@@ -312,6 +333,9 @@ export const MyProfile = ({ loggedInUser }) => {
                     <Chip
                       key={index}
                       label={ps.subGenre.name}
+                      style={{
+                        marginTop: '4px',
+                      }}
                     />
                   ))}
                 </div>
@@ -329,8 +353,7 @@ export const MyProfile = ({ loggedInUser }) => {
           >
             <div className="profile-right-section">
               <Paper
-                elevation={4}
-                className="profile-right-section-item"
+                  className="profile-right-section-item"
               >
                 <div className="divider-header-container">
                   <div className="profile-section-header">
@@ -352,7 +375,7 @@ export const MyProfile = ({ loggedInUser }) => {
                       </Tooltip>
                     )}
                   </div>
-                  <Divider />
+                  <Divider style={{ marginTop: '4px' }} />
                 </div>
                 {editAboutState ? (
                   <>
@@ -383,14 +406,12 @@ export const MyProfile = ({ loggedInUser }) => {
                 )}
               </Paper>
               <Paper
-                elevation={4}
-                className="profile-right-section-item"
+                  className="profile-right-section-item"
               >
                 <MyAdditionalPhotos profile={profile} />
               </Paper>
               <Paper
-                elevation={4}
-                className="profile-right-section-item"
+                  className="profile-right-section-item"
               >
                 <MyPosts
                   profile={profile}

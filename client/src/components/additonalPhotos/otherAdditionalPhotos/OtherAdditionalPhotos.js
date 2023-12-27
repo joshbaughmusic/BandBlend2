@@ -23,7 +23,7 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
           <>
             <div className="divider-header-container">
               <Typography variant="h6">Additional Photos</Typography>
-              <Divider />
+              <Divider style={{ marginTop: '4px' }} />
             </div>
             <div>No photos yet!</div>
           </>
@@ -31,7 +31,7 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
           <>
             <div className="divider-header-container">
               <Typography variant="h6">Additional Photos</Typography>
-              <Divider />
+              <Divider style={{ marginTop: '4px' }} />
             </div>
             <div className="additional-pictures-container">
               {Array(profile.profile.photoCount)
@@ -56,7 +56,7 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
       <>
         <div className="divider-header-container">
           <Typography variant="h6">Additional Photos</Typography>
-          <Divider />
+          <Divider style={{ marginTop: '4px' }} />
         </div>
         <div>No photos yet!</div>
       </>
@@ -67,7 +67,7 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
     <>
       <div className="divider-header-container">
         <Typography variant="h6">Additional Photos</Typography>
-        <Divider />
+        <Divider style={{ marginTop: '4px' }} />
       </div>
       <div className="additional-pictures-container">
         {photos.map((p, index) =>
@@ -75,14 +75,12 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
             <AdminAdditionalPhotosItem
               key={index}
               photo={p}
-            
               getOtherAdditonalPhotos={getOtherAdditonalPhotos}
             />
           ) : (
             <OtherAdditionalPhotosItem
               key={index}
               photo={p}
-              
             />
           )
         )}

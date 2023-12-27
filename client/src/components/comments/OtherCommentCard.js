@@ -35,6 +35,7 @@ export const OtherCommentCard = ({
                 sx={{ width: '30px', height: '30px' }}
               />
               <Typography
+                style={{ fontWeight: 'bold' }}
                 className="comment-name-clickable"
                 onClick={() =>
                   navigate(`/profile/${comment.userProfile.profile.id}`)

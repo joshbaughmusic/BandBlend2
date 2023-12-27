@@ -525,35 +525,34 @@ export default function Register({ setLoggedInUser }) {
               ))}
             </Select>
           </FormControl>
-          { isBand ?
-          ""
-          :
-          <FormControl fullWidth>
-            <InputLabel id="primaryInstrument-select">
-              Primary Instrument
-            </InputLabel>
-            <Select
-              labelId="primaryInstrument-select"
-              id="primaryInstrument-select-droppdown"
-              value={selectedPrimaryInstrument}
-              label="Primary Instrument"
-              onChange={(e) => {
-                // setError(false);
-                setSelectedPrimaryInstrument(e.target.value);
-              }}
-            >
-              {primaryInstruments.map((pi, index) => (
-                <MenuItem
-                  key={index}
-                  value={pi.id}
-                >
-                  {pi.name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-        }
+          {isBand ? (
+            ''
+          ) : (
+            <FormControl fullWidth>
+              <InputLabel id="primaryInstrument-select">
+                Primary Instrument
+              </InputLabel>
+              <Select
+                labelId="primaryInstrument-select"
+                id="primaryInstrument-select-droppdown"
+                value={selectedPrimaryInstrument}
+                label="Primary Instrument"
+                onChange={(e) => {
+                  // setError(false);
+                  setSelectedPrimaryInstrument(e.target.value);
+                }}
+              >
+                {primaryInstruments.map((pi, index) => (
+                  <MenuItem
+                    key={index}
+                    value={pi.id}
+                  >
+                    {pi.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          )}
         </Stack>
         <RegisterSocials
           setFacebook={setFacebook}
@@ -591,7 +590,13 @@ export default function Register({ setLoggedInUser }) {
           textAlign="center"
           sx={{ mt: 3, mb: '10px' }}
         >
-          Already signed up? Log in <Link to="/login">here</Link>
+          Already signed up? Log in{' '}
+          <span
+            className="register-link"
+            onClick={() => navigate('../login')}
+          >
+            HERE
+          </span>
         </Typography>
       </div>
     </Container>

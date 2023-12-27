@@ -90,7 +90,7 @@ export const MyAdditionalPhotos = ({ profile }) => {
                   </IconButton>
                 </Tooltip>
               </div>
-              <Divider />
+              <Divider style={{ marginTop: '4px' }} />
             </div>
             <div>No photos yet!</div>
           </>
@@ -116,7 +116,7 @@ export const MyAdditionalPhotos = ({ profile }) => {
                   </IconButton>
                 </Tooltip>
               </div>
-              <Divider />
+              <Divider style={{ marginTop: '4px' }} />
             </div>
             <div className="additional-pictures-container">
               {Array(profile.profile.photoCount)
@@ -160,7 +160,7 @@ export const MyAdditionalPhotos = ({ profile }) => {
             </Tooltip>
           </div>
           <div className="profile-section-header"></div>
-          <Divider />
+          <Divider style={{ marginTop: '4px' }} />
         </div>
         <div>No photos yet!</div>
       </>
@@ -189,7 +189,7 @@ export const MyAdditionalPhotos = ({ profile }) => {
             </IconButton>
           </Tooltip>
         </div>
-        <Divider />
+        <Divider style={{ marginTop: '4px' }} />
       </div>
       <div className="additional-pictures-container">
         {photos.map((p, index) => (

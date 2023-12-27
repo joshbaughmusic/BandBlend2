@@ -47,7 +47,7 @@ export const OtherPosts = ({ profile, loggedInUser }) => {
       <>
         <div className="divider-header-container">
           <Typography variant="h6">Posts</Typography>
-          <Divider />
+          <Divider style={{ marginTop: '4px' }} />
         </div>
 
         {profile.profile.postCount === null ||
@@ -73,7 +73,7 @@ export const OtherPosts = ({ profile, loggedInUser }) => {
       <>
         <div className="divider-header-container">
           <Typography variant="h6">Posts</Typography>
-          <Divider />
+          <Divider style={{ marginTop: '4px' }} />
         </div>
         <div>No Posts yet!</div>
       </>
@@ -84,7 +84,7 @@ export const OtherPosts = ({ profile, loggedInUser }) => {
     <>
       <div className="divider-header-container">
         <Typography variant="h6">Posts</Typography>
-        <Divider />
+        <Divider style={{ marginTop: '4px' }} />
       </div>
 
       <div>

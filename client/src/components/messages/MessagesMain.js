@@ -89,19 +89,18 @@ export const MessagesMain = ({ loggedInUser }) => {
 
       <Fade in={openMessages}>
         <Paper
-          elevation={5}
-          variant="outlined"
+          elevation={10}
           sx={{
             borderRadius: "3%",
             position: 'fixed',
             bottom: 80,
             right: 16,
             width: 410,
-            height: 492,
+            height: 491,
             overflow: 'auto',
-            border: '2px solid black',
             zIndex: '1500',
           }}
+          className='messages-container'
         >
           <div
             className="messagesMain-header"
@@ -119,6 +118,7 @@ export const MessagesMain = ({ loggedInUser }) => {
             style={{
               marginLeft: '60px',
             }}
+            className='messages-inner'
           >
             <div
               style={{

@@ -72,10 +72,18 @@ export const DeleteAccountSettings = ({ setLoggedInUser }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleDeleteMyProfile()}>
+          <Button
+            variant="contained"
+            onClick={() => handleDeleteMyProfile()}
+          >
             Delete Account
           </Button>
-          <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+          <Button
+            variant="contained"
+            onClick={() => setConfirmOpen(false)}
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </>

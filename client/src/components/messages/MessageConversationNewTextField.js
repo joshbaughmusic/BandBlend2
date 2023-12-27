@@ -58,11 +58,11 @@ export const MessageConversationNewTextField = ({
   return (
     <>
       <div
+      className='messagesNewTextField'
         style={{
           position: 'absolute',
           bottom: '0px',
           width: '297px',
-          backgroundColor: 'white',
         }}
       >
         <TextField

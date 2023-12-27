@@ -7,19 +7,26 @@
 .homeSearchBar-list {
     position: absolute;
     top: 56px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--search-list);
     min-width: 100%;
     max-height: 400px;
     overflow: auto;
     border-radius: 4px;
     z-index: 1000;
+    border: 1px solid var(--search-list-border);
+    box-shadow: 0px 3px 3px 3px rgba(0, 0, 0, 0.199);
 }
 
 .homeSearchBar-list .css-1p823my-MuiListItem-root {
   opacity: 1 !important;
 }
 
-.homeSearchBar-list .css-1p823my-MuiListItem-root:hover {
-      background-color: rgb(173, 173, 173);
+.homeSearchBar-list .css-4f6uum-MuiListItem-root:hover, .css-hfdlhi-MuiListItem-root:hover {
+    background-color: var(--search-list-hover);
+      cursor: pointer;
+}
+
+.homeSearchBar-list .css-4f6uum-MuiListItem-root:active, .css-hfdlhi-MuiListItem-root:active, .css-4f6uum-MuiListItem-root:active {
+    background-color: var(--search-list-active);
       cursor: pointer;
 }

@@ -142,7 +142,7 @@ if (!posts) {
             </Tooltip>
           )}
         </div>
-        <Divider />
+        <Divider style={{ marginTop: '4px' }} />
       </div>
       <div>
         {profile.profile.postCount === null ||
@@ -209,7 +209,7 @@ if (!posts) {
               </Tooltip>
             )}
           </div>
-          <Divider />
+          <Divider style={{ marginTop: '4px' }} />
         </div>
         {expanded ? '' : <Typography>No posts yet!</Typography>}
         <div>
@@ -261,12 +261,18 @@ if (!posts) {
         </DialogContent>
         <DialogActions>
           <Button
+            variant="contained"
             onClick={handleConfirmCloseNewPost}
             autoFocus
           >
             Discard Post
           </Button>
-          <Button onClick={handleAlert}>Cancel</Button>
+          <Button
+            variant="contained"
+            onClick={handleAlert}
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
       <div className="divider-header-container">
@@ -287,7 +293,7 @@ if (!posts) {
             </Tooltip>
           )}
         </div>
-        <Divider />
+        <Divider style={{ marginTop: '4px' }} />
       </div>
 
       <div>
