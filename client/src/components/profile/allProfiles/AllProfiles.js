@@ -17,7 +17,7 @@ export const AllProfiles = () => {
   const [profiles, setProfiles] = useState();
   const [profileCount, setProfileCount] = useState(0);
   const [page, setPage] = useState(1);
-  const [amountPerPage, setAmountPerPage] = useState(5);
+  const [amountPerPage, setAmountPerPage] = useState(10);
   const [searchTerms, setSearchTerms] = useState('');
   const [filterTerms, setFilterTerms] = useState('');
   const [sortTerms, setSortTerms] = useState('');
@@ -102,9 +102,9 @@ export const AllProfiles = () => {
               label="Age"
               onChange={handleAmountPerPageChange}
             >
-              <MenuItem value={5}>5</MenuItem>
               <MenuItem value={10}>10</MenuItem>
               <MenuItem value={20}>20</MenuItem>
+              <MenuItem value={30}>30</MenuItem>
             </Select>
           </FormControl>
         </div>

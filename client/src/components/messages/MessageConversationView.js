@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useMessages } from '../context/MessagesContext.js';
 import { Message } from './Message.js';
 import { Typography } from '@mui/material';
@@ -12,9 +12,21 @@ export const MessageConversationView = ({ loggedInUser, connection }) => {
     conversation,
   } = useMessages();
 
-  useEffect(() => {
+const [intervalId, setIntervalId] = useState(null);
+
+useEffect(() => {
+  getMyMessagesByConversation();
+
+  //refetch new messages every 5 seconds while conversation is open
+
+  const id = setInterval(() => {
     getMyMessagesByConversation();
-  }, [activeConversationId]);
+  }, 5000);
+
+  setIntervalId(id);
+
+  return () => clearInterval(id);
+}, [activeConversationId]);
 
   // useEffect(() => {
   //   if (connection) {
