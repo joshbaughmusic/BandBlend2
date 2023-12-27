@@ -27,8 +27,8 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 
 export default function Login({ setLoggedInUser }) {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('josh@bandblend.comx');
-  const [password, setPassword] = useState('password');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();

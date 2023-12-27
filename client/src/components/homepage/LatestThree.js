@@ -62,7 +62,7 @@ export const LatestThree = ({ loggedInUser }) => {
           >
             <Typography
               sx={{ m: 1, textAlign: 'center' }}
-              variant="h4"
+              variant="h6"
             >
               What's happening:
             </Typography>
