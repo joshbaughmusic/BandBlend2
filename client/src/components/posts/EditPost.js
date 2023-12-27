@@ -159,9 +159,10 @@ useEffect(() => {
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={() => handleConfirmClose()}
           >
-            Discard Changes
+            Discard
           </Button>
           <Button
             variant="contained"

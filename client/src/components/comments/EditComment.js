@@ -17,7 +17,6 @@ import { useState } from 'react';
 import { useSnackBar } from '../context/SnackBarContext.js';
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
-import { fetchEditPost } from '../../managers/postsManager.js';
 import { fetchEditComment } from '../../managers/commentsManager.js';
 
 const style = {
@@ -151,9 +150,10 @@ export const EditComment = ({ comment, getCommentsForPost }) => {
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={() => handleConfirmClose()}
           >
-            Discard Changes
+            Discard
           </Button>
           <Button
             variant="contained"

@@ -7,8 +7,6 @@ import {
   DialogTitle,
   IconButton,
   Button,
-  Snackbar,
-  Alert,
   Tooltip,
 } from '@mui/material';
 import { useState } from 'react';
@@ -70,6 +68,7 @@ export const DeletePost = ({ postId, getUserPosts }) => {
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={() => handleConfirmClick()}
           >
             Delete

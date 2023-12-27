@@ -165,25 +165,6 @@ public class ProfileController : ControllerBase
     }
 
 
-    // [HttpGet("withroles")]
-    // [Authorize(Roles = "Admin")]
-    // public IActionResult GetWithRoles()
-    // {
-    //     return Ok(_dbContext.UserProfiles
-    //     .Include(up => up.IdentityUser)
-    //     .Select(up => new UserProfile
-    //     {
-    //         Id = up.Id,
-    //         Name = up.Name,
-    //         Email = up.IdentityUser.Email,
-    //         IdentityUserId = up.IdentityUserId,
-    //         Roles = _dbContext.UserRoles
-    //         .Where(ur => ur.UserId == up.IdentityUserId)
-    //         .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
-    //         .ToList()
-    //     }));
-    // }
-
     [HttpGet("me")]
     [Authorize]
     public IActionResult GetCurrentUserProfile()
@@ -278,6 +259,11 @@ public class ProfileController : ControllerBase
                 .ToList()
         })
         .SingleOrDefault(up => up.Id == id);
+
+        if (foundUserProfile == null)
+        {
+            return Unauthorized();
+        }
 
         if (blockedUserProfileIds.Contains(id) || blockedByUserProfileIds.Contains(id) ||
             foundUserProfile.AccountBanned)
@@ -580,7 +566,11 @@ public class ProfileController : ControllerBase
         List<SavedProfile> foundSavedProfiles = _dbContext.SavedProfiles.Where(pi => pi.UserProfileId == foundUserProfile.Id || pi.ProfileId == foundUserProfile.Profile.Id).ToList();
         _dbContext.SavedProfiles.RemoveRange(foundSavedProfiles);
 
-        //update later to take care of messages too
+        List<Message> foundMessages = _dbContext.Messages.Where(m => m.SenderId == foundUserProfile.Id || m.ReceiverId == foundUserProfile.Id).ToList();
+        _dbContext.Messages.RemoveRange(foundMessages);
+
+        List<MessageConversation> foundMessageConversations = _dbContext.MessageConversations.Where(m => m.UserProfileId1 == foundUserProfile.Id || m.UserProfileId2 == foundUserProfile.Id).ToList();
+        _dbContext.MessageConversations.RemoveRange(foundMessageConversations);
 
         _dbContext.UserProfiles.Remove(foundUserProfile);
 

@@ -69,6 +69,7 @@ export const DeleteComment = ({ commentId, getCommentsForPost, getUserPosts }) =
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={() => handleConfirmClick()}
           >
             Delete

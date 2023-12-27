@@ -2,15 +2,10 @@ import React, { useEffect, useState } from 'react';
 // import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 import Fab from '@mui/material/Fab';
 import Paper from '@mui/material/Paper';
-import TextField from '@mui/material/TextField';
 import { useMessages } from '../context/MessagesContext.js';
 import {
-  Button,
-  Container,
   Divider,
   Fade,
-  IconButton,
-  Tooltip,
   Typography,
 } from '@mui/material';
 import './Messages.css';

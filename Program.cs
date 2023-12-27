@@ -5,13 +5,10 @@ using BandBlend.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers().AddJsonOptions(opts =>
 {
     opts.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // builder.Services.AddSignalR();
@@ -49,27 +46,23 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddIdentityCore<IdentityUser>(config =>
             {
-                //for demonstration only - change these for other projects
                 config.Password.RequireDigit = false;
                 config.Password.RequiredLength = 8;
                 config.Password.RequireLowercase = false;
                 config.Password.RequireNonAlphanumeric = false;
                 config.Password.RequireUppercase = false;
             })
-    .AddRoles<IdentityRole>()  //add the role service.  
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<BandBlendDbContext>();
 
 
-// allows passing datetimes without time zone data 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
-// allows our api endpoints to access the database through Entity Framework Core
 builder.Services.AddNpgsql<BandBlendDbContext>(builder.Configuration["BandBlendDbConnectionString"]);
 
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -78,7 +71,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting(); 
-// these two calls are required to add auth to the pipeline for a request
 app.UseAuthentication();
 app.UseAuthorization();
 

@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useMessages } from '../context/MessagesContext.js';
-import { fetchMyMessagesByConversation } from '../../managers/messagesManager.js';
 import { Message } from './Message.js';
-import { MessageConversationNewTextField } from './MessageConversationNewTextField.js';
 import { Typography } from '@mui/material';
 import { DeleteConversation } from './DeleteConversation.js';
 

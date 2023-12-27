@@ -184,10 +184,11 @@ if (!posts) {
           <DialogActions>
             <Button onClick={handleAlert}>Cancel</Button>
             <Button
+              color="error"
               onClick={handleConfirmCloseNewPost}
               autoFocus
             >
-              Confirm
+              Discard
             </Button>
           </DialogActions>
         </Dialog>
@@ -262,10 +263,11 @@ if (!posts) {
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={handleConfirmCloseNewPost}
             autoFocus
           >
-            Discard Post
+            Discard
           </Button>
           <Button
             variant="contained"

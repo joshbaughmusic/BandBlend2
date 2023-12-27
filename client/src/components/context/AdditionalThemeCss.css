@@ -1,6 +1,6 @@
 .lightmode {
-  --post-background: rgb(176, 176, 176);
-  --comment-background: rgb(205, 204, 204);
+  --post-background:  rgb(205, 204, 204);
+  --comment-background: rgb(210, 210, 210);
   --search-list: #e3e3e3;
   --search-list-hover: #dadada;
   --search-list-active: #a1a3a3;

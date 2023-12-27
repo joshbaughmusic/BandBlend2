@@ -4,7 +4,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  Chip,
   Collapse,
   Dialog,
   DialogActions,
@@ -126,10 +125,7 @@ export const MyPostsCard = ({
                 {expanded ? (
                   <Typography>Hide Comments</Typography>
                 ) : (
-                  <>
-                    {/* <Chip className='commentCount-chip' label={post.commentCount} /> */}
-                    <Typography>View Comments</Typography>
-                  </>
+                  <Typography>View Comments</Typography>
                 )}
                 <ExpandMore
                   expand={expanded}
@@ -176,9 +172,10 @@ export const MyPostsCard = ({
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={() => handleConfirmClose()}
           >
-            Discard Changes
+            Discard
           </Button>
           <Button
             variant="contained"

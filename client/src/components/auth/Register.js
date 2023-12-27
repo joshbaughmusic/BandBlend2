@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { register } from '../../managers/authManager';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   Button,
   Checkbox,
@@ -511,7 +511,6 @@ export default function Register({ setLoggedInUser }) {
               value={selectedPrimaryGenre}
               label="Primary Genre"
               onChange={(e) => {
-                // setError(false);
                 setSelectedPrimaryGenre(e.target.value);
               }}
             >

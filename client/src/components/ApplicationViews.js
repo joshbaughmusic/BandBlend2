@@ -8,7 +8,6 @@ import { OtherProfile } from './profile/singleProfile/otherProfile/OtherProfile.
 import { AllProfiles } from './profile/allProfiles/AllProfiles.js';
 import { MyFeed } from './feed/MyFeed.js';
 import { Settings } from './settings/Settings.js';
-
 import { BannedAccountView } from './bannedAccountView/BannedAccountView.js';
 import { EmptyView } from './emptyView/EmptyView.js';
 import { AdminSettings } from './adminViews/AdminSettings/AdminSettings.js';

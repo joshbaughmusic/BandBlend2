@@ -6,7 +6,6 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Typography,
 } from '@mui/material';
 import { useSnackBar } from '../../context/SnackBarContext.js';
 import { fetchDeleteMyUserProfile } from '../../../managers/profileManager.js';
@@ -74,9 +73,10 @@ export const DeleteAccountSettings = ({ setLoggedInUser }) => {
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={() => handleDeleteMyProfile()}
           >
-            Delete Account
+            Delete
           </Button>
           <Button
             variant="contained"

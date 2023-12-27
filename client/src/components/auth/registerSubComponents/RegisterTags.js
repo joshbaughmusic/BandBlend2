@@ -3,14 +3,10 @@ import {
   Checkbox,
   Collapse,
   Divider,
-  FormControl,
   FormControlLabel,
   FormGroup,
   Grid,
   IconButton,
-  InputLabel,
-  OutlinedInput,
-  Stack,
   Typography,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';

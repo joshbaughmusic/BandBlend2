@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Card,
   CardActions,
   CardContent,
@@ -28,13 +27,7 @@ export const Message = ({ message, loggedInUser }) => {
                 marginBottom: '8px',
               }}
             >
-              {/* <Avatar
-                sx={{
-                  width: '25px',
-                  height: '25px',
-                }}
-                src={loggedInUser.profile.profilePicture}
-              /> */}
+              
               <Typography sx={{ fontWeight: 'bold' }}>
                 {loggedInUser.name}
               </Typography>
@@ -63,13 +56,7 @@ export const Message = ({ message, loggedInUser }) => {
                 marginBottom: '8px',
               }}
             >
-              {/* <Avatar
-                sx={{
-                  width: '25px',
-                  height: '25px',
-                }}
-                src={message.receiver.profile.profilePicture}
-              /> */}
+            
               <Typography sx={{ fontWeight: 'bold' }}>
                 {message.sender.name}
               </Typography>

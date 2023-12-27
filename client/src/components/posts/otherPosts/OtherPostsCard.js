@@ -16,15 +16,12 @@ import {
 } from '@mui/material';
 import CommentIcon from '@mui/icons-material/Comment';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { dateFormatter } from '../../../utilities/dateFormatter.js';
 import { CommentsSection } from '../../comments/CommentsSection.js';
 import { PostLikes } from '../../likes/postLikes/PostLikes.js';
-import { DeletePost } from '../DeletePost.js';
 import { AdminDeletePost } from '../../adminViews/adminPosts/AdminDeletePost.js';
 
 const ExpandMore = styled((props) => {
@@ -181,9 +178,10 @@ export const OtherPostsCard = ({
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={() => handleConfirmClose()}
           >
-            Discard Changes
+            Discard
           </Button>
           <Button
             variant="contained"

@@ -10,17 +10,6 @@ export const useThemeContext = () => {
 
 export const themeLight = createTheme({
   components: {
-    // MuiAlert: {
-    //   styleOverrides: {
-    //     standardSuccess: {
-    //       backgroundColor: 'white',
-    //     },
-    //     standardError: {
-    //       backgroundColor: 'red',
-    //       color: 'white',
-    //     }
-    //   },
-    // },
     MuiCard: {
       styleOverrides: {
         root: {
@@ -52,6 +41,9 @@ export const themeLight = createTheme({
       default: '#F1F1F1',
       paper: '#E3E3E3',
     },
+    error: {
+      main: '#6A3636',
+    },
     text: {
       primary: '#1D2625',
     },
@@ -60,34 +52,11 @@ export const themeLight = createTheme({
       dark: '#602d2db4',
       light: '#9d5d5c',
     },
-    // secondary: {
-    //   main: '#1D2625',
-    //   dark: '#001220',
-    //   light: '#4F5957',
-    // },
   },
 });
 
 export const themeDark = createTheme({
   components: {
-    // MuiAlert: {
-    //   styleOverrides: {
-    //     standardSuccess: {
-    //       backgroundColor: 'white',
-    //     },
-    //     standardError: {
-    //       backgroundColor: 'red',
-    //       color: 'white',
-    //     },
-    //   },
-    // },
-    // MuiSvgIcon: {
-    //   styleOverrides: {
-    //     root: {
-    //       color: '#c5c7c5',
-    //     },
-    //   },
-    // },
     MuiCard: {
       styleOverrides: {
         root: {
@@ -118,21 +87,15 @@ export const themeDark = createTheme({
     mode: 'dark',
     background: {
       default: '#151515',
-      // paper: '#8C4A4A',
     },
-    // text: {
-    //   primary: '#c5c7c5',
-    // },
+    error: {
+      main: '#6A3636',
+    },
     primary: {
       main: '#8C4A4A',
       dark: '#602d2db4',
       light: '#9d5d5c',
     },
-    // secondary: {
-    //   main: '#1D2625',
-    //   dark: '#001220',
-    //   light: '#4F5957',
-    // },
   },
 });
 

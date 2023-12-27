@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Autocomplete,
   Avatar,
   FormGroup,
   IconButton,
@@ -10,7 +9,6 @@ import {
   ListItemAvatar,
   ListItemText,
   TextField,
-  Typography,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { fetchSearchProfiles } from '../../managers/profileManager.js';

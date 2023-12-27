@@ -91,6 +91,7 @@ export const DeleteMessage = ({ messageId }) => {
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={() => handleConfirmClick()}
           >
             Delete

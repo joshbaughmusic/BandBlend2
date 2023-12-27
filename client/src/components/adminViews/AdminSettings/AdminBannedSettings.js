@@ -22,12 +22,16 @@ import {
   fetchAdminDeleteUserProfile,
   fetchAdminUnbanAccount,
 } from '../../../managers/adminFunctionsManager.js';
+import { useMessages } from '../../context/MessagesContext.js';
 
 export const AdminBannedSettings = () => {
   const [bannedAccounts, setBannedAccounts] = useState();
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
+    const {
+      setOpenMessages,
+    } = useMessages();
 
   const getBannedAccounts = () => {
     fetchAdminAllBannedUsers().then((res) => {
@@ -74,6 +78,7 @@ export const AdminBannedSettings = () => {
       } else {
         handleConfirmClose();
         setSuccessAlert(true);
+        setOpenMessages(false)
         setSnackBarMessage('User account successfully deleted.');
         handleSnackBarOpen();
         getBannedAccounts();
@@ -190,6 +195,7 @@ export const AdminBannedSettings = () => {
                         <Button
                           variant="contained"
                           value={a.identityUserId}
+                          color="error"
                           onClick={(e) => handleDeleteUserProfile(e)}
                         >
                           Delete

@@ -82,6 +82,7 @@ export const AdminAdditionalPhotosItem = ({
           <Button
             variant="contained"
             onClick={() => handleConfirmClick()}
+            color="error"
           >
             Delete
           </Button>

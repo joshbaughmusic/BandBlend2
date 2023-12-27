@@ -82,6 +82,7 @@ export const DeleteConversation = () => {
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={() => handleConfirmClick()}
           >
             Delete

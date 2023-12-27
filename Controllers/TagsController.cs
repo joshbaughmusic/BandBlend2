@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using BandBlend.Data;
 using Microsoft.EntityFrameworkCore;
 using BandBlend.Models;
-using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
-using Microsoft.VisualBasic;
 
 namespace BandBlend.Controllers;
 
@@ -22,7 +20,6 @@ public class TagController : ControllerBase
     }
 
     [HttpGet]
-    // [Authorize]
     public IActionResult GetTags()
     {
         return Ok(_dbContext.Tags);

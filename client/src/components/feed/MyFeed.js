@@ -9,7 +9,6 @@ import {
   Typography,
   Container,
   Paper,
-  Link,
 } from '@mui/material';
 import { fetchUserFeed } from '../../managers/feedManager.js';
 import { FeedPostCard } from './FeedPostCard.js';

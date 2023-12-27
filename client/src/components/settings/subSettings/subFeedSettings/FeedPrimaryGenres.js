@@ -227,7 +227,6 @@ export const FeedPrimaryGenres = () => {
                 />
               )
             )}
-            {/* ... other FormControlLabels ... */}
           </FormGroup>
           <div className="post-submit-button-container">
             <Button
@@ -255,9 +254,10 @@ export const FeedPrimaryGenres = () => {
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={() => handleConfirmClose()}
           >
-            Discard Changes
+            Discard
           </Button>
           <Button
             variant="contained"

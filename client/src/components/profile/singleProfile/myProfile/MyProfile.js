@@ -148,9 +148,7 @@ export const MyProfile = ({ loggedInUser }) => {
             xs={12}
             md={3}
           >
-            <Paper
-              className="profile-left-sidebar"
-            >
+            <Paper className="profile-left-sidebar">
               <div className="myProfilePicture-container">
                 <div className="editProfilePic-button">
                   <Tooltip
@@ -352,9 +350,7 @@ export const MyProfile = ({ loggedInUser }) => {
             md={9}
           >
             <div className="profile-right-section">
-              <Paper
-                  className="profile-right-section-item"
-              >
+              <Paper className="profile-right-section-item">
                 <div className="divider-header-container">
                   <div className="profile-section-header">
                     <Typography variant="h6">About</Typography>
@@ -405,14 +401,10 @@ export const MyProfile = ({ loggedInUser }) => {
                   <Typography>{profile.profile.about}</Typography>
                 )}
               </Paper>
-              <Paper
-                  className="profile-right-section-item"
-              >
+              <Paper className="profile-right-section-item">
                 <MyAdditionalPhotos profile={profile} />
               </Paper>
-              <Paper
-                  className="profile-right-section-item"
-              >
+              <Paper className="profile-right-section-item">
                 <MyPosts
                   profile={profile}
                   loggedInUser={loggedInUser}
@@ -436,7 +428,12 @@ export const MyProfile = ({ loggedInUser }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleConfirmClose()}>Discard Changes</Button>
+          <Button
+            color="error"
+            onClick={() => handleConfirmClose()}
+          >
+            Discard
+          </Button>
           <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
         </DialogActions>
       </Dialog>

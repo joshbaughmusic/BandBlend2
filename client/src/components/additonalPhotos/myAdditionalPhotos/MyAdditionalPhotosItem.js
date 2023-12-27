@@ -79,6 +79,7 @@ export const MyAdditionalPhotosItem = ({ photo, getMyAdditonalPhotos }) => {
         <DialogActions>
           <Button
             variant="contained"
+            color='error'
             onClick={() => handleConfirmClick()}
           >
             Delete

@@ -20,7 +20,6 @@ import {
   IconButton,
   Modal,
   Skeleton,
-  Stack,
   Tooltip,
   Typography,
 } from '@mui/material';
@@ -221,7 +220,6 @@ export const FeedStates = () => {
                 />
               )
             )}
-            {/* ... other FormControlLabels ... */}
           </FormGroup>
           <div className="post-submit-button-container">
             <Button
@@ -249,9 +247,10 @@ export const FeedStates = () => {
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={() => handleConfirmClose()}
           >
-            Discard Changes
+            Discard
           </Button>
           <Button
             variant="contained"

@@ -1,4 +1,4 @@
-import { Avatar, Button, Stack, TextField } from "@mui/material";
+import { Avatar, Button, TextField } from "@mui/material";
 import { useEffect, useState } from "react"
 import { useSnackBar } from "../context/SnackBarContext.js";
 import { fetchCreateNewComment } from "../../managers/commentsManager.js";
@@ -61,7 +61,6 @@ export const NewComment = ({
         <TextField
           className="comment-text-field"
           label="Add a comment..."
-          // autoFocus={true}
           multiline
           minRows={1}
           fullWidth

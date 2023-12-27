@@ -50,10 +50,8 @@ export const RegisterSocials = ({facebook, instagram, spotify, tikTok, setFacebo
               label="Facebook URL"
               value={facebook}
               onChange={(e) => {
-                // setError(false);
                 setFacebook(e.target.value);
               }}
-              // sx={{ width: 500 }}
             />
           </FormControl>
           <FormControl variant="outlined">
@@ -63,10 +61,8 @@ export const RegisterSocials = ({facebook, instagram, spotify, tikTok, setFacebo
               label="Instagram URL"
               value={instagram}
               onChange={(e) => {
-                // setError(false);
                 setInstagram(e.target.value);
               }}
-              // sx={{ width: 500 }}
             />
           </FormControl>
           <FormControl variant="outlined">
@@ -76,10 +72,8 @@ export const RegisterSocials = ({facebook, instagram, spotify, tikTok, setFacebo
               label="Spotify URL"
               value={spotify}
               onChange={(e) => {
-                // setError(false);
                 setSpotify(e.target.value);
               }}
-              // sx={{ width: 500 }}
             />
           </FormControl>
           <FormControl variant="outlined">
@@ -89,10 +83,8 @@ export const RegisterSocials = ({facebook, instagram, spotify, tikTok, setFacebo
               label="TikTok URL"
               value={tikTok}
               onChange={(e) => {
-                // setError(false);
                 setTikTok(e.target.value);
               }}
-              // sx={{ width: 500 }}
             />
           </FormControl>
         </Stack>

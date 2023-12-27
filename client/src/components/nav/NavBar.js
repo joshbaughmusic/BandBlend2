@@ -7,14 +7,12 @@ import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import PersonIcon from '@mui/icons-material/Person';
 import RssFeedIcon from '@mui/icons-material/RssFeed';
 import PeopleIcon from '@mui/icons-material/People';
@@ -126,11 +124,7 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
         <Drawer
           variant="permanent"
           open={open}
-          // PaperProps={{
-          //   sx: {
-          //     backgroundColor: 'grey',
-          //   },
-          // }}
+       
         >
           <DrawerHeader>
             {open ? (
@@ -172,7 +166,6 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                     ...(open && { display: 'none' }),
                   }}
                 >
-                  {/* <MenuIcon /> */}
                   {darkMode ? (
                     <img
                       className="navlogo"

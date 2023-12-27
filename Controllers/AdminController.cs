@@ -80,10 +80,10 @@ public class AdminController : ControllerBase
 
         List<FeedUserSubscription> foundFeedUserSubscriptions = _dbContext.FeedUserSubscriptions.Where(us => us.UserThatSubbedId == foundUserProfile.Id || us.UserSubbedToId == foundUserProfile.Id).ToList();
         _dbContext.FeedUserSubscriptions.RemoveRange(foundFeedUserSubscriptions);
-        
+
         List<FeedStateSubscription> foundFeedStateSubscriptions = _dbContext.FeedStateSubscriptions.Where(ss => ss.UserProfileId == foundUserProfile.Id).ToList();
         _dbContext.FeedStateSubscriptions.RemoveRange(foundFeedStateSubscriptions);
-        
+
         List<FeedPrimaryGenreSubscription> foundFeedPrimaryGenreSubscriptions = _dbContext.FeedPrimaryGenreSubscriptions.Where(pg => pg.UserProfileId == foundUserProfile.Id).ToList();
         _dbContext.FeedPrimaryGenreSubscriptions.RemoveRange(foundFeedPrimaryGenreSubscriptions);
 
@@ -93,7 +93,11 @@ public class AdminController : ControllerBase
         List<SavedProfile> foundSavedProfiles = _dbContext.SavedProfiles.Where(pi => pi.UserProfileId == foundUserProfile.Id || pi.ProfileId == foundUserProfile.Profile.Id).ToList();
         _dbContext.SavedProfiles.RemoveRange(foundSavedProfiles);
 
-        //update later to take care of messages too
+        List<Message> foundMessages = _dbContext.Messages.Where(m => m.SenderId == foundUserProfile.Id || m.ReceiverId == foundUserProfile.Id).ToList();
+        _dbContext.Messages.RemoveRange(foundMessages);
+
+        List<MessageConversation> foundMessageConversations = _dbContext.MessageConversations.Where(m => m.UserProfileId1 == foundUserProfile.Id || m.UserProfileId2 == foundUserProfile.Id).ToList();
+        _dbContext.MessageConversations.RemoveRange(foundMessageConversations);
 
         _dbContext.UserProfiles.Remove(foundUserProfile);
 

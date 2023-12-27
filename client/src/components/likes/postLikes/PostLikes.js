@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
-import { fetchDeletePostLike, fetchLikesForPost, fetchNewPostLike } from '../../../managers/postLikesManager.js';
 import {
-    Avatar,
+  fetchDeletePostLike,
+  fetchLikesForPost,
+  fetchNewPostLike,
+} from '../../../managers/postLikesManager.js';
+import {
+  Avatar,
   Chip,
   IconButton,
   List,
@@ -40,14 +44,14 @@ export const PostLikes = ({ post, loggedInUser, postPage }) => {
   const handleNewLike = () => {
     fetchNewPostLike(post.id).then(() => {
       getLikesForPost();
-    })
-  }
+    });
+  };
 
   const handleDeleteLike = () => {
     fetchDeletePostLike(post.id).then(() => {
       getLikesForPost();
     });
-  }
+  };
 
   if (!likes) {
     return (

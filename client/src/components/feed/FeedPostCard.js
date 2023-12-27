@@ -16,8 +16,6 @@ import {
 } from '@mui/material';
 import CommentIcon from '@mui/icons-material/Comment';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
@@ -165,9 +163,10 @@ export const FeedPostCard = ({ post, profile, page, loggedInUser, getUserFeed })
         <DialogActions>
           <Button
             variant="contained"
+            color="error"
             onClick={() => handleConfirmClose()}
           >
-            Discard Changes
+            Discard
           </Button>
           <Button
             variant="contained"

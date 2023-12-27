@@ -1,5 +1,5 @@
 import { Alert, Snackbar } from '@mui/material';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 
 const SnackBarContext = createContext({});
@@ -54,7 +54,7 @@ export const SnackBarProvider = ({ children }) => {
           open={snackBarOpen}
           autoHideDuration={3000}
           onClose={handleSnackBarClose}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         >
           <Alert
             onClose={handleSnackBarClose}

@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import MainLogoBlack from "../../images/Bandblend_Logos/Logo-top-black.png"
 import SubLogoBlack from "../../images/Bandblend_Logos/Logo-bot-black.png"
 import MainLogoWhite from "../../images/Bandblend_Logos/Logo-top-white.png"

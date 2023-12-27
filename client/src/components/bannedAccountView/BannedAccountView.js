@@ -1,27 +1,52 @@
 import { Container, Typography } from '@mui/material'
-import MainLogo from '../../images/Bandblend_Logos/Logo-top-black.png';
-import SubLogo from '../../images/Bandblend_Logos/Logo-bot-black.png';
+import MainLogoBlack from '../../images/Bandblend_Logos/Logo-top-black.png';
+import SubLogoBlack from '../../images/Bandblend_Logos/Logo-bot-black.png';
+import MainLogoWhite from '../../images/Bandblend_Logos/Logo-top-white.png';
+import SubLogoWhite from '../../images/Bandblend_Logos/Logo-bot-white.png';
 import React from 'react'
+import { useThemeContext } from '../context/ThemeContext.js';
 
 export const BannedAccountView = () => {
+   const { darkMode } = useThemeContext();
   return (
     <Container>
       <div>
         <div className="container-home-logos">
-          <img
-            src={MainLogo}
-            alt=""
-            style={{
-              width: '80%',
-            }}
-          />
-          <img
-            src={SubLogo}
-            alt=""
-            style={{
-              width: '70%',
-            }}
-          />
+          {darkMode ? (
+            <>
+              <img
+                src={MainLogoWhite}
+                alt=""
+                style={{
+                  width: '80%',
+                }}
+              />
+              <img
+                src={SubLogoWhite}
+                alt=""
+                style={{
+                  width: '70%',
+                }}
+              />
+            </>
+          ) : (
+            <>
+              <img
+                src={MainLogoBlack}
+                alt=""
+                style={{
+                  width: '80%',
+                }}
+              />
+              <img
+                src={SubLogoBlack}
+                alt=""
+                style={{
+                  width: '70%',
+                }}
+              />
+            </>
+          )}
         </div>
         <Typography
           textAlign="center"
@@ -41,7 +66,7 @@ export const BannedAccountView = () => {
           sx={{ fontWeight: 'bold' }}
         >
           If you believe this was in error, please reach out to
-          example@email.com.
+          joshbaughmusic_bb@gmail.com.
         </Typography>
       </div>
     </Container>

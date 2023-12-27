@@ -70,6 +70,7 @@ export const AdminDeletePost = ({ postId, getUserPosts }) => {
           <Button
             variant="contained"
             onClick={() => handleConfirmClick()}
+            color="error"
           >
             Delete
           </Button>

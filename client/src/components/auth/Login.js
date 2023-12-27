@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../../managers/authManager';
 import {
   Button,
@@ -133,7 +133,6 @@ export default function Login({ setLoggedInUser }) {
                   setError(false);
                   setEmail(e.target.value);
                 }}
-                // sx={{ width: 500 }}
               />
             </FormControl>
             <FormControl variant="outlined">
@@ -149,7 +148,6 @@ export default function Login({ setLoggedInUser }) {
                   setError(false);
                   setPassword(e.target.value);
                 }}
-                // sx={{ width: 500 }}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton

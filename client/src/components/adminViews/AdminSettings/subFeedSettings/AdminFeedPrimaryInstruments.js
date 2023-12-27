@@ -227,7 +227,6 @@ export const AdminFeedPrimaryInstruments = () => {
                 />
               )
             )}
-            {/* ... other FormControlLabels ... */}
           </FormGroup>
           <div className="post-submit-button-container">
             <Button
@@ -255,6 +254,7 @@ export const AdminFeedPrimaryInstruments = () => {
           <Button
             variant="contained"
             onClick={() => handleConfirmClose()}
+            color="error"
           >
             Discard Changes
           </Button>

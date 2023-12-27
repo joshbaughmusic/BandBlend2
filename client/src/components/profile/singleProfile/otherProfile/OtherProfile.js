@@ -73,24 +73,12 @@ export const OtherProfile = ({ loggedInUser }) => {
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
   const {
-    openMessages,
     setOpenMessages,
-    handleToggleMessages,
-    handleCloseMessages,
-    activeConversationId,
     setActiveConversationId,
-    newMessageView,
     setNewMessageView,
-    selectedRecipient,
     setSelectedRecipient,
-    messages,
-    setMessages,
-    getMyMessagesByConversation,
     getMyConversations,
     conversations,
-    setConversations,
-    conversation,
-    setConversation,
   } = useMessages();
   const [actionPicked, setActionPicked] = useState('');
 
@@ -151,7 +139,7 @@ export const OtherProfile = ({ loggedInUser }) => {
       setActiveConversationId(foundConversation.id);
       setNewMessageView(false);
     } else {
-      setSelectedRecipient(profile)
+      setSelectedRecipient(profile);
       setNewMessageView(true);
     }
   };
@@ -182,6 +170,7 @@ export const OtherProfile = ({ loggedInUser }) => {
         getMyConversations();
         setNewMessageView(true);
         setSuccessAlert(true);
+        setOpenMessages(false);
         setSnackBarMessage(
           'User successfully blocked (you can undo this in settings).'
         );
@@ -216,6 +205,7 @@ export const OtherProfile = ({ loggedInUser }) => {
       } else {
         handleConfirmClose();
         setSuccessAlert(true);
+        setOpenMessages(false);
         setSnackBarMessage('User account successfully banned.');
         handleSnackBarOpen();
         navigate('/');
@@ -232,6 +222,7 @@ export const OtherProfile = ({ loggedInUser }) => {
       } else {
         handleConfirmClose();
         setSuccessAlert(true);
+        setOpenMessages(false);
         setSnackBarMessage('User account successfully deleted.');
         handleSnackBarOpen();
         navigate('/');
@@ -656,10 +647,11 @@ export const OtherProfile = ({ loggedInUser }) => {
             </DialogContent>
             <DialogActions>
               <Button
+                color="error"
                 variant="contained"
                 onClick={() => handleBlock()}
               >
-                Block User
+                Block
               </Button>
               <Button
                 variant="contained"
@@ -679,10 +671,11 @@ export const OtherProfile = ({ loggedInUser }) => {
             </DialogContent>
             <DialogActions>
               <Button
+                color="error"
                 variant="contained"
                 onClick={() => handleBan()}
               >
-                Ban User
+                Ban
               </Button>
               <Button
                 variant="contained"
@@ -704,10 +697,11 @@ export const OtherProfile = ({ loggedInUser }) => {
             </DialogContent>
             <DialogActions>
               <Button
+                color="error"
                 variant="contained"
                 onClick={() => handleDeleteUserProfile()}
               >
-                Delete User
+                Delete
               </Button>
               <Button
                 variant="contained"
@@ -729,6 +723,7 @@ export const OtherProfile = ({ loggedInUser }) => {
             </DialogContent>
             <DialogActions>
               <Button
+                color="error"
                 variant="contained"
                 onClick={() => handleProfilePictureDelete()}
               >
@@ -754,10 +749,11 @@ export const OtherProfile = ({ loggedInUser }) => {
             </DialogContent>
             <DialogActions>
               <Button
+                color="error"
                 variant="contained"
                 onClick={() => handlePromote()}
               >
-                Promote User
+                Promote
               </Button>
               <Button
                 variant="contained"
