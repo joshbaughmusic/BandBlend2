@@ -20,7 +20,7 @@ export const MyFeed = ({ loggedInUser }) => {
   const [feedPosts, setFeedPosts] = useState();
   const [feedPostCount, setFeedPostCount] = useState(0);
   const [page, setPage] = useState(1);
-  const [amountPerPage, setAmountPerPage] = useState(5);
+  const [amountPerPage, setAmountPerPage] = useState(10);
   const navigate = useNavigate();
 
   const getUserFeed = () => {
@@ -152,9 +152,9 @@ export const MyFeed = ({ loggedInUser }) => {
                 label="Age"
                 onChange={handleAmountPerPageChange}
               >
-                <MenuItem value={5}>5</MenuItem>
                 <MenuItem value={10}>10</MenuItem>
                 <MenuItem value={20}>20</MenuItem>
+                <MenuItem value={30}>30</MenuItem>
               </Select>
             </FormControl>
           </div>
