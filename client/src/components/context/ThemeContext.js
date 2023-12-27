@@ -116,10 +116,10 @@ export const themeDark = createTheme({
   },
   palette: {
     mode: 'dark',
-    // background: {
-    //   // default: '#151515',
-    //   // paper: '#8C4A4A',
-    // },
+    background: {
+      default: '#151515',
+      // paper: '#8C4A4A',
+    },
     // text: {
     //   primary: '#c5c7c5',
     // },
