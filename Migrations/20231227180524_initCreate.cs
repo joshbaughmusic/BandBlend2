@@ -687,12 +687,7 @@ namespace BandBlend2.Migrations
             migrationBuilder.InsertData(
                 table: "AdditionalPictures",
                 columns: new[] { "Id", "Url", "UserProfileId" },
-                values: new object[,]
-                {
-                    { 1, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", 1 },
-                    { 2, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", 1 },
-                    { 3, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", 2 }
-                });
+                values: new object[] { 1, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", 1 });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
@@ -706,29 +701,7 @@ namespace BandBlend2.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[,]
-                {
-                    { "00a40af9-6o6o-6o66-po6k-kk00a38j90ld", 0, "ef895959-e040-4ecb-ab07-897e9620c4cc", "daniel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEIuOCglIT6M4DgYEDB08NKjUtnBFW0dkRTbXTx1R6uwvBD8RU0bTUyWLJCoHt7q37g==", null, false, "7bbae7aa-9969-4e77-94fb-2ef4605f4559", false, null },
-                    { "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd", 0, "21ef88f0-6c97-4c18-8f44-24e5c723c4ec", "grace@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEKqRMPsMA9dEjoGBjoGo9e17A4h+C7Q403XlVu5MAojCcKMx7es0McY7h+8TOCH5VQ==", null, false, "c1b21706-1904-4d96-9736-c8f510a080da", false, null },
-                    { "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd", 0, "e4e2e60c-986c-461b-9dd1-2f105ca43878", "alexander@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAELCPstI8VSwHIaSpOfhXliSPI6xxn1XLyl/Gvh/bddnh6J0XxZe3TTv0IMJH9xIFLA==", null, false, "2e4829a7-e6fa-46f0-b773-919c5ffa1c27", false, null },
-                    { "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id", 0, "51999fd7-fdd1-4c97-a08d-31cbc05fc0e3", "evelyn@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAENa35fem9X9f+7GPfxxmMOXWr+7xGFnxUfIcw8utqdChDoZ2EVZyOoMvQpYi573ZaQ==", null, false, "bf9994af-1cd3-4f4a-99c1-0cb72c030b7f", false, null },
-                    { "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd", 0, "3d2e44bf-0196-4b0b-a659-4627929546e5", "benjamin@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEN9F1iqP1nvDoYbMkcXy0NPHwqjH/DnpLxGLvxvjuqT5cVKwEyfOCRX8M6YfDnw7Ig==", null, false, "38ea2d13-4a05-473b-8d32-f35c9c3fed5c", false, null },
-                    { "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd", 0, "112011e6-0064-479f-8802-13e9a17e060f", "harper@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEG9hvhQ9/+fUEq6KnuaeWug8gqT0IGYR2TUFHfPyfZ1UCzvr6dd30bJnt2Nbc51ang==", null, false, "f055d662-2218-4f14-96de-7af63b71b853", false, null },
-                    { "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd", 0, "20248c1e-caf5-4a44-ab96-bded17e07bfa", "william@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEMPE1ogwiTygcSq+tLpbzhFgTrE54xn2fLAYsNgeHbuiu61BYyRxCjFyDU8J+rAz9Q==", null, false, "402744f1-88f6-45e6-969b-1bf1564c6f12", false, null },
-                    { "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed", 0, "700f0ac0-a7f2-41cf-8c34-33703e51f9c2", "charlotte@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEAoquRshPPnZFm7pp56/D06WfKA4HNxX4DAt6DjP/IzjXXDMuRi8pQfL6cj98qp8sQ==", null, false, "12241ecf-1ae7-486c-8502-8c558bd7003c", false, null },
-                    { "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 0, "8fe20ba1-b4f6-4f07-a496-a112f47e8973", "tom@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEEkLfuHeSQwJbhLsGLoeOvTSYI2avLJb7Q4rTshoz9zxPDUgdEczGDqaYaz3ScwUmA==", null, false, "9f592f90-7ccd-47f7-b754-c9fd6b87a729", false, null },
-                    { "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd", 0, "e36264ae-c7b9-483a-8788-c14b82d73bcc", "james@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEGA52D60lGcaktwrdw5xmR1g6zSqpdw54/ILQyivcQp33yRkj0KhMZRJVlqtjybmhQ==", null, false, "11dbeba3-c833-42d0-a24a-275dfabd047d", false, null },
-                    { "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd", 0, "54efc281-6603-43f4-b3f1-3c4c2221bf46", "mia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEAyQ8yuSnyCGQ5COvZpOqg7EHs5WmgqqwtU2rpTUZr5OaOitCL1ti7jLXMadqKJXTw==", null, false, "1650a526-08d2-4d88-84d5-5dde2aa8c7b7", false, null },
-                    { "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md", 0, "bb355305-7191-41b0-9fd5-3df22b73dab1", "madison@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEBOjmAOy0kkD2Gnq0MhomKWPIzcuMEAPs3FthqydjrQtixx66+YzgoDQ+mPn+FGapA==", null, false, "a153555a-cd0f-44f2-85ca-b5aa7da1b545", false, null },
-                    { "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac", 0, "0a88852e-6d23-45b6-9b68-58127fe367a9", "noah@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEGJ0EaTv/9gKW0o6FjxsUcF47GZY4kM2T0YaT0bhfwwVmOcBmy0XcFtTJzf/YrO16w==", null, false, "37ae67d8-0252-486c-937a-fd6df3450985", false, null },
-                    { "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd", 0, "dd544714-6ac5-4f85-bfe3-351eea290dc8", "gabriel@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEGSDDHVDwJQ2Kh6WPdSq7aNMr1NHJ2vX937VnDf/qQkGwchGI70h9CbdzefUk06TOw==", null, false, "07ca2470-d416-4998-9eb7-a71c8a8e6fe7", false, null },
-                    { "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47", 0, "f1f5e318-576f-49a2-a724-d4160f1f1611", "emily@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAELe6J0CLnCvpjHjb3HupHPpnxeFc5s2qNnRh2W7Cgg1S2SJ3UHhex0GcfcA4SPxbEA==", null, false, "73a5ac54-9ed6-4548-b826-73f4906b92d0", false, null },
-                    { "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68", 0, "8f637472-7bb0-4082-b8cb-0755607b1a05", "oliver@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEDdkR7pmZIRO1dwIoq7V/a6GeF0K0ffhJ2dcbtG5Sqm+kh8w4wAZtaQy2jnMWZ1zoA==", null, false, "687f5af9-6b58-4354-8049-91e01444cf9f", false, null },
-                    { "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79", 0, "cbb6e899-29ca-4999-8a4a-8a6b7fccceed", "Ava Martinez", false, false, null, null, null, "AQAAAAIAAYagAAAAEPVMBJGpIUwOb77Ijjy9giQOdDQRouKDq2HgBCJOoboq8/d7EXCsp++TIua0jRe/BA==", null, false, "0f8d2ff8-cdbf-4f83-b6b5-483037d92a40", false, null },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "6805f6f3-f152-47f5-b176-30fb503b9670", "josh@bandblend.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEHLVBV5dfW8PKydtTAmswjZ9g+lDC4rXcqmdUPYemfg9U52xGIrTnrQahc4GkLxNhA==", null, false, "6acd10dd-b928-4814-b80c-debdca6b435d", false, null },
-                    { "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a", 0, "917eef85-8804-4040-aa30-eb4996c873c9", "liam@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAECrDDRfSRlYlGb55BJlL2b0dpFgGDtKU3KMdu+80k6sLpe2Xq6y5dI4XtnV526y4Lg==", null, false, "7f1a9137-442a-43ab-a372-506184e43503", false, null },
-                    { "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b", 0, "273d81f4-5758-4106-9ebf-889ead979b79", "sophia@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEK9jMoLp/eadLA1qGolbyfgEb63U9dNSxV5qfbrxEWSd5CRxo/B4+gwULEDeIIIWmA==", null, false, "e7817ca0-eeb2-4b9b-a4ac-f0c227cf1775", false, null }
-                });
+                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "f13fd74e-fc94-447c-9790-b3459c38e8db", "joshbaughmusic_bb@gmail.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEKSQ6RtE6XBTCOhOPcgWJPigog0gEfwLAy+riex6MuY2gT1aDJIF0+f2JyDVDgpy9Q==", null, false, "b2e76fc5-5367-4c8f-a446-315726546d25", false, null });
 
             migrationBuilder.InsertData(
                 table: "PrimaryGenres",
@@ -841,7 +814,7 @@ namespace BandBlend2.Migrations
                 {
                     { 1, "Acoustic Folk" },
                     { 2, "Alternative Rock" },
-                    { 3, "Baroque" },
+                    { 3, "Bossa-Nova" },
                     { 4, "Chicago Blues" },
                     { 5, "Classic Rock" },
                     { 6, "Contemporary R&B" },
@@ -870,7 +843,7 @@ namespace BandBlend2.Migrations
                     { 29, "Progressive Metal" },
                     { 30, "Punk" },
                     { 31, "Smooth Jazz" },
-                    { 32, "Street Punk" },
+                    { 32, "Hardcore" },
                     { 33, "Synth-pop" },
                     { 34, "Techno" },
                     { 35, "Thrash Metal" },
@@ -902,221 +875,26 @@ namespace BandBlend2.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[,]
-                {
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "00a40af9-6o6o-6o66-po6k-kk00a38j90ld" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79" },
-                    { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a" },
-                    { "d13f78a0-531c-4ae4-92d6-e1ea9fdd7d63", "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b" }
-                });
+                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f" });
 
             migrationBuilder.InsertData(
                 table: "UserProfiles",
                 columns: new[] { "Id", "AccountBanned", "IdentityUserId", "IsBand", "Name" },
-                values: new object[,]
-                {
-                    { 1, false, "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", false, "Josh Baugh" },
-                    { 2, true, "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", false, "Tom Jones" },
-                    { 3, false, "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47", false, "Emily Davis" },
-                    { 4, false, "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68", false, "Oliver Wilson" },
-                    { 5, false, "d0e71f29-3f5f-4dbf-c6a9-dd30e0565f79", false, "Ava Martinez" },
-                    { 6, false, "e0d60e39-4f6f-4ecf-d6aa-ee40e1676f8a", false, "Liam Garcia" },
-                    { 7, false, "f0c50d49-5f7f-5fdf-e6ab-ff50f278709b", false, "Sophia Rodriguez" },
-                    { 8, false, "a0b40c59-6e8e-6eff-f6ac-aa60f38980ac", false, "Noah Lopez" },
-                    { 9, false, "90a30b69-7f9f-7dff-a6ad-bb70e49a90bd", false, "Mia Gonzalez" },
-                    { 10, false, "80a20a79-8g0g-8egg-cg0c-cc80a58b90cd", false, "James Perez" },
-                    { 11, false, "70a10a89-9h0h-9h99-ih9d-dd90a68c90ed", false, "Charlotte Lee" },
-                    { 12, false, "60a00a99-0i0i-0i00-ji0e-ee00a78d90fd", false, "William Moore" },
-                    { 13, false, "50a90aa9-1j1j-1j11-kj1f-ff10a88e90gd", false, "Harper Adams" },
-                    { 14, false, "40a80ab9-2k2k-2k22-lk2g-gg20a98f90hd", false, "Benjamin Clark" },
-                    { 15, false, "30a70ac9-3l3l-3l33-ml3h-hh30a08g90id", false, "Evelyn Hill" },
-                    { 16, false, "20a60ad9-4m4m-4m44-nm4i-ii20a18h90jd", false, "Alexander Scott" },
-                    { 17, false, "10a50ae9-5n5n-5n55-on5j-jj10a28i90kd", false, "Grace Ward" },
-                    { 18, false, "00a40af9-6o6o-6o66-po6k-kk00a38j90ld", false, "Daniel Young" },
-                    { 19, false, "a0a30bg9-7p7p-7p77-qp7l-ll90a48k90md", false, "Madison Turner" },
-                    { 20, false, "b0a20bh9-8q8q-8q88-rq8m-mm80a58l90nd", false, "Gabriel Baker" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "FeedPrimaryGenreSubscriptions",
-                columns: new[] { "Id", "Date", "PrimaryGenreId", "UserProfileId" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 1, 1 },
-                    { 2, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 2, 1 },
-                    { 3, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 3, 1 },
-                    { 4, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 11, 2 },
-                    { 5, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 10, 2 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "FeedPrimaryInstrumentSubscriptions",
-                columns: new[] { "Id", "Date", "PrimaryInstrumentId", "UserProfileId" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 1, 1 },
-                    { 2, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 2, 1 },
-                    { 3, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 3, 1 },
-                    { 4, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 7, 2 },
-                    { 5, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 8, 2 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "FeedStateSubscriptions",
-                columns: new[] { "Id", "Date", "StateId", "UserProfileId" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 1, 1 },
-                    { 2, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 2, 1 },
-                    { 3, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 3, 1 },
-                    { 4, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 11, 2 },
-                    { 5, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 10, 2 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "FeedUserSubscriptions",
-                columns: new[] { "Id", "Date", "UserSubbedToId", "UserThatSubbedId" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 2, 1 },
-                    { 2, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 3, 1 },
-                    { 3, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 4, 1 },
-                    { 4, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 1, 2 },
-                    { 5, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 3, 2 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "MessageConversations",
-                columns: new[] { "Id", "LastMessageDate", "UserProfileId1", "UserProfileId2", "UserProfileIdIdentityUserId1", "UserProfileIdIdentityUserId2" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), 1, 2, "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73" },
-                    { 2, new DateTime(2023, 11, 5, 12, 6, 0, 0, DateTimeKind.Unspecified), 1, 3, "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47" },
-                    { 3, new DateTime(2023, 11, 4, 12, 6, 0, 0, DateTimeKind.Unspecified), 1, 4, "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Posts",
-                columns: new[] { "Id", "Body", "Date", "UserProfileId" },
-                values: new object[,]
-                {
-                    { 1, "Post 1", new DateTime(2023, 11, 6, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 2, "Post 2", new DateTime(2023, 11, 7, 12, 3, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 3, "Post 3", new DateTime(2023, 11, 8, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 4, "Post 4", new DateTime(2023, 11, 9, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 5, "Post 5", new DateTime(2023, 11, 10, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 6, "Post 6", new DateTime(2023, 11, 11, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 7, "Post 7", new DateTime(2023, 11, 12, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 8, "Post 8", new DateTime(2023, 11, 13, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 9, "Post 9", new DateTime(2023, 11, 14, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 10, "Post 10", new DateTime(2023, 11, 15, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 11, "Post 11", new DateTime(2023, 11, 16, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 12, "Post 12", new DateTime(2023, 11, 17, 12, 2, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 13, "Post 13", new DateTime(2023, 11, 18, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 14, "Post 14", new DateTime(2023, 11, 19, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 15, "Some Post", new DateTime(2023, 11, 20, 12, 2, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 16, "That Post", new DateTime(2023, 11, 21, 12, 2, 0, 0, DateTimeKind.Unspecified), 3 },
-                    { 17, "This Post", new DateTime(2023, 11, 22, 12, 2, 0, 0, DateTimeKind.Unspecified), 4 },
-                    { 18, "A Post", new DateTime(2023, 11, 23, 12, 2, 0, 0, DateTimeKind.Unspecified), 5 },
-                    { 19, "B Post", new DateTime(2023, 11, 24, 12, 2, 0, 0, DateTimeKind.Unspecified), 6 },
-                    { 20, "C Post", new DateTime(2023, 11, 25, 12, 2, 0, 0, DateTimeKind.Unspecified), 7 },
-                    { 21, "D Post", new DateTime(2023, 11, 26, 12, 2, 0, 0, DateTimeKind.Unspecified), 8 },
-                    { 22, "E Post", new DateTime(2023, 11, 27, 12, 2, 0, 0, DateTimeKind.Unspecified), 9 }
-                });
+                values: new object[] { 1, false, "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", false, "Josh Baugh" });
 
             migrationBuilder.InsertData(
                 table: "Profiles",
                 columns: new[] { "Id", "About", "City", "FacebookLink", "InstagramLink", "PrimaryGenreId", "PrimaryInstrumentId", "ProfilePicture", "SpotifyLink", "StateId", "TikTokLink", "UserProfileId" },
-                values: new object[,]
-                {
-                    { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Nashville", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 1, 1, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", null, 42, null, 1 },
-                    { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 1, 2, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 40, "https://www.facebook.com/joshbaughmusic/", 2 },
-                    { 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 6, 3, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 2, "https://www.facebook.com/joshbaughmusic/", 3 },
-                    { 4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 3, 6, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 6, "https://www.facebook.com/joshbaughmusic/", 4 },
-                    { 5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 2, 2, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 7, "https://www.facebook.com/joshbaughmusic/", 5 },
-                    { 6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 2, 2, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 7, "https://www.facebook.com/joshbaughmusic/", 6 },
-                    { 7, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 4, 7, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 8, "https://www.facebook.com/joshbaughmusic/", 7 },
-                    { 8, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 3, 1, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 11, "https://www.facebook.com/joshbaughmusic/", 8 },
-                    { 9, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 10, 9, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 12, "https://www.facebook.com/joshbaughmusic/", 9 },
-                    { 10, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 5, 5, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 19, "https://www.facebook.com/joshbaughmusic/", 10 },
-                    { 11, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 10, 10, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 20, "https://www.facebook.com/joshbaughmusic/", 11 },
-                    { 12, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 9, 5, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 17, "https://www.facebook.com/joshbaughmusic/", 12 },
-                    { 13, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 4, 8, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 45, "https://www.facebook.com/joshbaughmusic/", 13 },
-                    { 14, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 3, 4, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 49, "https://www.facebook.com/joshbaughmusic/", 14 },
-                    { 15, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 1, 10, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 43, "https://www.facebook.com/joshbaughmusic/", 15 },
-                    { 16, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 5, 4, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 42, "https://www.facebook.com/joshbaughmusic/", 16 },
-                    { 17, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 4, 8, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 37, "https://www.facebook.com/joshbaughmusic/", 17 },
-                    { 18, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 6, 6, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 27, "https://www.facebook.com/joshbaughmusic/", 18 },
-                    { 19, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 7, 7, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 39, "https://www.facebook.com/joshbaughmusic/", 19 },
-                    { 20, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "Somewhere", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 8, 10, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", "https://www.facebook.com/joshbaughmusic/", 26, "https://www.facebook.com/joshbaughmusic/", 20 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Comments",
-                columns: new[] { "Id", "Body", "Date", "PostId", "UserProfileId" },
-                values: new object[,]
-                {
-                    { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 1, 2 },
-                    { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 1, 2 },
-                    { 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 1, 2 },
-                    { 4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 1, 1 },
-                    { 5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 1, 2 },
-                    { 6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 1, 1 },
-                    { 7, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 1, 2 },
-                    { 8, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 1, 9 },
-                    { 9, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 1, 3 },
-                    { 10, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 1, 4 },
-                    { 11, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 2, 2 },
-                    { 12, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 2, 2 },
-                    { 13, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 2, 1 },
-                    { 14, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 2, 4 },
-                    { 15, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 2, 2 },
-                    { 16, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 2, 1 },
-                    { 17, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 2, 2 },
-                    { 18, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 1, 2 },
-                    { 19, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 1, 2 },
-                    { 20, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 5, 0, 0, DateTimeKind.Unspecified), 2, 1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Messages",
-                columns: new[] { "Id", "Body", "Date", "IsRead", "MessageConversationId", "ReceiverId", "ReceiverIdentityUserId", "SenderId", "SenderIdentityUserId" },
-                values: new object[,]
-                {
-                    { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 6, 0, 0, DateTimeKind.Unspecified), false, 1, 2, "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 1, "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f" },
-                    { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 6, 1, 0, DateTimeKind.Unspecified), false, 1, 1, "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 2, "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73" },
-                    { 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 6, 2, 0, DateTimeKind.Unspecified), false, 1, 2, "7f4e6f8d-71ef-4b38-9aa1-6e39e4ec7c73", 1, "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f" },
-                    { 4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 6, 3, 0, DateTimeKind.Unspecified), false, 2, 1, "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 3, "b3f94d09-1d3f-4aaf-a6a7-ee10c0343d47" },
-                    { 5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", new DateTime(2023, 11, 6, 12, 6, 5, 0, DateTimeKind.Unspecified), false, 3, 4, "c1f82e19-2e4e-4cbe-b6a8-cc20d0454e68", 1, "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f" }
-                });
+                values: new object[] { 1, "Hey there, I'm Josh, a musician turned full-time software developer. Thanks for stopping by my Band Blend! I created this platform to make it easier for musicians and bands to connect and collaborate. Finding new members and collaborators can be tough, so I built BandBlend to help out. Have a look around, and if you've got any questions, shoot me a message here. Enjoy!", "Nashville", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 11, 2, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", null, 42, null, 1 });
 
             migrationBuilder.InsertData(
                 table: "ProfileSubGenres",
                 columns: new[] { "Id", "ProfileId", "SubGenreId" },
                 values: new object[,]
                 {
-                    { 1, 1, 2 },
-                    { 2, 1, 3 },
-                    { 3, 1, 1 },
-                    { 4, 2, 4 },
-                    { 5, 2, 5 },
-                    { 6, 2, 6 }
+                    { 1, 1, 9 },
+                    { 2, 1, 25 },
+                    { 3, 1, 26 }
                 });
 
             migrationBuilder.InsertData(
@@ -1124,18 +902,10 @@ namespace BandBlend2.Migrations
                 columns: new[] { "Id", "ProfileId", "TagId" },
                 values: new object[,]
                 {
-                    { 1, 1, 2 },
-                    { 2, 1, 3 },
-                    { 3, 1, 1 },
-                    { 4, 2, 4 },
-                    { 5, 2, 5 },
-                    { 6, 2, 6 }
+                    { 1, 1, 1 },
+                    { 2, 1, 9 },
+                    { 3, 1, 14 }
                 });
-
-            migrationBuilder.InsertData(
-                table: "SavedProfiles",
-                columns: new[] { "Id", "ProfileId", "UserProfileId" },
-                values: new object[] { 1, 2, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
