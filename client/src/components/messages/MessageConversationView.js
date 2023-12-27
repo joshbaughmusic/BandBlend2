@@ -19,13 +19,13 @@ useEffect(() => {
 
   //refetch new messages every 5 seconds while conversation is open
 
-  const id = setInterval(() => {
-    getMyMessagesByConversation();
-  }, 5000);
+  // const id = setInterval(() => {
+  //   getMyMessagesByConversation();
+  // }, 5000);
 
-  setIntervalId(id);
+  // setIntervalId(id);
 
-  return () => clearInterval(id);
+  // return () => clearInterval(id);
 }, [activeConversationId]);
 
   // useEffect(() => {

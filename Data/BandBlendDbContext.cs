@@ -475,7 +475,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Nashville",
                 StateId = 42,
-                About = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                About = "Hey there, I'm Josh, a musician turned full-time software developer. Thanks for stopping by my Band Blend! I created this platform to make it easier for musicians and bands to connect and collaborate. Finding new members and collaborators can be tough, so I built BandBlend to help out. Have a look around, and if you've got any questions, shoot me a message here. Enjoy!",
                 PrimaryGenreId = 1,
                 PrimaryInstrumentId = 1,
                 SpotifyLink = null,
@@ -1051,7 +1051,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
         new SubGenre
         {
             Id = 3,
-            Name = "Baroque"
+            Name = "Bossa-Nova"
         },
         new SubGenre
         {
@@ -1196,7 +1196,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
         new SubGenre
         {
             Id = 32,
-            Name = "Street Punk"
+            Name = "Hardcore"
         },
         new SubGenre
         {
