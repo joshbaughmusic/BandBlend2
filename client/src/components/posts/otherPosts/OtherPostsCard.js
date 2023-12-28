@@ -69,49 +69,60 @@ export const OtherPostsCard = ({
     <>
       <Card className="post-card">
         <CardContent>
-          <div className="post-card-header">
-            <Avatar
-              className="single-profile-pic"
-              src={profile.profile.profilePicture}
-              alt={profile.name}
-            />
-            <div>
-              <Typography style={{ fontWeight: 'bold' }}>
-                {profile.name}
-              </Typography>
-              <Typography variant="body2">
-                {dateFormatter(post.date)}
-              </Typography>
+          {loggedInUser.roles.includes('Admin') ? (
+            <div className="post-card-header-mine">
+              <div className="post-card-header-left">
+                <Avatar
+                  className="single-profile-pic"
+                  src={profile.profile.profilePicture}
+                  alt={profile.name}
+                />
+                <div>
+                  <Typography style={{ fontWeight: 'bold' }}>
+                    {profile.name}
+                  </Typography>
+                  <Typography variant="body2">
+                    {dateFormatter(post.date)}
+                  </Typography>
+                </div>
+              </div>
+              <div>
+                <AdminDeletePost
+                  postId={post.id}
+                  getUserPosts={getUserPosts}
+                />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="post-card-header">
+              <Avatar
+                className="single-profile-pic"
+                src={profile.profile.profilePicture}
+                alt={profile.name}
+              />
+              <div>
+                <Typography style={{ fontWeight: 'bold' }}>
+                  {profile.name}
+                </Typography>
+                <Typography variant="body2">
+                  {dateFormatter(post.date)}
+                </Typography>
+              </div>
+            </div>
+          )}
           <div>
             <Typography>{post.body}</Typography>
           </div>
         </CardContent>
         <CardActions disableSpacing>
           <div className="post-card-footer">
-            {loggedInUser.roles.includes('Admin') ? (
-              <div className="post-card-footer-left">
-                <PostLikes
-                  post={post}
-                  loggedInUser={loggedInUser}
-                  postPage={page}
-                />
-                <AdminDeletePost
-                  postId={post.id}
-                  getUserPosts={getUserPosts}
-                />
-              </div>
-            ) : (
-              <div>
-                <PostLikes
-                  post={post}
-                  loggedInUser={loggedInUser}
-                  postPage={page}
-                />
-              </div>
-            )}
-
+            <div>
+              <PostLikes
+                post={post}
+                loggedInUser={loggedInUser}
+                postPage={page}
+              />
+            </div>
             {post.commentCount === 0 || post.commentCount === null ? (
               <div className="post-card-footer-right">
                 {expanded ? (

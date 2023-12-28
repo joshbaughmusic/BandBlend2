@@ -16,33 +16,47 @@ export const MyCommentCard = ({
   getCommentsForPost,
   loggedInUser,
   commentPage,
-  getUserPosts
+  getUserPosts,
 }) => {
-      const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <>
       <Card className="comment-card">
         <CardContent>
-          <div className="comment-card-header">
-            <Avatar
-              onClick={() => navigate(`/profile/me`)}
-              className="single-profile-pic comment-avatar-clickable"
-              src={comment.userProfile.profile.profilePicture}
-              alt={comment.userProfile.name}
-              sx={{ width: '30px', height: '30px' }}
-            />
-            <div>
-
-            <Typography
-              onClick={() => navigate(`/profile/me`)}
-              className="comment-name-clickable"
-              style={{ fontWeight: 'bold' }}
-              >
-              {comment.userProfile.name}
-            </Typography>
-            <Typography variant="body2">{dateFormatter(comment.date)}</Typography>
+          <div className="comment-card-header-mine">
+            <div className="comment-card-header-left">
+              <Avatar
+                onClick={() => navigate(`/profile/me`)}
+                className="single-profile-pic comment-avatar-clickable"
+                src={comment.userProfile.profile.profilePicture}
+                alt={comment.userProfile.name}
+                sx={{ width: '30px', height: '30px' }}
+              />
+              <div>
+                <Typography
+                  onClick={() => navigate(`/profile/me`)}
+                  className="comment-name-clickable"
+                  style={{ fontWeight: 'bold' }}
+                >
+                  {comment.userProfile.name}
+                </Typography>
+                <Typography variant="body2">
+                  {dateFormatter(comment.date)}
+                </Typography>
               </div>
+            </div>
+            <div style={{display: "flex"}}>
+              <EditComment
+                comment={comment}
+                getCommentsForPost={getCommentsForPost}
+              />
+              <DeleteComment
+                commentId={comment.id}
+                getCommentsForPost={getCommentsForPost}
+                getUserPosts={getUserPosts}
+              />
+            </div>
           </div>
           <div>
             <Typography className="comment-name-clickable">
@@ -57,15 +71,6 @@ export const MyCommentCard = ({
                 comment={comment}
                 loggedInUser={loggedInUser}
                 commentPage={commentPage}
-              />
-              <DeleteComment
-                commentId={comment.id}
-                getCommentsForPost={getCommentsForPost}
-                getUserPosts={getUserPosts}
-              />
-              <EditComment
-                comment={comment}
-                getCommentsForPost={getCommentsForPost}
               />
             </div>
           </div>

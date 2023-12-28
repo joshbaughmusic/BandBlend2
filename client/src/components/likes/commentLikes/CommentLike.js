@@ -72,6 +72,7 @@ export const CommentLikes = ({ comment, loggedInUser, commentPage }) => {
             onMouseEnter={handlePopoverOpen}
             onMouseLeave={handlePopoverClose}
             label={likes.length}
+            color="primary"
           />
         </div>
       ) : (
@@ -89,6 +90,7 @@ export const CommentLikes = ({ comment, loggedInUser, commentPage }) => {
             onMouseEnter={handlePopoverOpen}
             onMouseLeave={handlePopoverClose}
             label={likes.length}
+            color="primary"
           />
         </div>
       )}

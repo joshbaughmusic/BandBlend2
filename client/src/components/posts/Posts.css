@@ -4,6 +4,14 @@
   gap: 10px;
   margin-bottom: 1em;
 }
+
+.post-card-header-mine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1em;
+}
 .post-card-header-left {
   display: flex;
   gap: 8px;

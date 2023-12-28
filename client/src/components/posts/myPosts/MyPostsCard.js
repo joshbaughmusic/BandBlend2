@@ -70,19 +70,34 @@ export const MyPostsCard = ({
     <>
       <Card className="post-card">
         <CardContent>
-          <div className="post-card-header">
-            <Avatar
-              className="single-profile-pic"
-              src={profile.profile.profilePicture}
-              alt={profile.name}
-            />
+          <div className="post-card-header-mine">
+            <div className="post-card-header-left">
+              <Avatar
+                className="single-profile-pic"
+                src={profile.profile.profilePicture}
+                alt={profile.name}
+              />
+              <div>
+                <Typography style={{ fontWeight: 'bold' }}>
+                  {profile.name}
+                </Typography>
+                <Typography variant="body2">
+                  {dateFormatter(post.date)}
+                </Typography>
+              </div>
+            </div>
             <div>
-              <Typography style={{ fontWeight: 'bold' }}>
-                {profile.name}
-              </Typography>
-              <Typography variant="body2">
-                {dateFormatter(post.date)}
-              </Typography>
+              <div style={{ display: 'flex' }}>
+                <EditPost
+                  post={post}
+                  getUserPosts={getUserPosts}
+                />
+
+                <DeletePost
+                  postId={post.id}
+                  getUserPosts={getUserPosts}
+                />
+              </div>
             </div>
           </div>
           <div>
@@ -96,14 +111,6 @@ export const MyPostsCard = ({
                 post={post}
                 loggedInUser={loggedInUser}
                 postPage={page}
-              />
-              <DeletePost
-                postId={post.id}
-                getUserPosts={getUserPosts}
-              />
-              <EditPost
-                post={post}
-                getUserPosts={getUserPosts}
               />
             </div>
             {post.commentCount === 0 || post.commentCount === null ? (

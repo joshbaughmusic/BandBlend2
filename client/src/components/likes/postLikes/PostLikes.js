@@ -71,11 +71,17 @@ export const PostLikes = ({ post, loggedInUser, postPage }) => {
     <>
       {post.userProfileId == loggedInUser.id ? (
         <div className="like-container-mine">
-          <ThumbUpAltIcon />
+          <IconButton
+            disabled
+            sx={{ m: 0, p: 0 }}
+          >
+            <ThumbUpAltIcon />
+          </IconButton>
           <Chip
             onMouseEnter={handlePopoverOpen}
             onMouseLeave={handlePopoverClose}
             label={likes.length}
+            color="primary"
           />
         </div>
       ) : (
@@ -93,6 +99,7 @@ export const PostLikes = ({ post, loggedInUser, postPage }) => {
             onMouseEnter={handlePopoverOpen}
             onMouseLeave={handlePopoverClose}
             label={likes.length}
+            color="primary"
           />
         </div>
       )}

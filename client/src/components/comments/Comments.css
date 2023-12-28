@@ -4,11 +4,20 @@
   gap: 10px;
   margin-bottom: 1em;
 }
+
+.comment-card-header-mine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1em;
+}
 .comment-card-header-left {
   display: flex;
   gap: 8px;
   align-items: center;
 }
+
 .comment-card-header-left-skeleton {
   display: flex;
   gap: 8px;
