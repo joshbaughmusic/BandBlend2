@@ -4,6 +4,7 @@ import Fab from '@mui/material/Fab';
 import Paper from '@mui/material/Paper';
 import { useMessages } from '../context/MessagesContext.js';
 import {
+  Badge,
   Divider,
   Fade,
   Typography,
@@ -28,6 +29,7 @@ export const MessagesMain = ({ loggedInUser }) => {
     setNewMessageView,
     setSelectedRecipient,
     getMyConversations,
+    unreadMessages
   } = useMessages();
 
   useEffect(() => {
@@ -66,27 +68,36 @@ export const MessagesMain = ({ loggedInUser }) => {
   //     .then(() => setNewInputMessage(''))
   //     .catch((err) => console.error(err));
   // };
+  if (!unreadMessages) {
+    return null
+  }
 
   return (
     <div>
-      <Fab
-        color="primary"
-        aria-label="messages"
-        onClick={() => {
-          setNewMessageView(true);
-          handleToggleMessages();
-          setSelectedRecipient(null);
-        }}
-        style={{ position: 'fixed', bottom: 16, right: 16 }}
-      >
-        {openMessages ? <CloseIcon /> : <MailIcon />}
-      </Fab>
+        <Fab
+          color="primary"
+          aria-label="messages"
+          onClick={() => {
+            setNewMessageView(true);
+            handleToggleMessages();
+            setSelectedRecipient(null);
+          }}
+          style={{ position: 'fixed', bottom: 16, right: 16 }}
+        >
+          {openMessages ? <CloseIcon /> :
+          <>
+          <Badge color='secondary' badgeContent={unreadMessages.length} max={99}>
+          <MailIcon />
+          </Badge>
+          </> 
+          }
+        </Fab>
 
       <Fade in={openMessages}>
         <Paper
           elevation={10}
           sx={{
-            borderRadius: "3%",
+            borderRadius: '3%',
             position: 'fixed',
             bottom: 80,
             right: 16,
@@ -95,7 +106,7 @@ export const MessagesMain = ({ loggedInUser }) => {
             overflow: 'auto',
             zIndex: '1500',
           }}
-          className='messages-container'
+          className="messages-container"
         >
           <div
             className="messagesMain-header"
@@ -113,7 +124,7 @@ export const MessagesMain = ({ loggedInUser }) => {
             style={{
               marginLeft: '60px',
             }}
-            className='messages-inner'
+            className="messages-inner"
           >
             <div
               style={{

@@ -52,6 +52,11 @@ export const themeLight = createTheme({
       dark: '#602d2db4',
       light: '#9d5d5c',
     },
+    secondary: {
+      main: '#141414',
+      dark: '#602d2db4',
+      light: '#9d5d5c',
+    },
   },
 });
 
@@ -93,6 +98,11 @@ export const themeDark = createTheme({
     },
     primary: {
       main: '#8C4A4A',
+      dark: '#602d2db4',
+      light: '#9d5d5c',
+    },
+    secondary: {
+      main: '#141414',
       dark: '#602d2db4',
       light: '#9d5d5c',
     },
