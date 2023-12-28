@@ -1,8 +1,10 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { MessagesMain } from '../messages/MessagesMain.js';
 import {
+  fetchMarkAsRead,
   fetchMyConversations,
   fetchMyMessagesByConversation,
+  fetchUnreadMessages,
 } from '../../managers/messagesManager.js';
 
 const MessagesContext = createContext({});
@@ -19,6 +21,18 @@ export const MessagesProvider = ({ children, loggedInUser }) => {
   const [messages, setMessages] = useState();
   const [conversations, setConversations] = useState();
   const [conversation, setConversation] = useState();
+  const [unreadMessages, setUnreadMessages] = useState();
+
+  useEffect(() => {
+   if (loggedInUser) {
+    fetchUnreadMessages().then(setUnreadMessages)
+   }
+   if (activeConversationId) {
+    fetchMarkAsRead(activeConversationId).then(() => {
+      fetchUnreadMessages().then(setUnreadMessages);
+    });
+   }
+  }, [loggedInUser, activeConversationId])
 
   const handleToggleMessages = () => {
     setOpenMessages(!openMessages);
@@ -30,7 +44,10 @@ export const MessagesProvider = ({ children, loggedInUser }) => {
   };
 
   const getMyMessagesByConversation = () => {
-    fetchMyMessagesByConversation(activeConversationId).then(setMessages);
+    fetchMyMessagesByConversation(activeConversationId).then((res) => {
+      setMessages(res);
+      fetchMarkAsRead(activeConversationId)
+    });
   };
 
   const getMyConversations = (id) => {
@@ -86,6 +103,8 @@ export const MessagesProvider = ({ children, loggedInUser }) => {
         setConversations,
         conversation,
         setConversation,
+        unreadMessages,
+        setUnreadMessages
       }}
     >
       <MessagesMain loggedInUser={loggedInUser} />

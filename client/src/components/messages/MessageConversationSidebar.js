@@ -1,8 +1,4 @@
-import {
-  Avatar,
-  IconButton,
-  Tooltip,
-} from '@mui/material';
+import { Avatar, Badge, IconButton, Tooltip } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useMessages } from '../context/MessagesContext.js';
 
@@ -14,9 +10,22 @@ export const MessageConversationSidebar = () => {
     setNewMessageView,
     setSelectedRecipient,
     conversations,
+    unreadMessages,
   } = useMessages();
 
-  if (!conversations) {
+  const calculateUnreadPerConversation = (convoId) => {
+    if (unreadMessages.some((m) => m.messageConversationId === convoId)) {
+      const unreadMessagesByConvo = unreadMessages.filter(
+        (m) => m.messageConversationId === convoId
+      );
+
+      return unreadMessagesByConvo.length;
+    } else {
+      return 0;
+    }
+  };
+
+  if (!conversations || !unreadMessages) {
     return (
       <>
         <div
@@ -114,11 +123,17 @@ export const MessageConversationSidebar = () => {
                     setActiveConversationId(c.id);
                   }}
                 >
-                  <Avatar
-                    sx={{ width: '30px', height: '30px' }}
-                    alt={c.userProfile.name}
-                    src={c.userProfile.profile.profilePicture}
-                  />
+                  <Badge
+                    color="primary"
+                    badgeContent={calculateUnreadPerConversation(c.id)}
+                    max={99}
+                  >
+                    <Avatar
+                      sx={{ width: '30px', height: '30px' }}
+                      alt={c.userProfile.name}
+                      src={c.userProfile.profile.profilePicture}
+                    />
+                  </Badge>
                 </div>
               </Tooltip>
             </div>

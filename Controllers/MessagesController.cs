@@ -308,4 +308,46 @@ public class MessagesController : ControllerBase
         }
         return NotFound();
     }
+
+    [HttpPut("conversation/{conversationId}/read")]
+    [Authorize]
+    public IActionResult MarkMessagesInConversationAsRead (int conversationId)
+    {
+        MessageConversation foundMessageConversation = _dbContext.MessageConversations.SingleOrDefault(mc => mc.Id == conversationId);
+
+        if (foundMessageConversation == null) 
+        {
+            return NotFound();
+        }
+
+        var loggedInUser = _dbContext
+               .UserProfiles
+               .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        List<Message> foundMessagesInConversation = _dbContext.Messages.Where(m => m.MessageConversationId == conversationId && m.ReceiverId == loggedInUser.Id).ToList();
+
+        foreach (Message m in foundMessagesInConversation)
+        {
+            m.IsRead = true;
+        }
+
+        _dbContext.SaveChanges();
+
+        return NoContent();
+    }
+
+    [HttpGet("unread")]
+    [Authorize]
+    public IActionResult GetUnreadMessages ()
+    {
+
+        var loggedInUser = _dbContext
+               .UserProfiles
+               .SingleOrDefault(up => up.IdentityUserId == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        List<Message> foundUnreadMessages = _dbContext.Messages.Where(m => m.ReceiverId == loggedInUser.Id && m.IsRead == false).ToList();
+
+        return Ok(foundUnreadMessages);
+    }
+
 }

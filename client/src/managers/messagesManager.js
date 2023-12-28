@@ -23,7 +23,7 @@ export const fetchSendMessageNoConversation = (message) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(message),
-  }).then((res) => res.json())
+  }).then((res) => res.json());
 };
 
 export const fetchDeleteMessage = (id) => {
@@ -44,4 +44,15 @@ export const fetchEditMessage = (id, editedMessageBody) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(editedMessageBody),
   });
+};
+
+export const fetchMarkAsRead = (id) => {
+  return fetch(`${_apiUrl}/conversation/${id}/read`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+  });
+};
+
+export const fetchUnreadMessages = () => {
+  return fetch(`${_apiUrl}/unread`).then((res) => res.json());
 };
