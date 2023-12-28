@@ -1,7 +1,7 @@
 .comment-card-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 10px;
   margin-bottom: 1em;
 }
 .comment-card-header-left {

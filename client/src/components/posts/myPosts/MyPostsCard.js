@@ -71,17 +71,19 @@ export const MyPostsCard = ({
       <Card className="post-card">
         <CardContent>
           <div className="post-card-header">
-            <div className="post-card-header-left">
-              <Avatar
-                className="single-profile-pic"
-                src={profile.profile.profilePicture}
-                alt={profile.name}
-              />
+            <Avatar
+              className="single-profile-pic"
+              src={profile.profile.profilePicture}
+              alt={profile.name}
+            />
+            <div>
               <Typography style={{ fontWeight: 'bold' }}>
                 {profile.name}
               </Typography>
+              <Typography variant="body2">
+                {dateFormatter(post.date)}
+              </Typography>
             </div>
-            <Typography>{dateFormatter(post.date)}</Typography>
           </div>
           <div>
             <Typography>{post.body}</Typography>
@@ -106,26 +108,53 @@ export const MyPostsCard = ({
             </div>
             {post.commentCount === 0 || post.commentCount === null ? (
               <div className="post-card-footer-right">
-                <Typography>Be the first to comment</Typography>
-                <IconButton>
-                  {expanded ? (
-                    <ExpandLessIcon onClick={handleExpandClick} />
-                  ) : (
-                    <Tooltip
-                      title="Comment"
-                      placement="top"
+                {expanded ? (
+                  <>
+                    <Typography
+                      variant="subtitle2"
+                      style={{ marginRight: '4px', marginTop: '4px' }}
                     >
-                      <CommentIcon onClick={handleExpandClick} />
-                    </Tooltip>
-                  )}
-                </IconButton>
+                      Hide
+                    </Typography>
+                    <IconButton>
+                      <ExpandLessIcon onClick={handleExpandClick} />
+                    </IconButton>
+                  </>
+                ) : (
+                  <>
+                    <Typography
+                      variant="subtitle2"
+                      style={{ marginRight: '4px', marginTop: '4px' }}
+                    >
+                      Comment
+                    </Typography>
+                    <IconButton>
+                      <Tooltip
+                        title="Comment"
+                        placement="top"
+                      >
+                        <CommentIcon onClick={handleExpandClick} />
+                      </Tooltip>
+                    </IconButton>
+                  </>
+                )}
               </div>
             ) : (
               <div className="post-card-footer-right">
                 {expanded ? (
-                  <Typography>Hide Comments</Typography>
+                  <Typography
+                    variant="subtitle2"
+                    style={{ marginRight: '4px', marginTop: '4px' }}
+                  >
+                    Hide
+                  </Typography>
                 ) : (
-                  <Typography>View Comments</Typography>
+                  <Typography
+                    variant="subtitle2"
+                    style={{ marginRight: '4px', marginTop: '4px' }}
+                  >
+                    Comments
+                  </Typography>
                 )}
                 <ExpandMore
                   expand={expanded}

@@ -25,23 +25,24 @@ export const MyCommentCard = ({
       <Card className="comment-card">
         <CardContent>
           <div className="comment-card-header">
-            <div className="comment-card-header-left">
-              <Avatar
-                onClick={() => navigate(`/profile/me`)}
-                className="single-profile-pic comment-avatar-clickable"
-                src={comment.userProfile.profile.profilePicture}
-                alt={comment.userProfile.name}
-                sx={{ width: '30px', height: '30px' }}
-              />
-              <Typography
-                onClick={() => navigate(`/profile/me`)}
-                className="comment-name-clickable"
-                style={{ fontWeight: 'bold' }}
+            <Avatar
+              onClick={() => navigate(`/profile/me`)}
+              className="single-profile-pic comment-avatar-clickable"
+              src={comment.userProfile.profile.profilePicture}
+              alt={comment.userProfile.name}
+              sx={{ width: '30px', height: '30px' }}
+            />
+            <div>
+
+            <Typography
+              onClick={() => navigate(`/profile/me`)}
+              className="comment-name-clickable"
+              style={{ fontWeight: 'bold' }}
               >
-                {comment.userProfile.name}
-              </Typography>
-            </div>
-            <Typography>{dateFormatter(comment.date)}</Typography>
+              {comment.userProfile.name}
+            </Typography>
+            <Typography variant="body2">{dateFormatter(comment.date)}</Typography>
+              </div>
           </div>
           <div>
             <Typography className="comment-name-clickable">

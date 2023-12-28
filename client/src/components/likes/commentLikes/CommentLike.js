@@ -67,7 +67,7 @@ export const CommentLikes = ({ comment, loggedInUser, commentPage }) => {
     <>
       {comment.userProfileId == loggedInUser.id ? (
         <div className="like-container-mine">
-          <Typography>Likes</Typography>
+          <ThumbUpAltIcon />
           <Chip
             onMouseEnter={handlePopoverOpen}
             onMouseLeave={handlePopoverClose}

@@ -24,16 +24,16 @@ export const OtherCommentCard = ({
       <Card className="comment-card">
         <CardContent>
           <div className="comment-card-header">
-            <div className="comment-card-header-left">
-              <Avatar
-                className="single-profile-pic comment-avatar-clickable"
-                onClick={() =>
-                  navigate(`/profile/${comment.userProfile.profile.id}`)
-                }
-                src={comment.userProfile.profile.profilePicture}
-                alt={comment.userProfile.name}
-                sx={{ width: '30px', height: '30px' }}
-              />
+            <Avatar
+              className="single-profile-pic comment-avatar-clickable"
+              onClick={() =>
+                navigate(`/profile/${comment.userProfile.profile.id}`)
+              }
+              src={comment.userProfile.profile.profilePicture}
+              alt={comment.userProfile.name}
+              sx={{ width: '30px', height: '30px' }}
+            />
+            <div>
               <Typography
                 style={{ fontWeight: 'bold' }}
                 className="comment-name-clickable"
@@ -43,8 +43,10 @@ export const OtherCommentCard = ({
               >
                 {comment.userProfile.name}
               </Typography>
+              <Typography variant="body2">
+                {dateFormatter(comment.date)}
+              </Typography>
             </div>
-            <Typography>{dateFormatter(comment.date)}</Typography>
           </div>
           <div>
             <Typography>{comment.body}</Typography>

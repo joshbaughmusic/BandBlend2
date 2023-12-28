@@ -35,7 +35,13 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const FeedPostCard = ({ post, profile, page, loggedInUser, getUserFeed }) => {
+export const FeedPostCard = ({
+  post,
+  profile,
+  page,
+  loggedInUser,
+  getUserFeed,
+}) => {
   const [expanded, setExpanded] = useState(false);
   //defining newComment state here so when expanded is clicked, warning can be given if there is a comment in progress
   const [newComment, setNewComment] = useState('');
@@ -65,13 +71,13 @@ export const FeedPostCard = ({ post, profile, page, loggedInUser, getUserFeed })
       <Card className="post-card feed-post-card">
         <CardContent>
           <div className="post-card-header">
-            <div className="post-card-header-left">
-              <Avatar
-                onClick={() => navigate(`/profile/${profile.profile.id}`)}
-                className="feedPost-avatar single-profile-pic"
-                src={profile.profile.profilePicture}
-                alt={profile.name}
-              />
+            <Avatar
+              onClick={() => navigate(`/profile/${profile.profile.id}`)}
+              className="feedPost-avatar single-profile-pic"
+              src={profile.profile.profilePicture}
+              alt={profile.name}
+            />
+            <div>
               <Typography
                 className="feedPost-name"
                 onClick={() => navigate(`/profile/${profile.profile.id}`)}
@@ -79,8 +85,10 @@ export const FeedPostCard = ({ post, profile, page, loggedInUser, getUserFeed })
               >
                 {profile.name}
               </Typography>
+              <Typography variant="body2">
+                {dateFormatter(post.date)}
+              </Typography>
             </div>
-            <Typography>{dateFormatter(post.date)}</Typography>
           </div>
           <div>
             <Typography>{post.body}</Typography>
@@ -97,26 +105,53 @@ export const FeedPostCard = ({ post, profile, page, loggedInUser, getUserFeed })
             </div>
             {post.commentCount === 0 || post.commentCount === null ? (
               <div className="post-card-footer-right">
-                <Typography>Be the first to comment</Typography>
-                <IconButton>
-                  {expanded ? (
-                    <ExpandLessIcon onClick={handleExpandClick} />
-                  ) : (
-                    <Tooltip
-                      title="Comment"
-                      placement="top"
+                {expanded ? (
+                  <>
+                    <Typography
+                      variant="subtitle2"
+                      style={{ marginRight: '4px', marginTop: '4px' }}
                     >
-                      <CommentIcon onClick={handleExpandClick} />
-                    </Tooltip>
-                  )}
-                </IconButton>
+                      Hide
+                    </Typography>
+                    <IconButton>
+                      <ExpandLessIcon onClick={handleExpandClick} />
+                    </IconButton>
+                  </>
+                ) : (
+                  <>
+                    <Typography
+                      variant="subtitle2"
+                      style={{ marginRight: '4px', marginTop: '4px' }}
+                    >
+                      Comment
+                    </Typography>
+                    <IconButton>
+                      <Tooltip
+                        title="Comment"
+                        placement="top"
+                      >
+                        <CommentIcon onClick={handleExpandClick} />
+                      </Tooltip>
+                    </IconButton>
+                  </>
+                )}
               </div>
             ) : (
               <div className="post-card-footer-right">
                 {expanded ? (
-                  <Typography>Hide Comments</Typography>
+                  <Typography
+                    variant="subtitle2"
+                    style={{ marginRight: '4px', marginTop: '4px' }}
+                  >
+                    Hide
+                  </Typography>
                 ) : (
-                  <Typography>View Comments</Typography>
+                  <Typography
+                    variant="subtitle2"
+                    style={{ marginRight: '4px', marginTop: '4px' }}
+                  >
+                    Comments
+                  </Typography>
                 )}
                 <ExpandMore
                   expand={expanded}
