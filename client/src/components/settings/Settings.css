@@ -21,3 +21,8 @@
   justify-content: center;
   padding-top: 20px;
 }
+
+.css-y3snhx, .css-61rpbf, .css-78ki4w, .css-1c254s2 {
+background-color: var(--settings-background);
+box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.204);
+}

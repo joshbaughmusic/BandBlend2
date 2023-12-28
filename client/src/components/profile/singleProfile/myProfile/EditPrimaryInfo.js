@@ -181,7 +181,7 @@ export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
           variant="contained"
           onClick={handleModalOpen}
         >
-          Edit Primary Info
+          Edit Info
         </Button>
         <div>
           <Modal

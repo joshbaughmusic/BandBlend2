@@ -8,12 +8,20 @@ import {
   IconButton,
   Button,
   Tooltip,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
 } from '@mui/material';
 import { useState } from 'react';
 import { fetchAdminDeleteCommentOtherPost } from '../../../managers/adminFunctionsManager.js';
 import { useSnackBar } from '../../context/SnackBarContext.js';
 
-export const AdminDeleteComment = ({ commentId, getCommentsForPost, getUserPosts }) => {
+export const AdminDeleteComment = ({
+  commentId,
+  getCommentsForPost,
+  getUserPosts,
+}) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
@@ -45,14 +53,14 @@ export const AdminDeleteComment = ({ commentId, getCommentsForPost, getUserPosts
 
   return (
     <>
-      <Tooltip
-        title="Delete"
-        placement="top"
-      >
-        <IconButton onClick={handleDeleteClick}>
-          <DeleteIcon />
-        </IconButton>
-      </Tooltip>
+      <ListItem disablePadding>
+        <ListItemButton onClick={handleDeleteClick}>
+          <ListItemIcon>
+            <DeleteIcon />
+          </ListItemIcon>
+          <ListItemText primary="Delete" />
+        </ListItemButton>
+      </ListItem>
       <Dialog
         open={confirmOpen}
         onClose={handleConfirmClose}

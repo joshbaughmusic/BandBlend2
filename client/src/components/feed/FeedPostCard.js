@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Box,
   Button,
   Card,
   CardActions,
@@ -11,6 +12,8 @@ import {
   DialogContentText,
   DialogTitle,
   IconButton,
+  List,
+  Popper,
   Tooltip,
   Typography,
 } from '@mui/material';
@@ -23,6 +26,8 @@ import { PostLikes } from '../likes/postLikes/PostLikes.js';
 import { CommentsSection } from '../comments/CommentsSection.js';
 import { dateFormatter } from '../../utilities/dateFormatter.js';
 import { useNavigate } from 'react-router-dom';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { AdminDeletePost } from '../adminViews/adminPosts/AdminDeletePost.js';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -47,6 +52,7 @@ export const FeedPostCard = ({
   const [newComment, setNewComment] = useState('');
   const [confirmOpen, setConfirmOpen] = useState(false);
   const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = useState(null);
 
   useEffect(() => {
     setExpanded(false);
@@ -66,30 +72,81 @@ export const FeedPostCard = ({
     setNewComment('');
   };
 
+  const open = Boolean(anchorEl);
+  const popperId = open ? 'simple-popper' : undefined;
+
+  const handlePopperClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
   return (
     <>
       <Card className="post-card feed-post-card">
         <CardContent>
-          <div className="post-card-header">
-            <Avatar
-              onClick={() => navigate(`/profile/${profile.profile.id}`)}
-              className="feedPost-avatar single-profile-pic"
-              src={profile.profile.profilePicture}
-              alt={profile.name}
-            />
-            <div>
-              <Typography
-                className="feedPost-name"
-                onClick={() => navigate(`/profile/${profile.profile.id}`)}
-                style={{ fontWeight: 'bold' }}
-              >
-                {profile.name}
-              </Typography>
-              <Typography variant="body2">
-                {dateFormatter(post.date)}
-              </Typography>
+          {loggedInUser.roles.includes('Admin') ? (
+            <div className="post-card-header-mine">
+              <div className="post-card-header-left">
+                <Avatar
+                  className="single-profile-pic"
+                  src={profile.profile.profilePicture}
+                  alt={profile.name}
+                />
+                <div>
+                  <Typography style={{ fontWeight: 'bold' }}>
+                    {profile.name}
+                  </Typography>
+                  <Typography variant="caption">
+                    {dateFormatter(post.date)}
+                  </Typography>
+                </div>
+              </div>
+              <div>
+                <Tooltip
+                  title="Options"
+                  placement="left"
+                >
+                  <IconButton
+                    aria-describedby={popperId}
+                    onClick={handlePopperClick}
+                  >
+                    <MoreVertIcon />
+                  </IconButton>
+                </Tooltip>
+                <Popper
+                  id={popperId}
+                  open={open}
+                  anchorEl={anchorEl}
+                >
+                  <Box sx={{ border: 1, bgcolor: 'background.paper' }}>
+                    <List disablePadding>
+                      <>
+                        <AdminDeletePost
+                          postId={post.id}
+                          getUserPosts={getUserFeed}
+                        />
+                      </>
+                    </List>
+                  </Box>
+                </Popper>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="post-card-header">
+              <Avatar
+                className="single-profile-pic"
+                src={profile.profile.profilePicture}
+                alt={profile.name}
+              />
+              <div>
+                <Typography style={{ fontWeight: 'bold' }}>
+                  {profile.name}
+                </Typography>
+                <Typography variant="caption">
+                  {dateFormatter(post.date)}
+                </Typography>
+              </div>
+            </div>
+          )}
           <div>
             <Typography>{post.body}</Typography>
           </div>

@@ -13,7 +13,11 @@ import {
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import '../Likes.css';
-import { fetchDeleteCommentLike, fetchLikesForComment, fetchNewCommentLike } from '../../../managers/commentLikeManager.js';
+import {
+  fetchDeleteCommentLike,
+  fetchLikesForComment,
+  fetchNewCommentLike,
+} from '../../../managers/commentLikeManager.js';
 
 export const CommentLikes = ({ comment, loggedInUser, commentPage }) => {
   const [likes, setLikes] = useState();
@@ -67,7 +71,12 @@ export const CommentLikes = ({ comment, loggedInUser, commentPage }) => {
     <>
       {comment.userProfileId == loggedInUser.id ? (
         <div className="like-container-mine">
-          <ThumbUpAltIcon />
+          <IconButton
+            disabled
+            sx={{ m: 0, p: 0 }}
+          >
+            <ThumbUpAltIcon />
+          </IconButton>
           <Chip
             onMouseEnter={handlePopoverOpen}
             onMouseLeave={handlePopoverClose}

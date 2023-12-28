@@ -81,7 +81,7 @@ export const HomeSearchbar = () => {
         />
         {searchTerms && searchResults.length > 0 ? (
           <div className="homeSearchBar-list">
-            <List>
+            <List disablePadding>
               {searchResults.map((sr, index) => (
                 <ListItem
                   key={index}

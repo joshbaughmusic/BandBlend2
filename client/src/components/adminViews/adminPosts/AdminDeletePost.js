@@ -8,6 +8,10 @@ import {
   IconButton,
   Button,
   Tooltip,
+  ListItemButton,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from '@mui/material';
 import { useState } from 'react';
 import { useSnackBar } from '../../context/SnackBarContext.js';
@@ -45,14 +49,15 @@ export const AdminDeletePost = ({ postId, getUserPosts }) => {
 
   return (
     <>
-      <Tooltip
-        title="Delete"
-        placement="top"
-      >
-        <IconButton onClick={handleDeleteClick}>
-          <DeleteIcon />
-        </IconButton>
-      </Tooltip>
+      <ListItem disablePadding>
+        <ListItemButton onClick={handleDeleteClick}>
+          <ListItemIcon>
+            <DeleteIcon />
+          </ListItemIcon>
+          <ListItemText primary="Delete" />
+        </ListItemButton>
+      </ListItem>
+      
       <Dialog
         open={confirmOpen}
         onClose={handleConfirmClose}

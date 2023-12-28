@@ -1,5 +1,5 @@
 .lightmode {
-  --post-background:  rgb(205, 204, 204);
+  --post-background: rgb(205, 204, 204);
   --comment-background: rgb(210, 210, 210);
   --search-list: #e3e3e3;
   --search-list-hover: #dadada;
@@ -13,7 +13,8 @@
   --messagesNewTextField: #e3e3e3;
   --messagePrimary: rgb(205, 204, 204);
   --messageSecondary: rgb(176, 176, 176);
-  --: #1a1a1a;
+  --settings-background: rgb(216, 216, 216);
+
 }
 
 .darkmode {
@@ -32,4 +33,5 @@
   --messagePrimary: #121212;
   --messageSecondary: #181818;
   --messageDivider: #1a1a1a;
+  --settings-background: #1e1e1e;
 }

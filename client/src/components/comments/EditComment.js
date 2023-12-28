@@ -12,6 +12,10 @@ import {
   Divider,
   TextField,
   Tooltip,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
 } from '@mui/material';
 import { useState } from 'react';
 import { useSnackBar } from '../context/SnackBarContext.js';
@@ -81,14 +85,15 @@ export const EditComment = ({ comment, getCommentsForPost }) => {
 
   return (
     <>
-      <Tooltip
-        title="Edit"
-        placement="top"
-      >
-        <IconButton onClick={handleModalOpen}>
-          <EditIcon />
-        </IconButton>
-      </Tooltip>
+      <ListItem disablePadding>
+        <ListItemButton onClick={handleModalOpen}>
+          <ListItemIcon>
+            <EditIcon />
+          </ListItemIcon>
+          <ListItemText primary="Edit" />
+        </ListItemButton>
+      </ListItem>
+      
       <div>
         <Modal
           open={openModal}

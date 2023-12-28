@@ -12,6 +12,10 @@ import {
   Divider,
   TextField,
   Tooltip,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useSnackBar } from '../context/SnackBarContext.js';
@@ -38,12 +42,12 @@ export const EditPost = ({ post, getUserPosts }) => {
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
   const [openModal, setOpenModal] = useState(false);
-  
-useEffect(() => {
-  if (postBodyToEdit.length !== 0) {
-    setError(false);
-  }
-}, [postBodyToEdit]);
+
+  useEffect(() => {
+    if (postBodyToEdit.length !== 0) {
+      setError(false);
+    }
+  }, [postBodyToEdit]);
 
   const handleModalOpen = () => setOpenModal(true);
 
@@ -85,18 +89,17 @@ useEffect(() => {
     setError(false);
   };
 
-  
-
   return (
     <>
-      <Tooltip
-        title="Edit"
-        placement="top"
-      >
-        <IconButton onClick={handleModalOpen}>
-          <EditIcon />
-        </IconButton>
-      </Tooltip>
+      <ListItem disablePadding>
+        <ListItemButton onClick={handleModalOpen}>
+          <ListItemIcon>
+            <EditIcon />
+          </ListItemIcon>
+          <ListItemText primary="Edit" />
+        </ListItemButton>
+      </ListItem>
+
       <div>
         <Modal
           open={openModal}

@@ -1,15 +1,22 @@
 import {
   Avatar,
+  Box,
   Card,
   CardActions,
   CardContent,
+  IconButton,
+  List,
+  Popper,
+  Tooltip,
   Typography,
 } from '@mui/material';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { dateFormatter } from '../../utilities/dateFormatter.js';
 import { DeleteComment } from './DeleteComment.js';
 import { EditComment } from './EditComment.js';
 import { CommentLikes } from '../likes/commentLikes/CommentLike.js';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export const MyCommentCard = ({
   comment,
@@ -19,6 +26,14 @@ export const MyCommentCard = ({
   getUserPosts,
 }) => {
   const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const open = Boolean(anchorEl);
+  const popperId = open ? 'simple-popper' : undefined;
+
+  const handlePopperClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
 
   return (
     <>
@@ -41,21 +56,44 @@ export const MyCommentCard = ({
                 >
                   {comment.userProfile.name}
                 </Typography>
-                <Typography variant="body2">
+                <Typography variant="caption">
                   {dateFormatter(comment.date)}
                 </Typography>
               </div>
             </div>
-            <div style={{display: "flex"}}>
-              <EditComment
-                comment={comment}
-                getCommentsForPost={getCommentsForPost}
-              />
-              <DeleteComment
-                commentId={comment.id}
-                getCommentsForPost={getCommentsForPost}
-                getUserPosts={getUserPosts}
-              />
+            <div>
+              <Tooltip
+                title="Options"
+                placement="left"
+              >
+                <IconButton
+                  aria-describedby={popperId}
+                  onClick={handlePopperClick}
+                >
+                  <MoreVertIcon />
+                </IconButton>
+              </Tooltip>
+              <Popper
+                id={popperId}
+                open={open}
+                anchorEl={anchorEl}
+              >
+                <Box sx={{ border: 1, bgcolor: 'background.paper' }}>
+                  <List disablePadding>
+                    <>
+                      <EditComment
+                        comment={comment}
+                        getCommentsForPost={getCommentsForPost}
+                      />
+                      <DeleteComment
+                        commentId={comment.id}
+                        getCommentsForPost={getCommentsForPost}
+                        getUserPosts={getUserPosts}
+                      />
+                    </>
+                  </List>
+                </Box>
+              </Popper>
             </div>
           </div>
           <div>

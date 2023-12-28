@@ -18,13 +18,32 @@
   padding: 10px;
 }
 
+.allprofiles-card-small {
+  margin-top: 10px;
+  background-color: var(--allprofile-card-var1);
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.allprofiles-card-small-main {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.allprofile-card-small-lower {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+}
+
 .allprofiles-card-image {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-    border: 1px solid rgba(97, 97, 97, 0.627);
-
+  border: 1px solid rgba(97, 97, 97, 0.627);
 }
 
 .allprofile-card-flexstack {

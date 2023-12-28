@@ -63,7 +63,7 @@ export const DeleteAccountSettings = ({ setLoggedInUser }) => {
         aria-describedby="alert-dialog-description"
         sx={{ marginBottom: '10vh' }}
       >
-        <DialogTitle id="alert-dialog-title">{'Discard Changes?'}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{'Delete Account?'}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Are you sure you want to delete your account? This will delete all

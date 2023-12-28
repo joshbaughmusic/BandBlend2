@@ -93,7 +93,7 @@ export const MessageNewMessageRecipient = () => {
         />
         {searchTerms && searchResults.length > 0 ? (
           <div className="messageSearchBar-list">
-            <List>
+            <List disablePadding>
               {searchResults.map((sr, index) => (
                 <ListItem
                   key={index}

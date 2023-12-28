@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Container,
   Grid,
   IconButton,
   Paper,
@@ -13,6 +14,8 @@ import {
   fetchSaveProfile,
   fetchUnsaveProfile,
 } from '../../../managers/profileManager.js';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
   const navigate = useNavigate();
@@ -26,6 +29,60 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
       getAllUsersWithProfiles()
     );
   };
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
+
+  if (mediaQuerySmall) {
+    return (
+      <>
+        <Paper elevation={4}>
+          <Container className="allprofiles-card-small">
+            <div className="allprofiles-card-small-main">
+              {profile.profile.profilePicture ? (
+                <img
+                  className="allprofiles-card-image"
+                  src={profile.profile.profilePicture}
+                  alt=""
+                  onClick={() => navigate(`/profile/${profile.id}`)}
+                  style={{
+                    cursor: 'pointer',
+                  }}
+                />
+              ) : (
+                <Avatar sx={{ height: '80px', width: '80px' }}></Avatar>
+              )}
+              <div className="allprofile-card-flexstack">
+                <Typography
+                  variant="h6"
+                  onClick={() => navigate(`/profile/${profile.id}`)}
+                  style={{
+                    cursor: 'pointer',
+                    width: 'fit-content',
+                  }}
+                >
+                  {profile.name}
+                </Typography>
+                <Typography variant="subtitle">
+                  {profile.profile.city}, {profile.profile.state.name}
+                </Typography>
+                {profile.isBand ? (
+                  <Typography>Band</Typography>
+                ) : (
+                  <Typography variant="body2">
+                    {profile.profile.primaryInstrument.name}
+                  </Typography>
+                )}
+                <Typography variant="body2">
+                
+                  {profile.profile.primaryGenre.name}
+                </Typography>
+              </div>
+            </div>
+          </Container>
+        </Paper>
+      </>
+    );
+  }
 
   return (
     <Paper elevation={4}>
@@ -74,9 +131,14 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
             {profile.isBand ? (
               <Typography>Band</Typography>
             ) : (
-              <Typography>{profile.profile.primaryInstrument.name}</Typography>
+              <Typography variant="body2">
+                {profile.profile.primaryInstrument.name}
+              </Typography>
             )}
-            <Typography>
+            <Typography
+              variant="subtitle"
+              style={{ marginTop: '16px' }}
+            >
               {profile.profile.city}, {profile.profile.state.name}
             </Typography>
           </div>
@@ -86,9 +148,14 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
           xs={3}
           md={3}
         >
-          <div className="allprofile-card-flexstack">
-            <Typography variant="h6">Genre</Typography>
-            <Typography>{profile.profile.primaryGenre.name}</Typography>
+          <div
+            style={{ marginLeft: '15px' }}
+            className="allprofile-card-flexstack"
+          >
+            <Typography variant="h6">Genre:</Typography>
+            <Typography variant="body2">
+              {profile.profile.primaryGenre.name}
+            </Typography>
           </div>
         </Grid>
         <Grid
@@ -97,9 +164,9 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
           md={2}
         >
           <div className="allprofile-card-flexstack">
-            <Typography variant="h6">Tags</Typography>
+            <Typography variant="h6">Tags:</Typography>
             {profile.profile.profileTags.map((pt, index) => (
-              <Typography>{pt.tag.name}</Typography>
+              <Typography variant="body2">{pt.tag.name}</Typography>
             ))}
           </div>
         </Grid>
