@@ -170,7 +170,6 @@ export const OtherProfile = ({ loggedInUser }) => {
         getMyConversations();
         setNewMessageView(true);
         setSuccessAlert(true);
-        setOpenMessages(false);
         setSnackBarMessage(
           'User successfully blocked (you can undo this in settings).'
         );
@@ -204,8 +203,8 @@ export const OtherProfile = ({ loggedInUser }) => {
         handleSnackBarOpen();
       } else {
         handleConfirmClose();
+        getMyConversations();
         setSuccessAlert(true);
-        setOpenMessages(false);
         setSnackBarMessage('User account successfully banned.');
         handleSnackBarOpen();
         navigate('/');
@@ -221,8 +220,8 @@ export const OtherProfile = ({ loggedInUser }) => {
         handleSnackBarOpen();
       } else {
         handleConfirmClose();
+        getMyConversations();
         setSuccessAlert(true);
-        setOpenMessages(false);
         setSnackBarMessage('User account successfully deleted.');
         handleSnackBarOpen();
         navigate('/');
