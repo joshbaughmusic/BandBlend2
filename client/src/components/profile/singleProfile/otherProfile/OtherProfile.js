@@ -393,24 +393,23 @@ export const OtherProfile = ({ loggedInUser }) => {
               )}
 
               {profile.roles.includes('Admin') ? (
-                <div
-                  className="profileName-adminContainer"
-                  style={{ marginBottom: '4px' }}
-                >
-                  <Typography
-                    variant="h5"
-                    component="h1"
-                    sx={{ textAlign: 'center', fontWeight: 'bold' }}
-                  >
-                    {profile.name}
-                  </Typography>
+                <>
+                  <div style={{ marginBottom: '4px' }}>
+                    <Typography
+                      variant="h5"
+                      component="h1"
+                      sx={{ textAlign: 'center', fontWeight: 'bold' }}
+                    >
+                      {profile.name}
+                    </Typography>
+                  </div>
                   <Tooltip
                     title="Admin account"
-                    placement="top-start"
+                    placement="right"
                   >
-                    <LocalPoliceIcon sx={{ width: '20px' }} />
+                    <LocalPoliceIcon sx={{ width: '20px', mb: '4px' }} />
                   </Tooltip>
-                </div>
+                </>
               ) : (
                 <div style={{ marginBottom: '4px' }}>
                   <Typography

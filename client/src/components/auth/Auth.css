@@ -44,4 +44,5 @@
 
 .register-link:hover {
    color: #8C4A4A !important;
+   transition: all 0.2s;
 }

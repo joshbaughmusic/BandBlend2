@@ -7,13 +7,14 @@ import {
   FormGroup,
   Grid,
   IconButton,
-
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import { fetchSubGenres } from '../../../managers/subGenresManager.js';
 import { useSnackBar } from '../../context/SnackBarContext.js';
+import { useTheme } from '@emotion/react';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -91,6 +92,9 @@ export const RegisterSubGenres = ({
     }
   };
 
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('md'));
+
   if (!subGenres) {
     return (
       <>
@@ -135,7 +139,38 @@ export const RegisterSubGenres = ({
         >
           Pick three other genres that best describe you:
         </Typography>
-        
+
+        {mediaQuerySmall ? (
+          <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Grid item>
+              <FormGroup>
+                {subGenres.map((sg, index) => (
+                  <FormControlLabel
+                    key={index}
+                    control={
+                      <Checkbox
+                        name={sg.name}
+                        checked={
+                          selectedSubGenres.length > 0
+                            ? selectedSubGenres.some((pt) => pt === sg.id)
+                            : ''
+                        }
+                        onChange={handleCheck}
+                        value={sg.id}
+                      />
+                    }
+                    label={sg.name}
+                  />
+                ))}
+              </FormGroup>
+            </Grid>
+          </Grid>
+        ) : (
           <Grid
             container
             direction="row"
@@ -209,6 +244,7 @@ export const RegisterSubGenres = ({
               </FormGroup>
             </Grid>
           </Grid>
+        )}
       </Collapse>
     </>
   );

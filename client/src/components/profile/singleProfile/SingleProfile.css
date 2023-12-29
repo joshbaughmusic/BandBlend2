@@ -104,12 +104,6 @@
   right: 0px;
 }
 
-.profileName-adminContainer {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
-
 .profile-container-all {
   animation: fadein-profile 0.5s ease-in;
 }

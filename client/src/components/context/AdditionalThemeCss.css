@@ -7,8 +7,8 @@
   --search-list-border: #9e9e9e;
   --nav-bar: #E3E3E3;
   /* --nav-bar-divider: rgb(111, 71, 71); */
-  --allprofile-card-var1: rgb(205, 204, 204);
-  --allprofile-card-var2: rgb(176, 176, 176);
+  --allprofile-card-var1: #d2d2d2;
+  --allprofile-card-var2: #bebebe;
   --messages-sidebar: #cdcccc;
   --messagesNewTextField: #e3e3e3;
   --messagePrimary: rgb(205, 204, 204);
@@ -26,8 +26,8 @@
   --search-list-border: #a7a7a7;
   --nav-bar: #141414;
   --nav-bar-divider: rgb(111, 71, 71);
-  --allprofile-card-var1: #2f2f2f;
-  --allprofile-card-var2: #272727;
+  --allprofile-card-var1: #1f1f1f;
+  --allprofile-card-var2: #121212;
   --messages-sidebar: #1e1e1e;
   --messagesNewTextField: #313131;
   --messagePrimary: #121212;

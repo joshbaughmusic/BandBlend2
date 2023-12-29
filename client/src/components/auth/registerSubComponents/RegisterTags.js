@@ -8,11 +8,13 @@ import {
   Grid,
   IconButton,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import { fetchTags } from '../../../managers/tagsManager.js';
 import { useSnackBar } from '../../context/SnackBarContext.js';
+import { useTheme } from '@emotion/react';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -90,6 +92,9 @@ export const RegisterTags = ({
     }
   };
 
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('md'));
+
   if (!tags) {
     return (
       <>
@@ -134,7 +139,40 @@ export const RegisterTags = ({
         >
           Pick three tags that best describe you:
         </Typography>
+        {
+          mediaQuerySmall ?
 
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item>
+            <FormGroup>
+              {tags.map((sg, index) => (
+                <FormControlLabel
+                  key={index}
+                  control={
+                    <Checkbox
+                      name={sg.name}
+                      checked={
+                        selectedTags.length > 0
+                          ? selectedTags.some((pt) => pt === sg.id)
+                          : ''
+                      }
+                      onChange={handleCheck}
+                      value={sg.id}
+                    />
+                  }
+                  label={sg.name}
+                />
+              ))}
+            </FormGroup>
+          </Grid>
+         
+        </Grid>
+        :
         <Grid
           container
           direction="row"
@@ -208,6 +246,8 @@ export const RegisterTags = ({
             </FormGroup>
           </Grid>
         </Grid>
+        }
+
       </Collapse>
     </>
   );

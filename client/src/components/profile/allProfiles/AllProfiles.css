@@ -20,7 +20,6 @@
 
 .allprofiles-card-small {
   margin-top: 10px;
-  background-color: var(--allprofile-card-var1);
   display: flex;
   justify-content: center;
   padding: 10px;
