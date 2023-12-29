@@ -82,8 +82,7 @@
   overflow: hidden;
   cursor: pointer;
   border-radius: 50%;
-    border: 2px solid rgba(97, 97, 97, 0.627);
-
+  border: 2px solid rgba(97, 97, 97, 0.627);
 }
 
 .profilePic {
@@ -113,4 +112,13 @@
 
 .profile-container-all {
   animation: fadein-profile 0.5s ease-in;
+}
+
+@media (max-width: 600px) {
+  .profile-left-sidebar {
+    margin: 20px 0px 0px 0px;
+  }
+  .profile-right-section-item {
+   margin: 20px 0px 20px 0px;
+  }
 }

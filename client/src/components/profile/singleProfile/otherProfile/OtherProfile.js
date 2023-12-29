@@ -604,7 +604,7 @@ export const OtherProfile = ({ loggedInUser }) => {
                   <Divider style={{ marginTop: '4px' }} />
                 </div>
                 {profile.profile.about === null ? (
-                  <Typography>No about written yet!</Typography>
+                  <Typography>No about written yet</Typography>
                 ) : (
                   <Typography>{profile.profile.about}</Typography>
                 )}

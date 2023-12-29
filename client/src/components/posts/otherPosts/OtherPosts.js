@@ -52,7 +52,7 @@ export const OtherPosts = ({ profile, loggedInUser }) => {
 
         {profile.profile.postCount === null ||
         profile.profile.postCount === 0 ? (
-          <div>No Posts yet!</div>
+          <div>No Posts yet</div>
         ) : (
           <div>
             {profile.profile.postCount > 5
@@ -75,7 +75,7 @@ export const OtherPosts = ({ profile, loggedInUser }) => {
           <Typography variant="h6">Posts</Typography>
           <Divider style={{ marginTop: '4px' }} />
         </div>
-        <div>No Posts yet!</div>
+        <div>No Posts yet</div>
       </>
     );
   }

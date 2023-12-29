@@ -25,7 +25,7 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
               <Typography variant="h6">Additional Photos</Typography>
               <Divider style={{ marginTop: '4px' }} />
             </div>
-            <div>No photos yet!</div>
+            <div>No additional photos yet</div>
           </>
         ) : (
           <>
@@ -58,7 +58,7 @@ export const OtherAdditionalPhotos = ({ loggedInUser, profile }) => {
           <Typography variant="h6">Additional Photos</Typography>
           <Divider style={{ marginTop: '4px' }} />
         </div>
-        <div>No photos yet!</div>
+        <div>No additional photos yet</div>
       </>
     );
   }

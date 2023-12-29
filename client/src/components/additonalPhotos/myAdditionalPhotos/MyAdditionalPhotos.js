@@ -92,7 +92,7 @@ export const MyAdditionalPhotos = ({ profile }) => {
               </div>
               <Divider style={{ marginTop: '4px' }} />
             </div>
-            <div>No photos yet!</div>
+            <div>No photos yet</div>
           </>
         ) : (
           <>
@@ -162,7 +162,7 @@ export const MyAdditionalPhotos = ({ profile }) => {
           <div className="profile-section-header"></div>
           <Divider style={{ marginTop: '4px' }} />
         </div>
-        <div>No photos yet!</div>
+        <div>No photos yet</div>
       </>
     );
   }

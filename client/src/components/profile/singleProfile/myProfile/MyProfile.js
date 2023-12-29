@@ -402,7 +402,7 @@ export const MyProfile = ({ loggedInUser }) => {
                     </div>
                   </>
                 ) : profile.profile.about === null ? (
-                  <Typography>No about written yet!</Typography>
+                  <Typography>No about written yet</Typography>
                 ) : (
                   <Typography>{profile.profile.about}</Typography>
                 )}
@@ -443,10 +443,16 @@ export const MyProfile = ({ loggedInUser }) => {
           <Button
             color="error"
             onClick={() => handleConfirmClose()}
+            variant="contained"
           >
             Discard
           </Button>
-          <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+          <Button
+            onClick={() => setConfirmOpen(false)}
+            variant="contained"
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </>
