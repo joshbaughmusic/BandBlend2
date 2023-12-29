@@ -17,6 +17,7 @@ import {
   Typography,
   Button,
   Box,
+  useMediaQuery,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSnackBar } from '../../../context/SnackBarContext.js';
@@ -24,20 +25,7 @@ import { fetchStates } from '../../../../managers/statesManager.js';
 import { fetchPrimaryGenres } from '../../../../managers/primaryGenresManager.js';
 import { fetchPrimaryInstruments } from '../../../../managers/primaryInstrumentsManager.js';
 import { fetchEditPrimaryInfo } from '../../../../managers/profileManager.js';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  height: '60%',
-  overflowY: 'auto',
-};
+import { useTheme } from '@emotion/react';
 
 export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
   const [profileToEdit, setProfileToEdit] = useState({
@@ -62,6 +50,42 @@ export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
   const [primaryInstruments, setPrimaryInstruments] = useState();
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
+
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
+
+  let style;
+
+  if (mediaQuerySmall) {
+    style = {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: '90%',
+      bgcolor: 'background.paper',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
+      height: '60%',
+      overflowY: 'auto',
+    };
+  } else {
+     style = {
+       position: 'absolute',
+       top: '50%',
+       left: '50%',
+       transform: 'translate(-50%, -50%)',
+       width: 500,
+       bgcolor: 'background.paper',
+       border: '2px solid #000',
+       boxShadow: 24,
+       p: 4,
+       height: '60%',
+       overflowY: 'auto',
+     };
+  }
+
 
   const getDropDowns = () => {
     fetchStates().then(setUsStates);
@@ -167,7 +191,7 @@ export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
         <Button
           variant="contained"
           onClick={handleModalOpen}
-          className='editPrimaryInfo-button'
+          className="editPrimaryInfo-button"
         >
           Edit Primary Info
         </Button>

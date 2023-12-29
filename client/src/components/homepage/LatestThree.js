@@ -41,7 +41,7 @@ export const LatestThree = ({ loggedInUser }) => {
                 sx={{ m: 1, textAlign: 'center' }}
                 variant="h6"
               >
-                Latest for you:
+                Latest:
               </Typography>
               <Divider sx={{ mb: 3 }} />
               <div>
@@ -63,7 +63,7 @@ export const LatestThree = ({ loggedInUser }) => {
                 sx={{ m: 1, textAlign: 'center' }}
                 variant="h6"
               >
-                Latest for you:
+                Latest:
               </Typography>
               <Divider sx={{ mb: 3 }} />
               <div>
@@ -93,7 +93,7 @@ export const LatestThree = ({ loggedInUser }) => {
                 sx={{ m: 1, textAlign: 'center' }}
                 variant="h6"
               >
-                Latest for you:
+                Latest:
               </Typography>
               <Divider sx={{ mb: 3 }} />
               <Typography
@@ -124,7 +124,7 @@ export const LatestThree = ({ loggedInUser }) => {
                 sx={{ m: 1, textAlign: 'center' }}
                 variant="h6"
               >
-                Latest for you:
+                Latest:
               </Typography>
               <Divider sx={{ mb: 3 }} />
               <Typography
@@ -157,12 +157,13 @@ export const LatestThree = ({ loggedInUser }) => {
           <Paper
             elevation={4}
             className="profile-right-section-item feed-container"
+            sx={{ p: 2 }}
           >
             <Typography
               sx={{ m: 1, textAlign: 'center' }}
               variant="h6"
             >
-              Latest for you:
+              Latest:
             </Typography>
             <Divider sx={{ mb: 3 }} />
             <div>
@@ -183,12 +184,13 @@ export const LatestThree = ({ loggedInUser }) => {
           <Paper
             elevation={4}
             className="profile-right-section-item feed-container"
+            sx={{ p: 2 }}
           >
             <Typography
               sx={{ m: 1, textAlign: 'center' }}
               variant="h6"
             >
-              Latest for you:
+              Latest:
             </Typography>
             <Divider sx={{ mb: 3 }} />
             <div>

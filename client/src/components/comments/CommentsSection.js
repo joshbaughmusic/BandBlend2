@@ -130,6 +130,10 @@ export const CommentsSection = ({
           );
         })}
       </div>
+      {
+        commentCount === 0 ?
+        ""
+        :
       <div className="pagination-allprofiles-container">
         <Pagination
           count={Math.ceil(commentCount / amountPerPage)}
@@ -154,6 +158,8 @@ export const CommentsSection = ({
           </Select>
         </FormControl>
       </div>
+
+      }
     </>
   );
 };

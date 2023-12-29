@@ -1,18 +1,11 @@
 import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import {  useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
 import List from '@mui/material/List';
-import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -30,7 +23,9 @@ import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
 import MainLogoBlack from '../../images/Bandblend_Logos/Logo-top-black.png';
 import MainLogoWhite from '../../images/Bandblend_Logos/Logo-top-white.png';
-import { Drawer, Tooltip } from '@mui/material';
+import NavLogoBlack from '../../images/Bandblend_Logos/Logo-nav-black.png';
+import NavLogoWhite from '../../images/Bandblend_Logos/Logo-nav-white.png';
+import { Drawer} from '@mui/material';
 import { logout } from '../../managers/authManager.js';
 import { useThemeContext } from '../context/ThemeContext.js';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -505,13 +500,14 @@ export const NavBarSmall = ({ loggedInUser, setLoggedInUser }) => {
         </Drawer>
       </div>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar position="fixed">
           <Toolbar>
             <IconButton
               size="large"
               edge="start"
               aria-label="menu"
               onClick={() => toggleDrawer(true)}
+              sx
             >
               <MenuIcon />
             </IconButton>
@@ -521,16 +517,16 @@ export const NavBarSmall = ({ loggedInUser, setLoggedInUser }) => {
                 <img
                   style={{ cursor: 'pointer' }}
                   onClick={() => navigate('/')}
-                  className="nav-drawer-header-logo"
-                  src={MainLogoWhite}
+                  className="nav-header-logo-small"
+                  src={NavLogoWhite}
                   alt=""
                 />
               ) : (
                 <img
                   style={{ cursor: 'pointer' }}
                   onClick={() => navigate('/')}
-                  className="nav-drawer-header-logo"
-                  src={MainLogoBlack}
+                  className="nav-header-logo-small"
+                  src={NavLogoBlack}
                   alt=""
                 />
               )}

@@ -1,6 +1,6 @@
 .navlogo {
   width: 30px;
-  animation: rotate 12s infinite linear;
+  animation: rotate 15s infinite linear;
 }
 
 .nav-drawer-header-logo {
@@ -8,12 +8,21 @@
   margin-right: 17px;
 }
 
+.nav-header-logo-small {
+  width: 30px;
+  margin-right: 17px;
+  margin-top: 8px;
+    animation: rotate 15s infinite linear;
+
+}
+
 .css-zispzx-MuiList-root,
 .css-1r9jet7,
 .css-cwerg2-MuiListItem-root,
 .css-wlnzx3-MuiListItem-root,
-.css-1egya4n-MuiListItem-root {
-  background-color: var(--nav-bar);
+.css-1egya4n-MuiListItem-root,
+.css-hyum1k-MuiToolbar-root {
+  background-color: var(--nav-bar) !important;
 }
 
 .css-9mgopn-MuiDivider-root {

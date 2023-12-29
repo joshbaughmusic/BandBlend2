@@ -63,12 +63,17 @@
   border: 3px solid #fff;
 }
 
+@media (max-width: 600px) {
+  .popup-photoItem {
+    margin-left: 0;
+  }
+}
+
 .popup-media span {
   position: absolute;
   top: 5px;
   right: 20px;
   font-size: 50px;
-  font-weight: bolder;
   z-index: 100;
   cursor: pointer;
   color: #fff;
@@ -79,3 +84,5 @@
   transition: all 0.2s;
   color: #b6b6b6;
 }
+
+

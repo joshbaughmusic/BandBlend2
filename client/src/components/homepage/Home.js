@@ -41,7 +41,7 @@ export const Home = ({loggedInUser}) => {
              </>
            ) : (
              <>
-               <div className="container-home-logos">
+               <div className="container-home-logos-small">
                  <img
                   //  className="mainLogo"
                    src={MainLogoBlack}

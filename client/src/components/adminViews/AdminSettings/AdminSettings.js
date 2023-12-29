@@ -5,12 +5,14 @@ import {
   Tabs,
   Tab,
   Box,
+  useMediaQuery,
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { AdminFeedSettings } from './AdminFeedSettings.js';
 import { AdminBannedSettings } from './AdminBannedSettings.js';
 import { AdminRoleAdjustSettings } from './AdminRoleAdjustSettings.js';
+import { useTheme } from '@emotion/react';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -32,6 +34,7 @@ function CustomTabPanel(props) {
   );
 }
 
+
 CustomTabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
@@ -47,69 +50,134 @@ function a11yProps(index) {
 
 export const AdminSettings = () => {
   const [value, setValue] = useState(0);
-
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <>
       <Container>
-        <Paper
-          elevation={4}
-          className="settings-section"
-        >
-          <Typography
-            sx={{ mb: 2, textAlign: 'center' }}
-            variant="h6"
+        {mediaQuerySmall ? (
+          <Paper
+            elevation={4}
+            className="settings-section"
+            sx={{ mt: '75px', p: 2 }}
           >
-            {`Settings (Admin)`}
-          </Typography>
-          <Box
-            sx={{
-              borderBottom: 1,
-              borderColor: 'divider',
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              aria-label="basic tabs example"
+            <Typography
+              sx={{ mb: 2, textAlign: 'center' }}
+              variant="h6"
             >
-              <Tab
-                label="Feed"
-                {...a11yProps(0)}
-              />
-              <Tab
-                label="Banned"
-                {...a11yProps(1)}
-              />
-              <Tab
-                label="Admins"
-                {...a11yProps(2)}
-              />
-            </Tabs>
-          </Box>
-          <CustomTabPanel
-            value={value}
-            index={0}
+              {`Settings (Admin)`}
+            </Typography>
+            <Box
+              sx={{
+                borderBottom: 1,
+                borderColor: 'divider',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                aria-label="basic tabs example"
+              >
+                <Tab
+                  label="Feed"
+                  {...a11yProps(0)}
+                />
+                <Tab
+                  label="Banned"
+                  {...a11yProps(1)}
+                />
+                <Tab
+                  label="Admins"
+                  {...a11yProps(2)}
+                />
+              </Tabs>
+            </Box>
+            <CustomTabPanel
+              value={value}
+              index={0}
+            >
+              <AdminFeedSettings />
+            </CustomTabPanel>
+            <CustomTabPanel
+              value={value}
+              index={1}
+            >
+              <AdminBannedSettings />
+            </CustomTabPanel>
+            <CustomTabPanel
+              value={value}
+              index={2}
+            >
+              <AdminRoleAdjustSettings />
+            </CustomTabPanel>
+          </Paper>
+        ) : (
+          <Paper
+            elevation={4}
+            className="settings-section"
+            sx={{ p: 2 }}
           >
-            <AdminFeedSettings />
-          </CustomTabPanel>
-          <CustomTabPanel
-            value={value}
-            index={1}
-          >
-            <AdminBannedSettings />
-          </CustomTabPanel>
-          <CustomTabPanel
-            value={value}
-            index={2}
-          >
-            <AdminRoleAdjustSettings />
-          </CustomTabPanel>
-        </Paper>
+            <Typography
+              sx={{ mb: 2, textAlign: 'center' }}
+              variant="h6"
+            >
+              {`Settings (Admin)`}
+            </Typography>
+            <Box
+              sx={{
+                borderBottom: 1,
+                borderColor: 'divider',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                aria-label="basic tabs example"
+              >
+                <Tab
+                  label="Feed"
+                  {...a11yProps(0)}
+                />
+                <Tab
+                  label="Banned"
+                  {...a11yProps(1)}
+                />
+                <Tab
+                  label="Admins"
+                  {...a11yProps(2)}
+                />
+              </Tabs>
+            </Box>
+            <CustomTabPanel
+              value={value}
+              index={0}
+            >
+              <AdminFeedSettings />
+            </CustomTabPanel>
+            <CustomTabPanel
+              value={value}
+              index={1}
+            >
+              <AdminBannedSettings />
+            </CustomTabPanel>
+            <CustomTabPanel
+              value={value}
+              index={2}
+            >
+              <AdminRoleAdjustSettings />
+            </CustomTabPanel>
+          </Paper>
+        )}
       </Container>
     </>
   );

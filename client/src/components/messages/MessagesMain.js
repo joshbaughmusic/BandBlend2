@@ -8,6 +8,7 @@ import {
   Divider,
   Fade,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import './Messages.css';
 import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
@@ -18,6 +19,7 @@ import { MessageConversationSidebar } from './MessageConversationSidebar.js';
 import { MessageConversationView } from './MessageConversationView.js';
 import { MessageConversationNewTextField } from './MessageConversationNewTextField.js';
 import { MessageNewMessageView } from './MessageNewMessageView.js';
+import { useTheme } from '@emotion/react';
 
 export const MessagesMain = ({ loggedInUser }) => {
   const [connection, setConnection] = useState();
@@ -68,6 +70,10 @@ export const MessagesMain = ({ loggedInUser }) => {
   //     .then(() => setNewInputMessage(''))
   //     .catch((err) => console.error(err));
   // };
+
+    const theme = useTheme();
+    const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
+
   if (!unreadMessages) {
     return null
   }
@@ -94,6 +100,65 @@ export const MessagesMain = ({ loggedInUser }) => {
         </Fab>
 
       <Fade in={openMessages}>
+        {mediaQuerySmall ?
+        
+        <Paper
+          elevation={10}
+          sx={{
+            borderRadius: '3%',
+            position: 'fixed',
+            bottom: 80,
+            right: 16,
+            width: 358,
+            height: 491,
+            overflow: 'auto',
+            zIndex: '1500',
+          }}
+          className="messages-container"
+        >
+          <div
+            className="messagesMain-header"
+            style={{
+              paddingLeft: '24px',
+              paddingRight: '24px',
+            }}
+          >
+            <Typography variant="h6">Messages</Typography>
+          </div>
+          <Divider />
+          <MessageConversationSidebar loggedInUser={loggedInUser} />
+
+          <div
+            style={{
+              marginLeft: '60px',
+            }}
+            className="messages-inner"
+          >
+            <div
+              style={{
+                paddingLeft: '16px',
+              }}
+            >
+              {activeConversationId && !newMessageView ? (
+                <>
+                  <MessageConversationView
+                    loggedInUser={loggedInUser}
+                    connection={connection}
+                  />
+                  <MessageConversationNewTextField
+                    connection={connection}
+                    loggedInUser={loggedInUser}
+                  />
+                </>
+              ) : (
+                <>
+                  <MessageNewMessageView loggedInUser={loggedInUser} />
+                </>
+              )}
+            </div>
+          </div>
+        </Paper>
+        :
         <Paper
           elevation={10}
           sx={{
@@ -150,6 +215,7 @@ export const MessagesMain = ({ loggedInUser }) => {
             </div>
           </div>
         </Paper>
+      }
       </Fade>
     </div>
   );

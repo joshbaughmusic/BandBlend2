@@ -248,6 +248,7 @@ export const OtherProfile = ({ loggedInUser }) => {
             <Paper
               elevation={4}
               className="profile-left-sidebar"
+              sx={{ p: 3 }}
             >
               {profile.roles.includes('Admin') ? (
                 ''
@@ -596,6 +597,7 @@ export const OtherProfile = ({ loggedInUser }) => {
               <Paper
                 elevation={4}
                 className="profile-right-section-item"
+                sx={{ p: 3 }}
               >
                 <div className="divider-header-container">
                   <Typography variant="h6">About</Typography>
@@ -610,6 +612,7 @@ export const OtherProfile = ({ loggedInUser }) => {
               <Paper
                 elevation={4}
                 className="profile-right-section-item"
+                sx={{ p: 3 }}
               >
                 <OtherAdditionalPhotos
                   loggedInUser={loggedInUser}
@@ -619,6 +622,7 @@ export const OtherProfile = ({ loggedInUser }) => {
               <Paper
                 elevation={4}
                 className="profile-right-section-item"
+                sx={{ p: 3 }}
               >
                 <OtherPosts
                   profile={profile}

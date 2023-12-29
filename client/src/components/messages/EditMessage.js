@@ -12,6 +12,7 @@ import {
   Divider,
   TextField,
   Tooltip,
+  useMediaQuery,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useSnackBar } from '../context/SnackBarContext.js';
@@ -19,18 +20,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import { fetchEditMessage } from '../../managers/messagesManager.js';
 import { useMessages } from '../context/MessagesContext.js';
+import { useTheme } from '@emotion/react';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
 
 export const EditMessage = ({ message }) => {
   const [messageBodyToEdit, setMessageBodyToEdit] = useState(message.body);
@@ -40,6 +31,41 @@ export const EditMessage = ({ message }) => {
     useSnackBar();
   const { getMyMessagesByConversation } = useMessages();
   const [openModal, setOpenModal] = useState(false);
+
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
+
+  let style;
+
+  if (mediaQuerySmall) {
+    style = {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: '90%',
+      bgcolor: 'background.paper',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
+      height: '60%',
+      overflowY: 'auto',
+    };
+  } else {
+    style = {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 500,
+      bgcolor: 'background.paper',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
+      height: '60%',
+      overflowY: 'auto',
+    };
+  }
 
   useEffect(() => {
     if (messageBodyToEdit.length !== 0) {
