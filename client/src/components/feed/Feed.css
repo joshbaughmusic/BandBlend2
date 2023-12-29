@@ -29,3 +29,10 @@
 .feed-post-card-skeleton {
   height: 168px;
 }
+
+.feed-settings-icon {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  margin-top: -5px;
+}

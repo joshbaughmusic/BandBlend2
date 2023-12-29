@@ -10,6 +10,8 @@ import {
   Container,
   Paper,
   useMediaQuery,
+  IconButton,
+  Tooltip,
 } from '@mui/material';
 import { fetchUserFeed } from '../../managers/feedManager.js';
 import { FeedPostCard } from './FeedPostCard.js';
@@ -17,6 +19,7 @@ import { useNavigate } from 'react-router-dom';
 import { FeedPostSkeleton } from './FeedPostSkeleton.js';
 import './Feed.css';
 import { useTheme } from '@emotion/react';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 export const MyFeed = ({ loggedInUser }) => {
   const [feedPosts, setFeedPosts] = useState();
@@ -58,13 +61,25 @@ export const MyFeed = ({ loggedInUser }) => {
               className="profile-right-section-item feed-container"
               sx={{ mt: '75px' }}
             >
-              <Typography
-                sx={{ m: 1, textAlign: 'center' }}
-                variant="h6"
-              >
-                Feed:
-              </Typography>
-              <Divider sx={{ mb: 3 }} />
+              <div style={{ position: 'relative' }}>
+                <Typography
+                  sx={{ m: 1, textAlign: 'center' }}
+                  variant="h6"
+                >
+                  Feed:
+                </Typography>
+                <div className="feed-settings-icon">
+                  <Tooltip
+                    title="Settings"
+                    placement="left"
+                  >
+                    <IconButton onClick={() => navigate('/settings')}>
+                      <SettingsIcon />
+                    </IconButton>
+                  </Tooltip>
+                </div>
+                <Divider sx={{ mb: 3 }} />
+              </div>
               <div>
                 {Array(5)
                   .fill(0)
@@ -78,15 +93,26 @@ export const MyFeed = ({ loggedInUser }) => {
               elevation={4}
               className="profile-right-section-item feed-container"
               sx={{ my: '20px', mx: '0px', p: 2 }}
-              
             >
-              <Typography
-                sx={{ m: 1, textAlign: 'center' }}
-                variant="h6"
-              >
-                Feed:
-              </Typography>
-              <Divider sx={{ mb: 3 }} />
+              <div style={{ position: 'relative' }}>
+                <Typography
+                  sx={{ m: 1, textAlign: 'center' }}
+                  variant="h6"
+                >
+                  Feed:
+                </Typography>
+                <div className="feed-settings-icon">
+                  <Tooltip
+                    title="Settings"
+                    placement="left"
+                  >
+                    <IconButton onClick={() => navigate('/settings')}>
+                      <SettingsIcon />
+                    </IconButton>
+                  </Tooltip>
+                </div>
+                <Divider sx={{ mb: 3 }} />
+              </div>
               <div>
                 {Array(5)
                   .fill(0)
@@ -111,13 +137,25 @@ export const MyFeed = ({ loggedInUser }) => {
               className="profile-right-section-item feed-container"
               sx={{ mt: '75px', p: 2 }}
             >
-              <Typography
-                sx={{ m: 1, textAlign: 'center' }}
-                variant="h6"
-              >
-                Feed:
-              </Typography>
-              <Divider sx={{ mb: 3 }} />
+              <div style={{ position: 'relative' }}>
+                <Typography
+                  sx={{ m: 1, textAlign: 'center' }}
+                  variant="h6"
+                >
+                  Feed:
+                </Typography>
+                <div className="feed-settings-icon">
+                  <Tooltip
+                    title="Settings"
+                    placement="left"
+                  >
+                    <IconButton onClick={() => navigate('/settings')}>
+                      <SettingsIcon />
+                    </IconButton>
+                  </Tooltip>
+                </div>
+                <Divider sx={{ mb: 3 }} />
+              </div>
               <Typography
                 sx={{ mt: 3, textAlign: 'center' }}
                 variant="h6"
@@ -141,13 +179,25 @@ export const MyFeed = ({ loggedInUser }) => {
               className="profile-right-section-item feed-container"
               sx={{ my: '20px', mx: '0px', p: 2 }}
             >
-              <Typography
-                sx={{ m: 1, textAlign: 'center' }}
-                variant="h6"
-              >
-                Feed:
-              </Typography>
-              <Divider sx={{ mb: 3 }} />
+              <div style={{ position: 'relative' }}>
+                <Typography
+                  sx={{ m: 1, textAlign: 'center' }}
+                  variant="h6"
+                >
+                  Feed:
+                </Typography>
+                <div className="feed-settings-icon">
+                  <Tooltip
+                    title="Settings"
+                    placement="left"
+                  >
+                    <IconButton onClick={() => navigate('/settings')}>
+                      <SettingsIcon />
+                    </IconButton>
+                  </Tooltip>
+                </div>
+                <Divider sx={{ mb: 3 }} />
+              </div>
               <Typography
                 sx={{ mt: 3, textAlign: 'center' }}
                 variant="h6"
@@ -180,13 +230,25 @@ export const MyFeed = ({ loggedInUser }) => {
             className="profile-right-section-item feed-container"
             sx={{ mt: '75px', p: 2 }}
           >
-            <Typography
-              sx={{ m: 1, textAlign: 'center' }}
-              variant="h6"
-            >
-              Feed:
-            </Typography>
-            <Divider sx={{ mb: 3 }} />
+            <div style={{ position: 'relative' }}>
+              <Typography
+                sx={{ m: 1, textAlign: 'center' }}
+                variant="h6"
+              >
+                Feed:
+              </Typography>
+              <div className="feed-settings-icon">
+                <Tooltip
+                  title="Settings"
+                  placement="left"
+                >
+                  <IconButton onClick={() => navigate('/settings')}>
+                    <SettingsIcon />
+                  </IconButton>
+                </Tooltip>
+              </div>
+              <Divider sx={{ mb: 3 }} />
+            </div>
             <div>
               {feedPosts.map((p, index) => (
                 <FeedPostCard
@@ -232,13 +294,27 @@ export const MyFeed = ({ loggedInUser }) => {
             className="profile-right-section-item feed-container"
             sx={{ my: '20px', mx: '0px', p: 2 }}
           >
-            <Typography
-              sx={{ m: 1, textAlign: 'center' }}
-              variant="h6"
-            >
-              Feed:
-            </Typography>
-            <Divider sx={{ mb: 3 }} />
+            <div style={{ position: 'relative' }}>
+              <Typography
+                sx={{ m: 1, textAlign: 'center' }}
+                variant="h6"
+              >
+                Feed:
+              </Typography>
+              <div className="feed-settings-icon">
+                <Tooltip
+                  title="Settings"
+                  placement="left"
+                >
+                  <IconButton
+                    onClick={() => navigate('/settings')}
+                  >
+                    <SettingsIcon />
+                  </IconButton>
+                </Tooltip>
+              </div>
+              <Divider sx={{ mb: 3 }} />
+            </div>
             <div>
               {feedPosts.map((p, index) => (
                 <FeedPostCard
