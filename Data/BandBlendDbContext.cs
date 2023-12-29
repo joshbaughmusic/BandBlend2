@@ -514,7 +514,7 @@ new SubGenre
 new SubGenre
 {
     Id = 35,
-    Name = "Thrash Metal"
+    Name = "Trap"
 },
 new SubGenre
 {

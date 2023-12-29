@@ -1197,7 +1197,7 @@ namespace BandBlend2.Migrations
                         new
                         {
                             Id = 35,
-                            Name = "Thrash Metal"
+                            Name = "Trap"
                         },
                         new
                         {
@@ -1469,13 +1469,13 @@ namespace BandBlend2.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5ec7726c-a3e5-4e60-a6ff-f397bfddb148",
+                            ConcurrencyStamp = "c93c78ea-9d5d-488e-85a2-24960bd7742e",
                             Email = "joshbaughmusic_bb@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEEnM+X0oX0pgQAitCj06FC+LaEoh7Rg02I2pMZ+y2Ko4fkaQ60D7KB1jULUz1njUsQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELzj1CqszCyeBGD7WtIZ8Fjrh2OhlFfM0frh4rOhfz6tVAqTjPZcDwP5Ajget6ddnA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9c31c049-c27f-46da-9ae7-c2e89bf31ea5",
+                            SecurityStamp = "a0855932-244f-4fa0-9a2c-c7ca900e9011",
                             TwoFactorEnabled = false
                         });
                 });

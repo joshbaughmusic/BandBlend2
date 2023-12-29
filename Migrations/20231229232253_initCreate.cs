@@ -701,7 +701,7 @@ namespace BandBlend2.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "5ec7726c-a3e5-4e60-a6ff-f397bfddb148", "joshbaughmusic_bb@gmail.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEEnM+X0oX0pgQAitCj06FC+LaEoh7Rg02I2pMZ+y2Ko4fkaQ60D7KB1jULUz1njUsQ==", null, false, "9c31c049-c27f-46da-9ae7-c2e89bf31ea5", false, null });
+                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "c93c78ea-9d5d-488e-85a2-24960bd7742e", "joshbaughmusic_bb@gmail.com", false, false, null, null, null, "AQAAAAIAAYagAAAAELzj1CqszCyeBGD7WtIZ8Fjrh2OhlFfM0frh4rOhfz6tVAqTjPZcDwP5Ajget6ddnA==", null, false, "a0855932-244f-4fa0-9a2c-c7ca900e9011", false, null });
 
             migrationBuilder.InsertData(
                 table: "PrimaryGenres",
@@ -846,7 +846,7 @@ namespace BandBlend2.Migrations
                     { 32, "Hardcore" },
                     { 33, "Synth-pop" },
                     { 34, "Techno" },
-                    { 35, "Thrash Metal" },
+                    { 35, "Trap" },
                     { 36, "West Coast Hip-Hop" }
                 });
 
