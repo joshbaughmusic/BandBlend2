@@ -228,6 +228,7 @@ if (!posts) {
               value={newPost}
               onChange={(e) => setNewPost(e.target.value)}
               error={blankPostError}
+              sx={{maxHeight: "300px"}}
             />
             <div className="post-submit-button-container">
               <Button

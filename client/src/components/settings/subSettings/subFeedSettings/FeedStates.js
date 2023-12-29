@@ -172,7 +172,7 @@ export const FeedStates = () => {
         }}
       >
         {feedStates.length === 0 ? (
-          <Typography>No followed states!</Typography>
+          <Typography sx={{ mt: '4px' }}>No followed states</Typography>
         ) : (
           feedStates.map((fs, index) => (
             <Chip

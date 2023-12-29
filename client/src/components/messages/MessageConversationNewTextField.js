@@ -1,9 +1,10 @@
-import { IconButton, TextField } from '@mui/material';
+import { IconButton, TextField, useMediaQuery } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useMessages } from '../context/MessagesContext.js';
 import { useState } from 'react';
 import { useSnackBar } from '../context/SnackBarContext.js';
 import { fetchSendMessageExistingConversation } from '../../managers/messagesManager.js';
+import { useTheme } from '@emotion/react';
 
 export const MessageConversationNewTextField = ({
   connection,
@@ -55,14 +56,54 @@ export const MessageConversationNewTextField = ({
     //   .catch((err) => console.error(err));
   };
 
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <>
+    {
+      mediaQuerySmall ?
       <div
-      className='messagesNewTextField'
+        className="messagesNewTextField"
         style={{
           position: 'absolute',
           bottom: '0px',
-          width: '297px',
+          width: '260px',
+        }}
+      >
+        <TextField
+          placeholder="New message..."
+          fullWidth
+          error={blankMessageError}
+          margin="normal"
+          multiline
+          value={inputMessage}
+          autoFocus={true}
+          onChange={(e) => {
+            setInputMessage(e.target.value);
+            setBlankMessageError(false);
+          }}
+          sx={{ maxHeight: 200, overflow: 'auto', position: 'relative' }}
+          InputProps={{
+            endAdornment: (
+              <IconButton
+                aria-label="send"
+                
+                onClick={() => handleSendMessage()}
+              >
+                <SendIcon />
+              </IconButton>
+            ),
+          }}
+        />
+      </div>
+      :
+      <div
+        className="messagesNewTextField"
+        style={{
+          position: 'absolute',
+          bottom: '0px',
+          width: '305px',
         }}
       >
         <TextField
@@ -91,6 +132,8 @@ export const MessageConversationNewTextField = ({
           }}
         />
       </div>
+
+    }
     </>
   );
 };

@@ -182,7 +182,7 @@ export const AdminFeedPrimaryInstruments = () => {
         }}
       >
         {feedPrimaryInstruments.length === 0 ? (
-          <Typography>No followed instruments!</Typography>
+          <Typography sx={{ mt: '4px' }}>No followed instruments</Typography>
         ) : (
           feedPrimaryInstruments.map((fs, index) => (
             <Chip

@@ -129,7 +129,7 @@ export const FeedPrimaryInstruments = () => {
     return (
       <>
         <div className="feedSettingsItem-container">
-          <Typography variant="h6">Followed PrimaryInstruments:</Typography>
+          <Typography variant="h6">Followed Instruments:</Typography>
           <Tooltip
             title="Follow New PrimaryInstrument"
             placement="left-start"
@@ -182,7 +182,7 @@ export const FeedPrimaryInstruments = () => {
         }}
       >
         {feedPrimaryInstruments.length === 0 ? (
-          <Typography>No followed instruments!</Typography>
+          <Typography sx={{ mt: '4px' }}>No followed instruments</Typography>
         ) : (
           feedPrimaryInstruments.map((fs, index) => (
             <Chip
@@ -207,7 +207,7 @@ export const FeedPrimaryInstruments = () => {
                 variant="h6"
                 component="h2"
               >
-                Follow New PrimaryInstruments
+                Follow New Instruments
               </Typography>
               <IconButton onClick={handleModalClose}>
                 <CloseIcon />

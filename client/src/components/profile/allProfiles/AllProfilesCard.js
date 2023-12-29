@@ -38,44 +38,67 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
         <Paper elevation={4}>
           <Container className="allprofiles-card-small">
             <div className="allprofiles-card-small-main">
-              {profile.profile.profilePicture ? (
-                <img
-                  className="allprofiles-card-image"
-                  src={profile.profile.profilePicture}
-                  alt=""
-                  onClick={() => navigate(`/profile/${profile.id}`)}
-                  style={{
-                    cursor: 'pointer',
-                  }}
-                />
-              ) : (
-                <Avatar sx={{ height: '80px', width: '80px' }}></Avatar>
-              )}
-              <div className="allprofile-card-flexstack">
-                <Typography
-                  variant="h6"
-                  onClick={() => navigate(`/profile/${profile.id}`)}
-                  style={{
-                    cursor: 'pointer',
-                    width: 'fit-content',
-                  }}
-                >
-                  {profile.name}
-                </Typography>
-                <Typography variant="subtitle">
-                  {profile.profile.city}, {profile.profile.state.name}
-                </Typography>
-                {profile.isBand ? (
-                  <Typography>Band</Typography>
+              <div className="allprofiles-card-small-left">
+                {profile.profile.profilePicture ? (
+                  <img
+                    className="allprofiles-card-image-small"
+                    src={profile.profile.profilePicture}
+                    alt=""
+                    onClick={() => navigate(`/profile/${profile.id}`)}
+                    style={{
+                      cursor: 'pointer',
+                    }}
+                  />
                 ) : (
-                  <Typography variant="body2">
-                    {profile.profile.primaryInstrument.name}
-                  </Typography>
+                  <Avatar sx={{ height: '60px', width: '60px' }}></Avatar>
                 )}
-                <Typography variant="body2">
-                
-                  {profile.profile.primaryGenre.name}
-                </Typography>
+                <div className="allprofile-card-flexstack">
+                  <Typography
+                    variant="h6"
+                    onClick={() => navigate(`/profile/${profile.id}`)}
+                    style={{
+                      cursor: 'pointer',
+                      width: 'fit-content',
+                    }}
+                  >
+                    {profile.name}
+                  </Typography>
+                  {profile.isBand ? (
+                    <Typography variant="body2">{`Band - ${profile.profile.primaryGenre.name}`}</Typography>
+                  ) : (
+                    <Typography variant="body2">
+                      {`${profile.profile.primaryInstrument.name} - ${profile.profile.primaryGenre.name}`}
+                    </Typography>
+                  )}
+                  <Typography>
+                    {profile.profile.city}, {profile.profile.state.name}
+                  </Typography>
+                </div>
+              </div>
+              <div className="allprofile-card-flexstack-icon">
+                {profile.profile.savedProfile ? (
+                  <Tooltip
+                    title="Unsave Profile"
+                    placement="right"
+                  >
+                    <IconButton onClick={() => handleUnsaveProfile()}>
+                      <BookmarkIcon
+                        style={{ fontSize: 40, color: '#8C4A4A' }}
+                      />
+                    </IconButton>
+                  </Tooltip>
+                ) : (
+                  <Tooltip
+                    title="Save Profile"
+                    placement="right"
+                  >
+                    <IconButton onClick={() => handleSaveProfile()}>
+                      <BookmarkBorderIcon
+                        style={{ fontSize: 40, color: '#8C4A4A' }}
+                      />
+                    </IconButton>
+                  </Tooltip>
+                )}
               </div>
             </div>
           </Container>
@@ -128,19 +151,16 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
             >
               {profile.name}
             </Typography>
-            <Typography
-              variant="body2"
-             
-            >
-              {profile.profile.city}, {profile.profile.state.name}
-            </Typography>
             {profile.isBand ? (
-              <Typography>Band</Typography>
+              <Typography variant="body2">Band</Typography>
             ) : (
               <Typography variant="body2">
                 {profile.profile.primaryInstrument.name}
               </Typography>
             )}
+            <Typography>
+              {profile.profile.city}, {profile.profile.state.name}
+            </Typography>
           </div>
         </Grid>
         <Grid
@@ -182,7 +202,7 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
                 placement="right"
               >
                 <IconButton onClick={() => handleUnsaveProfile()}>
-                  <BookmarkIcon style={{ fontSize: 40 }} />
+                  <BookmarkIcon style={{ fontSize: 40, color: '#8C4A4A' }} />
                 </IconButton>
               </Tooltip>
             ) : (
@@ -191,7 +211,9 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
                 placement="right"
               >
                 <IconButton onClick={() => handleSaveProfile()}>
-                  <BookmarkBorderIcon style={{ fontSize: 40 }} />
+                  <BookmarkBorderIcon
+                    style={{ fontSize: 40, color: '#8C4A4A' }}
+                  />
                 </IconButton>
               </Tooltip>
             )}

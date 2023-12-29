@@ -182,7 +182,7 @@ export const AdminFeedPrimaryGenres = () => {
         }}
       >
         {feedPrimaryGenres.length === 0 ? (
-          <Typography>No followed genres!</Typography>
+          <Typography sx={{ mt: '4px' }}>No followed genres</Typography>
         ) : (
           feedPrimaryGenres.map((fs, index) => (
             <Chip

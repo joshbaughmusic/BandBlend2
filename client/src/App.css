@@ -1,3 +1,8 @@
+
+* {
+    overflow-wrap: break-word;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
@@ -11,10 +16,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-html, #root {
-  /* background-color: rgb(136, 138, 138); */
 }
 
 .appviews {

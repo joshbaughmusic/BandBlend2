@@ -88,7 +88,10 @@ export const BlockedAccountsSettings = () => {
           }}
         >
           {myBlockedAccounts.length === 0 ? (
-            <Typography>{`No accounts blocked. You can block a user account from their profile page.`}</Typography>
+            <>
+            <Typography>No accounts blocked</Typography>
+            <Typography variant='caption'>You can block a user account from their profile page </Typography>
+            </>
           ) : (
             <List disablePadding>
               {myBlockedAccounts.map((ba, index) => {

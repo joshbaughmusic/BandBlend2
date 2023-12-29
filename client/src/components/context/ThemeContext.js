@@ -10,6 +10,7 @@ export const useThemeContext = () => {
 
 export const themeLight = createTheme({
   components: {
+
     MuiCard: {
       styleOverrides: {
         root: {

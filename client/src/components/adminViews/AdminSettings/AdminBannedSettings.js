@@ -141,7 +141,10 @@ export const AdminBannedSettings = () => {
           }}
         >
           {bannedAccounts.length === 0 ? (
-            <Typography>{`No accounts are currently banned.`}</Typography>
+            <>
+            <Typography sx={{mt: "4px"}}>{`No accounts are currently banned`}</Typography>
+            <Typography variant='caption'>You can ban a user from their profile page</Typography>
+            </>
           ) : (
             <List disablePadding>
               {bannedAccounts.map((a, index) => {

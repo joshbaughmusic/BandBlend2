@@ -90,9 +90,14 @@ export const FeedPostCard = ({
                   className="single-profile-pic"
                   src={profile.profile.profilePicture}
                   alt={profile.name}
+                  onClick={() => navigate(`/profile/${profile.profile.id}`)}
+                  style={{ cursor: 'pointer' }}
                 />
                 <div>
-                  <Typography style={{ fontWeight: 'bold' }}>
+                  <Typography
+                    onClick={() => navigate(`/profile/${profile.profile.id}`)}
+                    style={{ fontWeight: 'bold', cursor: 'pointer' }}
+                  >
                     {profile.name}
                   </Typography>
                   <Typography variant="caption">
@@ -136,9 +141,14 @@ export const FeedPostCard = ({
                 className="single-profile-pic"
                 src={profile.profile.profilePicture}
                 alt={profile.name}
+                onClick={() => navigate(`/profile/${profile.profile.id}`)}
+                style={{ cursor: 'pointer' }}
               />
               <div>
-                <Typography style={{ fontWeight: 'bold' }}>
+                <Typography
+                  onClick={() => navigate(`/profile/${profile.profile.id}`)}
+                  style={{ fontWeight: 'bold', cursor: 'pointer' }}
+                >
                   {profile.name}
                 </Typography>
                 <Typography variant="caption">

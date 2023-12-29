@@ -232,9 +232,9 @@ export const MyProfile = ({ loggedInUser }) => {
                 </div>
               )}
               {profile.isBand ? (
-                <Typography>Band</Typography>
+                <Typography variant="body2">Band</Typography>
               ) : (
-                <Typography>Musician</Typography>
+                <Typography variant="body2">Musician</Typography>
               )}
               <div
                 className="socialmedia-icons-container"

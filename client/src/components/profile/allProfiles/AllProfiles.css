@@ -24,23 +24,33 @@
   display: flex;
   justify-content: center;
   padding: 10px;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.1), 0px 6px 10px 0px rgba(0, 0, 0, 0.08), 0px 1px 12px 0px rgba(0, 0, 0, 0.06);
 }
 
 .allprofiles-card-small-main {
   display: flex;
   align-items: center;
-  gap: 30px;
+  justify-content: space-between;
 }
 
-.allprofile-card-small-lower {
-  display: flex;
-  justify-content: space-around;
-  gap: 30px;
+.allprofiles-card-small-left {
+ display: flex;
+  align-items: center;
+  gap: 15px;
 }
+
 
 .allprofiles-card-image {
   width: 80px;
   height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(97, 97, 97, 0.627);
+}
+
+.allprofiles-card-image-small {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid rgba(97, 97, 97, 0.627);

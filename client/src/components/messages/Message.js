@@ -8,9 +8,19 @@ import { dateFormatter } from '../../utilities/dateFormatter.js';
 import { useNavigate } from 'react-router-dom';
 import { DeleteMessage } from './DeleteMessage.js';
 import { EditMessage } from './EditMessage.js';
+import { useState } from 'react';
 
 export const Message = ({ message, loggedInUser }) => {
   const navigate = useNavigate();
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const open = Boolean(anchorEl);
+    const popperId = open ? 'simple-popper' : undefined;
+
+    const handlePopperClick = (event) => {
+      setAnchorEl(anchorEl ? null : event.currentTarget);
+    };
+
   return (
     <>
       {loggedInUser.identityUserId === message.senderIdentityUserId ? (
@@ -21,10 +31,8 @@ export const Message = ({ message, loggedInUser }) => {
           <CardContent>
             <div
               style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                marginBottom: '8px',
+            
+                marginBottom: '10px',
               }}
             >
               
@@ -34,12 +42,13 @@ export const Message = ({ message, loggedInUser }) => {
               <Typography variant="caption">
                 {dateFormatter(message.date)}
               </Typography>
+              
             </div>
             <Typography>{message.body}</Typography>
           </CardContent>
           <CardActions disableSpacing>
-            <DeleteMessage messageId={message.id} />
             <EditMessage message={message} />
+            <DeleteMessage messageId={message.id} />
           </CardActions>
         </Card>
       ) : (
@@ -50,10 +59,8 @@ export const Message = ({ message, loggedInUser }) => {
           <CardContent>
             <div
               style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                marginBottom: '8px',
+                
+                marginBottom: '10px',
               }}
             >
             
@@ -64,7 +71,7 @@ export const Message = ({ message, loggedInUser }) => {
                 {dateFormatter(message.date)}
               </Typography>
             </div>
-            <Typography sx={{ mb: 1 }}>{message.body}</Typography>
+            <Typography >{message.body}</Typography>
           </CardContent>
         </Card>
       )}

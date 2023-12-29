@@ -106,7 +106,12 @@ export const AdminRoleAdjustSettings = () => {
           }}
         >
           {admins.length === 0 ? (
-            <Typography>{`No other admins to display currently.`}</Typography>
+            <>
+            <Typography
+              sx={{ mt: '4px' }}
+              >{`No other admins to display currently`}</Typography>
+            <Typography variant='caption'>You can promote a user to admin status from their profile page</Typography>
+              </>
           ) : (
             <List disablePadding>
               {admins.map((a, index) => {
@@ -119,7 +124,7 @@ export const AdminRoleAdjustSettings = () => {
                       <div
                         style={{
                           display: 'flex',
-                          alignItems: "center"
+                          alignItems: 'center',
                         }}
                       >
                         <ListItemAvatar>

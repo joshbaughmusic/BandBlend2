@@ -109,10 +109,10 @@ export const MessagesMain = ({ loggedInUser }) => {
             position: 'fixed',
             bottom: 80,
             right: 16,
-            width: 358,
+            width: 350,
             height: 491,
             overflow: 'auto',
-            zIndex: '1500',
+            zIndex: '1000',
           }}
           className="messages-container"
         >
