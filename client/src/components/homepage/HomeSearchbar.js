@@ -10,12 +10,14 @@ import {
   ListItemText,
   TextField,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { fetchSearchProfiles } from '../../managers/profileManager.js';
 import { useNavigate } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
 import './HomeSearchbar.css';
+import { useTheme } from '@emotion/react';
 
 export const HomeSearchbar = () => {
   const [searchTerms, setSearchTerms] = useState('');
@@ -44,19 +46,11 @@ export const HomeSearchbar = () => {
     return () => clearTimeout(timeoutId);
   }, [searchTerms]);
 
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <>
-      <Typography
-        style={{
-          marginBottom: '8px',
-          fontSize: '14px',
-          textAlign: 'center',
-          fontStyle: 'italic',
-        }}
-      >
-        Search by name, city, state code, genre, or instrument...
-      </Typography>
-
       <FormGroup className="homeSearchBar-parent">
         <TextField
           label="Search"
@@ -99,6 +93,29 @@ export const HomeSearchbar = () => {
           ''
         )}
       </FormGroup>
+      {mediaQuerySmall ? (
+        <Typography
+          style={{
+            marginBottom: '40px',
+            fontSize: '14px',
+            textAlign: 'center',
+            fontStyle: 'italic',
+          }}
+        >
+          Search by name, city, state code, genre, or instrument...
+        </Typography>
+      ) : (
+        <Typography
+          style={{
+            marginBottom: '80px',
+            fontSize: '14px',
+            textAlign: 'center',
+            fontStyle: 'italic',
+          }}
+        >
+          Search by name, city, state code, genre, or instrument...
+        </Typography>
+      )}
     </>
   );
 };

@@ -1,7 +1,8 @@
-import { Avatar, Button, TextField } from "@mui/material";
-import { useEffect, useState } from "react"
-import { useSnackBar } from "../context/SnackBarContext.js";
-import { fetchCreateNewComment } from "../../managers/commentsManager.js";
+import { Avatar, Button, TextField, useMediaQuery } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useSnackBar } from '../context/SnackBarContext.js';
+import { fetchCreateNewComment } from '../../managers/commentsManager.js';
+import { useTheme } from '@emotion/react';
 
 export const NewComment = ({
   profile,
@@ -48,15 +49,22 @@ export const NewComment = ({
     }
   };
 
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <>
       <div className="new-comment-container">
-        <Avatar
-          className="single-profile-pic"
-          src={loggedInUser.profile.profilePicture}
-          alt={profile.name}
-          sx={{ width: '35px', height: '35px' }}
-        />
+        {mediaQuerySmall ? (
+          ''
+        ) : (
+          <Avatar
+            className="single-profile-pic"
+            src={loggedInUser.profile.profilePicture}
+            alt={profile.name}
+            sx={{ width: '35px', height: '35px' }}
+          />
+        )}
 
         <TextField
           className="comment-text-field"

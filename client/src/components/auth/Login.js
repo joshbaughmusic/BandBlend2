@@ -12,6 +12,7 @@ import {
   Stack,
   Tooltip,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -24,6 +25,7 @@ import './Auth.css';
 import { useThemeContext } from '../context/ThemeContext.js';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import { useTheme } from '@emotion/react';
 
 export default function Login({ setLoggedInUser }) {
   const navigate = useNavigate();
@@ -34,6 +36,9 @@ export default function Login({ setLoggedInUser }) {
     useSnackBar();
   const [showPassword, setShowPassword] = useState(false);
   const { darkMode, handleDarkModeClick } = useThemeContext();
+
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -82,6 +87,46 @@ export default function Login({ setLoggedInUser }) {
         )}
       </div>
       <Container className="login-container-outer">
+        {
+          mediaQuerySmall ?
+        <div className="container-home-logos-small">
+          {darkMode ? (
+            <>
+              <img
+                src={MainLogoWhite}
+                alt=""
+                style={{
+                  width: '100%',
+                }}
+              />
+              <img
+                src={SubLogoWhite}
+                alt=""
+                style={{
+                  width: '90%',
+                }}
+              />
+            </>
+          ) : (
+            <>
+              <img
+                src={MainLogoBlack}
+                alt=""
+                style={{
+                  width: '100%',
+                }}
+              />
+              <img
+                src={SubLogoBlack}
+                alt=""
+                style={{
+                  width: '90%',
+                }}
+              />
+            </>
+          )}
+        </div>
+        :
         <div className="container-home-logos">
           {darkMode ? (
             <>
@@ -119,6 +164,9 @@ export default function Login({ setLoggedInUser }) {
             </>
           )}
         </div>
+
+
+        }
         <div className="login-container-inner">
           <Stack gap={2}>
             <Typography variant="h6">Login</Typography>
@@ -179,7 +227,8 @@ export default function Login({ setLoggedInUser }) {
             textAlign="center"
           >
             New to the Blend? Register{' '}
-            <span className='register-link'
+            <span
+              className="register-link"
               onClick={() => navigate('../register')}
             >
               HERE
