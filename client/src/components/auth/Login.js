@@ -29,8 +29,8 @@ import { useTheme } from '@emotion/react';
 
 export default function Login({ setLoggedInUser }) {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('joshbaughmusic_bb@gmail.com');
-  const [password, setPassword] = useState('R#v7kT!sL2p@Q6uG');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
@@ -87,86 +87,83 @@ export default function Login({ setLoggedInUser }) {
         )}
       </div>
       <Container className="login-container-outer">
-        {
-          mediaQuerySmall ?
-        <div className="container-home-logos-small">
-          {darkMode ? (
-            <>
-              <img
-                src={MainLogoWhite}
-                alt=""
-                style={{
-                  width: '100%',
-                }}
-              />
-              <img
-                src={SubLogoWhite}
-                alt=""
-                style={{
-                  width: '90%',
-                }}
-              />
-            </>
-          ) : (
-            <>
-              <img
-                src={MainLogoBlack}
-                alt=""
-                style={{
-                  width: '100%',
-                }}
-              />
-              <img
-                src={SubLogoBlack}
-                alt=""
-                style={{
-                  width: '90%',
-                }}
-              />
-            </>
-          )}
-        </div>
-        :
-        <div className="container-home-logos">
-          {darkMode ? (
-            <>
-              <img
-                src={MainLogoWhite}
-                alt=""
-                style={{
-                  width: '80%',
-                }}
-              />
-              <img
-                src={SubLogoWhite}
-                alt=""
-                style={{
-                  width: '70%',
-                }}
-              />
-            </>
-          ) : (
-            <>
-              <img
-                src={MainLogoBlack}
-                alt=""
-                style={{
-                  width: '80%',
-                }}
-              />
-              <img
-                src={SubLogoBlack}
-                alt=""
-                style={{
-                  width: '70%',
-                }}
-              />
-            </>
-          )}
-        </div>
-
-
-        }
+        {mediaQuerySmall ? (
+          <div className="container-home-logos-small">
+            {darkMode ? (
+              <>
+                <img
+                  src={MainLogoWhite}
+                  alt=""
+                  style={{
+                    width: '100%',
+                  }}
+                />
+                <img
+                  src={SubLogoWhite}
+                  alt=""
+                  style={{
+                    width: '90%',
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <img
+                  src={MainLogoBlack}
+                  alt=""
+                  style={{
+                    width: '100%',
+                  }}
+                />
+                <img
+                  src={SubLogoBlack}
+                  alt=""
+                  style={{
+                    width: '90%',
+                  }}
+                />
+              </>
+            )}
+          </div>
+        ) : (
+          <div className="container-home-logos">
+            {darkMode ? (
+              <>
+                <img
+                  src={MainLogoWhite}
+                  alt=""
+                  style={{
+                    width: '80%',
+                  }}
+                />
+                <img
+                  src={SubLogoWhite}
+                  alt=""
+                  style={{
+                    width: '70%',
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <img
+                  src={MainLogoBlack}
+                  alt=""
+                  style={{
+                    width: '80%',
+                  }}
+                />
+                <img
+                  src={SubLogoBlack}
+                  alt=""
+                  style={{
+                    width: '70%',
+                  }}
+                />
+              </>
+            )}
+          </div>
+        )}
         <div className="login-container-inner">
           <Stack gap={2}>
             <Typography variant="h6">Login</Typography>
