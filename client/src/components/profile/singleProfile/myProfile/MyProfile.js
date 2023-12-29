@@ -148,7 +148,10 @@ export const MyProfile = ({ loggedInUser }) => {
             xs={12}
             md={3}
           >
-            <Paper className="profile-left-sidebar">
+            <Paper
+              className="profile-left-sidebar"
+              sx={{ p: 3 }}
+            >
               <div className="myProfilePicture-container">
                 <div className="editProfilePic-button">
                   <Tooltip
@@ -350,7 +353,10 @@ export const MyProfile = ({ loggedInUser }) => {
             md={9}
           >
             <div className="profile-right-section">
-              <Paper className="profile-right-section-item">
+              <Paper
+                className="profile-right-section-item"
+                sx={{ p: 3 }}
+              >
                 <div className="divider-header-container">
                   <div className="profile-section-header">
                     <Typography variant="h6">About</Typography>
@@ -396,15 +402,21 @@ export const MyProfile = ({ loggedInUser }) => {
                     </div>
                   </>
                 ) : profile.profile.about === null ? (
-                  <Typography>No about written yet!</Typography>
+                  <Typography>No about written yet</Typography>
                 ) : (
                   <Typography>{profile.profile.about}</Typography>
                 )}
               </Paper>
-              <Paper className="profile-right-section-item">
+              <Paper
+                className="profile-right-section-item"
+                sx={{ p: 3 }}
+              >
                 <MyAdditionalPhotos profile={profile} />
               </Paper>
-              <Paper className="profile-right-section-item">
+              <Paper
+                className="profile-right-section-item"
+                sx={{ p: 3 }}
+              >
                 <MyPosts
                   profile={profile}
                   loggedInUser={loggedInUser}
@@ -431,10 +443,16 @@ export const MyProfile = ({ loggedInUser }) => {
           <Button
             color="error"
             onClick={() => handleConfirmClose()}
+            variant="contained"
           >
             Discard
           </Button>
-          <Button onClick={() => setConfirmOpen(false)}>Cancel</Button>
+          <Button
+            onClick={() => setConfirmOpen(false)}
+            variant="contained"
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </>

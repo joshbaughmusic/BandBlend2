@@ -36,7 +36,7 @@
 
 .deletePic-X:hover {
   transition: all 0.2s;
-  color: #8C4A4A;
+  color: #8c4a4a;
   z-index: 200;
 }
 
@@ -68,7 +68,7 @@
   top: 5px;
   right: 20px;
   font-size: 50px;
-  font-weight: bolder;
+  font-weight: bold;
   z-index: 100;
   cursor: pointer;
   color: #fff;
@@ -78,4 +78,14 @@
 .popup-media span:hover {
   transition: all 0.2s;
   color: #b6b6b6;
+}
+
+@media (max-width: 600px) {
+  .popup-photoItem {
+    margin-left: 0;
+  }
+  .popup-media span {
+    top: 50px;
+    right: 20px;
+  }
 }

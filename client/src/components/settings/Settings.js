@@ -6,6 +6,7 @@ import {
   Tabs,
   Tab,
   Box,
+  useMediaQuery,
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
@@ -13,6 +14,7 @@ import { FeedSettings } from './subSettings/FeedSettings.js';
 import { BlockedAccountsSettings } from './subSettings/BlockedAccountsSettings.js';
 import { DeleteAccountSettings } from './subSettings/DeleteAccountSettings.js';
 import './Settings.css';
+import { useTheme } from '@emotion/react';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,65 +55,130 @@ export const Settings = ({ setLoggedInUser }) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+    const theme = useTheme();
+    const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <>
       <Container>
-        <Paper
-          elevation={4}
-          className="settings-section"
-        >
-          <Typography
-            sx={{ mb: 2, textAlign: 'center' }}
-            variant="h6"
+        {mediaQuerySmall ? (
+          <Paper
+            elevation={4}
+            className="settings-section"
+            sx={{mt: "75px", p: 2 }}
           >
-            Settings
-          </Typography>
-          <Box
-            sx={{
-              borderBottom: 1,
-              borderColor: 'divider',
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              aria-label="basic tabs example"
+            <Typography
+              sx={{ mb: 2, textAlign: 'center' }}
+              variant="h6"
             >
-              <Tab
-                label="Feed"
-                {...a11yProps(0)}
-              />
-              <Tab
-                label="Blocked"
-                {...a11yProps(1)}
-              />
-              <Tab
-                label="Delete"
-                {...a11yProps(2)}
-              />
-            </Tabs>
-          </Box>
-          <CustomTabPanel
-            value={value}
-            index={0}
+              Settings
+            </Typography>
+            <Box
+              sx={{
+                borderBottom: 1,
+                borderColor: 'divider',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                aria-label="basic tabs example"
+              >
+                <Tab
+                  label="Feed"
+                  {...a11yProps(0)}
+                />
+                <Tab
+                  label="Blocked"
+                  {...a11yProps(1)}
+                />
+                <Tab
+                  label="Delete"
+                  {...a11yProps(2)}
+                />
+              </Tabs>
+            </Box>
+            <CustomTabPanel
+              value={value}
+              index={0}
+            >
+              <FeedSettings />
+            </CustomTabPanel>
+            <CustomTabPanel
+              value={value}
+              index={1}
+            >
+              <BlockedAccountsSettings />
+            </CustomTabPanel>
+            <CustomTabPanel
+              value={value}
+              index={2}
+            >
+              <DeleteAccountSettings setLoggedInUser={setLoggedInUser} />
+            </CustomTabPanel>
+          </Paper>
+        ) : (
+          <Paper
+            elevation={4}
+            className="settings-section"
+            sx={{ p: 2 }}
           >
-            <FeedSettings />
-          </CustomTabPanel>
-          <CustomTabPanel
-            value={value}
-            index={1}
-          >
-            <BlockedAccountsSettings />
-          </CustomTabPanel>
-          <CustomTabPanel
-            value={value}
-            index={2}
-          >
-            <DeleteAccountSettings setLoggedInUser={setLoggedInUser} />
-          </CustomTabPanel>
-        </Paper>
+            <Typography
+              sx={{ mb: 2, textAlign: 'center' }}
+              variant="h6"
+            >
+              Settings
+            </Typography>
+            <Box
+              sx={{
+                borderBottom: 1,
+                borderColor: 'divider',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                aria-label="basic tabs example"
+              >
+                <Tab
+                  label="Feed"
+                  {...a11yProps(0)}
+                />
+                <Tab
+                  label="Blocked"
+                  {...a11yProps(1)}
+                />
+                <Tab
+                  label="Delete"
+                  {...a11yProps(2)}
+                />
+              </Tabs>
+            </Box>
+            <CustomTabPanel
+              value={value}
+              index={0}
+            >
+              <FeedSettings />
+            </CustomTabPanel>
+            <CustomTabPanel
+              value={value}
+              index={1}
+            >
+              <BlockedAccountsSettings />
+            </CustomTabPanel>
+            <CustomTabPanel
+              value={value}
+              index={2}
+            >
+              <DeleteAccountSettings setLoggedInUser={setLoggedInUser} />
+            </CustomTabPanel>
+          </Paper>
+        )}
       </Container>
     </>
   );

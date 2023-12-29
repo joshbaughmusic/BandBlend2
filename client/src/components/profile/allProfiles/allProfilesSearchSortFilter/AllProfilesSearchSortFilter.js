@@ -79,6 +79,7 @@ export const AllProfilesSearchSortFilter = ({
           <Grid
             item
             xs={12}
+            sx={{mt: "20px"}}
           >
             <FormControl sx={{ width: '100%' }}>
               <InputLabel id="search-label" />

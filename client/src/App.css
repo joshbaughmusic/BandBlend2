@@ -20,6 +20,9 @@ html, #root {
 .appviews {
     margin-left: 56px;
 }
+.appviews-small {
+    margin-top: 56px;
+}
 
 .MuiBox-root .css-zxdg2z {
     display: none;

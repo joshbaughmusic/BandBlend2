@@ -46,7 +46,7 @@ export const CommentsSection = ({
     setPage(1);
   };
 
-  if (!comments) {
+  if (!comments || commentCount === 0) {
     return (
       <>
         <NewComment
@@ -66,30 +66,6 @@ export const CommentsSection = ({
           : Array(post.commentCount)
               .fill(0)
               .map((obj, index) => <CommentSkeleton key={index} />)}
-        <div className="pagination-allprofiles-container">
-          <Pagination
-            count={Math.ceil(commentCount / amountPerPage)}
-            page={page}
-            onChange={handlePageChange}
-          />
-          <FormControl
-            sx={{ m: 1, minWidth: 75 }}
-            size="small"
-          >
-            <InputLabel id="amountPerPage-select-label">Per Page</InputLabel>
-            <Select
-              labelId="amountPerPage-select-label"
-              id="amountPerPage-select"
-              value={amountPerPage}
-              label="Age"
-              onChange={handleAmountPerPageChange}
-            >
-              <MenuItem value={5}>5</MenuItem>
-              <MenuItem value={10}>10</MenuItem>
-              <MenuItem value={20}>20</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
       </>
     );
   }
@@ -130,6 +106,7 @@ export const CommentsSection = ({
           );
         })}
       </div>
+
       <div className="pagination-allprofiles-container">
         <Pagination
           count={Math.ceil(commentCount / amountPerPage)}

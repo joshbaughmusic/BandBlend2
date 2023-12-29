@@ -128,6 +128,12 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
             >
               {profile.name}
             </Typography>
+            <Typography
+              variant="body2"
+             
+            >
+              {profile.profile.city}, {profile.profile.state.name}
+            </Typography>
             {profile.isBand ? (
               <Typography>Band</Typography>
             ) : (
@@ -135,12 +141,6 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
                 {profile.profile.primaryInstrument.name}
               </Typography>
             )}
-            <Typography
-              variant="subtitle"
-              style={{ marginTop: '16px' }}
-            >
-              {profile.profile.city}, {profile.profile.state.name}
-            </Typography>
           </div>
         </Grid>
         <Grid

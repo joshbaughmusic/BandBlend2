@@ -40,7 +40,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
 
   if (mediaQuerySmall) {
     return (
-      <div>
+      <div className={loggedInUser ? 'appviews-small' : ''}>
         <Routes>
           <Route path="/">
             <Route

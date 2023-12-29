@@ -9,12 +9,14 @@ import {
   Typography,
   Container,
   Paper,
+  useMediaQuery,
 } from '@mui/material';
 import { fetchUserFeed } from '../../managers/feedManager.js';
 import { FeedPostCard } from './FeedPostCard.js';
 import { useNavigate } from 'react-router-dom';
 import { FeedPostSkeleton } from './FeedPostSkeleton.js';
 import './Feed.css';
+import { useTheme } from '@emotion/react';
 
 export const MyFeed = ({ loggedInUser }) => {
   const [feedPosts, setFeedPosts] = useState();
@@ -43,29 +45,57 @@ export const MyFeed = ({ loggedInUser }) => {
     setPage(1);
   };
 
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
+
   if (!feedPosts) {
     return (
       <>
         <Container>
-          <Paper
-            elevation={4}
-            className="profile-right-section-item feed-container"
-          >
-            <Typography
-              sx={{ m: 1, textAlign: 'center' }}
-              variant="h6"
+          {mediaQuerySmall ? (
+            <Paper
+              elevation={4}
+              className="profile-right-section-item feed-container"
+              sx={{ mt: '75px' }}
             >
-              Feed:
-            </Typography>
-            <Divider sx={{ mb: 3 }} />
-            <div>
-              {Array(5)
-                .fill(0)
-                .map((obj, index) => (
-                  <FeedPostSkeleton key={index} />
-                ))}
-            </div>
-          </Paper>
+              <Typography
+                sx={{ m: 1, textAlign: 'center' }}
+                variant="h6"
+              >
+                Feed:
+              </Typography>
+              <Divider sx={{ mb: 3 }} />
+              <div>
+                {Array(5)
+                  .fill(0)
+                  .map((obj, index) => (
+                    <FeedPostSkeleton key={index} />
+                  ))}
+              </div>
+            </Paper>
+          ) : (
+            <Paper
+              elevation={4}
+              className="profile-right-section-item feed-container"
+              sx={{ my: '20px', mx: '0px', p: 2 }}
+              
+            >
+              <Typography
+                sx={{ m: 1, textAlign: 'center' }}
+                variant="h6"
+              >
+                Feed:
+              </Typography>
+              <Divider sx={{ mb: 3 }} />
+              <div>
+                {Array(5)
+                  .fill(0)
+                  .map((obj, index) => (
+                    <FeedPostSkeleton key={index} />
+                  ))}
+              </div>
+            </Paper>
+          )}
         </Container>
       </>
     );
@@ -75,34 +105,67 @@ export const MyFeed = ({ loggedInUser }) => {
     return (
       <>
         <Container>
-          <Paper
-            elevation={4}
-            className="profile-right-section-item feed-container"
-          >
-            <Typography
-              sx={{ m: 1, textAlign: 'center' }}
-              variant="h6"
+          {mediaQuerySmall ? (
+            <Paper
+              elevation={4}
+              className="profile-right-section-item feed-container"
+              sx={{ mt: '75px', p: 2 }}
             >
-              Feed:
-            </Typography>
-            <Divider sx={{ mb: 3 }} />
-            <Typography
-              sx={{ mt: 3, textAlign: 'center' }}
-              variant="h6"
-            >
-              Wow, much empty...
-            </Typography>
-            <Typography sx={{ mt: 3, textAlign: 'center' }}>
-              Adjust your{' '}
-              <span
-                onClick={() => navigate('/settings')}
-                className="feedSettingsLink"
+              <Typography
+                sx={{ m: 1, textAlign: 'center' }}
+                variant="h6"
               >
-                feed settings
-              </span>{' '}
-              or follow some other users to see expand your feed.
-            </Typography>
-          </Paper>
+                Feed:
+              </Typography>
+              <Divider sx={{ mb: 3 }} />
+              <Typography
+                sx={{ mt: 3, textAlign: 'center' }}
+                variant="h6"
+              >
+                Wow, much empty...
+              </Typography>
+              <Typography sx={{ mt: 3, textAlign: 'center' }}>
+                Adjust your{' '}
+                <span
+                  onClick={() => navigate('/settings')}
+                  className="feedSettingsLink"
+                >
+                  feed settings
+                </span>{' '}
+                or follow some other users to see expand your feed.
+              </Typography>
+            </Paper>
+          ) : (
+            <Paper
+              elevation={4}
+              className="profile-right-section-item feed-container"
+              sx={{ my: '20px', mx: '0px', p: 2 }}
+            >
+              <Typography
+                sx={{ m: 1, textAlign: 'center' }}
+                variant="h6"
+              >
+                Feed:
+              </Typography>
+              <Divider sx={{ mb: 3 }} />
+              <Typography
+                sx={{ mt: 3, textAlign: 'center' }}
+                variant="h6"
+              >
+                Wow, much empty...
+              </Typography>
+              <Typography sx={{ mt: 3, textAlign: 'center' }}>
+                Adjust your{' '}
+                <span
+                  onClick={() => navigate('/settings')}
+                  className="feedSettingsLink"
+                >
+                  feed settings
+                </span>{' '}
+                or follow some other users to see expand your feed.
+              </Typography>
+            </Paper>
+          )}
         </Container>
       </>
     );
@@ -111,54 +174,111 @@ export const MyFeed = ({ loggedInUser }) => {
   return (
     <>
       <Container>
-        <Paper
-          elevation={4}
-          className="profile-right-section-item feed-container"
-        >
-          <Typography
-            sx={{ m: 1, textAlign: 'center' }}
-            variant="h6"
+        {mediaQuerySmall ? (
+          <Paper
+            elevation={4}
+            className="profile-right-section-item feed-container"
+            sx={{ mt: '75px', p: 2 }}
           >
-            Feed:
-          </Typography>
-          <Divider sx={{ mb: 3 }} />
-          <div>
-            {feedPosts.map((p, index) => (
-              <FeedPostCard
-                profile={p.userProfile}
-                post={p}
-                key={`${p.id}-${index}`}
-                page={page}
-                loggedInUser={loggedInUser}
-                getUserFeed={getUserFeed}
-              />
-            ))}
-          </div>
-          <div className="pagination-allprofiles-container">
-            <Pagination
-              count={Math.ceil(feedPostCount / amountPerPage)}
-              page={page}
-              onChange={handlePageChange}
-            />
-            <FormControl
-              sx={{ m: 1, minWidth: 75 }}
-              size="small"
+            <Typography
+              sx={{ m: 1, textAlign: 'center' }}
+              variant="h6"
             >
-              <InputLabel id="amountPerPage-select-label">Per Page</InputLabel>
-              <Select
-                labelId="amountPerPage-select-label"
-                id="amountPerPage-select"
-                value={amountPerPage}
-                label="Age"
-                onChange={handleAmountPerPageChange}
+              Feed:
+            </Typography>
+            <Divider sx={{ mb: 3 }} />
+            <div>
+              {feedPosts.map((p, index) => (
+                <FeedPostCard
+                  profile={p.userProfile}
+                  post={p}
+                  key={`${p.id}-${index}`}
+                  page={page}
+                  loggedInUser={loggedInUser}
+                  getUserFeed={getUserFeed}
+                />
+              ))}
+            </div>
+            <div className="pagination-allprofiles-container">
+              <Pagination
+                count={Math.ceil(feedPostCount / amountPerPage)}
+                page={page}
+                onChange={handlePageChange}
+              />
+              <FormControl
+                sx={{ m: 1, minWidth: 75 }}
+                size="small"
               >
-                <MenuItem value={10}>10</MenuItem>
-                <MenuItem value={20}>20</MenuItem>
-                <MenuItem value={30}>30</MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-        </Paper>
+                <InputLabel id="amountPerPage-select-label">
+                  Per Page
+                </InputLabel>
+                <Select
+                  labelId="amountPerPage-select-label"
+                  id="amountPerPage-select"
+                  value={amountPerPage}
+                  label="Age"
+                  onChange={handleAmountPerPageChange}
+                >
+                  <MenuItem value={10}>10</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={30}>30</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          </Paper>
+        ) : (
+          <Paper
+            elevation={4}
+            className="profile-right-section-item feed-container"
+            sx={{ my: '20px', mx: '0px', p: 2 }}
+          >
+            <Typography
+              sx={{ m: 1, textAlign: 'center' }}
+              variant="h6"
+            >
+              Feed:
+            </Typography>
+            <Divider sx={{ mb: 3 }} />
+            <div>
+              {feedPosts.map((p, index) => (
+                <FeedPostCard
+                  profile={p.userProfile}
+                  post={p}
+                  key={`${p.id}-${index}`}
+                  page={page}
+                  loggedInUser={loggedInUser}
+                  getUserFeed={getUserFeed}
+                />
+              ))}
+            </div>
+            <div className="pagination-allprofiles-container">
+              <Pagination
+                count={Math.ceil(feedPostCount / amountPerPage)}
+                page={page}
+                onChange={handlePageChange}
+              />
+              <FormControl
+                sx={{ m: 1, minWidth: 75 }}
+                size="small"
+              >
+                <InputLabel id="amountPerPage-select-label">
+                  Per Page
+                </InputLabel>
+                <Select
+                  labelId="amountPerPage-select-label"
+                  id="amountPerPage-select"
+                  value={amountPerPage}
+                  label="Age"
+                  onChange={handleAmountPerPageChange}
+                >
+                  <MenuItem value={10}>10</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={30}>30</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          </Paper>
+        )}
       </Container>
     </>
   );

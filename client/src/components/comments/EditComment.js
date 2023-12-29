@@ -16,24 +16,14 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  useMediaQuery,
 } from '@mui/material';
 import { useState } from 'react';
 import { useSnackBar } from '../context/SnackBarContext.js';
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import { fetchEditComment } from '../../managers/commentsManager.js';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+import { useTheme } from '@emotion/react';
 
 export const EditComment = ({ comment, getCommentsForPost }) => {
   const [commentBodyToEdit, setCommentBodyToEdit] = useState(comment.body);
@@ -42,6 +32,41 @@ export const EditComment = ({ comment, getCommentsForPost }) => {
   const { handleSnackBarOpen, setSnackBarMessage, setSuccessAlert } =
     useSnackBar();
   const [openModal, setOpenModal] = useState(false);
+
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
+
+  let style;
+
+  if (mediaQuerySmall) {
+    style = {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: '90%',
+      bgcolor: 'background.paper',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
+      height: '60%',
+      overflowY: 'auto',
+    };
+  } else {
+    style = {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 500,
+      bgcolor: 'background.paper',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
+      height: '60%',
+      overflowY: 'auto',
+    };
+  }
 
   const handleModalOpen = () => setOpenModal(true);
 

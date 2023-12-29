@@ -147,7 +147,7 @@ if (!posts) {
       <div>
         {profile.profile.postCount === null ||
         profile.profile.postCount === 0 ? (
-          <div>No posts yet!</div>
+          <div>No posts yet</div>
         ) : (
           <div>
             {profile.profile.postCount > 5
@@ -212,7 +212,7 @@ if (!posts) {
           </div>
           <Divider style={{ marginTop: '4px' }} />
         </div>
-        {expanded ? '' : <Typography>No posts yet!</Typography>}
+        {expanded ? '' : <Typography>No posts yet</Typography>}
         <div>
           <Collapse
             in={expanded}
