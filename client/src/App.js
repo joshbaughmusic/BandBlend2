@@ -7,6 +7,9 @@ import { SnackBarProvider } from './components/context/SnackBarContext.js';
 import { MessagesProvider } from './components/context/MessagesContext.js';
 import './KeyFrames.css';
 import { useThemeContext } from './components/context/ThemeContext.js';
+import { useTheme } from '@emotion/react';
+import { useMediaQuery } from '@mui/material';
+import { NavBarSmall } from './components/nav/NavBarSmall.js';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState();
@@ -19,39 +22,54 @@ function App() {
     });
   }, []);
 
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
+
   if (loggedInUser === undefined) {
     return null;
   }
 
   return (
     <div className={darkMode ? 'darkmode' : 'lightmode'}>
-      
-        <SnackBarProvider>
-          {loggedInUser ? (
-            <MessagesProvider loggedInUser={loggedInUser}>
+      <SnackBarProvider>
+        {loggedInUser ? (
+          <MessagesProvider loggedInUser={loggedInUser}>
+            {mediaQuerySmall ? (
+              <NavBarSmall
+                loggedInUser={loggedInUser}
+                setLoggedInUser={setLoggedInUser}
+              />
+            ) : (
               <NavBar
                 loggedInUser={loggedInUser}
                 setLoggedInUser={setLoggedInUser}
               />
-              <ApplicationViews
+            )}
+            <ApplicationViews
+              loggedInUser={loggedInUser}
+              setLoggedInUser={setLoggedInUser}
+            />
+          </MessagesProvider>
+        ) : (
+          <>
+            {mediaQuerySmall ? (
+              <NavBarSmall
                 loggedInUser={loggedInUser}
                 setLoggedInUser={setLoggedInUser}
               />
-            </MessagesProvider>
-          ) : (
-            <>
+            ) : (
               <NavBar
                 loggedInUser={loggedInUser}
                 setLoggedInUser={setLoggedInUser}
               />
-              <ApplicationViews
-                loggedInUser={loggedInUser}
-                setLoggedInUser={setLoggedInUser}
-              />
-            </>
-          )}
-        </SnackBarProvider>
-    
+            )}
+            <ApplicationViews
+              loggedInUser={loggedInUser}
+              setLoggedInUser={setLoggedInUser}
+            />
+          </>
+        )}
+      </SnackBarProvider>
     </div>
   );
 }
