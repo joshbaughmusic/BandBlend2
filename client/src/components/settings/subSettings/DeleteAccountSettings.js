@@ -51,6 +51,7 @@ export const DeleteAccountSettings = ({ setLoggedInUser }) => {
             variant="contained"
             onClick={() => setConfirmOpen(true)}
             color="error"
+            sx={{mt: "-8px"}}
           >
             Delete Account
           </Button>

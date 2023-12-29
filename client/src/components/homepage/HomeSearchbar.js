@@ -102,7 +102,7 @@ export const HomeSearchbar = () => {
             fontStyle: 'italic',
           }}
         >
-          Search by name, city, state code, genre, or instrument...
+          Search by name, city, state code, genre, or instrument
         </Typography>
       ) : (
         <Typography
@@ -113,7 +113,7 @@ export const HomeSearchbar = () => {
             fontStyle: 'italic',
           }}
         >
-          Search by name, city, state code, genre, or instrument...
+          Search by name, city, state code, genre, or instrument
         </Typography>
       )}
     </>

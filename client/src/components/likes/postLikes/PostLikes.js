@@ -123,7 +123,7 @@ export const PostLikes = ({ post, loggedInUser, postPage }) => {
           disableRestoreFocus
         >
           <>
-            <List>
+            <List sx={{maxHeight: "300px", overflow: "auto"}}>
               {likes.map((l, index) => {
                 return (
                   <ListItem key={index}>

@@ -400,7 +400,7 @@ export const OtherProfile = ({ loggedInUser }) => {
                   <Typography
                     variant="h5"
                     component="h1"
-                    sx={{ textAlign: 'center' }}
+                    sx={{ textAlign: 'center', fontWeight: 'bold' }}
                   >
                     {profile.name}
                   </Typography>
@@ -416,7 +416,7 @@ export const OtherProfile = ({ loggedInUser }) => {
                   <Typography
                     variant="h5"
                     component="h1"
-                    sx={{ textAlign: 'center' }}
+                    sx={{ textAlign: 'center', fontWeight: 'bold' }}
                   >
                     {profile.name}
                   </Typography>
@@ -474,7 +474,12 @@ export const OtherProfile = ({ loggedInUser }) => {
               </Typography>
               {profile.isBand ? null : (
                 <div className="chip-section">
-                  <Typography textAlign="center">Primary Instrument</Typography>
+                  <Typography
+                    sx={{ fontWeight: 'bold' }}
+                    textAlign="center"
+                  >
+                    Primary Instrument
+                  </Typography>
                   <Chip
                     label={profile.profile.primaryInstrument.name}
                     style={{
@@ -484,7 +489,9 @@ export const OtherProfile = ({ loggedInUser }) => {
                 </div>
               )}
               <div className="chip-section">
-                <Typography>Primary Genre</Typography>
+                <Typography sx={{ fontWeight: 'bold' }}>
+                  Primary Genre
+                </Typography>
                 <Chip
                   label={profile.profile.primaryGenre.name}
                   style={{
@@ -493,7 +500,7 @@ export const OtherProfile = ({ loggedInUser }) => {
                 />
               </div>
               <div className="chip-section">
-                <Typography>Tags</Typography>
+                <Typography sx={{ fontWeight: 'bold' }}>Tags</Typography>
                 <div className="chip-multi-container">
                   {profile.profile.profileTags.map((pt, index) => (
                     <Chip
@@ -507,7 +514,7 @@ export const OtherProfile = ({ loggedInUser }) => {
                 </div>
               </div>
               <div className="chip-section">
-                <Typography>SubGenres</Typography>
+                <Typography sx={{ fontWeight: 'bold' }}>SubGenres</Typography>
                 <div className="chip-multi-container">
                   {profile.profile.profileSubGenres.map((ps, index) => (
                     <Chip

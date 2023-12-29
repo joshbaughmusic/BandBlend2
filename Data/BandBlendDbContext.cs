@@ -95,7 +95,7 @@ public class BandBlendDbContext : IdentityDbContext<IdentityUser>
                 ProfilePicture = "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80",
                 City = "Nashville",
                 StateId = 42,
-                About = "Hey there, I'm Josh, a musician turned full-time software developer. Thanks for stopping by Band Blend! I created this platform to make it easier for musicians and bands to connect and collaborate. Finding new members and collaborators can be tough, so I built Band Blend to help out. Have a look around, and if you've got any questions, shoot me a message here. Enjoy!",
+                About = "Hey there, I'm Josh, a musician turned full-time software developer. Thanks for stopping by Band Blend! I created this platform to make it easier for musicians and bands to connect and collaborate. Finding new band members and collaborators can be tough, so I built Band Blend to help out. Have a look around, and if you've got any questions, shoot me a message here. Enjoy!",
                 PrimaryGenreId = 11,
                 PrimaryInstrumentId = 2,
                 SpotifyLink = null,

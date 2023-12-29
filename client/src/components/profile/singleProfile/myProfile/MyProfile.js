@@ -209,7 +209,7 @@ export const MyProfile = ({ loggedInUser }) => {
                   <Typography
                     variant="h5"
                     component="h1"
-                    sx={{ textAlign: 'center' }}
+                    sx={{ textAlign: 'center', fontWeight: 'bold' }}
                   >
                     {profile.name}
                   </Typography>
@@ -225,7 +225,7 @@ export const MyProfile = ({ loggedInUser }) => {
                   <Typography
                     variant="h5"
                     component="h1"
-                    sx={{ textAlign: 'center' }}
+                    sx={{ textAlign: 'center', fontWeight: 'bold' }}
                   >
                     {profile.name}
                   </Typography>
@@ -282,7 +282,12 @@ export const MyProfile = ({ loggedInUser }) => {
               </Typography>
               {profile.isBand ? null : (
                 <div className="chip-section">
-                  <Typography textAlign="center">Primary Instrument</Typography>
+                  <Typography
+                    sx={{ fontWeight: 'bold' }}
+                    textAlign="center"
+                  >
+                    Primary Instrument
+                  </Typography>
                   <Chip
                     label={profile.profile.primaryInstrument.name}
                     style={{
@@ -292,7 +297,9 @@ export const MyProfile = ({ loggedInUser }) => {
                 </div>
               )}
               <div className="chip-section">
-                <Typography>Primary Genre</Typography>
+                <Typography sx={{ fontWeight: 'bold' }}>
+                  Primary Genre
+                </Typography>
                 <Chip
                   label={profile.profile.primaryGenre.name}
                   style={{
@@ -303,7 +310,7 @@ export const MyProfile = ({ loggedInUser }) => {
 
               <div className="chip-section">
                 <div className="tags-subgenres-header">
-                  <Typography>Tags</Typography>
+                  <Typography sx={{ fontWeight: 'bold' }}>Tags</Typography>
                   <EditTags
                     getCurrentUserWithProfile={getCurrentUserWithProfile}
                     profile={profile}
@@ -323,7 +330,7 @@ export const MyProfile = ({ loggedInUser }) => {
               </div>
               <div className="chip-section">
                 <div className="tags-subgenres-header">
-                  <Typography>SubGenres</Typography>
+                  <Typography sx={{ fontWeight: 'bold' }}>SubGenres</Typography>
                   <EditSubGenres
                     getCurrentUserWithProfile={getCurrentUserWithProfile}
                     profile={profile}
