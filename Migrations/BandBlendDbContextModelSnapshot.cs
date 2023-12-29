@@ -378,77 +378,77 @@ namespace BandBlend2.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Rock"
-                        },
-                        new
-                        {
-                            Id = 2,
                             Name = "Alternative"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 2,
                             Name = "Blues"
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 3,
                             Name = "Classical"
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 4,
                             Name = "Country"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 5,
                             Name = "Electronic"
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 6,
                             Name = "Folk"
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 7,
                             Name = "Hip-Hop"
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 8,
                             Name = "Indie"
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 9,
                             Name = "Jazz"
                         },
                         new
                         {
-                            Id = 11,
+                            Id = 10,
                             Name = "Metal"
                         },
                         new
                         {
-                            Id = 12,
+                            Id = 11,
                             Name = "Pop"
                         },
                         new
                         {
-                            Id = 13,
+                            Id = 12,
                             Name = "Punk"
                         },
                         new
                         {
-                            Id = 14,
+                            Id = 13,
                             Name = "R&B"
                         },
                         new
                         {
-                            Id = 15,
+                            Id = 14,
                             Name = "Rap"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Rock"
                         },
                         new
                         {
@@ -481,12 +481,12 @@ namespace BandBlend2.Migrations
                         new
                         {
                             Id = 2,
-                            Name = "Electric Guitar"
+                            Name = "Bass"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Bass"
+                            Name = "Clarinet"
                         },
                         new
                         {
@@ -496,32 +496,32 @@ namespace BandBlend2.Migrations
                         new
                         {
                             Id = 5,
-                            Name = "Violin"
+                            Name = "Electric Guitar"
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Saxophone"
+                            Name = "Flute"
                         },
                         new
                         {
                             Id = 7,
-                            Name = "Keyboard"
+                            Name = "Harp"
                         },
                         new
                         {
                             Id = 8,
-                            Name = "Piano"
+                            Name = "Keyboard"
                         },
                         new
                         {
                             Id = 9,
-                            Name = "Trumpet"
+                            Name = "Piano"
                         },
                         new
                         {
                             Id = 10,
-                            Name = "Flute"
+                            Name = "Saxophone"
                         },
                         new
                         {
@@ -531,22 +531,22 @@ namespace BandBlend2.Migrations
                         new
                         {
                             Id = 12,
-                            Name = "Harp"
-                        },
-                        new
-                        {
-                            Id = 13,
                             Name = "Trombone"
                         },
                         new
                         {
+                            Id = 13,
+                            Name = "Trumpet"
+                        },
+                        new
+                        {
                             Id = 14,
-                            Name = "Clarinet"
+                            Name = "Vocals"
                         },
                         new
                         {
                             Id = 15,
-                            Name = "Vocals"
+                            Name = "Violin"
                         },
                         new
                         {
@@ -618,7 +618,7 @@ namespace BandBlend2.Migrations
                         new
                         {
                             Id = 1,
-                            About = "Hey there, I'm Josh, a musician turned full-time software developer. Thanks for stopping by my Band Blend! I created this platform to make it easier for musicians and bands to connect and collaborate. Finding new members and collaborators can be tough, so I built BandBlend to help out. Have a look around, and if you've got any questions, shoot me a message here. Enjoy!",
+                            About = "Hey there, I'm Josh, a musician turned full-time software developer. Thanks for stopping by Band Blend! I created this platform to make it easier for musicians and bands to connect and collaborate. Finding new band members and collaborators can be tough, so I built Band Blend to help out. Have a look around, and if you've got any questions, shoot me a message here. Enjoy!",
                             City = "Nashville",
                             FacebookLink = "https://www.facebook.com/joshbaughmusic/",
                             InstagramLink = "https://www.instagram.com/joshbaughmusic/",
@@ -1225,77 +1225,77 @@ namespace BandBlend2.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Hobbyist"
+                            Name = "Beginner Friendly"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Professional"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Weekend Warrior"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Paying Gigs Only"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Passion First"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Serious"
-                        },
-                        new
-                        {
-                            Id = 7,
                             Name = "Casual"
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 3,
                             Name = "Collaborative"
                         },
                         new
                         {
-                            Id = 9,
-                            Name = "Songwriter"
+                            Id = 4,
+                            Name = "Hobbyist"
                         },
                         new
                         {
-                            Id = 10,
-                            Name = "Versatile"
+                            Id = 5,
+                            Name = "Paying Gigs Only"
                         },
                         new
                         {
-                            Id = 11,
-                            Name = "Session Musician"
+                            Id = 6,
+                            Name = "Passion First"
                         },
                         new
                         {
-                            Id = 12,
-                            Name = "Touring"
+                            Id = 7,
+                            Name = "Professional"
                         },
                         new
                         {
-                            Id = 13,
+                            Id = 8,
                             Name = "Recording"
                         },
                         new
                         {
-                            Id = 14,
+                            Id = 9,
+                            Name = "Serious"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Session Musician"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Songwriter"
+                        },
+                        new
+                        {
+                            Id = 12,
                             Name = "Studio Musician"
                         },
                         new
                         {
+                            Id = 13,
+                            Name = "Touring"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Versatile"
+                        },
+                        new
+                        {
                             Id = 15,
-                            Name = "Beginner Friendly"
+                            Name = "Weekend Warrior"
                         });
                 });
 
@@ -1469,13 +1469,13 @@ namespace BandBlend2.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f13fd74e-fc94-447c-9790-b3459c38e8db",
+                            ConcurrencyStamp = "5ec7726c-a3e5-4e60-a6ff-f397bfddb148",
                             Email = "joshbaughmusic_bb@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEKSQ6RtE6XBTCOhOPcgWJPigog0gEfwLAy+riex6MuY2gT1aDJIF0+f2JyDVDgpy9Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEnM+X0oX0pgQAitCj06FC+LaEoh7Rg02I2pMZ+y2Ko4fkaQ60D7KB1jULUz1njUsQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b2e76fc5-5367-4c8f-a446-315726546d25",
+                            SecurityStamp = "9c31c049-c27f-46da-9ae7-c2e89bf31ea5",
                             TwoFactorEnabled = false
                         });
                 });

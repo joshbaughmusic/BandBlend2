@@ -701,28 +701,28 @@ namespace BandBlend2.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "f13fd74e-fc94-447c-9790-b3459c38e8db", "joshbaughmusic_bb@gmail.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEKSQ6RtE6XBTCOhOPcgWJPigog0gEfwLAy+riex6MuY2gT1aDJIF0+f2JyDVDgpy9Q==", null, false, "b2e76fc5-5367-4c8f-a446-315726546d25", false, null });
+                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "5ec7726c-a3e5-4e60-a6ff-f397bfddb148", "joshbaughmusic_bb@gmail.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEEnM+X0oX0pgQAitCj06FC+LaEoh7Rg02I2pMZ+y2Ko4fkaQ60D7KB1jULUz1njUsQ==", null, false, "9c31c049-c27f-46da-9ae7-c2e89bf31ea5", false, null });
 
             migrationBuilder.InsertData(
                 table: "PrimaryGenres",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Rock" },
-                    { 2, "Alternative" },
-                    { 3, "Blues" },
-                    { 4, "Classical" },
-                    { 5, "Country" },
-                    { 6, "Electronic" },
-                    { 7, "Folk" },
-                    { 8, "Hip-Hop" },
-                    { 9, "Indie" },
-                    { 10, "Jazz" },
-                    { 11, "Metal" },
-                    { 12, "Pop" },
-                    { 13, "Punk" },
-                    { 14, "R&B" },
-                    { 15, "Rap" },
+                    { 1, "Alternative" },
+                    { 2, "Blues" },
+                    { 3, "Classical" },
+                    { 4, "Country" },
+                    { 5, "Electronic" },
+                    { 6, "Folk" },
+                    { 7, "Hip-Hop" },
+                    { 8, "Indie" },
+                    { 9, "Jazz" },
+                    { 10, "Metal" },
+                    { 11, "Pop" },
+                    { 12, "Punk" },
+                    { 13, "R&B" },
+                    { 14, "Rap" },
+                    { 15, "Rock" },
                     { 16, "Reggae" }
                 });
 
@@ -732,20 +732,20 @@ namespace BandBlend2.Migrations
                 values: new object[,]
                 {
                     { 1, "Acoustic Guitar" },
-                    { 2, "Electric Guitar" },
-                    { 3, "Bass" },
+                    { 2, "Bass" },
+                    { 3, "Clarinet" },
                     { 4, "Drums" },
-                    { 5, "Violin" },
-                    { 6, "Saxophone" },
-                    { 7, "Keyboard" },
-                    { 8, "Piano" },
-                    { 9, "Trumpet" },
-                    { 10, "Flute" },
+                    { 5, "Electric Guitar" },
+                    { 6, "Flute" },
+                    { 7, "Harp" },
+                    { 8, "Keyboard" },
+                    { 9, "Piano" },
+                    { 10, "Saxophone" },
                     { 11, "Steel Drum" },
-                    { 12, "Harp" },
-                    { 13, "Trombone" },
-                    { 14, "Clarinet" },
-                    { 15, "Vocals" },
+                    { 12, "Trombone" },
+                    { 13, "Trumpet" },
+                    { 14, "Vocals" },
+                    { 15, "Violin" },
                     { 16, "Other" },
                     { 17, "Band" }
                 });
@@ -855,21 +855,21 @@ namespace BandBlend2.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Hobbyist" },
-                    { 2, "Professional" },
-                    { 3, "Weekend Warrior" },
-                    { 4, "Paying Gigs Only" },
-                    { 5, "Passion First" },
-                    { 6, "Serious" },
-                    { 7, "Casual" },
-                    { 8, "Collaborative" },
-                    { 9, "Songwriter" },
-                    { 10, "Versatile" },
-                    { 11, "Session Musician" },
-                    { 12, "Touring" },
-                    { 13, "Recording" },
-                    { 14, "Studio Musician" },
-                    { 15, "Beginner Friendly" }
+                    { 1, "Beginner Friendly" },
+                    { 2, "Casual" },
+                    { 3, "Collaborative" },
+                    { 4, "Hobbyist" },
+                    { 5, "Paying Gigs Only" },
+                    { 6, "Passion First" },
+                    { 7, "Professional" },
+                    { 8, "Recording" },
+                    { 9, "Serious" },
+                    { 10, "Session Musician" },
+                    { 11, "Songwriter" },
+                    { 12, "Studio Musician" },
+                    { 13, "Touring" },
+                    { 14, "Versatile" },
+                    { 15, "Weekend Warrior" }
                 });
 
             migrationBuilder.InsertData(
@@ -885,7 +885,7 @@ namespace BandBlend2.Migrations
             migrationBuilder.InsertData(
                 table: "Profiles",
                 columns: new[] { "Id", "About", "City", "FacebookLink", "InstagramLink", "PrimaryGenreId", "PrimaryInstrumentId", "ProfilePicture", "SpotifyLink", "StateId", "TikTokLink", "UserProfileId" },
-                values: new object[] { 1, "Hey there, I'm Josh, a musician turned full-time software developer. Thanks for stopping by my Band Blend! I created this platform to make it easier for musicians and bands to connect and collaborate. Finding new members and collaborators can be tough, so I built BandBlend to help out. Have a look around, and if you've got any questions, shoot me a message here. Enjoy!", "Nashville", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 11, 2, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", null, 42, null, 1 });
+                values: new object[] { 1, "Hey there, I'm Josh, a musician turned full-time software developer. Thanks for stopping by Band Blend! I created this platform to make it easier for musicians and bands to connect and collaborate. Finding new band members and collaborators can be tough, so I built Band Blend to help out. Have a look around, and if you've got any questions, shoot me a message here. Enjoy!", "Nashville", "https://www.facebook.com/joshbaughmusic/", "https://www.instagram.com/joshbaughmusic/", 11, 2, "https://images.unsplash.com/photo-1516122276289-c28ffbaf888c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80", null, 42, null, 1 });
 
             migrationBuilder.InsertData(
                 table: "ProfileSubGenres",
