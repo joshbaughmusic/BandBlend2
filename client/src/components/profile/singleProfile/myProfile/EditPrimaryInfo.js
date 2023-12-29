@@ -71,21 +71,20 @@ export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
       overflowY: 'auto',
     };
   } else {
-     style = {
-       position: 'absolute',
-       top: '50%',
-       left: '50%',
-       transform: 'translate(-50%, -50%)',
-       width: 500,
-       bgcolor: 'background.paper',
-       border: '2px solid #000',
-       boxShadow: 24,
-       p: 4,
-       height: '60%',
-       overflowY: 'auto',
-     };
+    style = {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 500,
+      bgcolor: 'background.paper',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
+      height: '60%',
+      overflowY: 'auto',
+    };
   }
-
 
   const getDropDowns = () => {
     fetchStates().then(setUsStates);
@@ -193,7 +192,7 @@ export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
           onClick={handleModalOpen}
           className="editPrimaryInfo-button"
         >
-          Edit Primary Info
+          Edit Info
         </Button>
       </div>
     );
@@ -222,7 +221,7 @@ export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
                     variant="h6"
                     component="h2"
                   >
-                    Edit Primary Info
+                    Edit Info
                   </Typography>
                   <IconButton onClick={handleModalClose}>
                     <CloseIcon />
@@ -302,25 +301,19 @@ export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
                     name="primaryInstrumentId"
                     onChange={handleChange}
                   >
-                    {primaryInstruments.map((s, index) => (
-                      <MenuItem
-                        key={index}
-                        value={s.id}
-                      >
-                        {s.name}
-                      </MenuItem>
-                    ))}
+                    {primaryInstruments.map((pi, index) =>
+                      pi.name === 'Band' ? (
+                        ''
+                      ) : (
+                        <MenuItem
+                          key={index}
+                          value={pi.id}
+                        >
+                          {pi.name}
+                        </MenuItem>
+                      )
+                    )}
                   </Select>
-                </FormControl>
-                <FormControl fullWidth>
-                  <TextField
-                    id="spotify"
-                    label="Spotify (optional)"
-                    variant="outlined"
-                    value={profileToEdit.spotifyLink}
-                    name="spotifyLink"
-                    onChange={handleChange}
-                  />
                 </FormControl>
                 <FormControl fullWidth>
                   <TextField
@@ -339,6 +332,16 @@ export const EditPrimaryInfo = ({ profile, getCurrentUserWithProfile }) => {
                     variant="outlined"
                     value={profileToEdit.instagramLink}
                     name="instagramLink"
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                <FormControl fullWidth>
+                  <TextField
+                    id="spotify"
+                    label="Spotify (optional)"
+                    variant="outlined"
+                    value={profileToEdit.spotifyLink}
+                    name="spotifyLink"
                     onChange={handleChange}
                   />
                 </FormControl>

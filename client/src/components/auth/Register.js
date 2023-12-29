@@ -542,7 +542,10 @@ export default function Register({ setLoggedInUser }) {
                 }}
               >
                 {primaryInstruments.map((pi, index) => (
-                  <MenuItem
+                  pi.name === "Band" ?
+                ""
+                :
+                 <MenuItem
                     key={index}
                     value={pi.id}
                   >
