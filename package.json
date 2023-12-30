@@ -2,7 +2,7 @@
   "dependencies": {
     "@cloudinary/react": "^1.11.2",
     "@cloudinary/url-gen": "^1.13.0",
-    "axios": "^1.6.2",
+    "axios": "^1.6.3",
     "lodash": "^4.17.21"
   }
 }
