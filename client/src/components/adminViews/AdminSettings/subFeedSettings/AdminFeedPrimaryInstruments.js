@@ -129,7 +129,7 @@ export const AdminFeedPrimaryInstruments = () => {
     return (
       <>
         <div className="feedSettingsItem-container">
-          <Typography variant="h6">Followed PrimaryInstruments:</Typography>
+          <Typography variant="h6">Followed Instruments:</Typography>
           <Tooltip
             title="Follow New PrimaryInstrument"
             placement="left-start"
@@ -207,7 +207,7 @@ export const AdminFeedPrimaryInstruments = () => {
                 variant="h6"
                 component="h2"
               >
-                Follow New PrimaryInstruments
+                Follow New Instruments
               </Typography>
               <IconButton onClick={handleModalClose}>
                 <CloseIcon />
@@ -217,7 +217,9 @@ export const AdminFeedPrimaryInstruments = () => {
           </div>
           <FormGroup>
             {primaryInstruments.map((s, index) =>
-              feedPrimaryInstruments.some((fs) => fs.id === s.id) ? null : (
+              s.name === 'Band' ? (
+                ''
+              ) : feedPrimaryInstruments.some((fs) => fs.id === s.id) ? null : (
                 <FormControlLabel
                   key={index}
                   control={<Checkbox />}

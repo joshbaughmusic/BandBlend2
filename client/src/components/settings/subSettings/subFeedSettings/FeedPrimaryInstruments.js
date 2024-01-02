@@ -217,7 +217,9 @@ export const FeedPrimaryInstruments = () => {
           </div>
           <FormGroup>
             {primaryInstruments.map((s, index) =>
-              feedPrimaryInstruments.some((fs) => fs.id === s.id) ? null : (
+              s.name === 'Band' ? (
+                ''
+              ) : feedPrimaryInstruments.some((fs) => fs.id === s.id) ? null : (
                 <FormControlLabel
                   key={index}
                   control={<Checkbox />}
