@@ -16,6 +16,7 @@ import {
   Popper,
   Tooltip,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import CommentIcon from '@mui/icons-material/Comment';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -27,6 +28,7 @@ import { dateFormatter } from '../../../utilities/dateFormatter.js';
 import { CommentsSection } from '../../comments/CommentsSection.js';
 import { PostLikes } from '../../likes/postLikes/PostLikes.js';
 import { AdminDeletePost } from '../../adminViews/adminPosts/AdminDeletePost.js';
+import { useTheme } from '@emotion/react';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -77,6 +79,9 @@ export const OtherPostsCard = ({
   const handlePopperClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   }
+
+   const theme = useTheme();
+   const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <>
@@ -175,12 +180,21 @@ export const OtherPostsCard = ({
                   </>
                 ) : (
                   <>
-                    <Typography
-                      variant="subtitle2"
-                      style={{ marginRight: '4px', marginTop: '4px' }}
-                    >
-                      Comment
-                    </Typography>
+                    {mediaQuerySmall ? (
+                      <Typography
+                        variant="subtitle2"
+                        style={{ marginRight: '4px', marginTop: '4px' }}
+                      >
+                        Comment
+                      </Typography>
+                    ) : (
+                      <Typography
+                        variant="subtitle2"
+                        style={{ marginRight: '4px', marginTop: '4px' }}
+                      >
+                        Be the first to comment
+                      </Typography>
+                    )}
                     <IconButton>
                       <Tooltip
                         title="Comment"
