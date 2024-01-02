@@ -16,6 +16,7 @@ import {
   Popper,
   Tooltip,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import CommentIcon from '@mui/icons-material/Comment';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -28,6 +29,7 @@ import { dateFormatter } from '../../utilities/dateFormatter.js';
 import { useNavigate } from 'react-router-dom';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { AdminDeletePost } from '../adminViews/adminPosts/AdminDeletePost.js';
+import { useTheme } from '@emotion/react';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -78,6 +80,9 @@ export const FeedPostCard = ({
   const handlePopperClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
+
+  const theme = useTheme();
+  const mediaQuerySmall = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <>
@@ -186,12 +191,21 @@ export const FeedPostCard = ({
                   </>
                 ) : (
                   <>
-                    <Typography
-                      variant="subtitle2"
-                      style={{ marginRight: '4px', marginTop: '4px' }}
-                    >
-                      Comment
-                    </Typography>
+                    {mediaQuerySmall ? (
+                      <Typography
+                        variant="subtitle2"
+                        style={{ marginRight: '4px', marginTop: '4px' }}
+                      >
+                        Comment
+                      </Typography>
+                    ) : (
+                      <Typography
+                        variant="subtitle2"
+                        style={{ marginRight: '4px', marginTop: '4px' }}
+                      >
+                        Be the first to comment
+                      </Typography>
+                    )}
                     <IconButton>
                       <Tooltip
                         title="Comment"
