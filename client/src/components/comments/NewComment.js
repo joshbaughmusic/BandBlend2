@@ -60,7 +60,7 @@ export const NewComment = ({
         ) : (
           <Avatar
             className="single-profile-pic"
-            src={loggedInUser.profile.profilePicture}
+            src={profile.profile.profilePicture}
             alt={profile.name}
             sx={{ width: '35px', height: '35px' }}
           />
