@@ -468,7 +468,7 @@ export const NavBarSmall = ({ loggedInUser, setLoggedInUser }) => {
             )}
           </List>
           {loggedInUser.roles.includes('Admin') ? (
-            <ListItem
+            <List
               disablePadding
               sx={{ display: 'block' }}
             >
@@ -493,7 +493,7 @@ export const NavBarSmall = ({ loggedInUser, setLoggedInUser }) => {
                   sx={{ opacity: open ? 1 : 0 }}
                 />
               </ListItem>
-            </ListItem>
+            </List>
           ) : (
             ''
           )}
@@ -507,7 +507,7 @@ export const NavBarSmall = ({ loggedInUser, setLoggedInUser }) => {
               edge="start"
               aria-label="menu"
               onClick={() => toggleDrawer(true)}
-              sx
+              
             >
               <MenuIcon />
             </IconButton>

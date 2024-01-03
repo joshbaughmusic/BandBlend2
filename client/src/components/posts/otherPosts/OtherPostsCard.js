@@ -174,8 +174,8 @@ export const OtherPostsCard = ({
                     >
                       Hide
                     </Typography>
-                    <IconButton>
-                      <ExpandLessIcon onClick={handleExpandClick} />
+                    <IconButton onClick={handleExpandClick}>
+                      <ExpandLessIcon />
                     </IconButton>
                   </>
                 ) : (
@@ -195,12 +195,12 @@ export const OtherPostsCard = ({
                         Be the first to comment
                       </Typography>
                     )}
-                    <IconButton>
+                    <IconButton onClick={handleExpandClick}>
                       <Tooltip
                         title="Comment"
                         placement="top"
                       >
-                        <CommentIcon onClick={handleExpandClick} />
+                        <CommentIcon />
                       </Tooltip>
                     </IconButton>
                   </>

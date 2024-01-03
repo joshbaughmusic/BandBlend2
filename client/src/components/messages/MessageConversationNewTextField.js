@@ -123,7 +123,7 @@ export const MessageConversationNewTextField = ({
             endAdornment: (
               <IconButton
                 aria-label="send"
-                style={{ position: 'absolute', bottom: 7, right: 3 }}
+                
                 onClick={() => handleSendMessage()}
               >
                 <SendIcon />

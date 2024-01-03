@@ -850,7 +850,7 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
           )}
         </List>
         {loggedInUser.roles.includes('Admin') ? (
-          <ListItem
+          <List
             disablePadding
             sx={{ display: 'block' }}
           >
@@ -904,7 +904,7 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
                 </ListItem>
               </Tooltip>
             )}
-          </ListItem>
+          </List>
         ) : (
           ''
         )}

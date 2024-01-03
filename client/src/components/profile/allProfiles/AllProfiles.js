@@ -96,7 +96,6 @@ export const AllProfiles = () => {
           >
             <InputLabel id="amountPerPage-select-label">Per Page</InputLabel>
             <Select
-              labelId="amountPerPage-select-label"
               id="amountPerPage-select"
               value={amountPerPage}
               label="Age"

@@ -27,7 +27,7 @@ export const NewComment = ({
     setBlankCommentError(false);
     if (newComment.length > 0) {
       fetchCreateNewComment(post.id, newComment).then((res) => {
-        console.log(res);
+      
         if (res.id != undefined) {
           setSuccessAlert(true);
           setSnackBarMessage('Comment created successfully!');

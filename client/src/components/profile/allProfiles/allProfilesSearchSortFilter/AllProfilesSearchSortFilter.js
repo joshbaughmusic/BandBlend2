@@ -84,7 +84,6 @@ export const AllProfilesSearchSortFilter = ({
             <FormControl sx={{ width: '100%' }}>
               <InputLabel id="search-label" />
               <TextField
-                labelId="search-label"
                 id="search"
                 value={searchTerms}
                 label="Search"
@@ -112,7 +111,7 @@ export const AllProfilesSearchSortFilter = ({
             <FormControl sx={{ width: '100%' }}>
               <InputLabel id="filter-label">Filter</InputLabel>
               <Select
-                labelId="filter-label"
+                
                 id="filter"
                 value={filterTerms}
                 label="Filter"
@@ -122,7 +121,7 @@ export const AllProfilesSearchSortFilter = ({
                   setPage(1);
                 }}
               >
-                <MenuItem value={null}>--</MenuItem>
+                <MenuItem value={''}>--</MenuItem>
                 {/* <MenuItem value={'saved'}>Saved</MenuItem> */}
                 <MenuItem value={'musicians'}>Musicians</MenuItem>
                 <MenuItem value={'bands'}>Bands</MenuItem>
@@ -136,13 +135,12 @@ export const AllProfilesSearchSortFilter = ({
             <FormControl sx={{ width: '100%' }}>
               <InputLabel id="sort-label">Sort</InputLabel>
               <Select
-                labelId="sort-label"
                 id="sort"
                 value={sortTerms}
                 label="Sort"
                 onChange={(e) => setSortTerms(e.target.value)}
               >
-                <MenuItem value={null}>--</MenuItem>
+                <MenuItem value={''}>--</MenuItem>
                 <MenuItem value={'naz'}>Name: A - Z</MenuItem>
                 <MenuItem value={'nza'}>Name: Z - A</MenuItem>
                 <MenuItem value={'caz'}>City: A - Z</MenuItem>
@@ -173,7 +171,6 @@ export const AllProfilesSearchSortFilter = ({
         <FormControl sx={{ width: '100%' }}>
           <InputLabel id="search-label" />
           <TextField
-            labelId="search-label"
             id="search"
             value={searchTerms}
             label="Search"
@@ -201,7 +198,6 @@ export const AllProfilesSearchSortFilter = ({
         <FormControl sx={{ width: '100%' }}>
           <InputLabel id="filter-label">Filter</InputLabel>
           <Select
-            labelId="filter-label"
             id="filter"
             value={filterTerms}
             label="Filter"
@@ -211,7 +207,7 @@ export const AllProfilesSearchSortFilter = ({
               setPage(1);
             }}
           >
-            <MenuItem value={null}>--</MenuItem>
+            <MenuItem value={''}>--</MenuItem>
             {/* <MenuItem value={'saved'}>Saved</MenuItem> */}
             <MenuItem value={'musicians'}>Musicians</MenuItem>
             <MenuItem value={'bands'}>Bands</MenuItem>
@@ -225,13 +221,12 @@ export const AllProfilesSearchSortFilter = ({
         <FormControl sx={{ width: '100%' }}>
           <InputLabel id="sort-label">Sort</InputLabel>
           <Select
-            labelId="sort-label"
             id="sort"
             value={sortTerms}
             label="Sort"
             onChange={(e) => setSortTerms(e.target.value)}
           >
-            <MenuItem value={null}>--</MenuItem>
+            <MenuItem value={''}>--</MenuItem>
             <MenuItem value={'naz'}>Name: A - Z</MenuItem>
             <MenuItem value={'nza'}>Name: Z - A</MenuItem>
             <MenuItem value={'caz'}>City: A - Z</MenuItem>

@@ -160,34 +160,33 @@ export const MyPostsCard = ({
                     >
                       Hide
                     </Typography>
-                    <IconButton>
-                      <ExpandLessIcon onClick={handleExpandClick} />
+                    <IconButton onClick={handleExpandClick}>
+                      <ExpandLessIcon />
                     </IconButton>
                   </>
                 ) : (
                   <>
-                  {
-                    mediaQuerySmall ?
-                    <Typography
-                      variant="subtitle2"
-                      style={{ marginRight: '4px', marginTop: '4px' }}
-                    >
-                      Comment
-                    </Typography>:
-                    <Typography
-                      variant="subtitle2"
-                      style={{ marginRight: '4px', marginTop: '4px' }}
-                    >
-                      Be the first to comment
-                    </Typography>
-
-                  }
-                    <IconButton>
+                    {mediaQuerySmall ? (
+                      <Typography
+                        variant="subtitle2"
+                        style={{ marginRight: '4px', marginTop: '4px' }}
+                      >
+                        Comment
+                      </Typography>
+                    ) : (
+                      <Typography
+                        variant="subtitle2"
+                        style={{ marginRight: '4px', marginTop: '4px' }}
+                      >
+                        Be the first to comment
+                      </Typography>
+                    )}
+                    <IconButton onClick={handleExpandClick}>
                       <Tooltip
                         title="Comment"
                         placement="top"
                       >
-                        <CommentIcon onClick={handleExpandClick} />
+                        <CommentIcon />
                       </Tooltip>
                     </IconButton>
                   </>

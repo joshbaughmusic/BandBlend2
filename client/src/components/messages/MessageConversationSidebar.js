@@ -100,9 +100,10 @@ export const MessageConversationSidebar = () => {
               </IconButton>
             </Tooltip>
           )}
-          {conversations.map((c) => (
+          {conversations.map((c, index) => (
             <div
               className="messages-sidebar-avatar"
+              key={index}
               style={{
                 marginTop: '5px',
                 padding: '3px',

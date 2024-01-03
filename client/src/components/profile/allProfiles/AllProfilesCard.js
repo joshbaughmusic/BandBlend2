@@ -186,7 +186,7 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
           <div className="allprofile-card-flexstack">
             <Typography variant="h6">Tags:</Typography>
             {profile.profile.profileTags.map((pt, index) => (
-              <Typography variant="body2">{pt.tag.name}</Typography>
+              <Typography key={index} variant="body2">{pt.tag.name}</Typography>
             ))}
           </div>
         </Grid>

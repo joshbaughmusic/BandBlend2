@@ -39,11 +39,13 @@ export const HomeSearchbar = () => {
   };
 
   useEffect(() => {
-    setCurrentSearch(searchTerms);
-    const timeoutId = setTimeout(() => {
-      handleSearch(searchTerms);
-    }, 100);
-    return () => clearTimeout(timeoutId);
+    if (searchTerms) {
+      setCurrentSearch(searchTerms);
+      const timeoutId = setTimeout(() => {
+        handleSearch(searchTerms);
+      }, 100);
+      return () => clearTimeout(timeoutId);
+    }
   }, [searchTerms]);
 
   const theme = useTheme();
