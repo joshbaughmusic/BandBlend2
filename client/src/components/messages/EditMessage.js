@@ -117,7 +117,7 @@ export const EditMessage = ({ message }) => {
     <>
       <Tooltip
         title="Edit"
-        placement="right"
+        placement="top"
       >
         <IconButton onClick={handleModalOpen}>
           <EditIcon sx={{ width: '20px' }} />

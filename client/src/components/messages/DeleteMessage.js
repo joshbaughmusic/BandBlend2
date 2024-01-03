@@ -66,7 +66,7 @@ export const DeleteMessage = ({ messageId }) => {
     <>
       <Tooltip
         title="Delete"
-        placement="left"
+        placement="top"
       >
         <IconButton
           sx={{ p: '5px' }}
