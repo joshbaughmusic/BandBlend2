@@ -92,7 +92,7 @@ export const MyAdditionalPhotos = ({ profile }) => {
               </div>
               <Divider style={{ marginTop: '4px' }} />
             </div>
-            <div>No photos yet</div>
+            <div>No additional photos yet</div>
           </>
         ) : (
           <>
