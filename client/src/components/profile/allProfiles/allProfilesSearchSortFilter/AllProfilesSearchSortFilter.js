@@ -123,9 +123,9 @@ export const AllProfilesSearchSortFilter = ({
                 }}
               >
                 <MenuItem value={null}>--</MenuItem>
-                <MenuItem value={'saved'}>Saved Only</MenuItem>
-                <MenuItem value={'musicians'}>Musicians Only</MenuItem>
-                <MenuItem value={'bands'}>Bands Only</MenuItem>
+                {/* <MenuItem value={'saved'}>Saved</MenuItem> */}
+                <MenuItem value={'musicians'}>Musicians</MenuItem>
+                <MenuItem value={'bands'}>Bands</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -212,9 +212,9 @@ export const AllProfilesSearchSortFilter = ({
             }}
           >
             <MenuItem value={null}>--</MenuItem>
-            <MenuItem value={'saved'}>Saved Only</MenuItem>
-            <MenuItem value={'musicians'}>Musicians Only</MenuItem>
-            <MenuItem value={'bands'}>Bands Only</MenuItem>
+            {/* <MenuItem value={'saved'}>Saved</MenuItem> */}
+            <MenuItem value={'musicians'}>Musicians</MenuItem>
+            <MenuItem value={'bands'}>Bands</MenuItem>
           </Select>
         </FormControl>
       </Grid>

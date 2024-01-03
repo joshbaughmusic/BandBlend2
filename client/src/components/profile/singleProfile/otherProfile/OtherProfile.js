@@ -527,7 +527,7 @@ export const OtherProfile = ({ loggedInUser }) => {
                 </div>
               </div>
               <ButtonGroup className="otherProfile-buttonGroup">
-                {profile.profile.savedProfile ? (
+                {/* {profile.profile.savedProfile ? (
                   <Tooltip
                     title="Unsave Profile"
                     placement="bottom"
@@ -551,7 +551,7 @@ export const OtherProfile = ({ loggedInUser }) => {
                       <BookmarkBorderIcon />
                     </Button>
                   </Tooltip>
-                )}
+                )} */}
                 <Tooltip
                   title="Message"
                   placement="bottom"

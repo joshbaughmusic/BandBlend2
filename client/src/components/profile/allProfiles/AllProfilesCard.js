@@ -75,7 +75,7 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
                   </Typography>
                 </div>
               </div>
-              <div className="allprofile-card-flexstack-icon">
+              {/* <div className="allprofile-card-flexstack-icon">
                 {profile.profile.savedProfile ? (
                   <Tooltip
                     title="Unsave Profile"
@@ -99,7 +99,7 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
                     </IconButton>
                   </Tooltip>
                 )}
-              </div>
+              </div> */}
             </div>
           </Container>
         </Paper>
@@ -190,7 +190,7 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
             ))}
           </div>
         </Grid>
-        <Grid
+        {/* <Grid
           item
           md={1}
           sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
@@ -218,7 +218,7 @@ export const AllProfilesCard = ({ profile, getAllUsersWithProfiles }) => {
               </Tooltip>
             )}
           </div>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Paper>
   );
